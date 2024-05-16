@@ -1,0 +1,5 @@
+container:
+  type: HtmlTemplate
+  properties: {html: <div anvil-slot="default"></div>}
+components: []
+is_package: true

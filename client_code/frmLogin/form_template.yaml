@@ -1,0 +1,10 @@
+container:
+  type: HtmlTemplate
+  properties: {html: <div anvil-slot="default"></div>}
+components:
+- name: txtUsername
+  properties: {}
+  type: TextBox
+  layout_properties: {slot: default}
+  event_bindings: {pressed_enter: Proceed}
+is_package: true

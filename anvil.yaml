@@ -1,5 +1,43 @@
 allow_embedding: false
 package_name: Custom_HTML_2
+db_schema:
+  tblusers:
+    client: none
+    server: full
+    columns:
+    - name: UserID
+      admin_ui: {width: 200, order: 0}
+      type: number
+    - name: Username
+      admin_ui: {width: 200, order: 1}
+      type: string
+    - name: Password
+      admin_ui: {width: 200, order: 2}
+      type: string
+    title: tblUsers
+  tbltimesheets:
+    client: none
+    server: full
+    columns:
+    - name: WorkID
+      admin_ui: {width: 200, order: 0}
+      type: number
+    - name: HoursWorked
+      admin_ui: {width: 200, order: 2}
+      type: number
+    - name: PayRate
+      admin_ui: {width: 200, order: 3}
+      type: number
+    - name: UserID
+      admin_ui: {width: 200, order: 4}
+      type: link_multiple
+      target: tblusers
+    title: tblTimesheets
+startup: {type: form, module: frmLogin}
 name: Custom HTML 2
+startup_form: null
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
-services: []
+services:
+- source: /runtime/services/tables.yml
+  client_config: {}
+  server_config: {}
