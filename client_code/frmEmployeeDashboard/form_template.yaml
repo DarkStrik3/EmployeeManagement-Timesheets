@@ -1,5 +1,14 @@
 container:
   type: HtmlTemplate
   properties: {html: <div anvil-slot="default"></div>}
-components: []
+components:
+- name: gpEmployee
+  properties: {}
+  type: GridPanel
+  layout_properties: {slot: default}
+  components:
+  - name: image_1
+    properties: {height: 64.66665649414062}
+    type: Image
+    layout_properties: {row: YXXFRA, width_xs: 5, col_xs: 4}
 is_package: true

@@ -2,9 +2,34 @@ container:
   type: HtmlTemplate
   properties: {html: <div anvil-slot="default"></div>}
 components:
-- name: txtUsername
+- name: gpLogin
   properties: {}
-  type: TextBox
+  type: GridPanel
   layout_properties: {slot: default}
-  event_bindings: {pressed_enter: Proceed}
+  components:
+  - name: image_1
+    properties: {height: 114.66665649414062}
+    type: Image
+    layout_properties: {row: SHSWYP, width_xs: 5, col_xs: 4}
+  - name: lblUsername
+    properties: {text: 'Username:'}
+    type: Label
+    layout_properties: {row: WXNUJL, width_xs: 1, col_xs: 4}
+  - name: txtUsername
+    properties: {}
+    type: TextBox
+    layout_properties: {row: WXNUJL, width_xs: 4, col_xs: 5}
+    event_bindings: {pressed_enter: Proceed}
+  - name: lblPassword
+    properties: {text: 'Passowrd:'}
+    type: Label
+    layout_properties: {row: PCFCNH, width_xs: 1, col_xs: 4}
+  - name: txtPassword
+    properties: {text: ''}
+    type: TextBox
+    layout_properties: {row: PCFCNH, width_xs: 4, col_xs: 5}
+  - name: btnLogin
+    properties: {text: Login, bold: true}
+    type: Button
+    layout_properties: {row: EIBSCP, width_xs: 5, col_xs: 4}
 is_package: true
