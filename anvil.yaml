@@ -1,5 +1,5 @@
 allow_embedding: false
-package_name: Custom_HTML_2
+package_name: KimikimOrganicsManagement
 db_schema:
   tblusers:
     client: none
@@ -34,7 +34,7 @@ db_schema:
       target: tblusers
     title: tblTimesheets
 startup: {type: form, module: frmProfile}
-name: Custom HTML 2
+name: KimikimOrganicsManagement
 startup_form: null
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
 services:
