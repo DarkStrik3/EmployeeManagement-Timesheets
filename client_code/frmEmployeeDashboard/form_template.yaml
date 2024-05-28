@@ -7,7 +7,7 @@ components:
   type: GridPanel
   layout_properties: {slot: default}
   components:
-  - name: image_1
+  - name: imgHeader
     properties: {height: 64.66665649414062}
     type: Image
     layout_properties: {row: YXXFRA, width_xs: 5, col_xs: 4}

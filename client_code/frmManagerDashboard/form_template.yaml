@@ -1,5 +1,9 @@
 container:
   type: HtmlTemplate
   properties: {html: <div anvil-slot="default"></div>}
-components: []
+components:
+- name: gpManagers
+  properties: {}
+  type: GridPanel
+  layout_properties: {slot: default}
 is_package: true
