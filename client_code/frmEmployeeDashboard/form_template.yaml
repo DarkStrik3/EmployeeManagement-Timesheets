@@ -7,8 +7,36 @@ components:
   type: GridPanel
   layout_properties: {slot: default}
   components:
+  - name: btnMenu
+    properties: {text: '', icon: 'fa:bars', font_size: 40}
+    type: Button
+    layout_properties: {row: YXXFRA, width_xs: 1, col_xs: 0}
+  - name: btnSignOut
+    properties: {text: Sign Out, icon: 'fa:angle-double-left', spacing_above: medium}
+    type: Button
+    layout_properties: {row: YXXFRA, width_xs: 1, col_xs: 1}
   - name: imgHeader
-    properties: {height: 64.66665649414062}
+    properties: {height: 83}
     type: Image
     layout_properties: {row: YXXFRA, width_xs: 5, col_xs: 4}
+  - name: lblProfileName
+    properties: {align: right, spacing_above: medium}
+    type: Label
+    layout_properties: {row: YXXFRA, width_xs: 1, col_xs: 10}
+  - name: imgProfile
+    properties: {height: 39, spacing_above: medium}
+    type: Image
+    layout_properties: {row: YXXFRA, width_xs: 1, col_xs: 11}
+  - name: lblBalance
+    properties: {font_size: 50, align: center, bold: true, spacing_above: large}
+    type: Label
+    layout_properties: {row: LKHLUM, width_xs: 3, col_xs: 5}
+  - name: rpLeft
+    properties: {item_template: frmEmployeeDashboard.ItemTemplate1}
+    type: RepeatingPanel
+    layout_properties: {row: FTTCYV, width_xs: 3, col_xs: 0}
+  - name: lblTimer
+    properties: {align: center}
+    type: Label
+    layout_properties: {row: FTTCYV, width_xs: 1, col_xs: 6}
 is_package: true
