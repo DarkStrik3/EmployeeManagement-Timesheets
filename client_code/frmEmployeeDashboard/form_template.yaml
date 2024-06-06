@@ -31,10 +31,6 @@ components:
     properties: {font_size: 50, align: center, bold: true, spacing_above: large}
     type: Label
     layout_properties: {row: LKHLUM, width_xs: 3, col_xs: 5}
-  - name: rpLeft
-    properties: {item_template: frmEmployeeDashboard.ItemTemplate1}
-    type: RepeatingPanel
-    layout_properties: {row: FTTCYV, width_xs: 3, col_xs: 0}
   - name: lblTimer
     properties: {align: center}
     type: Label
