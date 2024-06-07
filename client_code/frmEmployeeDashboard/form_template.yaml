@@ -18,7 +18,7 @@ components:
   - name: imgHeader
     properties: {height: 83}
     type: Image
-    layout_properties: {row: YXXFRA, width_xs: 5, col_xs: 4}
+    layout_properties: {row: YXXFRA, width_xs: 6, col_xs: 3}
   - name: lblProfileName
     properties: {align: right, spacing_above: medium}
     type: Label
@@ -35,20 +35,20 @@ components:
     properties: {text: Pending Work, bold: true, align: center, font_size: 30}
     type: Label
     layout_properties: {row: VZFEUC, width_xs: 3, col_xs: 9}
+  - name: lblBalance
+    properties: {font_size: 50, align: center, bold: true, spacing_above: large}
+    type: Label
+    layout_properties: {row: AVFKUA, width_xs: 4, col_xs: 4}
   - name: rpLeft
     properties: {item_template: frmEmployeeDashboard.ItemTemplate1}
     type: RepeatingPanel
     layout_properties: {row: LKHLUM, width_xs: 3, col_xs: 0}
-  - name: lblBalance
-    properties: {font_size: 50, align: center, bold: true, spacing_above: large}
+  - name: lblTimer
+    properties: {align: center}
     type: Label
-    layout_properties: {row: LKHLUM, width_xs: 3, col_xs: 5}
+    layout_properties: {row: LKHLUM, width_xs: 2, col_xs: 5}
   - name: rpRight
     properties: {item_template: frmEmployeeDashboard.ItemTemplate1}
     type: RepeatingPanel
     layout_properties: {row: LKHLUM, width_xs: 3, col_xs: 9}
-  - name: lblTimer
-    properties: {align: center}
-    type: Label
-    layout_properties: {row: FTTCYV, width_xs: 1, col_xs: 6}
 is_package: true

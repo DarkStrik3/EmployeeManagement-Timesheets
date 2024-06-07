@@ -1,19 +1,19 @@
 is_package: true
 container: {type: ColumnPanel}
 components:
-- name: lblRightWorkDate
+- name: lblWorkDate
   properties: {}
   type: Label
   layout_properties: {grid_position: 'INLPCD,BIUECF'}
-- name: lblRightWorkTime
+- name: lblWorkTime
   properties: {}
   type: Label
   layout_properties: {grid_position: 'INLPCD,UEJJBW'}
-- name: lblRightWorkRate
+- name: lblWorkRate
   properties: {}
   type: Label
   layout_properties: {grid_position: 'AZQWHG,NALGFP'}
-- name: lblRIghtWorkPayout
+- name: lblWorkPayout
   properties: {}
   type: Label
   layout_properties: {grid_position: 'AZQWHG,ONJOYZ'}
