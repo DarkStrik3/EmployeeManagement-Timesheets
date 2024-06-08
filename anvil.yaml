@@ -1,20 +1,6 @@
 allow_embedding: false
 package_name: KimikimOrganicsManagement
 db_schema:
-  tblusers:
-    client: none
-    server: full
-    columns:
-    - name: UserID
-      admin_ui: {width: 200, order: 0}
-      type: number
-    - name: Username
-      admin_ui: {width: 200, order: 1}
-      type: string
-    - name: Password
-      admin_ui: {width: 200, order: 2}
-      type: string
-    title: tblUsers
   tbltimesheets:
     client: none
     server: full
@@ -31,8 +17,27 @@ db_schema:
     - name: UserID
       admin_ui: {width: 200, order: 4}
       type: link_multiple
-      target: tblusers
+      target: tblauthentication
     title: tblTimesheets
+  tbluserdetails:
+    client: none
+    server: full
+    columns: []
+    title: tblUserDetails
+  tblauthentication:
+    client: none
+    server: full
+    columns:
+    - name: UserID
+      admin_ui: {width: 200, order: 0}
+      type: number
+    - name: Username
+      admin_ui: {width: 200, order: 1}
+      type: string
+    - name: Password
+      admin_ui: {width: 200, order: 2}
+      type: string
+    title: tblAuthentication
 startup: {type: form, module: frmProfile}
 name: KimikimOrganicsManagement
 startup_form: null
