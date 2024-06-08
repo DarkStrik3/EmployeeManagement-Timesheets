@@ -17,7 +17,8 @@ import anvil.server
 #
 @anvil.server.callable
 def Authenticate(username, password):
-  pass
+  try:
+    existingUsername = app
 
 @anvil.server.callable
 def getRefresh(userIdentification):
