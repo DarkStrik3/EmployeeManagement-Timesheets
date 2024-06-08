@@ -13,6 +13,12 @@ class frmLogin(frmLoginTemplate):
 
     # Any code you write here will run before the form opens.
 
-  def Proceed(self, **event_args):
-    userIdentification = anvil.server.call("getUserID", self.txtUsername.text)
-    open_form("frmEmployeeDashboard", userIdentification)
+  def login(self, **event_args):
+    userIdentification = anvil.server.call("Authenticate", self.txtEmail.text, self.txtPassword.text)
+    if userIdentification == "404":
+      alert("This user does not exist, or the inputed password is incorrect. Please try again.")
+      self.txtEmail.text = ""
+      self.txtPassword.text = ""
+    else:
+      userID = anvil.server.call('getUserID', userIdentification, True)
+      open_form("frmEmployeeDashboard", userID)
