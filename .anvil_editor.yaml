@@ -7,7 +7,7 @@ unique_ids:
     frmProfile: '1715834701303515751122121.52344'
   modules: {}
   server_modules:
-    ServerModule1: '1715835493924626453916433.7252'
+    ServerAPI: '1715835493924626453916433.7252'
   assets:
     standard-page.html: FHQYI3ASSGZJPJBP4NTJLJJXEYMDJPEO
     theme.css: VTGSRSWMXWSW6JJRODXPWNUO32ZIVBFR
