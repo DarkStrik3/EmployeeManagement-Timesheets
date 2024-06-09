@@ -12,9 +12,17 @@ class frmEmployeeDashboard(frmEmployeeDashboardTemplate):
     self.init_components(**properties)
     self.userID = properties["userID"]
     # Any code you write here will run before the form opens.
+    refresh()
 
   def refresh(self, **event_args):
-    pass
+    working = anvil.server.call('getIfWorking', self.userID)
+    if working:
+      self.btnClockinout.text = "Clock Out"
+      self.btnClockinout.background = "#ff0000"
+    elif not working:
+      self.btnClockinout.text = "Clock In"
+      self.btnClockinout.background = "#088000"
+      
 
   def clock(self, **event_args):
     pass

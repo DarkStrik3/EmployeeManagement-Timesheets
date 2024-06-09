@@ -1,5 +1,26 @@
 container:
   type: HtmlTemplate
   properties: {html: <div anvil-slot="default"></div>}
-components: []
+components:
+- name: gpProfile
+  properties: {}
+  type: GridPanel
+  layout_properties: {slot: default}
+  components:
+  - name: btnBack
+    properties: {text: Back, icon: 'fa:angle-left'}
+    type: Button
+    layout_properties: {row: GIPNDZ, width_xs: 2, col_xs: 0}
+  - name: imgProfileImg
+    properties: {}
+    type: Image
+    layout_properties: {row: XLJBYR, width_xs: 2, col_xs: 1}
+  - name: lblFullNAME
+    properties: {}
+    type: Label
+    layout_properties: {row: YGHPIS, width_xs: 2, col_xs: 1}
+  - name: LblJobTitle
+    properties: {}
+    type: Label
+    layout_properties: {row: FBXIOH, width_xs: 2, col_xs: 1}
 is_package: true

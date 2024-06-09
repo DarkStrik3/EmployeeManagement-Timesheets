@@ -54,7 +54,7 @@ components:
     layout_properties: {row: AVFKUA, width_xs: 3, col_xs: 9}
   - name: btnClockinout
     properties: {text: Clock In, background: '#088000', foreground: '#ffffff', align: full,
-      bold: true, font_size: 40}
+      bold: true, font_size: 40, border: ''}
     type: Button
     layout_properties: {row: LPLBEM, width_xs: 2, col_xs: 5}
     event_bindings: {click: clock}
