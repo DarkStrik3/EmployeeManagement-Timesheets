@@ -43,7 +43,7 @@ components:
     - name: lblPhoneNumber
       properties: {}
       type: Label
-      layout_properties: {row: NRMYSU, width_xs: 7, col_xs: 0}
+      layout_properties: {row: NRMYSU, width_xs: 3, col_xs: 0}
     data_bindings:
     - {property: tag, code: 'self.item['''']', writeback: false}
   - name: lblFullNAME
