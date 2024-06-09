@@ -16,4 +16,9 @@ class frmEmployeeDashboard(frmEmployeeDashboardTemplate):
   def refresh(self, **event_args):
     pass
 
-  def clock(self, **event_args)
+  def clock(self, **event_args):
+    pass
+
+  def profile(self, **event_args):
+    userID = self.userID
+    open_form('frmProfile', userID)

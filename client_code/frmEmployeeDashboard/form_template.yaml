@@ -27,10 +27,11 @@ components:
     properties: {height: 39, spacing_above: medium}
     type: Image
     layout_properties: {row: YXXFRA, width_xs: 1, col_xs: 11}
-  - name: button_1
-    properties: {text: button_1}
+  - name: btnProfile
+    properties: {text: Profile, bold: false, font_size: 20, align: full}
     type: Button
-    layout_properties: {row: AXYEFY, width_xs: 1, col_xs: 11}
+    layout_properties: {row: AXYEFY, width_xs: 3, col_xs: 9}
+    event_bindings: {click: profile}
   - name: lblApprovedWork
     properties: {text: Approved Work, bold: true, align: center, font_size: 30}
     type: Label

@@ -1,24 +1,6 @@
 allow_embedding: false
 package_name: KimikimOrganicsManagement
 db_schema:
-  tbltimesheets:
-    client: none
-    server: full
-    columns:
-    - name: WorkID
-      admin_ui: {width: 200, order: 0}
-      type: number
-    - name: HoursWorked
-      admin_ui: {width: 200, order: 2}
-      type: number
-    - name: PayRate
-      admin_ui: {width: 200, order: 3}
-      type: number
-    - name: UserID
-      admin_ui: {width: 200, order: 4}
-      type: link_multiple
-      target: tblauthentication
-    title: tblTimesheets
   tbluserdetails:
     client: none
     server: full
@@ -74,7 +56,40 @@ db_schema:
       admin_ui: {width: 200, order: 2}
       type: string
     title: tblAuthentication
-startup: {type: form, module: frmProfile}
+  tblworkrecords:
+    client: none
+    server: full
+    columns:
+    - name: WorkID
+      admin_ui: {width: 200, order: 0}
+      type: number
+    - name: HoursWorked
+      admin_ui: {width: 200, order: 2}
+      type: number
+    - name: PayRate
+      admin_ui: {width: 200, order: 3}
+      type: number
+    - name: UserID
+      admin_ui: {order: 1, width: 200}
+      type: link_multiple
+      target: tblauthentication
+    - name: ClockIn
+      admin_ui: {order: 1.5, width: 200}
+      type: datetime
+    - name: ClockOut
+      admin_ui: {width: 200, order: 1.75}
+      type: datetime
+    - name: Payout
+      admin_ui: {width: 200, order: 4}
+      type: number
+    - name: Approval
+      admin_ui: {width: 200, order: 5}
+      type: bool
+    - name: Date
+      admin_ui: {width: 200, order: 1.25}
+      type: date
+    title: tblWorkRecords
+startup: {type: form, module: frmLogin}
 name: KimikimOrganicsManagement
 startup_form: null
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
