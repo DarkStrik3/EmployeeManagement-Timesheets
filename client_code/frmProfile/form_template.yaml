@@ -10,9 +10,13 @@ components:
   - name: btnBack
     properties: {text: Back, icon: 'fa:angle-left'}
     type: Button
-    layout_properties: {row: GIPNDZ, width_xs: 2, col_xs: 0}
-  - name: image_1
-    properties: {}
+    layout_properties: {row: GIPNDZ, width_xs: 3, col_xs: 0}
+  - name: imgHeader
+    properties: {height: 130}
+    type: Image
+    layout_properties: {row: GIPNDZ, width_xs: 5, col_xs: 4}
+  - name: imgProfilePicture
+    properties: {display_mode: shrink_to_fit, height: 146}
     type: Image
     layout_properties: {row: MHFVCP, width_xs: 2, col_xs: 1}
   - name: dgUserWork
