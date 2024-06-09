@@ -15,12 +15,63 @@ components:
     properties: {}
     type: Image
     layout_properties: {row: XLJBYR, width_xs: 2, col_xs: 1}
-  - name: lblFullNAME
+  - name: gpTopRight
     properties: {}
+    type: GridPanel
+    layout_properties: {row: XLJBYR, width_xs: 8, col_xs: 3}
+    components:
+    - name: lblEmailLabel
+      properties: {align: right, bold: true, text: 'Email:'}
+      type: Label
+      layout_properties: {row: PKAUJH, width_xs: 3, col_xs: 0}
+    - name: lblEmail
+      properties: {}
+      type: Label
+      layout_properties: {row: PKAUJH, width_xs: 3, col_xs: 0}
+    - name: lblbaseRateLabel
+      properties: {text: 'Base Rate:', bold: true, align: right}
+      type: Label
+      layout_properties: {row: PKAUJH, width_xs: 3, col_xs: 0}
+    - name: lblBaseRate
+      properties: {}
+      type: Label
+      layout_properties: {row: PKAUJH, width_xs: 3, col_xs: 0}
+    - name: lblPhoneNumberLabel
+      properties: {text: 'Phone Number:', align: right, bold: true}
+      type: Label
+      layout_properties: {row: PKAUJH, width_xs: 3, col_xs: 0}
+    - name: lblPhoneNumber
+      properties: {}
+      type: Label
+      layout_properties: {row: NRMYSU, width_xs: 7, col_xs: 0}
+    data_bindings:
+    - {property: tag, code: 'self.item['''']', writeback: false}
+  - name: lblFullNAME
+    properties: {align: center, bold: true, font_size: 20}
     type: Label
     layout_properties: {row: YGHPIS, width_xs: 2, col_xs: 1}
   - name: LblJobTitle
-    properties: {}
+    properties: {align: center}
     type: Label
     layout_properties: {row: FBXIOH, width_xs: 2, col_xs: 1}
+  - name: lblWorkType
+    properties: {align: center}
+    type: Label
+    layout_properties: {row: GEEYGL, width_xs: 2, col_xs: 1}
+  - name: lblIDLabel
+    properties: {text: 'ID:', align: right, bold: true}
+    type: Label
+    layout_properties: {row: GDEWHH, width_xs: 2, col_xs: 0}
+  - name: lblUserID
+    properties: {align: left}
+    type: Label
+    layout_properties: {row: GDEWHH, width_xs: 2, col_xs: 2}
+  - name: lblGroupLabel
+    properties: {text: 'Group:', align: right, bold: true}
+    type: Label
+    layout_properties: {row: VPZMGJ, width_xs: 2, col_xs: 0}
+  - name: lblGroup
+    properties: {}
+    type: Label
+    layout_properties: {row: VPZMGJ, width_xs: 2, col_xs: 2}
 is_package: true
