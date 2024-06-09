@@ -3,6 +3,8 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
 
+
+
 # GETTERS
 @anvil.server.callable
 def Authenticate(inputEmail, password):
@@ -22,18 +24,4 @@ def getUserInfo(ID, AuthOrUser):
     userRow = app_tables.tbluserdetails.get(AuthenticationID=ID)
   return userRow
 
-
-
-@anvil.server.callable
-def getRefresh(userIdentification):
-  db = app_tables.tbltimesheets.search(UserID=userIdentification)
-  return db
-
-@anvil.server.callable
-def getUserID(name):
-  row = app_tables.tblusers.get(Username=name)
-  return row[0]
-
-@anvil.server.callable
-def getLoginExists(username, pwd):
-  return True
+# SETTERS

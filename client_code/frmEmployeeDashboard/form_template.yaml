@@ -51,6 +51,12 @@ components:
     properties: {item_template: frmEmployeeDashboard.ItemTemplate1}
     type: RepeatingPanel
     layout_properties: {row: AVFKUA, width_xs: 3, col_xs: 9}
+  - name: btnClockinout
+    properties: {text: Clock In, background: '#088000', foreground: '#ffffff', align: full,
+      bold: true, font_size: 40}
+    type: Button
+    layout_properties: {row: LPLBEM, width_xs: 2, col_xs: 5}
+    event_bindings: {click: clock}
   - name: lblTimer
     properties: {align: center}
     type: Label

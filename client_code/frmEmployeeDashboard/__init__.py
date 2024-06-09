@@ -15,3 +15,5 @@ class frmEmployeeDashboard(frmEmployeeDashboardTemplate):
 
   def refresh(self, **event_args):
     pass
+
+  def clock(self, **event_args)
