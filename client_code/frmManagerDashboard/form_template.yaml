@@ -2,8 +2,52 @@ container:
   type: HtmlTemplate
   properties: {html: <div anvil-slot="default"></div>}
 components:
-- name: gpManagers
+- name: gpProfile
   properties: {}
   type: GridPanel
   layout_properties: {slot: default}
+  components:
+  - name: button_1
+    properties: {text: '', icon: 'fa:bars', spacing_above: medium}
+    type: Button
+    layout_properties: {row: GIPNDZ, width_xs: 1, col_xs: 0}
+  - name: btnBack
+    properties: {text: Sign Out, icon: 'fa:caret-left', spacing_above: medium}
+    type: Button
+    layout_properties: {row: GIPNDZ, width_xs: 1, col_xs: 0}
+  - name: imgHeader
+    properties: {height: 130}
+    type: Image
+    layout_properties: {row: GIPNDZ, width_xs: 5, col_xs: 4}
+  - name: lblProfileName
+    properties: {spacing_above: large, align: right}
+    type: Label
+    layout_properties: {row: GIPNDZ, width_xs: 2, col_xs: 9}
+  - name: imgProfile
+    properties: {height: 84, spacing_above: medium}
+    type: Image
+    layout_properties: {row: GIPNDZ, width_xs: 1, col_xs: 11}
+  - name: cpDashboards
+    properties: {}
+    type: ColumnPanel
+    layout_properties: {row: SKRWJU, width_xs: 10, col_xs: 0}
+  - name: btnEmplManage
+    properties: {text: Employee Management, align: full, bold: true, spacing_below: small,
+      spacing_above: medium}
+    type: Button
+    layout_properties: {row: SKRWJU, width_xs: 2, col_xs: 10}
+  - name: btnTimesheets
+    properties: {text: Timesheets, align: full, bold: true, spacing_above: small,
+      spacing_below: small}
+    type: Button
+    layout_properties: {row: EOOVIH, width_xs: 2, col_xs: 10}
+  - name: btnAnalyticReport
+    properties: {text: Analytics and Reporting, spacing_above: small, spacing_below: small,
+      bold: true, align: full}
+    type: Button
+    layout_properties: {row: YDZGVA, width_xs: 2, col_xs: 10}
+  - name: btnSettings
+    properties: {text: Settings, align: full, bold: true}
+    type: Button
+    layout_properties: {row: JQFNDX, width_xs: 2, col_xs: 10}
 is_package: true

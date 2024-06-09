@@ -41,6 +41,9 @@ db_schema:
     - name: TFN
       admin_ui: {width: 200, order: 11}
       type: string
+    - name: Profile
+      admin_ui: {width: 200, order: 12}
+      type: media
     title: tblUserDetails
   tblauthentication:
     client: none

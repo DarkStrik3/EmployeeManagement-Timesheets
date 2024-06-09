@@ -20,5 +20,10 @@ class frmLogin(frmLoginTemplate):
       self.txtEmail.text = ""
       self.txtPassword.text = ""
     else:
-      userID = anvil.server.call('getUserID', userIdentification, True)
-      open_form("frmEmployeeDashboard", userID)
+      userRow = anvil.server.call('getUserInfo', userIdentification, True)
+      userID = userRow["UserID"]
+      title = userRow['Title']
+      if title == "base employee":
+        open_form("frmEmployeeDashboard", userID)
+      else:
+        open_form('frmManagerDashboard', userID)
