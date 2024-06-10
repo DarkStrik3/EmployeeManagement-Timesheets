@@ -1,12 +1,15 @@
 unique_ids:
   forms:
-    frmEmployeeDashboard: '1717585455336753386971491.1082'
-    frmEmployeeDashboard.ItemTemplate1: '1717749392075854439046405.7157'
-    frmLogin: '1716851920263734099117681.64'
     frmManagerDashboard: '1717926366756299195772902.9098'
-    frmManagerDashboard.Form1: '1717927728118428577586305.3098'
+    frmLogin: '1716851920263734099117681.64'
+    frmManagerDashboard.Timesheets: '1717981407433653567314192.4734'
+    frmManagerDashboard.EmployeeManagement: '1717927728118428577586305.3098'
     frmProfile: '1715834701303515751122121.52344'
+    frmEmployeeDashboard.ItemTemplate1: '1717749392075854439046405.7157'
+    frmManagerDashboard.Settings: '1717981464489301710586281.69'
+    frmManagerDashboard.AnalyticsReporting: '1717981447634109198463028.55118'
     frmProfile.RowTemplate1: '1717912817711256643320372.95767'
+    frmEmployeeDashboard: '1717585455336753386971491.1082'
   modules: {}
   server_modules:
     ServerAPI: '1715835493924626453916433.7252'

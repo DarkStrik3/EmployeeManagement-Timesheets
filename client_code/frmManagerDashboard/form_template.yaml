@@ -27,27 +27,27 @@ components:
     properties: {height: 84, spacing_above: medium}
     type: Image
     layout_properties: {row: GIPNDZ, width_xs: 1, col_xs: 11}
-  - name: cpDashboards
-    properties: {}
-    type: ColumnPanel
-    layout_properties: {row: SKRWJU, width_xs: 10, col_xs: 0}
   - name: btnEmplManage
     properties: {text: Employee Management, align: full, bold: true, spacing_below: small,
-      spacing_above: medium}
+      spacing_above: small}
     type: Button
-    layout_properties: {row: SKRWJU, width_xs: 2, col_xs: 10}
+    layout_properties: {row: SLJRUV, width_xs: 3, col_xs: 0}
   - name: btnTimesheets
     properties: {text: Timesheets, align: full, bold: true, spacing_above: small,
       spacing_below: small}
     type: Button
-    layout_properties: {row: EOOVIH, width_xs: 2, col_xs: 10}
+    layout_properties: {row: SLJRUV, width_xs: 3, col_xs: 3}
   - name: btnAnalyticReport
     properties: {text: Analytics and Reporting, spacing_above: small, spacing_below: small,
       bold: true, align: full}
     type: Button
-    layout_properties: {row: YDZGVA, width_xs: 2, col_xs: 10}
+    layout_properties: {row: SLJRUV, width_xs: 3, col_xs: 6}
   - name: btnSettings
     properties: {text: Settings, align: full, bold: true}
     type: Button
-    layout_properties: {row: JQFNDX, width_xs: 2, col_xs: 10}
+    layout_properties: {row: SLJRUV, width_xs: 3, col_xs: 9}
+  - name: cpDashboards
+    properties: {}
+    type: ColumnPanel
+    layout_properties: {row: SKRWJU, width_xs: 12, col_xs: 0}
 is_package: true

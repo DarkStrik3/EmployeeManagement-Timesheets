@@ -1,0 +1,7 @@
+container: {type: ColumnPanel}
+components:
+- name: gpTimesheets
+  properties: {}
+  type: GridPanel
+  layout_properties: {grid_position: 'JNJWYD,DXSAVP'}
+is_package: true
