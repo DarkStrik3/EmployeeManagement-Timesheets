@@ -1,7 +1,7 @@
 container: {type: ColumnPanel}
 components:
-- name: gpEmployeeManagement
+- name: gpEmplManage
   properties: {}
   type: GridPanel
-  layout_properties: {grid_position: 'FGMQFJ,PDQPZF'}
+  layout_properties: {grid_position: 'BTYFFX,XAZNFS'}
 is_package: true
