@@ -13,56 +13,65 @@ components:
     properties: {text: Selections, bold: true, font_size: 20}
     type: Label
     layout_properties: {}
-- name: lblTotalPayout
-  properties: {text: 'Total Payout:', bold: true, align: center}
-  type: Label
-  layout_properties: {grid_position: 'XSGABI,ONMZRJ'}
+  - name: ddEmployees
+    properties:
+      items: [All]
+    type: DropDown
+  - name: lblTotalPayout
+    properties: {text: 'Total Payout:', bold: true, align: center}
+    type: Label
+  - name: ddEmploymentType
+    properties:
+      items: [All, Part Time, Full Time]
+    type: DropDown
+  - name: dpDate
+    properties: {}
+    type: DatePicker
+  - name: ddDates
+    properties:
+      items: [Today, Yesterday, Last 7 days, Last Fortnight, Last Month, All Time]
+    type: DropDown
+  - name: ddGroup
+    properties:
+      items: [All, Warehouse, Admin, Manager, Accountant]
+    type: DropDown
 - name: lblPayout
   properties: {align: center}
   type: Label
-  layout_properties: {grid_position: 'XSGABI,ONMZRJ WJDWCX,FDLOLA'}
-- name: dpDate
-  properties: {}
-  type: DatePicker
-  layout_properties: {grid_position: 'PUAVFC,UDGQTU'}
+  layout_properties: {grid_position: 'XSGABI,OYGBDC JDWLFZ,NDFBVK'}
 - name: lblTotalTime
   properties: {text: 'Total Time:', align: center, bold: true}
   type: Label
-  layout_properties: {grid_position: 'PUAVFC,OXLYGE RUKNEF,XTUNVW'}
+  layout_properties: {grid_position: 'XSGABI,OYGBDC ZVJARN,UFPZZV'}
 - name: lblTime
   properties: {align: center}
   type: Label
-  layout_properties: {grid_position: 'PUAVFC,OXLYGE CBCVBA,JUSFAD'}
-- name: ddDates
-  properties:
-    items: [Today, Yesterday, Last 7 days, Last Fortnight, Last Month, All Time]
-  type: DropDown
-  layout_properties: {grid_position: 'JYUDYQ,SXFRTU'}
+  layout_properties: {grid_position: 'XSGABI,OYGBDC LHXSGD,ZECXJA'}
+- name: plot_1
+  properties: {height: '250'}
+  type: Plot
+  layout_properties: {grid_position: 'XSGABI,ONMZRJ'}
 - name: lblTotalEmployees
   properties: {text: 'Total Employees:', bold: true, align: center}
   type: Label
-  layout_properties: {grid_position: 'JYUDYQ,LKKNXS JDQYVM,YPFPAQ'}
+  layout_properties: {grid_position: 'ZNUGMZ,RYWNCR'}
 - name: lblEmployees
   properties: {}
   type: Label
-  layout_properties: {grid_position: 'JYUDYQ,LKKNXS GFGWDN,PVVFNU'}
-- name: ddEmployees
-  properties:
-    items: [All]
-  type: DropDown
-  layout_properties: {grid_position: 'NVSDEO,ZRSKZA'}
+  layout_properties: {grid_position: 'JYUDYQ,LKKNXS'}
 - name: ddName
   properties: {}
   type: DropDown
   layout_properties: {grid_position: 'NVSDEO,FBPNOA'}
-- name: ddEmploymentType
+- name: dg
   properties:
-    items: [All, Part Time, Full Time]
-  type: DropDown
-  layout_properties: {grid_position: 'WJKFLD,QXIOUL'}
-- name: ddGroup
-  properties:
-    items: [All, Warehouse, Admin, Manager, Accountant]
-  type: DropDown
-  layout_properties: {grid_position: 'SZFUBY,OZPFSO'}
+    columns:
+    - {id: JKSDUP, title: Name, data_key: name}
+    - {id: OJLQEN, title: Payout Amount, data_key: payout}
+  type: DataGrid
+  components:
+  - name: repeating_panel_1
+    properties: {item_template: AnalyticsReporting.RowTemplate2}
+    type: RepeatingPanel
+  layout_properties: {grid_position: 'WJKFLD,LCHNJJ'}
 is_package: true

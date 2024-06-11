@@ -14,7 +14,7 @@ components:
   - name: btnBack
     properties: {text: Sign Out, icon: 'fa:caret-left', spacing_above: medium}
     type: Button
-    layout_properties: {row: GIPNDZ, width_xs: 1, col_xs: 0}
+    layout_properties: {row: GIPNDZ, width_xs: 2, col_xs: 0}
   - name: imgHeader
     properties: {height: 130}
     type: Image
@@ -28,23 +28,27 @@ components:
     type: Image
     layout_properties: {row: GIPNDZ, width_xs: 1, col_xs: 11}
   - name: btnEmplManage
-    properties: {text: Employee Management, align: full, bold: true, spacing_below: small, spacing_above: small}
+    properties: {text: Employee Management, align: full, bold: true, spacing_below: small, spacing_above: small, background: ''}
     type: Button
     layout_properties: {row: SLJRUV, width_xs: 3, col_xs: 0}
+    event_bindings: {click: selectEmployeeManagement}
   - name: btnTimesheets
     properties: {text: Timesheets, align: full, bold: true, spacing_above: small, spacing_below: small}
     type: Button
     layout_properties: {row: SLJRUV, width_xs: 3, col_xs: 3}
+    event_bindings: {click: selectTimesheets}
   - name: btnAnalyticReport
     properties: {text: Analytics and Reporting, spacing_above: small, spacing_below: small, bold: true, align: full}
     type: Button
     layout_properties: {row: SLJRUV, width_xs: 3, col_xs: 6}
+    event_bindings: {click: selectAnalyticsReport}
   - name: btnSettings
     properties: {text: Settings, align: full, bold: true}
     type: Button
     layout_properties: {row: SLJRUV, width_xs: 3, col_xs: 9}
-  - name: fpDashboards
+    event_bindings: {click: selectSettings}
+  - name: cpDashboards
     properties: {}
-    type: FlowPanel
-    layout_properties: {row: RALHXE, width_xs: 12, col_xs: 0}
+    type: ColumnPanel
+    layout_properties: {row: IWFCJG, width_xs: 12, col_xs: 0}
 is_package: true
