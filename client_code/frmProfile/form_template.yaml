@@ -92,8 +92,7 @@ components:
     type: Label
     layout_properties: {row: DLMITY, width_xs: 2, col_xs: 9}
   - name: lblWorkTypeLabel
-    properties: {text: 'Employment Type:', align: right, bold: true, spacing_below: none,
-      spacing_above: none}
+    properties: {text: 'Employment Type:', align: right, bold: true, spacing_below: none, spacing_above: none}
     type: Label
     layout_properties: {row: GJRVWT, width_xs: 2, col_xs: 0}
   - name: lblWorkType
