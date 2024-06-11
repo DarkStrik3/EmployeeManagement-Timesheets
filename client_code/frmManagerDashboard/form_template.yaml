@@ -43,8 +43,8 @@ components:
     properties: {text: Settings, align: full, bold: true}
     type: Button
     layout_properties: {row: SLJRUV, width_xs: 3, col_xs: 9}
-  - name: cpDashboards
+  - name: fpDashboards
     properties: {}
-    type: ColumnPanel
-    layout_properties: {row: SKRWJU, width_xs: 12, col_xs: 0}
+    type: FlowPanel
+    layout_properties: {row: RALHXE, width_xs: 12, col_xs: 0}
 is_package: true
