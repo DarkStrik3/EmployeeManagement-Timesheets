@@ -1,7 +1,0 @@
-container: {type: ColumnPanel}
-components:
-- name: gpAnalyticsReporting
-  properties: {}
-  type: GridPanel
-  layout_properties: {grid_position: 'TOZLBW,UDSTSJ'}
-is_package: true
