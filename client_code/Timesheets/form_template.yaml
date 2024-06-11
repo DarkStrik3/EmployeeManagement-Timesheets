@@ -1,38 +1,53 @@
 container: {type: ColumnPanel}
 components:
-- name: gpTimesheets
+- name: fpTimesheets
   properties: {}
-  type: GridPanel
-  layout_properties: {grid_position: 'PSWJPZ,CSMGID'}
+  type: FlowPanel
+  layout_properties: {grid_position: 'SSQGTG,YUPDKM'}
   components:
   - name: drpEmplWork
     properties: {}
     type: DataRowPanel
-    layout_properties: {row: CVAYZC, width_xs: 9, col_xs: 0}
-  - name: ddApprovalStatus
-    properties:
-      include_placeholder: false
-      placeholder: ''
-      items: [All, Pending, Approved]
-    type: DropDown
-    layout_properties: {row: CVAYZC, width_xs: 3, col_xs: 9}
-    data_bindings: []
-  - name: ddEmployee
-    properties: {}
-    type: DropDown
-    layout_properties: {row: AVUGIU, width_xs: 3, col_xs: 9}
-    data_bindings:
-    - {property: items, code: 'self.item['''']', writeback: false}
-  - name: dpDate
-    properties: {}
-    type: DatePicker
-    layout_properties: {row: ZMEPJM, width_xs: 3, col_xs: 9}
-  - name: lblPending
-    properties: {text: 'Pending:', bold: true}
-    type: Label
-    layout_properties: {row: UEURQA, width_xs: 2, col_xs: 9}
-  - name: lblAmountPending
-    properties: {}
-    type: Label
-    layout_properties: {row: UEURQA, width_xs: 1, col_xs: 11}
+- name: ddApprovalStatus
+  properties:
+    include_placeholder: false
+    placeholder: ''
+    items: [All, Pending, Approved]
+  type: DropDown
+  layout_properties: {grid_position: 'SSQGTG,EHTXFN HNFESW,PCQIPV'}
+  data_bindings: []
+- name: ddEmployee
+  properties: {}
+  type: DropDown
+  layout_properties: {grid_position: 'SSQGTG,EHTXFN WFOFGO,LOQLVC'}
+  data_bindings:
+  - {property: items, code: 'self.item['''']', writeback: false}
+- name: dpDate
+  properties: {}
+  type: DatePicker
+  layout_properties: {grid_position: 'SSQGTG,EHTXFN DYFQLO,IQBJKG'}
+- name: lblPending
+  properties: {text: 'Pending:', bold: true}
+  type: Label
+  layout_properties: {grid_position: 'SSQGTG,EHTXFN ONHETS,EAZMNC ILDHCW,XJPTXR'}
+- name: btnRejectSelected
+  properties: {text: Reject Selected}
+  type: Button
+  layout_properties: {grid_position: 'SSQGTG,EHTXFN ONHETS,EAZMNC VWYIVZ,LXOXGX'}
+- name: btnApproveSelected
+  properties: {text: Approve Selected}
+  type: Button
+  layout_properties: {grid_position: 'SSQGTG,EHTXFN ONHETS,EAZMNC UGLSSI,PRDCTQ'}
+- name: lblAmountPending
+  properties: {}
+  type: Label
+  layout_properties: {grid_position: 'SSQGTG,EHTXFN ONHETS,HLPMSV LRSAKF,LUFZGM'}
+- name: btnRejectAll
+  properties: {text: Reject ALl}
+  type: Button
+  layout_properties: {grid_position: 'SSQGTG,EHTXFN ONHETS,HLPMSV TFIUCF,XABJLS'}
+- name: btnApproveAll
+  properties: {text: Approve All}
+  type: Button
+  layout_properties: {grid_position: 'SSQGTG,EHTXFN ONHETS,HLPMSV AZVWTV,DEHMVH'}
 is_package: true
