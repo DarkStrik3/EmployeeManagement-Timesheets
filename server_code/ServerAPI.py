@@ -3,7 +3,7 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
 from datetime import *
-
+from argon2 import PasswordHasher
 
 
 # GETTERS
@@ -11,7 +11,7 @@ from datetime import *
 def Authenticate(inputEmail, password):
   try:
     existingRow = app_tables.tblauthentication.get(Email=inputEmail)
-    if existingRow['Password'] == password:
+    if existingRow['Password'] == hashPassword(password):
       return existingRow['AuthenticationID']
     else: return "404"
   except:
@@ -35,6 +35,13 @@ def getIfWorking(userID):
     True
 
 # SETTERS
+
+@anvil.server.callable
+def hashPassword(plain_password):
+    ph = PasswordHasher() # Initialize the Argon2 Password Hasher
+    return ph.hash(plain_password)
+
+
 
 def newWorkId():
   # grabs the highest reference number from the work records table
