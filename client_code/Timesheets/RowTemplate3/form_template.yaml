@@ -1,0 +1,11 @@
+is_package: true
+container:
+  type: DataRowPanel
+  data_bindings:
+  - {property: item, code: 'self.item['''']', writeback: false}
+  - {property: auto_display_data, code: 'self.item['''']', writeback: false}
+components:
+- name: cbApproval
+  properties: {text: Approval}
+  type: CheckBox
+  layout_properties: {column: FUATGP}

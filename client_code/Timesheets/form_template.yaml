@@ -1,75 +1,71 @@
-container: {type: ColumnPanel}
-components:
-- name: cpTimesheets
-  properties: {col_widths: '{"WVDEXA":45,"NPSQCH":15}'}
+container:
   type: ColumnPanel
-  layout_properties: {grid_position: 'CGMJYH,OHLIRF'}
+  properties: {col_widths: '{"SKDDBE":15}'}
+components:
+- name: dgTimesheets
+  properties:
+    columns:
+    - {id: JKSDUP, title: Employee Name, data_key: name}
+    - {id: VJQQOR, title: Date, data_key: date}
+    - {id: OJLQEN, title: Work Time, data_key: time}
+    - {id: NVTRSA, data_key: rate, title: Rate Type}
+    - {id: ZHGZQK, data_key: payout, title: Payout}
+    - {id: FUATGP, data_key: approval, title: Approve}
+  type: DataGrid
+  layout_properties: {grid_position: 'ZVEIKO,MTQYCH'}
   components:
-  - name: dgEmployeeWork
-    properties:
-      columns:
-      - {id: JKSDUP, title: Employee Name, data_key: name}
-      - {id: VJQQOR, title: Date, data_key: date}
-      - {id: OJLQEN, title: Work Time, data_key: time}
-      - {id: NMIYCQ, data_key: rate, title: Rate Type}
-      - {id: KHIMNJ, data_key: payout, title: Payout}
-      - {id: RWFPNU, data_key: approval, title: Aprroval, width: 100, expand: false}
-      show_page_controls: false
-      wrap_on: mobile
-    type: DataGrid
-    layout_properties: {grid_position: 'QTABZP,WVDEXA'}
-    components:
-    - name: rpEmplWorkTables
-      properties: {item_template: TimesheetsOld.rowTemplateEmplWorkTable}
-      type: RepeatingPanel
-      data_bindings:
-      - {property: items, code: 'self.item['''']', writeback: false}
-  - name: lblFilters
-    properties: {text: Filters, align: center, bold: true}
-    type: Label
-    layout_properties: {grid_position: 'QTABZP,NPSQCH NZWWHC,XFKSON'}
-  - name: ddApprovalStatus
-    properties:
-      include_placeholder: false
-      placeholder: ''
-      items: [All, Pending, Approved]
-    type: DropDown
-    layout_properties: {grid_position: 'QTABZP,NPSQCH IHIYJZ,XWROTJ'}
-    data_bindings: []
-  - name: ddEmployee
-    properties: {}
-    type: DropDown
-    layout_properties: {grid_position: 'QTABZP,NPSQCH MHYJDX,VWIQOR'}
-    data_bindings:
-    - {property: items, code: 'self.item['''']', writeback: false}
-  - name: dpDate
-    properties: {}
-    type: DatePicker
-    layout_properties: {grid_position: 'QTABZP,NPSQCH MJTDRP,FLHOMD'}
-  - name: lblPending
-    properties: {text: 'Pending:', bold: true}
-    type: Label
-    layout_properties: {grid_position: 'QTABZP,NPSQCH SBFGNT,FUGDEK'}
-  - name: lblAmountPending
-    properties: {}
-    type: Label
-    layout_properties: {grid_position: 'QTABZP,NPSQCH SBFGNT,JYFHKT'}
-  - name: btnRejectSelected
-    properties: {text: Reject Selected, align: full}
-    type: Button
-    layout_properties: {grid_position: 'QTABZP,NPSQCH VRFEHN,FDASQY'}
-  - name: btnRejectAll
-    properties:
-      text: "Reject \nAll"
-      align: full
-    type: Button
-    layout_properties: {grid_position: 'QTABZP,NPSQCH VRFEHN,IAZMKH'}
-  - name: btnApproveSelected
-    properties: {text: Approve Selected, align: full}
-    type: Button
-    layout_properties: {grid_position: 'QTABZP,NPSQCH UXVFWE,HQJHFF'}
-  - name: btnApproveAll
-    properties: {text: Approve All, align: full}
-    type: Button
-    layout_properties: {grid_position: 'QTABZP,NPSQCH UXVFWE,MKADGH'}
+  - name: rpTimesheets
+    properties: {item_template: Timesheets.RowTemplate3}
+    type: RepeatingPanel
+- name: lblSort
+  properties: {text: Sort By, align: center, bold: true, font_size: 20}
+  type: Label
+  layout_properties: {grid_position: 'ZVEIKO,SKDDBE KRUDRG,OJLMPO'}
+- name: ddSort
+  properties:
+    items: [Name, Permissions, mployment Type]
+  type: DropDown
+  layout_properties: {grid_position: 'ZVEIKO,SKDDBE IGVGCI,QFTSEW'}
+- name: lblFilters
+  properties: {text: Filters, bold: true, align: center, font_size: 20}
+  type: Label
+  layout_properties: {grid_position: 'ZVEIKO,SKDDBE MWNKGJ,UMSNFV'}
+- name: ddGroup
+  properties:
+    items: [All, Warehouse, Manager, Accountant, Admin]
+  type: DropDown
+  layout_properties: {grid_position: 'ZVEIKO,SKDDBE GNRVNH,MQUZDC'}
+- name: ddGender
+  properties:
+    items: [All, Male, Female, Other]
+  type: DropDown
+  layout_properties: {grid_position: 'ZVEIKO,SKDDBE ZRRVSI,NMPHLO'}
+- name: date_picker_1
+  properties: {}
+  type: DatePicker
+  layout_properties: {grid_position: 'ZVEIKO,SKDDBE RKHARR,AXAKMF'}
+- name: label_1
+  properties: {}
+  type: Label
+  layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,UUOFHL JSDNIP,BTNPKO'}
+- name: button_1
+  properties: {text: button_1}
+  type: Button
+  layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,UUOFHL DCJBMT,SLVVWX'}
+- name: button_3
+  properties: {text: button_3}
+  type: Button
+  layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,UUOFHL NJEONJ,UHKHRB'}
+- name: label_2
+  properties: {}
+  type: Label
+  layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,LZVAWN ZCZINC,KBGQLM'}
+- name: button_2
+  properties: {text: button_2}
+  type: Button
+  layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,LZVAWN HRXEMK,UKUDXX'}
+- name: button_4
+  properties: {text: button_4}
+  type: Button
+  layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,LZVAWN QHRUBS,FBKMVC'}
 is_package: true

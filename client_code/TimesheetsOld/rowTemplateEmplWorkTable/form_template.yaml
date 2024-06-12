@@ -1,9 +1,0 @@
-is_package: true
-container:
-  type: DataRowPanel
-  properties: {auto_display_data: false}
-components:
-- name: cbApproval
-  properties: {text: Approved}
-  type: CheckBox
-  layout_properties: {column: RWFPNU}

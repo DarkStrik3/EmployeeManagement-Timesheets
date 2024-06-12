@@ -7,23 +7,21 @@ components:
   type: ColumnPanel
   layout_properties: {grid_position: 'VBKYBX,FJRBIJ'}
   components:
-  - name: dgEmployeeWork
+  - name: dgTimesheets
     properties:
       columns:
       - {id: JKSDUP, title: Employee Name, data_key: name}
       - {id: VJQQOR, title: Date, data_key: date}
       - {id: OJLQEN, title: Work Time, data_key: time}
-      - {id: NMIYCQ, data_key: rate, title: Rate Type}
-      - {id: KHIMNJ, data_key: payout, title: Payout}
-      - {id: RWFPNU, data_key: approval, title: Aprroval, width: 100, expand: false}
-      show_page_controls: false
-      wrap_on: mobile
+      - {id: NVTRSA, data_key: rate, title: Rate Type}
+      - {id: ZHGZQK, data_key: payout, title: Payout}
+      - {id: FUATGP, data_key: approval, title: Approve}
     type: DataGrid
     components:
-    - name: rpEmplWorkTables
-      properties: {item_template: TimesheetsOld.rowTemplateEmplWorkTable}
+    - name: rpTimesheets
+      properties: {item_template: Timesheets.RowTemplate3}
       type: RepeatingPanel
-    layout_properties: {grid_position: 'QTABZP,WVDEXA'}
+    layout_properties: {grid_position: 'QTABZP,DRLNQL'}
   - name: lblFilters
     properties: {text: Filters, align: center, bold: true}
     type: Label
