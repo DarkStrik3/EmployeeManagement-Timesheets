@@ -22,6 +22,8 @@ components:
     - name: rpEmplWorkTables
       properties: {item_template: TimesheetsOld.rowTemplateEmplWorkTable}
       type: RepeatingPanel
+      data_bindings:
+      - {property: items, code: 'self.item['''']', writeback: false}
   - name: lblFilters
     properties: {text: Filters, align: center, bold: true}
     type: Label
