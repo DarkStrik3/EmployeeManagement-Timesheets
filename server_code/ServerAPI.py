@@ -34,6 +34,16 @@ def getIfWorking(userID):
   except:
     True
 
+
+@anvil.server.callable
+def getTimesheets():
+  timesheets = app_tables.tblworkrecords.search(tables.order_by("Date"), ascending=False)
+  return timesheets
+
+
+
+
+
 # SETTERS
 
 @anvil.server.callable
