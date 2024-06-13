@@ -42,6 +42,13 @@ def hashPassword(plain_password):
     return ph.hash(plain_password)
 
 
+def newID():
+  lastID = app_tables.tblauthentication.search(tables.order_by("AuthenticationID", ascending=False))[0]['AuthenticationID']
+  newID = int(LastID) + 1
+  while len(str(newNum)) < 6:
+    newNum = "0" + str(nuwNum)
+  return newNum
+
 
 def newWorkId():
   # grabs the highest reference number from the work records table
@@ -63,3 +70,10 @@ def setClock(userID, clockStatus):
     totalWork = clockOutTime - row['ClockIn']
     payout = totalWork * row['PayRate']
     row.update(ClockOut=clockOutTime, Payout=payout, HoursWorked=totalWork)
+
+
+@anvil.server.callable
+def addNewuser(username, newEmail, password, newPhoneNumber, DateOfBirth, newGender, employmentType, newGroup, title, baseRate, extendRate, pubHolRate, newTFN, profileImg):
+  newID = newID()
+  app_tables.tblauthentication.add_row(AuthenticationID=newID, Email=newEmail, Password=hashPassword(password))
+  app_tables.tbluserdetails.add_row(UserID=newID, AuthenticationID=newID, Email=newEmail, DoB=DateOfBirth, Gender=newGender, Group=newGroup, PhoneNumber=newPhoneNumber, BasicRate=baseRate, ExtendedRate=extendRate, PublHolRate=pubHolRate, TFN=newTFN, Profile=profileImg)

@@ -8,6 +8,7 @@ from ..EmployeeManagement import EmployeeManagement
 from ..AnalyticsReporting import AnalyticsReporting
 from ..Settings import Settings
 from ..Timesheets import Timesheets
+from ..AddUser import AddUser
 
 
 class frmManagerDashboard(frmManagerDashboardTemplate):
@@ -18,6 +19,10 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
     # Any code you write here will run before the form opens.
     self.cpDashboards.add_component(Settings())
 
+
+  def signOut(self, **event_args):
+    open_form('frmLogin')
+  
   def selectEmployeeManagement(self, **event_args):
     self.cpDashboards.clear()
     self.cpDashboards.add_component(EmployeeManagement())
@@ -49,7 +54,15 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
     self.btnAnalyticReport.background = ""
     self.btnTimesheets.background = ""
     self.btnSettings.background = "#6e6e6e"
-  
+
+  def selectAddNewuser(self, **event_args):
+    self.cpDashboards.clear()
+    self.cpDashboards.add_component(AddUser())
+    self.btnEmplManage.background = ""
+    self.btnAnalyticReport.background = ""
+    self.btnTimesheets.background = ""
+    self.btnSettings.background = ""
+    
 
 
 

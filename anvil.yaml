@@ -44,6 +44,9 @@ db_schema:
     - name: Profile
       admin_ui: {width: 200, order: 12}
       type: media
+    - name: Gender
+      admin_ui: {width: 200, order: 13}
+      type: string
     title: tblUserDetails
   tblauthentication:
     client: none

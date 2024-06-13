@@ -15,6 +15,7 @@ components:
     properties: {text: Sign Out, icon: 'fa:caret-left', spacing_above: medium}
     type: Button
     layout_properties: {row: GIPNDZ, width_xs: 2, col_xs: 0}
+    event_bindings: {click: signOut}
   - name: imgHeader
     properties: {height: 130}
     type: Image

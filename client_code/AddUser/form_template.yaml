@@ -1,0 +1,125 @@
+container:
+  type: HtmlTemplate
+  properties: {html: <div anvil-slot="default"></div>}
+components:
+- name: cpAddUser
+  properties: {}
+  type: ColumnPanel
+  layout_properties: {slot: default}
+  components:
+  - name: imgUpload
+    properties: {}
+    type: Image
+    layout_properties: {grid_position: 'OTHRAW,SYRGTI UZZKTL,UKBMPV'}
+  - name: flUpload
+    properties: {text: Upload Profile Image}
+    type: FileLoader
+    layout_properties: {grid_position: 'OTHRAW,SYRGTI YSKXXB,RIGBHN'}
+  - name: lblFullName
+    properties: {text: 'Full Name:', bold: true}
+    type: Label
+    layout_properties: {grid_position: 'OTHRAW,OJHGGK AEWGME,HVSFJV'}
+  - name: txtFullName
+    properties: {}
+    type: TextBox
+    layout_properties: {grid_position: 'OTHRAW,OJHGGK AEWGME,ARGVHK'}
+  - name: lblEmail
+    properties: {text: 'Email:', bold: true}
+    type: Label
+    layout_properties: {grid_position: 'OTHRAW,OJHGGK XRBPSO,JCMDCQ'}
+  - name: txtEmail
+    properties: {}
+    type: TextBox
+    layout_properties: {grid_position: 'OTHRAW,OJHGGK XRBPSO,FSSYVD'}
+  - name: lblTempPassword
+    properties: {align: left, text: 'Temporary Password:', bold: true}
+    type: Label
+    layout_properties: {grid_position: 'OTHRAW,OJHGGK MWRUPL,VMRJLL'}
+  - name: txtTempPassword
+    properties: {}
+    type: TextBox
+    layout_properties: {grid_position: 'OTHRAW,OJHGGK MWRUPL,ALCPPE'}
+  - name: lblPhoneNumber
+    properties: {text: Phone Number, bold: true}
+    type: Label
+    layout_properties: {grid_position: 'OTHRAW,OJHGGK GYWCOH,JXUTSR'}
+  - name: txtPhoneNumber
+    properties: {}
+    type: TextBox
+    layout_properties: {grid_position: 'OTHRAW,OJHGGK GYWCOH,AEERMS'}
+  - name: lblDateOfBirth
+    properties: {text: 'Date of Birth:', bold: true}
+    type: Label
+    layout_properties: {grid_position: 'OTHRAW,OJHGGK CWYYIW,YZQZFP RXPWEU,OQJQAP'}
+  - name: lblTitle
+    properties: {text: 'Title:', bold: true}
+    type: Label
+    layout_properties: {grid_position: 'OTHRAW,OJHGGK CWYYIW,YZQZFP XVGTHZ,KWGVLW'}
+  - name: txtDoB
+    properties: {}
+    type: TextBox
+    layout_properties: {grid_position: 'OTHRAW,OJHGGK CWYYIW,NZNPXN PXAYGI,URKHOZ'}
+  - name: txtTitle
+    properties: {}
+    type: TextBox
+    layout_properties: {grid_position: 'OTHRAW,OJHGGK CWYYIW,NZNPXN NTCVEG,RWNVDY'}
+  - name: lblGender
+    properties: {text: 'Gender:', bold: true}
+    type: Label
+    layout_properties: {grid_position: 'OTHRAW,IEJKDQ ZLRNHL,OUAWLF QBWXVQ,LQUSAN'}
+  - name: lblEmploymentType
+    properties: {text: 'Employment Type:', bold: true}
+    type: Label
+    layout_properties: {grid_position: 'OTHRAW,IEJKDQ ZLRNHL,OUAWLF MGAGCK,FYFWZV'}
+  - name: ddGender
+    properties:
+      items: [Male, Female, Other]
+    type: DropDown
+    layout_properties: {grid_position: 'OTHRAW,IEJKDQ ZLRNHL,IWNFZS WRGXIN,GOCCEX'}
+  - name: ddEmplType
+    properties:
+      items: [Full-Time, Part-Time, Contractor]
+    type: DropDown
+    layout_properties: {grid_position: 'OTHRAW,IEJKDQ ZLRNHL,IWNFZS EVKQAW,BJKCDW'}
+  - name: lblGroup
+    properties: {text: 'Group:', bold: true}
+    type: Label
+    layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,ADVDDY PKEMQE,OKXFKV'}
+  - name: lblBaseRate
+    properties: {text: 'Base Rate:', bold: true}
+    type: Label
+    layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,ADVDDY QYRXIC,EBSVSX'}
+  - name: lblExtendedRate
+    properties: {text: 'Extended Rate:', bold: true}
+    type: Label
+    layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,ADVDDY MUHOWU,EOIPWO'}
+  - name: lblPubHolRate
+    properties: {text: 'Public Holiday Rate:', bold: true}
+    type: Label
+    layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,ADVDDY LSGCZS,EZMCWQ'}
+  - name: lblTFN
+    properties: {text: 'TFN:', bold: true}
+    type: Label
+    layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,ADVDDY NTKUJA,NTIHRD'}
+  - name: ddGroup
+    properties:
+      items: [Warehouse, Manager, Admin, Accountant]
+    type: DropDown
+    layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,FESFBN UFHLWS,VRVGXS'}
+  - name: txtBaseRate
+    properties: {}
+    type: TextBox
+    layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,FESFBN HHHMHT,DSZLEU'}
+  - name: txtExtendedRate
+    properties: {}
+    type: TextBox
+    layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,FESFBN ERVSFM,UBDAOX'}
+  - name: txtPubHolRate
+    properties: {}
+    type: TextBox
+    layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,FESFBN FWXENN,ULDVID'}
+  - name: txtTFN
+    properties: {}
+    type: TextBox
+    layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,FESFBN QTQOXN,XXYFPE'}
+is_package: true
