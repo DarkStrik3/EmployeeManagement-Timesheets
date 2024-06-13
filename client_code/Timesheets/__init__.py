@@ -12,3 +12,10 @@ class Timesheets(TimesheetsTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
+
+  def confirm(btnName):
+    cont = confirm("Are you sure you want to proceed with: " + str(btnName) + "?")
+    if cont:
+      return True
+    else:
+      return False

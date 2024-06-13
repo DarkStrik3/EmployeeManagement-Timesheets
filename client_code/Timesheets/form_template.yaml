@@ -44,28 +44,28 @@ components:
   properties: {}
   type: DatePicker
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE RKHARR,AXAKMF'}
-- name: label_1
-  properties: {}
+- name: lblPending
+  properties: {text: 'Pending:', bold: true}
   type: Label
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,UUOFHL JSDNIP,BTNPKO'}
-- name: button_1
-  properties: {text: button_1}
+- name: btnRejectSelected
+  properties: {text: Reject Selected, align: full}
   type: Button
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,UUOFHL DCJBMT,SLVVWX'}
-- name: button_3
-  properties: {text: button_3}
+- name: btnApproveSelected
+  properties: {text: Approve Selected, align: full}
   type: Button
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,UUOFHL NJEONJ,UHKHRB'}
-- name: label_2
+- name: lblTotalPending
   properties: {}
   type: Label
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,LZVAWN ZCZINC,KBGQLM'}
-- name: button_2
-  properties: {text: button_2}
+- name: btnRejectAll
+  properties: {text: Reject All, align: full}
   type: Button
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,LZVAWN HRXEMK,UKUDXX'}
-- name: button_4
-  properties: {text: button_4}
+- name: btnApproveAll
+  properties: {text: Approve All, align: full}
   type: Button
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,LZVAWN QHRUBS,FBKMVC'}
 is_package: true
