@@ -2,6 +2,7 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
+import re
 
 def validateName(name): # the user name is validated
   name = name.strip() # remove leading and following spaces
@@ -54,5 +55,6 @@ def validateEmail(email):
     assert name and domain # make sure that they both exist: the @ symbol isnt at begginning or end
     assert len(email) >= 3 # make sure that there is at least 1 character in front and 1 character behind 
     assert not re.match(r"[^@]+@[^@]+\.[^@]+", email) # make sure that there arent any symbols in the email that shouldnt be there
-  except:
-    return False
+    return True # true is returned
+  except: # an assertion doesnt work, meaning that the email isnt valid
+    return False # false is returned
