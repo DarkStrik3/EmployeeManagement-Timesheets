@@ -11,6 +11,7 @@ components:
     - {id: NVTRSA, data_key: rate, title: Rate Type}
     - {id: ZHGZQK, data_key: payout, title: Payout}
     - {id: FUATGP, data_key: approval, title: Approve}
+    show_page_controls: false
   type: DataGrid
   layout_properties: {grid_position: 'ZVEIKO,MTQYCH'}
   components:
