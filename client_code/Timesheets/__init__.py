@@ -13,9 +13,25 @@ class Timesheets(TimesheetsTemplate):
     
     # Any code you write here will run before the form opens.
 
-  def confirm(btnName):
+  def confirmation(self, btnName):
     cont = confirm("Are you sure you want to proceed with: " + str(btnName) + "?")
     if cont:
       return True
     else:
       return False
+
+  def rejectSelected(self, **event_args):
+    if self.confirmation("Reject Selected"):
+      pass
+
+  def rejectAll(self, **event_args):
+    if self.confirmation("Reject All"):
+      pass
+
+  def approveSelected(self, **event_args):
+    if self.confirmation("Approve Selected"):
+      pass
+      
+  def approveAll(self, **event_args):
+    if self.confirmation("Approve All"):
+      pass
