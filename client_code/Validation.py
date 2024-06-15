@@ -63,7 +63,7 @@ def validatePhoneNum(phoneNumber):
   try:
     assert len(phoneNumber) >= 10
     floatNum = float(phoneNumber)
-      
+       
     return True
   except:
     return False
