@@ -58,3 +58,12 @@ def validateEmail(email):
     return True # true is returned
   except: # an assertion doesnt work, meaning that the email isnt valid
     return False # false is returned
+
+def validatePhoneNum(phoneNumber):
+  try:
+    assert len(phoneNumber) >= 10
+    floatNum = float(phoneNumber)
+    
+    return True
+  except:
+    return False
