@@ -7,6 +7,10 @@ components:
   type: ColumnPanel
   layout_properties: {slot: default}
   components:
+  - name: lblUserAdditionForm
+    properties: {text: User Addition Form, align: center, bold: true, font_size: 40}
+    type: Label
+    layout_properties: {grid_position: 'NDTYXL,ZCRNFC'}
   - name: imgUpload
     properties: {}
     type: Image
