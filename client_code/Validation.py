@@ -1,22 +1,22 @@
 import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
-from anvil.tables import app_tables
 import re
+from anvil.tables import app_tables
+from datetime import datetime
 
-def validateName(name): # the user name is validated
+def validateString(name): # the user name is validated
   name = name.strip() # remove leading and following spaces
   try: # attempts to test the name
       assert name != "" # makes sure it isn't blank
       if not name: # makes sure it isn't noneType, double-checking
         raise TypeError # error raised if it fails this part
-      assert not nme.isspace()  # Ensure name is not empty or whitespace
+      assert not name.isspace()  # Ensure name is not empty or whitespace
       return True # if it passes all the tests, True is returned
   except: # an error arises throughout the test, 'try' block is ended
       return False # False is returned
 
-def validateDate(date):
-  dateFormatCode = "%d/%m/%Y"  # The date format is specified to allow for future changes
+def validateDate(date, dateFormatCode):
   try:  # Attempt to validate the date format and contents
       # Ensure the inputted date isn't blank and has the correct length
       assert date != "" and len(date) == 10
@@ -67,3 +67,14 @@ def validatePhoneNum(phoneNumber):
     return True
   except:
     return False
+
+def validateTFN(tfn):
+  try:
+    tfn = tfn.strip()
+    assert len(tfn) == 8 or 9
+    assert int(tfn) == tfn
+    return True
+  except:
+    return False
+
+  
