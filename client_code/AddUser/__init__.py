@@ -27,7 +27,7 @@ class AddUser(AddUserTemplate):
       assert str(self.ddEmplType.selected_value) == "Full Time" or "Part Time" # make sure one of the specified options is selected
       assert str(self.ddGroup.selected_value) == "Warehouse" or "Manager" or "Admin" or "Accountant" # make sure one of the specified options is selected
       assert Validation.validatePhoneNum(self.txtPhoneNumber.text) # Makes sure that the phone number is valid
-      
+      assert Validation.validateTFN(self.txtTFN.text) # Makes sure that TFN is valid
       
       anvil.server.call('addNewuser', )
     except:
