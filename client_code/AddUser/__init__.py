@@ -30,12 +30,20 @@ class AddUser(AddUserTemplate):
       assert Validation.validateTFN(self.txtTFN.text) # Makes sure that TFN is valid
       # Call the server code to pass the values and create a new user.
       anvil.server.call('addNewuser', self.txtFullName.text, self.txtEmail.text, self.txtTempPassword.text, self.txtPhoneNumber.text, self.dpDoB.date, self.ddGender.selected_value, self.ddEmplType.selected_value, self.ddGroup.selected_value, self.txtTitle.text, float(self.txtBaseRate.text), float(self.txtExtendedRate.text), float(self.txtPubHolRate.text), self.txtTFN.text, self.flUpload.file)
+      
       self.imgUpload.source = None
       self.flUpload.clear()
       self.txtFullName.clear()
       self.txtEmail.clear()
       self.txtPhoneNumber.clear()
-      self.txt
+      self.txtBaseRate.clear()
+      self.txtExtendedRate.clear()
+      self.txtPubHolRate.clear()
+      self.txtTFN.clear()
+      self.ddEmplType.clear()
+      self.ddGender.clear()
+      self.ddGroup.clear()
+      self.dpDoB.clear()
     except:
       alert("At least one of the entries is either blank or incorrectly filled out. Please try again.")
 
