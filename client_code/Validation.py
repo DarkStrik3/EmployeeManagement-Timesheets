@@ -61,12 +61,12 @@ def validateEmail(email):
 
 def validatePhoneNum(phoneNumber):
   try:
-    assert len(phoneNumber) >= 10
-    floatNum = float(phoneNumber)
-       
-    return True
-  except:
-    return False
+    assert len(phoneNumber) >= 10 # Ensure the phone number is at least 10 characters long
+    phonePattern = re.compile(r'^(\+?[1-9]\d{7,14}|0\d{9})$') # Sets required phone number pattern
+    assert phonePattern.match(phoneNumber) # Ensure the phone number matches the pattern
+    return True # Returns true if everything is ok
+  except: # something doesn't match the required format/length
+    return False # False is returned
 
 def validateTFN(tfn):
   try:
