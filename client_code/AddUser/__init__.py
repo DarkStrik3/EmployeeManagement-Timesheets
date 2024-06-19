@@ -17,7 +17,7 @@ class AddUser(AddUserTemplate):
   def addNewUser(self, **event_args):
     dateFormatCode = "%d/%m/%Y"  # The date format is specified to allow for future changes by changing only 1 variable
     issues = []
-    if not Val idation.validateString(self.txtFullName.text): # makes sure that the name is a valid string
+    if not Validation.validateString(self.txtFullName.text): # makes sure that the name is a valid string
       issues.append("invalid name")
     if not Validation.validateString(self.txtTitle.text): # makes sure that the title is a valid string
       issues.append("invalid title")
