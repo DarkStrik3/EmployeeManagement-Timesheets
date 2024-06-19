@@ -38,7 +38,7 @@ class AddUser(AddUserTemplate):
       issues.append("invalid phone number")
     if not Validation.validateTFN(self.txtTFN.text): # Makes sure that TFN is valid
       issues.append("invalid TFN number")
-    if not Validation.validateUpload(self.flUpload.file)
+    if not Validation.validateUpload(self.flUpload.file):
       issues.append("")
     if issues == "":
     # Call the server code to pass the values and create a new user.
