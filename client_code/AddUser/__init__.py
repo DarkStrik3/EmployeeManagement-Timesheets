@@ -16,9 +16,9 @@ class AddUser(AddUserTemplate):
     # Any code you write here will run before the form opens.
     self.dpDoB.max_date = Other.getDate15YearsAgo() # makes sure that the worker is at least 15 years old which is a requirement to work
     self.dpDoB.format = "%d/%m/%Y"
+    self.flUpload.file_types = ['.jpg', '.jpeg', '.png', 'webp']
 
   def addNewUser(self, **event_args):
-    dateFormatCode = "%d/%m/%Y"  # The date format is specified to allow for future changes by changing only 1 variable
     issues = []
     if not Validation.validateString(self.txtFullName.text): # makes sure that the name is a valid string
       issues.append("invalid name")
@@ -29,7 +29,7 @@ class AddUser(AddUserTemplate):
     # additional rates are higher than base rate, and base rate is at least minimum wage
     if not Validation.validateRate(self.txtBaseRate.text, self.txtExtendedRate.text, self.txtPubHolRate.text):
       issues.append("invalid rates")
-    if not Validation.validateDate(str(self.dpDoB.date), dateFormatCode): # date is valid
+    if not Validation.validateDate(str(self.dpDoB.date)): # date is valid
       issues.append("invalid date of birth")
     if self.ddGender.selected_value is None: # make sure one of the specified options is selected
       issues.append("invalid gender")

@@ -20,28 +20,21 @@ class Validation:
     except: # an error arises throughout the test, 'try' block is ended
         return False # False is returned
 
-  def validateDate(date, dateFormatCode):
-    try:
-        # Ensure the inputted date isn't blank
-        assert date != ""
+  def validateDate(date):  # The inputted date is validated
+    dateFormatCode = "%Y-%m-%d"
+    try:  # Attempt to validate the date format and contents
+        # Ensure the inputted date isn't blank and has the correct length
+        assert date != "" and len(date) == 10
         # Attempt to parse the date string to a date object
         date_object = datetime.strptime(date, dateFormatCode)
         # Reformat the date to ensure it matches the required format
         reformatted_date = date_object.strftime(dateFormatCode)
-        # Check if the reformatted date matches the input date
-        assert reformatted_date == date
         # Additional check to ensure the day and month are within valid ranges
-        if dateFormatCode == "%d/%m/%Y":
-            day, month, year = map(int, date.split('/'))
-        elif dateFormatCode == "%m/%d/%Y":
-            month, day, year = map(int, date.split('/'))
-        elif dateFormatCode == "%Y-%m-%d":
-            year, month, day = map(int, date.split('-'))
-        else:
-            return False  # Unsupported date format
+        year, month, day = map(int, date.split('-'))
         assert 1 <= day <= 31 and 1 <= month <= 12
-        return True  # The date is in the correct format and has valid values
+        return True  # The date is in the correct format and has valid values, True is returned
     except:  # If any error arises throughout the 'try' block
+        # If parsing or formatting fails, it's not a valid date
         return False  # False is returned since it doesn't meet the required format
   
   def validateRate(baseRate, extendedRate, pubholrate):
@@ -94,7 +87,7 @@ class Validation:
     try:
       assert imgFile is not None
       imgFileName = imgFile.name.lower()
-      validExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff']
+      validExtensions = ['.jpg', '.jpeg', '.png', 'webp']
       assert any(imgFileName.endswith(ext) for ext in validExtensions)
       return True
     except:

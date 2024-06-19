@@ -16,12 +16,12 @@ components:
     type: Image
     layout_properties: {grid_position: 'OTHRAW,SYRGTI UZZKTL,UKBMPV'}
   - name: flUpload
-    properties: {text: Upload Profile Image}
+    properties: {text: Upload Profile Image, tooltip: 'Please upload an image of the employee for use as a profile picture. Ensure it is formated in PNG, JPG, JPEG or WEBP format.'}
     type: FileLoader
     layout_properties: {grid_position: 'OTHRAW,SYRGTI YSKXXB,RIGBHN'}
     event_bindings: {change: uploadProfile}
   - name: lblFullName
-    properties: {text: 'Full Name:', bold: true}
+    properties: {text: 'Full Name:', bold: true, tooltip: Please enter a full name. This cannot be blank or just spaces.}
     type: Label
     layout_properties: {grid_position: 'OTHRAW,OJHGGK AEWGME,HVSFJV'}
   - name: txtFullName
@@ -29,7 +29,7 @@ components:
     type: TextBox
     layout_properties: {grid_position: 'OTHRAW,OJHGGK AEWGME,ARGVHK'}
   - name: lblEmail
-    properties: {text: 'Email:', bold: true}
+    properties: {text: 'Email:', bold: true, tooltip: 'Please enter an email with at least 3 digits, one of which is a ''@'' symbol'}
     type: Label
     layout_properties: {grid_position: 'OTHRAW,OJHGGK XRBPSO,JCMDCQ'}
   - name: txtEmail
@@ -37,7 +37,7 @@ components:
     type: TextBox
     layout_properties: {grid_position: 'OTHRAW,OJHGGK XRBPSO,FSSYVD'}
   - name: lblTempPassword
-    properties: {align: left, text: 'Temp Password:', bold: true}
+    properties: {align: left, text: 'Temp Password:', bold: true, tooltip: Please enter a temporary password at least 8 characters in length.}
     type: Label
     layout_properties: {grid_position: 'OTHRAW,OJHGGK MWRUPL,VMRJLL'}
   - name: txtTempPassword
@@ -45,7 +45,7 @@ components:
     type: TextBox
     layout_properties: {grid_position: 'OTHRAW,OJHGGK MWRUPL,ALCPPE'}
   - name: lblPhoneNumber
-    properties: {text: Phone Number, bold: true}
+    properties: {text: Phone Number, bold: true, tooltip: PLease enter a phone number in either internation or local format.}
     type: Label
     layout_properties: {grid_position: 'OTHRAW,OJHGGK GYWCOH,JXUTSR'}
   - name: txtPhoneNumber
@@ -53,15 +53,15 @@ components:
     type: TextBox
     layout_properties: {grid_position: 'OTHRAW,OJHGGK GYWCOH,AEERMS'}
   - name: lblDateOfBirth
-    properties: {text: 'Date of Birth:', bold: true}
+    properties: {text: 'Date of Birth:', bold: true, tooltip: Please enter DoB in dd/mm/yyyy format.}
     type: Label
     layout_properties: {grid_position: 'OTHRAW,OJHGGK CWYYIW,YZQZFP RXPWEU,OQJQAP'}
   - name: lblTitle
-    properties: {text: 'Title:', bold: true}
+    properties: {text: 'Title:', bold: true, tooltip: PLease enter the employees job ittle}
     type: Label
     layout_properties: {grid_position: 'OTHRAW,OJHGGK CWYYIW,YZQZFP XVGTHZ,KWGVLW'}
   - name: lblTFN
-    properties: {text: 'TFN:', bold: true}
+    properties: {text: 'TFN:', bold: true, tooltip: Please enter the employees TFN number that is 8 or 9 digits.}
     type: Label
     layout_properties: {grid_position: 'OTHRAW,OJHGGK CWYYIW,YZQZFP CDNZIB,SAZQWP'}
   - name: dpDoB
@@ -77,11 +77,11 @@ components:
     type: TextBox
     layout_properties: {grid_position: 'OTHRAW,OJHGGK CWYYIW,NZNPXN VPIDIT,JDMJTU'}
   - name: lblGender
-    properties: {text: 'Gender:', bold: true}
+    properties: {text: 'Gender:', bold: true, tooltip: Please choose one of the options below.}
     type: Label
     layout_properties: {grid_position: 'OTHRAW,IEJKDQ ZLRNHL,OUAWLF QBWXVQ,LQUSAN'}
   - name: lblEmploymentType
-    properties: {text: 'Employment Type:', bold: true}
+    properties: {text: 'Employment Type:', bold: true, tooltip: Please choose one of the options below.}
     type: Label
     layout_properties: {grid_position: 'OTHRAW,IEJKDQ ZLRNHL,OUAWLF MGAGCK,FYFWZV'}
   - name: ddGender
@@ -97,19 +97,19 @@ components:
     type: DropDown
     layout_properties: {grid_position: 'OTHRAW,IEJKDQ ZLRNHL,IWNFZS EVKQAW,BJKCDW'}
   - name: lblGroup
-    properties: {text: 'Group:', bold: true}
+    properties: {text: 'Group:', bold: true, tooltip: Please choose one of the options below.}
     type: Label
     layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,ADVDDY PKEMQE,OKXFKV'}
   - name: lblBaseRate
-    properties: {text: 'Base Rate:', bold: true}
+    properties: {text: 'Base Rate:', bold: true, tooltip: Please state the base rate without a $ symbol.}
     type: Label
     layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,ADVDDY QYRXIC,EBSVSX'}
   - name: lblExtendedRate
-    properties: {text: 'Extended Rate:', bold: true}
+    properties: {text: 'Extended Rate:', bold: true, tooltip: Please enter an extended rate higher than base rate without the $ symbol.}
     type: Label
     layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,ADVDDY MUHOWU,EOIPWO'}
   - name: lblPubHolRate
-    properties: {text: 'Public Holiday Rate:', bold: true}
+    properties: {text: 'Public Holiday Rate:', bold: true, tooltip: Please enter a public holdiay rate higher than the base rate without the $ sign.}
     type: Label
     layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,ADVDDY LSGCZS,EZMCWQ'}
   - name: ddGroup
