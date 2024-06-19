@@ -45,7 +45,7 @@ class AddUser(AddUserTemplate):
       issues.append("invalid file type uploaded")
     if len(self.txtTempPassword.text) < 8:
       issues.append("invalid temporary password")
-    if issues == "":
+    if issues == [] or len(issues) == 0:
     # Call the server code to pass the values and create a new user.
       anvil.server.call('addNewuser', self.txtFullName.text, self.txtEmail.text, self.txtTempPassword.text, self.txtPhoneNumber.text, self.dpDoB.date, self.ddGender.selected_value, self.ddEmplType.selected_value, self.ddGroup.selected_value, self.txtTitle.text, float(self.txtBaseRate.text), float(self.txtExtendedRate.text), float(self.txtPubHolRate.text), self.txtTFN.text, self.flUpload.file)
       self.imgUpload.clear()

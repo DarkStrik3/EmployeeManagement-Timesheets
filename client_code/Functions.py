@@ -22,20 +22,27 @@ class Validation:
 
   def validateDate(date, dateFormatCode):
     try:
-      # Ensure the inputted date isn't blank
-      assert date != ""
-      # Attempt to parse the date string to a date object
-      date_object = datetime.strptime(date, dateFormatCode)
-      # Reformat the date to ensure it matches the required format
-      reformatted_date = date_object.strftime(dateFormatCode)
-      # Check if the reformatted date matches the input date
-      assert reformatted_date == date
-      # Additional check to ensure the day and month are within valid ranges
-      day, month, year = map(int, date.split('/'))
-      assert 1 <= day <= 31 and 1 <= month <= 12:
-      return True  # The date is in the correct format and has valid values
+        # Ensure the inputted date isn't blank
+        assert date != ""
+        # Attempt to parse the date string to a date object
+        date_object = datetime.strptime(date, dateFormatCode)
+        # Reformat the date to ensure it matches the required format
+        reformatted_date = date_object.strftime(dateFormatCode)
+        # Check if the reformatted date matches the input date
+        assert reformatted_date == date
+        # Additional check to ensure the day and month are within valid ranges
+        if dateFormatCode == "%d/%m/%Y":
+            day, month, year = map(int, date.split('/'))
+        elif dateFormatCode == "%m/%d/%Y":
+            month, day, year = map(int, date.split('/'))
+        elif dateFormatCode == "%Y-%m-%d":
+            year, month, day = map(int, date.split('-'))
+        else:
+            return False  # Unsupported date format
+        assert 1 <= day <= 31 and 1 <= month <= 12
+        return True  # The date is in the correct format and has valid values
     except:  # If any error arises throughout the 'try' block
-      return False  # False is returned since it doesn't meet the required format
+        return False  # False is returned since it doesn't meet the required format
   
   def validateRate(baseRate, extendedRate, pubholrate):
     try:
