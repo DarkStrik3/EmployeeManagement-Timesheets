@@ -5,6 +5,7 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 from ..Functions import Validation
+from ..Functions import Other
 from datetime import datetime
 
 class AddUser(AddUserTemplate):
@@ -13,6 +14,8 @@ class AddUser(AddUserTemplate):
     self.init_components(**properties)
     # self.userID = properties["userID"]
     # Any code you write here will run before the form opens.
+    self.dpDoB.max_date = Other.getDate15YearsAgo() # makes sure that the worker is at least 15 years old which is a requirement to work
+    self.dpDoB.format = "%d/%m/%Y"
 
   def addNewUser(self, **event_args):
     dateFormatCode = "%d/%m/%Y"  # The date format is specified to allow for future changes by changing only 1 variable
@@ -26,20 +29,22 @@ class AddUser(AddUserTemplate):
     # additional rates are higher than base rate, and base rate is at least minimum wage
     if not Validation.validateRate(self.txtBaseRate.text, self.txtExtendedRate.text, self.txtPubHolRate.text):
       issues.append("invalid rates")
-    if not Validation.validateDate(self.dpDoB.date, dateFormatCode): # date is valid
+    if not Validation.validateDate(str(self.dpDoB.date), dateFormatCode): # date is valid
       issues.append("invalid date of birth")
-    if str(self.ddGender.selected_value) != "Male" or "Female" or "Other": # make sure one of the specified options is selected
+    if self.ddGender.selected_value is None: # make sure one of the specified options is selected
       issues.append("invalid gender")
-    if str(self.ddEmplType.selected_value) != "Full Time" or "Part Time": # make sure one of the specified options is selected
+    if self.ddEmplType.selected_value is None: # make sure one of the specified options is selected
       issues.append("invalid employment type")
-    if str(self.ddGroup.selected_value) != "Warehouse" or "Manager" or "Admin" or "Accountant": # make sure one of the specified options is selected
+    if self.ddGroup.selected_value is None: # make sure one of the specified options is selected
       issues.append("invalid group selected")
     if not Validation.validatePhoneNum(self.txtPhoneNumber.text): # Makes sure that the phone number is valid
       issues.append("invalid phone number")
     if not Validation.validateTFN(self.txtTFN.text): # Makes sure that TFN is valid
       issues.append("invalid TFN number")
     if not Validation.validateUpload(self.flUpload.file):
-      issues.append("")
+      issues.append("invalid file type uploaded")
+    if len(self.txtTempPassword.text) < 8:
+      issues.append("invalid temporary password")
     if issues == "":
     # Call the server code to pass the values and create a new user.
       anvil.server.call('addNewuser', self.txtFullName.text, self.txtEmail.text, self.txtTempPassword.text, self.txtPhoneNumber.text, self.dpDoB.date, self.ddGender.selected_value, self.ddEmplType.selected_value, self.ddGroup.selected_value, self.txtTitle.text, float(self.txtBaseRate.text), float(self.txtExtendedRate.text), float(self.txtPubHolRate.text), self.txtTFN.text, self.flUpload.file)

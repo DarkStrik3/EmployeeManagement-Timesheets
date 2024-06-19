@@ -19,25 +19,22 @@ class Validation:
         return True # if it passes all the tests, True is returned
     except: # an error arises throughout the test, 'try' block is ended
         return False # False is returned
-  
+
   def validateDate(date, dateFormatCode):
-    try:  # Attempt to validate the date format and contents
-        # Ensure the inputted date isn't blank and has the correct length
-        date = date.strftime(dateFormatCode)
-        assert date != "" and len(date) == 10
-        # Attempt to parse the date string to a date object
-        date_object = datetime.strptime(date, dateFormatCode)
-        # Reformat the date to ensure it matches the required format
-        reformatted_date = date_object.strftime(dateFormatCode)
-        # Check if the reformatted date matches the input date
-        if reformatted_date == date:
-          # Additional check to ensure the day and month are within valid ranges
-          year, day, month = map(int, date.split('-'))
-          if 1 <= day <= 31 and 1 <= month <= 12:
-            return True  # The date is in the correct format and has valid values, True is returned
-          return False  # The reformatted date does not match the input date or day/month are invalid, False is returned
+    try:
+      # Ensure the inputted date isn't blank
+      assert date != ""
+      # Attempt to parse the date string to a date object
+      date_object = datetime.strptime(date, dateFormatCode)
+      # Reformat the date to ensure it matches the required format
+      reformatted_date = date_object.strftime(dateFormatCode)
+      # Check if the reformatted date matches the input date
+      assert reformatted_date == date
+      # Additional check to ensure the day and month are within valid ranges
+      day, month, year = map(int, date.split('/'))
+      assert 1 <= day <= 31 and 1 <= month <= 12:
+      return True  # The date is in the correct format and has valid values
     except:  # If any error arises throughout the 'try' block
-    # If parsing or formatting fails, it's not a valid date
       return False  # False is returned since it doesn't meet the required format
   
   def validateRate(baseRate, extendedRate, pubholrate):
@@ -95,6 +92,18 @@ class Validation:
       return True
     except:
       return False
+
+class Other:
+
+  
+  def getDate15YearsAgo():
+    current_date = datetime.now()
+    try:
+      date_15_years_ago = current_date.replace(year=current_date.year - 15)
+    except ValueError:
+      # This handles the case where the original date is Feb 29 and the target year is not a leap year.
+      date_15_years_ago = current_date.replace(month=2, day=28, year=current_date.year - 15)
+    return date_15_years_ago.date()
     
 
 
