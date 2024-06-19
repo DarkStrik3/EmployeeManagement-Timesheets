@@ -15,7 +15,7 @@ unique_ids:
     frmProfile.RowTemplate1: '1717912817711256643320372.95767'
     frmEmployeeDashboard: '1717585455336753386971491.1082'
   modules:
-    Validation: '1718255192797216524944272.1646'
+    Functions: '1718255192797216524944272.1646'
   server_modules:
     ServerAPI: '1715835493924626453916433.7252'
   assets:
