@@ -28,16 +28,18 @@ class AddUser(AddUserTemplate):
       issues.append("invalid rates")
     if not Validation.validateDate(self.dpDoB.date, dateFormatCode): # date is valid
       issues.append("invalid date of birth")
-    if not str(self.ddGender.selected_value) == "Male" or "Female" or "Other": # make sure one of the specified options is selected
+    if str(self.ddGender.selected_value) != "Male" or "Female" or "Other": # make sure one of the specified options is selected
       issues.append("invalid gender")
-    if not str(self.ddEmplType.selected_value) == "Full Time" or "Part Time": # make sure one of the specified options is selected
+    if str(self.ddEmplType.selected_value) != "Full Time" or "Part Time": # make sure one of the specified options is selected
       issues.append("invalid employment type")
-    if not str(self.ddGroup.selected_value) == "Warehouse" or "Manager" or "Admin" or "Accountant": # make sure one of the specified options is selected
+    if str(self.ddGroup.selected_value) != "Warehouse" or "Manager" or "Admin" or "Accountant": # make sure one of the specified options is selected
       issues.append("invalid group selected")
     if not Validation.validatePhoneNum(self.txtPhoneNumber.text): # Makes sure that the phone number is valid
       issues.append("invalid phone number")
     if not Validation.validateTFN(self.txtTFN.text): # Makes sure that TFN is valid
       issues.append("invalid TFN number")
+    if not Validation.validateUpload(self.flUpload.file)
+      issues.append("")
     if issues == "":
     # Call the server code to pass the values and create a new user.
       anvil.server.call('addNewuser', self.txtFullName.text, self.txtEmail.text, self.txtTempPassword.text, self.txtPhoneNumber.text, self.dpDoB.date, self.ddGender.selected_value, self.ddEmplType.selected_value, self.ddGroup.selected_value, self.txtTitle.text, float(self.txtBaseRate.text), float(self.txtExtendedRate.text), float(self.txtPubHolRate.text), self.txtTFN.text, self.flUpload.file)
@@ -62,16 +64,17 @@ class AddUser(AddUserTemplate):
           issueString = "At least one of the entries is either blank or incorrectly filled out. Please try again. This includes: " + issue
           n += 1
         else:
-          issueString = issueString + ", " + issue
+          n += 1
+          if len(issues) == n:
+            issueString = issueString + ", and " + issue + "."
+          else:
+            issueString = issueString + ", " + issue
       alert(str(issueString))
 
   def uploadProfile(self, **event_args):
     try:
       imgFile = self.flUpload.file
-      assert imgFile is not None
-      imgFileName = imgFile.name.lower()
-      validExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff']
-      assert any(imgFileName.endswith(ext) for ext in validExtensions)
+      assert Validation.validateUpload(imgFile)
       self.imgUpload.source = imgFile
     except:
       alert("The file that was uploaded doesn't match the required format. Please upload an image such as PNG or PJG.")

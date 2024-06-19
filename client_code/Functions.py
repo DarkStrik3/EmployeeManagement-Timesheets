@@ -47,19 +47,22 @@ class Validation:
       pubholrate = float(pubholrate.strip())
       assert baseRate >= 20 # make sure that the base rate is at least minimum wage
       assert extendedRate >= baseRate # make sure that the rate at which an employee earns extra is actually more than or equal to the base rate
-      assert pubholrate >= baserate # make sure that the rate at which an employee earns extra is actually more than or equal to the base rate
+      assert pubholrate >= baseRate # make sure that the rate at which an employee earns extra is actually more than or equal to the base rate
       return True # everything is ok with the rates, good to go
     except:
       return False # something went wrong, error message will ensue
   
   def validateEmail(email):
     try:
-      assert not email.whitespace() # makes sure email isnt a blank value
+      email = email.strip()
+      assert email != "" # makes sure email isnt a blank value
       assert email.count("@") == 1 # makes sure there is at least 1 @ symbol, but only 1
       name, domain = email.split('@') # splits the email into 2 parts, split at the @ symbol but not including it
-      assert name and domain # make sure that they both exist: the @ symbol isnt at begginning or end
+      # make sure that they both exist: the @ symbol isnt at begginning or end
+      assert name != "" 
+      assert domain != ""
       assert len(email) >= 3 # make sure that there is at least 1 character in front and 1 character behind 
-      assert not re.match(r"[^@]+@[^@]+\.[^@]+", email) # make sure that there arent any symbols in the email that shouldnt be there
+      assert re.match(r"[^@]+@[^@]+\.[^@]+", email) # make sure that there arent any symbols in the email that shouldn't be there
       return True # true is returned
     except: # an assertion doesnt work, meaning that the email isnt valid
       return False # false is returned
@@ -77,10 +80,22 @@ class Validation:
     try:
       tfn = tfn.strip()
       assert len(tfn) == 8 or 9
-      assert int(tfn) == tfn
+      assert tfn.isdigit()
       return True
     except:
       return False
+
+
+  def validateUpload(imgFile):
+    try:
+      assert imgFile is not None
+      imgFileName = imgFile.name.lower()
+      validExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff']
+      assert any(imgFileName.endswith(ext) for ext in validExtensions)
+      return True
+    except:
+      return False
+    
 
 
 
