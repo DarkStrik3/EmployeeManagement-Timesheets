@@ -95,6 +95,17 @@ db_schema:
       admin_ui: {width: 200, order: 1.25}
       type: date
     title: tblWorkRecords
+  tblsettings:
+    client: none
+    server: full
+    columns:
+    - name: UserID
+      admin_ui: {width: 200, order: 0}
+      type: string
+    - name: DarkMode
+      admin_ui: {width: 200, order: 1}
+      type: bool
+    title: tblSettings
 startup: {type: form, module: frmManagerDashboard}
 name: KimikimOrganicsManagement
 startup_form: null

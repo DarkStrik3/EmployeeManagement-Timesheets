@@ -38,6 +38,11 @@ def getTimesheets():
   timesheets = app_tables.tblworkrecords.search(tables.order_by("Date"), ascending=False)
   return timesheets
 
+@anvil.server.callable
+def getUserSettings(ID):
+  setting = app_tables.tblsettings.get(UserID=ID)
+  return setting
+  
 
 
 
@@ -45,10 +50,14 @@ def getTimesheets():
 # SETTERS
 
 @anvil.server.callable
-def hashPassword(plain_password):
-    ph = PasswordHasher() # Initialize the Argon2 Password Hasher
-    return ph.hash(plain_password)
+def changeSettings(userID, checkedStatus):
+  userSettings = app_tables.tblsettings.get(UserID=userID)
+  userSettings.update(DarkMode=checkedStatus)
+  
 
+
+
+@anvil.server.callable
 
 def newID():
   lastID = app_tables.tblauthentication.search(tables.order_by("AuthenticationID", ascending=False))[0]['AuthenticationID']
@@ -83,5 +92,6 @@ def setClock(userID, clockStatus):
 @anvil.server.callable
 def addNewuser(username, newEmail, password, newPhoneNumber, DateOfBirth, newGender, employmentType, newGroup, title, baseRate, extendRate, pubHolRate, newTFN, profileImg):
   newID = newID()
+  app_tables.tblsettings.add_row(UserID=newID, DarkMode=False)
   app_tables.tblauthentication.add_row(AuthenticationID=newID, Email=newEmail, Password=password)
   app_tables.tbluserdetails.add_row(UserID=newID, AuthenticationID=newID, Email=newEmail, DoB=DateOfBirth, Gender=newGender, Group=newGroup, PhoneNumber=newPhoneNumber, BasicRate=baseRate, ExtendedRate=extendRate, PublHolRate=pubHolRate, TFN=newTFN, Profile=profileImg)
