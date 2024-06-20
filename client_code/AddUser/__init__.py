@@ -47,7 +47,7 @@ class AddUser(AddUserTemplate):
       issues.append("invalid temporary password")
     if issues == [] or len(issues) == 0:
     # Call the server code to pass the values and create a new user.
-      if confirm("Please confirm that the following details are correct prior to continuing:\n" + "Full Name: " + self.txtFullName.text + "\nEmail: " + self.txtEmail.text + "\nPhone Number: " + self.txtPhoneNumber.text + "\n Date of birth: " + str(self.dpDoB.date) + "\nGender: " + str(self.ddGender.selected_value) + "\n Group: " + str(self.ddGroup.selected_value) + ):
+      if confirm("Please confirm that the following details are correct prior to continuing:\n" + "Full Name: " + self.txtFullName.text + "\nEmail: " + self.txtEmail.text + "\nPhone Number: " + self.txtPhoneNumber.text + "\nDate of birth: " + str(self.dpDoB.date) + "\nGender: " + str(self.ddGender.selected_value) + "\nGroup: " + str(self.ddGroup.selected_value) + "\nTitle: " + self.txtTitle.text + "\nBase Rate: " + self.txtBaseRate.text + "\nExtendedRate: " + self.txtExtendedRate.text + "\nPublic Holiday Rate: " + self.txtPubHolRate.text + "\nTFN: " + self.txtTFN.text):
         anvil.server.call('addNewuser', self.txtFullName.text, self.txtEmail.text, self.txtTempPassword.text, self.txtPhoneNumber.text, self.dpDoB.date, self.ddGender.selected_value, self.ddEmplType.selected_value, self.ddGroup.selected_value, self.txtTitle.text, float(self.txtBaseRate.text), float(self.txtExtendedRate.text), float(self.txtPubHolRate.text), self.txtTFN.text, self.flUpload.file)
         self.imgUpload.clear()
         self.flUpload.clear()
