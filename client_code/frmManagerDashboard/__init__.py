@@ -55,7 +55,7 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
     self.btnTimesheets.background = ""
     self.btnSettings.background = "#6e6e6e"
 
-  def selectAddNewuser(self, **event_args):
+  def selectAddNewUser(self, **event_args):
     self.cpDashboards.clear()
     self.cpDashboards.add_component(AddUser())
     self.btnEmplManage.background = ""
