@@ -16,7 +16,7 @@ components:
   layout_properties: {grid_position: 'ZVEIKO,MTQYCH'}
   components:
   - name: rpTimesheets
-    properties: {item_template: Timesheets.RowTemplate3}
+    properties: {item_template: frmManagerDashboard.Timesheets.RowTemplate3}
     type: RepeatingPanel
 - name: lblSort
   properties: {text: Sort By, align: center, bold: true, font_size: 20}

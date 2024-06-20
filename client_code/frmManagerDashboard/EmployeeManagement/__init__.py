@@ -13,4 +13,5 @@ class EmployeeManagement(EmployeeManagementTemplate):
 
     # Any code you write here will run before the form opens.
 
-
+    def addUser(self, **event_args):
+      pass

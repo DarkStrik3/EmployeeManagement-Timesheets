@@ -76,7 +76,7 @@ components:
   type: DataGrid
   components:
   - name: repeating_panel_1
-    properties: {item_template: AnalyticsReporting.RowTemplate2}
+    properties: {item_template: frmManagerDashboard.AnalyticsReporting.RowTemplate2}
     type: RepeatingPanel
   layout_properties: {grid_position: 'WJKFLD,LCHNJJ'}
 is_package: true
