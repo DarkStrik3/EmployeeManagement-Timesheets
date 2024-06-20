@@ -25,7 +25,7 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
   
   def selectEmployeeManagement(self, **event_args):
     self.cpDashboards.clear()
-    self.cpDashboards.add_component(EmployeeManagement())
+    self.cpDashboards.add_component(EmployeeManagement(self))
     self.btnEmplManage.background = "#6e6e6e"
     self.btnAnalyticReport.background = ""
     self.btnTimesheets.background = ""
@@ -63,7 +63,5 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
     self.btnTimesheets.background = ""
     self.btnSettings.background = ""
     
-
-
 
 
