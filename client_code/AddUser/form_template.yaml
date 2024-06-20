@@ -65,7 +65,7 @@ components:
     type: Label
     layout_properties: {grid_position: 'OTHRAW,OJHGGK CWYYIW,YZQZFP CDNZIB,SAZQWP'}
   - name: dpDoB
-    properties: {pick_time: false}
+    properties: {pick_time: false, enabled: true}
     type: DatePicker
     layout_properties: {grid_position: 'OTHRAW,OJHGGK CWYYIW,NZNPXN XVYWTH,HKGKTJ'}
   - name: txtTitle
