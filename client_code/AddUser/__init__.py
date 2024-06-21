@@ -1,5 +1,6 @@
 from ._anvil_designer import AddUserTemplate
 from anvil import *
+import anvil.users
 import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
@@ -48,20 +49,26 @@ class AddUser(AddUserTemplate):
     if issues == [] or len(issues) == 0:
     # Call the server code to pass the values and create a new user.
       if confirm("Please confirm that the following details are correct prior to continuing:\n" + "Full Name: " + self.txtFullName.text + "\nEmail: " + self.txtEmail.text + "\nPhone Number: " + self.txtPhoneNumber.text + "\nDate of birth: " + str(self.dpDoB.date) + "\nGender: " + str(self.ddGender.selected_value) + "\nGroup: " + str(self.ddGroup.selected_value) + "\nTitle: " + self.txtTitle.text + "\nBase Rate: " + self.txtBaseRate.text + "\nExtendedRate: " + self.txtExtendedRate.text + "\nPublic Holiday Rate: " + self.txtPubHolRate.text + "\nTFN: " + self.txtTFN.text):
-        anvil.server.call('addNewuser', self.txtFullName.text, self.txtEmail.text, self.txtTempPassword.text, self.txtPhoneNumber.text, self.dpDoB.date, self.ddGender.selected_value, self.ddEmplType.selected_value, self.ddGroup.selected_value, self.txtTitle.text, float(self.txtBaseRate.text), float(self.txtExtendedRate.text), float(self.txtPubHolRate.text), self.txtTFN.text, self.flUpload.file)
-        self.imgUpload.clear()
-        self.flUpload.clear()
-        self.txtFullName.clear()
-        self.txtEmail.clear()
-        self.txtPhoneNumber.clear()
-        self.txtBaseRate.clear()
-        self.txtExtendedRate.clear()
-        self.txtPubHolRate.clear()
-        self.txtTFN.clear()
-        self.ddEmplType.clear()
-        self.ddGender.clear()
-        self.ddGroup.clear()
-        self.dpDoB.clear()
+        try:
+          anvil.users.signup_with_email(self.txtEmail.text, self.txtTempPassword.text)
+          print("done adding user")
+          anvil.server.call('addNewuser', self.txtFullName.text, self.txtEmail.text, self.txtTempPassword.text, self.txtPhoneNumber.text, self.dpDoB.date, self.ddGender.selected_value, self.ddEmplType.selected_value, self.ddGroup.selected_value, self.txtTitle.text, float(self.txtBaseRate.text), float(self.txtExtendedRate.text), float(self.txtPubHolRate.text), self.txtTFN.text, self.flUpload.file)
+          self.imgUpload.source = None
+          self.flUpload.clear()
+          self.txtFullName.text = ""
+          self.txtEmail.text = ""
+          self.txtPhoneNumber.text = ""
+          self.txtBaseRate.text = ""
+          self.txtExtendedRate.text = ""
+          self.txtPubHolRate.text = ""
+          self.txtTFN.text = ""
+          self.ddEmplType.text = ""
+          self.ddGender.text = ""
+          self.ddGroup.text = ""
+          self.dpDoB.text = ""
+        except:
+          alert("An account with this user email already exists, please choose a different email or login using " + self.txtEmail.text + "'s credentials.")
+          self.txtEmail.text = ""
     else:
       issueString = ""
       n = 0

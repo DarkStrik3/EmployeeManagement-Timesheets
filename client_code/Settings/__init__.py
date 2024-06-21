@@ -1,5 +1,6 @@
 from ._anvil_designer import SettingsTemplate
 from anvil import *
+import anvil.users
 import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
@@ -12,3 +13,10 @@ class Settings(SettingsTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
+    userSettings = anvil.server.call('getUserSettings', userID)
+    self.cbDark.checked = userSettings['DarkMode']
+
+
+
+  def changeDarkMode(self, **event_args):
+    anvil.server.call('changeSettings', userID, self.cbDark.checked)

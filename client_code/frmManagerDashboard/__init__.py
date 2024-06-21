@@ -1,5 +1,6 @@
 from ._anvil_designer import frmManagerDashboardTemplate
 from anvil import *
+import anvil.users
 import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
@@ -17,7 +18,7 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
     self.init_components(**properties)
     #self.userID = properties["userID"]
     # Any code you write here will run before the form opens.
-    self.cpDashboards.add_component(Settings())
+    #self.cpDashboards.add_component(Settings())
 
 
   def signOut(self, **event_args):
@@ -25,7 +26,7 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
   
   def selectEmployeeManagement(self, **event_args):
     self.cpDashboards.clear()
-    self.cpDashboards.add_component(EmployeeManagement())
+    self.cpDashboards.add_component(EmployeeManagement(self))
     self.btnEmplManage.background = "#6e6e6e"
     self.btnAnalyticReport.background = ""
     self.btnTimesheets.background = ""
@@ -55,7 +56,7 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
     self.btnTimesheets.background = ""
     self.btnSettings.background = "#6e6e6e"
 
-  def selectAddNewuser(self, **event_args):
+  def selectAddNewUser(self, **event_args):
     self.cpDashboards.clear()
     self.cpDashboards.add_component(AddUser())
     self.btnEmplManage.background = ""
@@ -63,7 +64,5 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
     self.btnTimesheets.background = ""
     self.btnSettings.background = ""
     
-
-
 
 

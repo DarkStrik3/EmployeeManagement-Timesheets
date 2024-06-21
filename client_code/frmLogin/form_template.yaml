@@ -11,26 +11,8 @@ components:
     properties: {height: 86}
     type: Image
     layout_properties: {row: SHSWYP, width_xs: 5, col_xs: 4}
-  - name: lblEmail
-    properties: {text: 'Email:'}
-    type: Label
-    layout_properties: {row: WXNUJL, width_xs: 1, col_xs: 4}
-  - name: txtEmail
-    properties: {}
-    type: TextBox
-    layout_properties: {row: WXNUJL, width_xs: 4, col_xs: 5}
-    event_bindings: {}
-  - name: lblPassword
-    properties: {text: 'Passowrd:'}
-    type: Label
-    layout_properties: {row: PCFCNH, width_xs: 1, col_xs: 4}
-  - name: txtPassword
-    properties: {text: '', hide_text: true}
-    type: TextBox
-    layout_properties: {row: PCFCNH, width_xs: 4, col_xs: 5}
   - name: btnLogin
-    properties: {text: Login, bold: true, align: full}
+    properties: {text: LOGIN, align: full, bold: true, font_size: 30}
     type: Button
-    layout_properties: {row: EIBSCP, width_xs: 5, col_xs: 4}
-    event_bindings: {click: login}
+    layout_properties: {row: LVWDWI, width_xs: 3, col_xs: 5}
 is_package: true

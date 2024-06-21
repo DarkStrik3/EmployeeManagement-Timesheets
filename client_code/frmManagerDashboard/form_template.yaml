@@ -1,55 +1,55 @@
+is_package: true
 container:
   type: HtmlTemplate
   properties: {html: <div anvil-slot="default"></div>}
 components:
-- name: gpProfile
-  properties: {}
+- properties: {}
   type: GridPanel
   layout_properties: {slot: default}
+  name: gpProfile
   components:
-  - name: button_1
-    properties: {text: '', icon: 'fa:bars', spacing_above: medium}
+  - properties: {text: '', icon: 'fa:bars', spacing_above: medium}
     type: Button
     layout_properties: {row: GIPNDZ, width_xs: 1, col_xs: 0}
-  - name: btnBack
-    properties: {text: Sign Out, icon: 'fa:caret-left', spacing_above: medium}
+    name: button_1
+  - properties: {text: Sign Out, icon: 'fa:caret-left', spacing_above: medium}
     type: Button
     layout_properties: {row: GIPNDZ, width_xs: 2, col_xs: 0}
     event_bindings: {click: signOut}
-  - name: imgHeader
-    properties: {height: 130}
+    name: btnBack
+  - properties: {height: 130}
     type: Image
     layout_properties: {row: GIPNDZ, width_xs: 5, col_xs: 4}
-  - name: lblProfileName
-    properties: {spacing_above: large, align: right}
+    name: imgHeader
+  - properties: {spacing_above: large, align: right}
     type: Label
     layout_properties: {row: GIPNDZ, width_xs: 2, col_xs: 9}
-  - name: imgProfile
-    properties: {height: 84, spacing_above: medium}
+    name: lblProfileName
+  - properties: {height: 84, spacing_above: medium}
     type: Image
     layout_properties: {row: GIPNDZ, width_xs: 1, col_xs: 11}
-  - name: btnEmplManage
-    properties: {text: Employee Management, align: full, bold: true, spacing_below: small, spacing_above: small, background: ''}
+    name: imgProfile
+  - properties: {text: Employee Management, align: full, bold: true, spacing_below: small, spacing_above: small, background: ''}
     type: Button
     layout_properties: {row: SLJRUV, width_xs: 3, col_xs: 0}
     event_bindings: {click: selectEmployeeManagement}
-  - name: btnTimesheets
-    properties: {text: Timesheets, align: full, bold: true, spacing_above: small, spacing_below: small}
+    name: btnEmplManage
+  - properties: {text: Timesheets, align: full, bold: true, spacing_above: small, spacing_below: small}
     type: Button
     layout_properties: {row: SLJRUV, width_xs: 3, col_xs: 3}
     event_bindings: {click: selectTimesheets}
-  - name: btnAnalyticReport
-    properties: {text: Analytics and Reporting, spacing_above: small, spacing_below: small, bold: true, align: full}
+    name: btnTimesheets
+  - properties: {text: Analytics and Reporting, spacing_above: small, spacing_below: small, bold: true, align: full}
     type: Button
     layout_properties: {row: SLJRUV, width_xs: 3, col_xs: 6}
     event_bindings: {click: selectAnalyticsReport}
-  - name: btnSettings
-    properties: {text: Settings, align: full, bold: true}
+    name: btnAnalyticReport
+  - properties: {text: Settings, align: full, bold: true}
     type: Button
     layout_properties: {row: SLJRUV, width_xs: 3, col_xs: 9}
     event_bindings: {click: selectSettings}
-  - name: cpDashboards
-    properties: {}
+    name: btnSettings
+  - properties: {}
     type: ColumnPanel
     layout_properties: {row: IWFCJG, width_xs: 12, col_xs: 0}
-is_package: true
+    name: cpDashboards

@@ -8,13 +8,14 @@ components:
   layout_properties: {grid_position: 'ZVEIKO,XBJTMJ'}
   components:
   - name: rpEmployees
-    properties: {item_template: frmManagerDashboard.EmployeeManagement.ItemTemplate3}
+    properties: {item_template: EmployeeManagement.ItemTemplate3}
     type: RepeatingPanel
     layout_properties: {width: 719}
 - name: btnAddUser
   properties: {text: Add New User, align: full}
   type: Button
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE JCXFNY,BIYACX'}
+  event_bindings: {click: addUser}
 - name: lblSort
   properties: {text: Sort By, align: center, bold: true, font_size: 20}
   type: Label
