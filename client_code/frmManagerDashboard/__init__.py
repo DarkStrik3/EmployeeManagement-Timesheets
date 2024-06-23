@@ -16,12 +16,14 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    #self.userID = properties["userID"]
+    self.user = anvil.users.get_user()
+    self.userID = self.user['UserID']
     # Any code you write here will run before the form opens.
-    #self.cpDashboards.add_component(Settings())
+    self.cpDashboards.add_component(EmployeeManagement(self))
 
 
   def signOut(self, **event_args):
+    anvil.users.logout()
     open_form('frmLogin')
   
   def selectEmployeeManagement(self, **event_args):

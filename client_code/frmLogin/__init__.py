@@ -16,8 +16,9 @@ class frmLogin(frmLoginTemplate):
 
   def login(self, **event_args):
     user = anvil.users.login_with_form(show_signup_option=False, allow_remembered=True, remember_by_default=True, allow_cancel=True)
-      ID = user['UserID']
-      userGroup = user['Group']
+    ID = user['UserID']
+    userGroup = user['Group']
+    if user:
       if userGroup == "Warehouse":
         open_form("frmEmployeeDashboard", userID=ID)
       else:
