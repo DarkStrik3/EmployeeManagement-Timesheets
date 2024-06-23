@@ -90,3 +90,4 @@ class AddUser(AddUserTemplate):
     except Exception as e:
       alert(f"The file that was uploaded doesn't match the required format. Please upload an image such as PNG or PJG. Error: {str(e)}")
       self.flUpload.clear()
+ 
