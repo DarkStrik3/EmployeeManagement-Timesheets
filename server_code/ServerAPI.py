@@ -48,9 +48,12 @@ def changeSettings(userID, checkedStatus):
 
 @anvil.server.callable
 def createID():
-  lastID = app_tables.users.search(tables.order_by("UserID", ascending=False))[0]['UserID']
-  newID = int(lastID) + 1
-  return newID
+  try:
+    lastID = app_tables.users.search(tables.order_by("UserID", ascending=False))[0]['UserID']
+    newID = int(lastID) + 1
+    return newID
+  except:
+    return 0 # there aren't any prior users, meaning that a new user would have the ID of 0.
 
 
 def newWorkId():
@@ -77,7 +80,7 @@ def setClock(userID, clockStatus):
 
 @anvil.server.callable
 def addNewuser(username, newEmail, password, newPhoneNumber, DateOfBirth, newGender, employmentType, newGroup, title, baseRate, extendRate, pubHolRate, newTFN, profileImg):
-    newID = createID()
+    newID = int(createID())
     user = anvil.users.signup_with_email(newEmail, password)
     user = app_tables.users.get(email=newEmail)
     user.update(UserID=newID, Group=newGroup)

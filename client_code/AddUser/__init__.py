@@ -53,17 +53,19 @@ class AddUser(AddUserTemplate):
           anvil.server.call('addNewuser', self.txtFullName.text, self.txtEmail.text, self.txtTempPassword.text, self.txtPhoneNumber.text, self.dpDoB.date, self.ddGender.selected_value, self.ddEmplType.selected_value, self.ddGroup.selected_value, self.txtTitle.text, float(self.txtBaseRate.text), float(self.txtExtendedRate.text), float(self.txtPubHolRate.text), self.txtTFN.text, self.flUpload.file)
           self.imgUpload.source = None
           self.flUpload.clear()
+          self.txtTempPassword.text = ""
           self.txtFullName.text = ""
           self.txtEmail.text = ""
           self.txtPhoneNumber.text = ""
           self.txtBaseRate.text = ""
           self.txtExtendedRate.text = ""
           self.txtPubHolRate.text = ""
+          self.txtTitle.text = ""
           self.txtTFN.text = ""
-          self.ddEmplType.text = ""
-          self.ddGender.text = ""
-          self.ddGroup.text = ""
-          self.dpDoB.text = ""
+          self.ddEmplType.selected_value = None
+          self.ddGender.selected_value = None
+          self.ddGroup.selected_value = None
+          self.dpDoB.date = None
         except Exception as e:
           alert(f"An error occurred: {str(e)}")
           self.txtEmail.text = ""

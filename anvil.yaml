@@ -14,9 +14,6 @@ db_schema:
     - name: Email
       admin_ui: {width: 200, order: 3}
       type: string
-    - name: PhoneNumber
-      admin_ui: {width: 200, order: 4}
-      type: number
     - name: BasicRate
       admin_ui: {width: 200, order: 5}
       type: number
@@ -43,6 +40,9 @@ db_schema:
       type: media
     - name: Gender
       admin_ui: {width: 200, order: 13}
+      type: string
+    - name: PhoneNumber
+      admin_ui: {width: 200, order: 4}
       type: string
     title: tblUserDetails
   tblworkrecords:
@@ -81,12 +81,12 @@ db_schema:
     client: none
     server: full
     columns:
-    - name: UserID
-      admin_ui: {width: 200, order: 0}
-      type: string
     - name: DarkMode
       admin_ui: {width: 200, order: 1}
       type: bool
+    - name: UserID
+      admin_ui: {width: 200, order: 0}
+      type: number
     title: tblSettings
   users:
     client: none
@@ -119,6 +119,9 @@ db_schema:
     - name: Group
       admin_ui: {width: 200}
       type: string
+    - name: signed_up
+      admin_ui: {width: 200}
+      type: datetime
     title: Users
 startup: {type: form, module: frmManagerDashboard}
 name: KimikimOrganicsManagement
