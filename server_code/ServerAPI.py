@@ -12,11 +12,8 @@ def Authenticate(inputEmail):
     return existingRow
 
 @anvil.server.callable
-def getUserInfo(ID, AuthOrUser):
-  if not AuthOrUser:
-    userRow = app_tables.tbluserdetails.get(UserID=ID)
-  elif AuthOrUser:
-    userRow = app_tables.tbluserdetails.get(AuthenticationID=ID)
+def getUserInfo(ID):
+  userRow = app_tables.tbluserdetails.get(UserID=ID)
   return userRow
 
 @anvil.server.callable
@@ -51,7 +48,7 @@ def changeSettings(userID, checkedStatus):
 
 @anvil.server.callable
 def createID():
-  lastID = app_tables.tblauthentication.search(tables.order_by("AuthenticationID", ascending=False))[0]['AuthenticationID']
+  lastID = app_tables.users.search(tables.order_by("UserID", ascending=False))[0]['UserID']
   newID = int(lastID) + 1
   return newID
 
