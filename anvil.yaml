@@ -8,9 +8,6 @@ db_schema:
     - name: UserID
       admin_ui: {width: 200, order: 0}
       type: number
-    - name: AuthenticationID
-      admin_ui: {width: 200, order: 1}
-      type: number
     - name: FullName
       admin_ui: {order: 2, width: 200}
       type: string
@@ -61,10 +58,6 @@ db_schema:
     - name: PayRate
       admin_ui: {width: 200, order: 3}
       type: number
-    - name: UserID
-      admin_ui: {order: 1, width: 200}
-      type: link_multiple
-      target: tblauthentication
     - name: ClockIn
       admin_ui: {order: 1.5, width: 200}
       type: datetime
@@ -80,6 +73,9 @@ db_schema:
     - name: Date
       admin_ui: {width: 200, order: 1.25}
       type: date
+    - name: UserID
+      admin_ui: {width: 200}
+      type: string
     title: tblWorkRecords
   tblsettings:
     client: none
@@ -120,6 +116,9 @@ db_schema:
     - name: UserID
       admin_ui: {width: 200}
       type: number
+    - name: Group
+      admin_ui: {width: 200}
+      type: string
     title: Users
 startup: {type: form, module: frmManagerDashboard}
 name: KimikimOrganicsManagement

@@ -64,8 +64,8 @@ class AddUser(AddUserTemplate):
           self.ddGender.text = ""
           self.ddGroup.text = ""
           self.dpDoB.text = ""
-        except:
-          alert("An account with this user email already exists, please choose a different email or login using " + self.txtEmail.text + "'s credentials.")
+        except Exception as e:
+          alert(f"An error occurred: {str(e)}")
           self.txtEmail.text = ""
     else:
       issueString = ""
@@ -87,6 +87,6 @@ class AddUser(AddUserTemplate):
       imgFile = self.flUpload.file
       assert Validation.validateUpload(imgFile)
       self.imgUpload.source = imgFile
-    except:
-      alert("The file that was uploaded doesn't match the required format. Please upload an image such as PNG or PJG.")
+    except Exception as e:
+      alert(f"The file that was uploaded doesn't match the required format. Please upload an image such as PNG or PJG. Error: {str(e)}")
       self.flUpload.clear()

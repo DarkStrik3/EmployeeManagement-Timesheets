@@ -50,7 +50,7 @@ def changeSettings(userID, checkedStatus):
   
 
 @anvil.server.callable
-def newID():
+def createID():
   lastID = app_tables.tblauthentication.search(tables.order_by("AuthenticationID", ascending=False))[0]['AuthenticationID']
   newID = int(lastID) + 1
   return newID
@@ -80,9 +80,22 @@ def setClock(userID, clockStatus):
 
 @anvil.server.callable
 def addNewuser(username, newEmail, password, newPhoneNumber, DateOfBirth, newGender, employmentType, newGroup, title, baseRate, extendRate, pubHolRate, newTFN, profileImg):
-  newID = newID()
-  user = anvil.users.signup_with_email(newEmail, password)
-  user = app_tables.users.get(email=newEmail)
-  user.update(UserID=newID, Group=newGroup)
-  app_tables.tblsettings.add_row(UserID=newID, DarkMode=False)
-  app_tables.tbluserdetails.add_row(UserID=newID, AuthenticationID=newID, Email=newEmail, DoB=DateOfBirth, Gender=newGender, Group=newGroup, PhoneNumber=newPhoneNumber, BasicRate=baseRate, ExtendedRate=extendRate, PublHolRate=pubHolRate, TFN=newTFN, Profile=profileImg)
+    newID = createID()
+    user = anvil.users.signup_with_email(newEmail, password)
+    user = app_tables.users.get(email=newEmail)
+    user.update(UserID=newID, Group=newGroup)
+    app_tables.tblsettings.add_row(UserID=newID, DarkMode=False)
+    app_tables.tbluserdetails.add_row(
+        UserID=newID, 
+        FullName=username,
+        Email=newEmail, 
+        DoB=DateOfBirth, 
+        Gender=newGender, 
+        Group=newGroup, 
+        PhoneNumber=newPhoneNumber, 
+        BasicRate=baseRate, 
+        ExtendedRate=extendRate, 
+        PublHolRate=pubHolRate, 
+        TFN=newTFN, 
+        Profile=profileImg
+    )
