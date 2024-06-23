@@ -16,30 +16,12 @@ class frmLogin(frmLoginTemplate):
 
   def login(self, **event_args):
     user = anvil.users.login_with_form(show_signup_option=False, allow_remembered=True, remember_by_default=True, allow_cancel=True)
-    print(user)
-    if user:
-      userRow = anvil.users.get_user()
-      userID = userRow['UserID']
-      userGroup = userRow['Group']
+      ID = user['UserID']
+      userGroup = user['Group']
       if userGroup == "Warehouse":
-        open_form("frmEmployeeDashboard", userID=userID)
+        open_form("frmEmployeeDashboard", userID=ID)
       else:
-        open_form('frmManagerDashboard', userID=userID)
+        open_form('frmManagerDashboard', userID=ID)
     else:
-      alert("Login failed. Please try again.")
-    
-    #userIdentification = anvil.server.call("Authenticate", self.txtEmail.text, self.txtPassword.text)
-    #if userIdentification == "404":
-      #alert("This user does not exist, or the inputed password is incorrect. Please try again.")
-      #self.txtEmail.text = ""
-      #self.txtPassword.text = ""
-    #else:
-      #userRow = anvil.server.call('getUserInfo', userIdentification, True)
-      #userID = userRow["UserID"]
-      #group = userRow['Group']
-      #if group == "Warehouse":
-        #anvil.
-        #open_form("frmEmployeeDashboard")
-        
-      #else:
-        #open_form('frmManagerDashboard')
+      alert("Login failed. Either the email or password is incorrect. Please try again.")
+ 

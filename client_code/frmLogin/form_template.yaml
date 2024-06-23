@@ -15,4 +15,5 @@ components:
     properties: {text: LOGIN, align: full, bold: true, font_size: 30}
     type: Button
     layout_properties: {row: LVWDWI, width_xs: 3, col_xs: 5}
+    event_bindings: {click: login}
 is_package: true
