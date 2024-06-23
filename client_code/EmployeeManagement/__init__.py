@@ -17,4 +17,7 @@ class EmployeeManagement(EmployeeManagementTemplate):
   def addUser(self, **event_args):
     self._parent.selectAddNewUser()
 
+  def openProfile(self, **event_args):
+    self._parent.openSelectedProfile(UserID="")
+
 

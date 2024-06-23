@@ -63,6 +63,10 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
     self.btnAnalyticReport.background = ""
     self.btnTimesheets.background = ""
     self.btnSettings.background = ""
+
+  def openSelectedProfile(self, **event_args):
+    self.cpDashboards.clear()
+    self.cpDashboards.add_component(frmProfile())
     
 
 
