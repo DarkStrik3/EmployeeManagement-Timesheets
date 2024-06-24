@@ -74,8 +74,8 @@ db_schema:
       admin_ui: {width: 200, order: 1.25}
       type: date
     - name: UserID
-      admin_ui: {width: 200}
-      type: string
+      admin_ui: {width: 200, order: 0.625}
+      type: number
     title: tblWorkRecords
   tblsettings:
     client: none

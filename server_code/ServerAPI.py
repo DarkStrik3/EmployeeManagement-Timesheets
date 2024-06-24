@@ -3,7 +3,7 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
-from datetime import datetime
+from datetime import *
 
 # GETTERS
 @anvil.server.callable
@@ -83,12 +83,12 @@ def setClock(ID):
   clockStatus = getIfWorking(ID)
   if not clockStatus:
     user = app_tables.tbluserdetails.get(UserID=ID)
-    clockIn = datetime.today().strftime('%Y-%m-%d %H:%M:%S')
-    clockDate = datetime.today().strftime('%Y-%m-%d')
+    clockIn = datetime.now()
+    clockDate = date.today()
     app_tables.tblworkrecords.add_row(UserID=ID, WorkID=newWorkId(ID), ClockIn=clockIn, PayRate=user['BasicRate'], Date=clockDate)
   else:
-    row = app_tables.tblworkrecords.search(tables.order_by("ClockIn", ascending=False, UserID = userId))[0]
-    clockOutTime = datetime.now()
+    row = app_tables.tblworkrecords.search(tables.order_by("ClockIn", ascending=False, UserID=ID))[0]
+    clockOutTime = datetime.date.now()
     totalWork = clockOutTime - row['ClockIn']
     payout = totalWork * row['PayRate']
     row.update(ClockOut=clockOutTime, Payout=payout, HoursWorked=totalWork)
