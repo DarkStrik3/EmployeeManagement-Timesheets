@@ -19,7 +19,7 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
     self.user = anvil.users.get_user()
     self.userID = self.user['UserID']
     # Any code you write here will run before the form opens.
-    self.cpDashboards.add_component(EmployeeManagement(self))
+    self.selectEmployeeManagement()
 
 
   def signOut(self, **event_args):
