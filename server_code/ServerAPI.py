@@ -3,7 +3,7 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
-from datetime import *
+from datetime import datetime
 
 # GETTERS
 @anvil.server.callable
@@ -18,16 +18,25 @@ def getUserInfo(ID):
 
 @anvil.server.callable
 def getIfWorking(userID):
-  row = app_tables.tblworkrecords.search(tables.order_by("ClockIn"), ascending=False)
   try:
-    clockOut = row["ClockOut"] # checks if the most recent work has a clock out
-    return False
+    rows = app_tables.tblworkrecords.search(tables.order_by("ClockIn"), ascending=False)
+    topRow = rows[0]
+    try:
+      clockOut = row["ClockOut"] # checks if the most recent work has a clock out
+      return False # The most recent work record has a clock out, meaning that the employee is going to start working.
+    except:
+      True # The Clockout row is empty, meaning that they haven't clocked out yet and are still working
   except:
-    True
+    return False # The employee has no history of working at all.
 
 
 @anvil.server.callable
-def 
+def getUserTimesheets(ID, approved):
+  try:
+    userWork = app_tables.tblworkrecords.search(tables.order_by("Date"), ascending = False, UserID=ID, Approval=approved)
+    return userWork
+  except:
+    return None
 
 
 @anvil.server.callable
@@ -44,13 +53,14 @@ def getUserSettings(ID):
 
 # SETTERS
 
+
+
 @anvil.server.callable
 def changeSettings(userID, checkedStatus):
   userSettings = app_tables.tblsettings.get(UserID=userID)
   userSettings.update(DarkMode=checkedStatus)
   
 
-@anvil.server.callable
 def createID():
   try:
     lastID = app_tables.users.search(tables.order_by("UserID", ascending=False))[0]['UserID']
@@ -59,21 +69,23 @@ def createID():
   except:
     return 0 # there aren't any prior users, meaning that a new user would have the ID of 0.
 
+def newWorkId(ID):
+  try:
+    lastID = app_tables.tblworkrecords.search(tables.order_by("WorkID", ascending=False, UserID=ID))[0]['WorkID']
+    newID = int(lastID) + 1
+    return newID
+  except:
+    return 0 # there wasn't any prior work, meaning that the users
 
-def newWorkId():
-  # grabs the highest reference number from the work records table
-  lastID = app_tables.tblworkrecords.search(tables.order_by("WorkID", ascending=False))[0]['WorkID']
-  newNum = int(lastID) + 1 # adds 1 number to create the new highest reference ID
-  while len(str(newNum)) < 6: # loop to add 0's to the WorkId to have matching lengths
-    newNum = "0" + str(newNum)
-  newId = str(newNum) # changes to string
-  return newId # the new ID is returned for use in creating a new ID
 
 @anvil.server.callable
-def setClock(userID, clockStatus):
-  user = app_tables.tbluserdetails.get(UserID=userID)
-  if clockStatus:
-    app_tables.tblworkrecords.add_row(UserID=user["UserID"], ClockIn=datetime.now(), PayRate=user['BasicRate'], Date=date.today(), WorkID=newWorkID())
+def setClock(ID):
+  clockStatus = getIfWorking(ID)
+  if not clockStatus:
+    user = app_tables.tbluserdetails.get(UserID=ID)
+    clockIn = datetime.today().strftime('%Y-%m-%d %H:%M:%S')
+    clockDate = datetime.today().strftime('%Y-%m-%d')
+    app_tables.tblworkrecords.add_row(UserID=ID, WorkID=newWorkId(ID), ClockIn=clockIn, PayRate=user['BasicRate'], Date=clockDate)
   else:
     row = app_tables.tblworkrecords.search(tables.order_by("ClockIn", ascending=False, UserID = userId))[0]
     clockOutTime = datetime.now()
