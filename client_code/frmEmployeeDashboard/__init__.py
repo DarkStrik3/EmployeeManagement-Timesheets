@@ -26,7 +26,7 @@ class frmEmployeeDashboard(frmEmployeeDashboardTemplate):
       self.btnClockinout.text = "Clock Out"
       self.btnClockinout.background = "#ff0000"
       self.btnClockinout.tag = 1
-    elif not workingStatus:
+    else:
       self.btnClockinout.text = "Clock In"
       self.btnClockinout.background = "#088000"
       self.btnClockinout.tag = 0

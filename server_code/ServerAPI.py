@@ -21,11 +21,11 @@ def getIfWorking(userID):
   try:
     rows = app_tables.tblworkrecords.search(tables.order_by("ClockIn"), ascending=False)
     topRow = rows[0]
-    try:
-      clockOut = row["ClockOut"] # checks if the most recent work has a clock out
+    clockOut = row["ClockOut"] # checks if the most recent work has a clock out
+    if clockOut is None:
+      return True # The Clockout row is empty, meaning that they haven't clocked out yet and are still working
+    else:
       return False # The most recent work record has a clock out, meaning that the employee is going to start working.
-    except:
-      True # The Clockout row is empty, meaning that they haven't clocked out yet and are still working
   except:
     return False # The employee has no history of working at all.
 
