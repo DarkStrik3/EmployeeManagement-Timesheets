@@ -12,12 +12,13 @@ class Settings(SettingsTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     user = anvil.users.get_user()
-    userID = user['UserID']
+    self.userID = user['UserID']
     # Any code you write here will run before the form opens.
-    userSettings = anvil.server.call('getUserSettings', userID)
+    userSettings = anvil.server.call('getUserSettings', self.userID)
     self.cbDark.checked = userSettings['DarkMode']
 
 
 
-  def changeDarkMode(self, **event_args):
-    anvil.server.call('changeSettings', userID, self.cbDark.checked)
+  def saveChanges(self, **event_args):
+    anvil.server.call('changeSettings', self.userID, self.cbDark.checked)
+    alert("Changes were updated.")

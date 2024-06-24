@@ -27,7 +27,11 @@ def getIfWorking(userID):
 
 
 @anvil.server.callable
-def getTimesheets():
+def 
+
+
+@anvil.server.callable
+def getTimesheetsManagers():
   timesheets = app_tables.tblworkrecords.search(tables.order_by("Date"), ascending=False)
   return timesheets
 

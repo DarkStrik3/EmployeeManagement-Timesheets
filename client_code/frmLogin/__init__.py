@@ -15,7 +15,7 @@ class frmLogin(frmLoginTemplate):
     # Any code you write here will run before the form opens.
 
   def login(self, **event_args):
-    user = anvil.users.login_with_form(show_signup_option=False, allow_remembered=True, remember_by_default=True, allow_cancel=True)
+    user = anvil.users.login_with_form(show_signup_option=False, allow_remembered=False, remember_by_default=False, allow_cancel=True)
     ID = user['UserID']
     userGroup = user['Group']
     if user:

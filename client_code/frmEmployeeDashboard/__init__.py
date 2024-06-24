@@ -12,6 +12,8 @@ class frmEmployeeDashboard(frmEmployeeDashboardTemplate):
     self.init_components(**properties)
     self.user = anvil.users.get_user()
     self.userID = self.user['UserID']
+
+    workRecords = anvil.server.call()
     # Any code you write here will run before the form opens.
 
   def refresh(self, **event_args):
