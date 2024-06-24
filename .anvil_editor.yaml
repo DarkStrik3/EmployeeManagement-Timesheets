@@ -19,6 +19,7 @@ unique_ids:
   server_modules:
     ServerAPI: '1715835493924626453916433.7252'
   assets:
+    MANAGEMENT.png: '1719224497416255942196182.34204'
     standard-page.html: FHQYI3ASSGZJPJBP4NTJLJJXEYMDJPEO
     theme.css: VTGSRSWMXWSW6JJRODXPWNUO32ZIVBFR
   scripts: {}

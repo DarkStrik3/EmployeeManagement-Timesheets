@@ -16,7 +16,7 @@ components:
     type: Button
     layout_properties: {row: YXXFRA, width_xs: 1, col_xs: 1}
   - name: imgHeader
-    properties: {height: 99}
+    properties: {height: 99, source: _/theme/MANAGEMENT.png}
     type: Image
     layout_properties: {row: YXXFRA, width_xs: 6, col_xs: 3}
   - name: lblProfileName

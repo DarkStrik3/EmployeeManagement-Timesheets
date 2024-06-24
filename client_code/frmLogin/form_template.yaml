@@ -8,12 +8,12 @@ components:
   layout_properties: {slot: default}
   components:
   - name: imgHeader
-    properties: {height: 86}
+    properties: {height: 157, source: _/theme/MANAGEMENT.png, display_mode: shrink_to_fit}
     type: Image
-    layout_properties: {row: SHSWYP, width_xs: 5, col_xs: 4}
+    layout_properties: {row: SHSWYP, width_xs: 6, col_xs: 3}
   - name: btnLogin
     properties: {text: LOGIN, align: full, bold: true, font_size: 30}
     type: Button
-    layout_properties: {row: LVWDWI, width_xs: 3, col_xs: 5}
+    layout_properties: {row: LVWDWI, width_xs: 2, col_xs: 5}
     event_bindings: {click: login}
 is_package: true
