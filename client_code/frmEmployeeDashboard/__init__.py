@@ -29,12 +29,12 @@ class frmEmployeeDashboard(frmEmployeeDashboardTemplate):
 
   
   def refresh(self, **event_args):
-    working = anvil.server.call('getIfWorking', self.userID)
-    if working:
+    workingStatus = anvil.server.call('getIfWorking', self.userID)
+    if workingStatus:
       self.btnClockinout.text = "Clock Out"
       self.btnClockinout.background = "#ff0000"
       self.btnClockinout.tag = 1
-    elif not working:
+    elif not workingStatus:
       self.btnClockinout.text = "Clock In"
       self.btnClockinout.background = "#088000"
       self.btnClockinout.tag = 0
