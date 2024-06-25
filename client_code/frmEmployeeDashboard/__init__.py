@@ -18,7 +18,6 @@ class frmEmployeeDashboard(frmEmployeeDashboardTemplate):
     self.rpRight.items = anvil.server.call("getUserTimesheets", self.userID, False)
     # Any code you write here will run before the form opens.
     self.refresh()
-
   
   def refresh(self, **event_args):
     workingStatus = anvil.server.call('getIfWorking', self.userID)
@@ -34,8 +33,16 @@ class frmEmployeeDashboard(frmEmployeeDashboardTemplate):
       
 
   def clock(self, **event_args):
-    anvil.server.call('setClock', self.userID)
-    self.refresh()
+    if self.btnClockinout.tag == 0:
+      self.btnClockinout.text = "Clock Out"
+      self.btnClockinout.background = "#ff0000"
+      self.btnClockinout.tag = 1
+      anvil.server.call('setClock', self.userID)
+    else:
+      self.btnClockinout.text = "Clock In"
+      self.btnClockinout.background = "#088000"
+      self.btnClockinout.tag = 0
+      anvil.server.call('updateClock', self.userID)
 
   def profile(self, **event_args):
     userID = self.userID
