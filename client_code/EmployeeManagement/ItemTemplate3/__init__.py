@@ -13,3 +13,7 @@ class ItemTemplate3(ItemTemplate3Template):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
+    self.lblEmplName.text = self.item["FullName"]
+    self.lblEmplID.text = self.item["UserID"]
+    self.imgProfileImage.source = self.item["Profile"]
+    self.lblEmplEmployment.text = self.item["EmploymentType"]

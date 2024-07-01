@@ -89,8 +89,6 @@ def setClock(ID):
   clockIn = datetime.now()
   clockDate = date.today()
   app_tables.tblworkrecords.add_row(UserID=ID, WorkID=newWorkId(ID), ClockIn=clockIn, PayRate=user['BasicRate'], Date=clockDate)
-
-
 @anvil.server.callable
 def updateClock(ID):
   row = app_tables.tblworkrecords.search(tables.order_by("ClockIn", ascending=False), UserID=ID)[0]
@@ -120,4 +118,5 @@ def addNewuser(username, newEmail, password, newPhoneNumber, DateOfBirth, newGen
         PublHolRate=pubHolRate, 
         TFN=newTFN, 
         Profile=profileImg
+        Employment=employmentType
     )

@@ -44,6 +44,9 @@ db_schema:
     - name: PhoneNumber
       admin_ui: {width: 200, order: 4}
       type: string
+    - name: Employment
+      admin_ui: {width: 200, order: 14}
+      type: string
     title: tblUserDetails
   tblworkrecords:
     client: none
