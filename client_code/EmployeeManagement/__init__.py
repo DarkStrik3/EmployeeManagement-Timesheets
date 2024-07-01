@@ -15,7 +15,7 @@ class EmployeeManagement(EmployeeManagementTemplate):
     self.user = anvil.users.get_user()
     userID = self.user["UserID"]
     self.employees = anvil.server.call("getAllEmployees", userID)
-    
+    self.rpEmployees.items = self.employees
     # Any code you write here will run before the form opens.
 
   def addUser(self, **event_args):
