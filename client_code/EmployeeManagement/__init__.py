@@ -12,6 +12,10 @@ class EmployeeManagement(EmployeeManagementTemplate):
     # Set Form properties and Data Bindings.
     self.init_components()
     self._parent = p_parent
+    self.user = anvil.users.get_user()
+    userID = self.user["UserID"]
+    self.employees = anvil.server.call("getAllEmployees", userID)
+    
     # Any code you write here will run before the form opens.
 
   def addUser(self, **event_args):
