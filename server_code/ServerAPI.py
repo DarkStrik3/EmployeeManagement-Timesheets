@@ -51,7 +51,7 @@ def getUserSettings(ID):
   
 @anvil.server.callable
 def getAllEmployees(callerID):
-  employees = app_tables.tbluserdetails.search(tables.order_by("UserID"), ascending=True)
+  employees = app_tables.tbluserdetails.search(tables.order_by("UserID"), ascending=True, Employment="Part Time" or "Full Time" or "Contractor")
   return employees
 
 
@@ -59,6 +59,13 @@ def getAllEmployees(callerID):
 # SETTERS
 
 
+@anvil.server.callable
+def archiveUser(userID):
+  userDetails = app_tables.tbluserdetails.get(UserID=userID)
+  userDetails.update(Employment="Not in Employment")
+  user = app_tables.users.get(UserID=userID)
+  user.update(enabled=False)
+  
 
 @anvil.server.callable
 def changeSettings(userID, checkedStatus):
@@ -89,6 +96,7 @@ def setClock(ID):
   clockIn = datetime.now()
   clockDate = date.today()
   app_tables.tblworkrecords.add_row(UserID=ID, WorkID=newWorkId(ID), ClockIn=clockIn, PayRate=user['BasicRate'], Date=clockDate)
+
 @anvil.server.callable
 def updateClock(ID):
   row = app_tables.tblworkrecords.search(tables.order_by("ClockIn", ascending=False), UserID=ID)[0]
@@ -110,13 +118,14 @@ def addNewuser(username, newEmail, password, newPhoneNumber, DateOfBirth, newGen
         FullName=username,
         Email=newEmail, 
         DoB=DateOfBirth, 
-        Gender=newGender, 
+        Gender=newGender,
+        Title=title,
         Group=newGroup, 
         PhoneNumber=newPhoneNumber, 
         BasicRate=baseRate, 
         ExtendedRate=extendRate, 
         PublHolRate=pubHolRate, 
         TFN=newTFN, 
-        Profile=profileImg
+        Profile=profileImg,
         Employment=employmentType
     )

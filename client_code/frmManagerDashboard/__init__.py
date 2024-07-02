@@ -69,6 +69,11 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
   def openSelectedProfile(self, **event_args):
     self.cpDashboards.clear()
     self.cpDashboards.add_component(frmProfile())
+
+  def editUser(self, **event_args):
+    self.cpDashboards.clear()
+    self.cpDashboards.add_component(EditUser())
+
     
 
 
