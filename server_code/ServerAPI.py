@@ -51,8 +51,16 @@ def getUserSettings(ID):
   
 @anvil.server.callable
 def getAllEmployees(callerID):
-  employees = app_tables.tbluserdetails.search(tables.order_by("UserID", ascending=True), Employment=q.any_of("Part Time", "Full Time", "Contractor"))
-  return employees
+    employees = app_tables.tbluserdetails.search(
+        q.any_of(
+            q.ilike("Employment", "Part Time"),
+            q.ilike("Employment", "Full Time"),
+            q.ilike("Employment", "Contractor")
+        ),
+        tables.order_by("UserID", ascending=True)
+    )
+    return employees
+
 
 # SETTERS
 

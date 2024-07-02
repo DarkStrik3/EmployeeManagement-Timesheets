@@ -11,24 +11,20 @@ from ..Settings import Settings
 from ..Timesheets import Timesheets
 from ..AddUser import AddUser
 
-
 class frmManagerDashboard(frmManagerDashboardTemplate):
   def __init__(self, **properties):
-    # Set Form properties and Data Bindings.
     self.init_components(**properties)
     self.user = anvil.users.get_user()
     self.userID = self.user['UserID']
-    # Any code you write here will run before the form opens.
     self.selectEmployeeManagement()
-
 
   def signOut(self, **event_args):
     anvil.users.logout()
     open_form('frmLogin')
-  
+
   def selectEmployeeManagement(self, **event_args):
     self.cpDashboards.clear()
-    self.cpDashboards.add_component(EmployeeManagement(self))
+    self.cpDashboards.add_component(EmployeeManagement(parent=self))
     self.btnEmplManage.background = "#6e6e6e"
     self.btnAnalyticReport.background = ""
     self.btnTimesheets.background = ""
@@ -66,14 +62,10 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
     self.btnTimesheets.background = ""
     self.btnSettings.background = ""
 
-  def openSelectedProfile(self, **event_args):
+  def openSelectedProfile(self, user_id, **event_args):
     self.cpDashboards.clear()
-    self.cpDashboards.add_component(frmProfile())
+    self.cpDashboards.add_component(frmProfile(user_id=user_id))
 
-  def editUser(self, **event_args):
+  def editUser(self, user_id, **event_args):
     self.cpDashboards.clear()
-    self.cpDashboards.add_component(EditUser())
-
-    
-
-
+    self.cpDashboards.add_component(EditUser(user_id=user_id))

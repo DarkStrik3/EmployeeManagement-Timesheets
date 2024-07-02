@@ -30,8 +30,6 @@ class frmEmployeeDashboard(frmEmployeeDashboardTemplate):
       self.btnClockinout.background = "#088000"
       self.btnClockinout.tag = 0
       
-      
-
   def clock(self, **event_args):
     if self.btnClockinout.tag == 0:
       self.btnClockinout.text = "Clock Out"

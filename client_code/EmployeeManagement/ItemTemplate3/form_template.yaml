@@ -43,4 +43,4 @@ components:
   properties: {text: Archive, spacing_above: medium}
   type: Button
   layout_properties: {grid_position: 'RIREOW,WJYECR XMHKPW,ZMBSOJ'}
-  event_bindings: {click: ArhiveUser}
+  event_bindings: {click: archiveUser}
