@@ -17,6 +17,7 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
     self.user = anvil.users.get_user()
     self.userID = self.user['UserID']
     self.selectEmployeeManagement()
+    
 
   def signOut(self, **event_args):
     anvil.users.logout()
@@ -24,7 +25,7 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
 
   def selectEmployeeManagement(self, **event_args):
     self.cpDashboards.clear()
-    self.cpDashboards.add_component(EmployeeManagement(parent=self))
+    self.cpDashboards.add_component(EmployeeManagement(self))
     self.btnEmplManage.background = "#6e6e6e"
     self.btnAnalyticReport.background = ""
     self.btnTimesheets.background = ""

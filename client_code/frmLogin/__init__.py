@@ -18,6 +18,7 @@ class frmLogin(frmLoginTemplate):
     user = anvil.users.login_with_form(show_signup_option=False, allow_remembered=False, remember_by_default=False, allow_cancel=True)
     ID = user['UserID']
     userGroup = user['Group']
+    # Opens the employee dashboard for warehouse employees, while opening the manager dashboard if a manager+/accountant
     if user:
       if userGroup == "Warehouse":
         open_form("frmEmployeeDashboard", userID=ID)

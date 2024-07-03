@@ -3,7 +3,7 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
-from datetime import * 
+from datetime import *
 
 # GETTERS
 @anvil.server.callable
@@ -51,14 +51,7 @@ def getUserSettings(ID):
   
 @anvil.server.callable
 def getAllEmployees(callerID):
-    employees = app_tables.tbluserdetails.search(
-        q.any_of(
-            q.ilike("Employment", "Part Time"),
-            q.ilike("Employment", "Full Time"),
-            q.ilike("Employment", "Contractor")
-        ),
-        tables.order_by("UserID", ascending=True)
-    )
+    employees = app_tables.tbluserdetails.search(tables.order_by("UserID", ascending=True), UserID = q.none_of(callerID))
     return employees
 
 
