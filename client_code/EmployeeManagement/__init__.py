@@ -7,14 +7,11 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 
 class EmployeeManagement(EmployeeManagementTemplate):
-    def __init__(self, p_parent):
-        self.init_components()
+    def __init__(self, p_parent, **properties):
+        self.init_components(**properties)
         self._parent = p_parent
         self.user = anvil.users.get_user()
         self.refreshEmployeeList()
-        self.rpEmployees.set_event_handler('x-edit-user', self.editUserDetails(user_id=item["UserID"]))
-        self.rpEmployees.set_event_handler('x-open-user', self.openProfile(user_id))
-        self.rpEmployees.set_event_handler('x-refresh', self.refreshEmployeeList(user_id))
 
 
     def refreshEmployeeList(self):
