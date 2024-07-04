@@ -77,8 +77,6 @@ class EditUser(EditUserTemplate):
       issues.append("invalid TFN number")
     if not Validation.validateUpload(self.flUpload.file):
       issues.append("invalid file type uploaded")
-    if len(self.txtTempPassword.text) < 8:
-      issues.append("invalid temporary password")
     if issues == [] or len(issues) == 0:
       # Call the server code to pass the values and create a new user.
       if confirm(
@@ -111,7 +109,6 @@ class EditUser(EditUserTemplate):
             "editUser",
             self.txtFullName.text,
             self.txtEmail.text,
-            self.txtTempPassword.text,
             self.txtPhoneNumber.text,
             self.dpDoB.date,
             self.ddGender.selected_value,
@@ -126,7 +123,6 @@ class EditUser(EditUserTemplate):
           )
           self.imgUpload.source = None
           self.flUpload.clear()
-          self.txtTempPassword.text = ""
           self.txtFullName.text = ""
           self.txtEmail.text = ""
           self.txtPhoneNumber.text = ""

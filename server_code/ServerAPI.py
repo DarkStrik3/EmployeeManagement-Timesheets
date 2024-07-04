@@ -127,10 +127,24 @@ def addNewuser(username, newEmail, password, newPhoneNumber, DateOfBirth, newGen
         TFN=newTFN, 
         Profile=profileImg,
         Employment=employmentType
-    )
+       )
 
 @anvil.server.callable
-def editUser(userID, username, Email, password, PhoneNumber, DateOfBirth, newGender, employmentType, newGroup, title, baseRate, extendRate, pubHolRate, TFN, profileImg):
-  try:
-    oldRow = app_tables.tbluserdetails.get(UserID=userID)
-    user = app_tables.users.
+def editUser(userID, username, email, phoneNumber, dateOfBirth, gender, employmentType, group, title, baseRate, extendRate, pubHolRate, tfn, profileImg):
+  oldRow = app_tables.tbluserdetails.get(UserID=userID)
+  oldRow.update(FullName=username, 
+                Email=email, 
+                PhoneNumber=phoneNumber, 
+                DoB=dateOfBirth, 
+                Gender=gender, 
+                Employment=employmentType, 
+                Group=group, 
+                Title=title, 
+                BasicRate=baseRate, 
+                ExtendedRate=extendRate, 
+                PublHolRate=pubHolRate, 
+                TFN=tfn, 
+                Profile=profileImg
+               )
+  user = app_tables.users.get(UserID=userID)
+  user.update(Email=email, Group=group)
