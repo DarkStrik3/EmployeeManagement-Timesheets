@@ -1,3 +1,23 @@
 is_package: true
 container: {type: DataRowPanel}
-components: []
+components:
+- name: lblDate
+  properties: {}
+  type: Label
+  layout_properties: {column: JKSDUP}
+- name: lblWorkTime
+  properties: {}
+  type: Label
+  layout_properties: {column: VJQQOR}
+- name: lblRateType
+  properties: {}
+  type: Label
+  layout_properties: {column: OJLQEN}
+- name: lblPayout
+  properties: {}
+  type: Label
+  layout_properties: {column: GRQBIK}
+- name: cbApproval
+  properties: {text: Approval}
+  type: CheckBox
+  layout_properties: {column: TVIIBG}

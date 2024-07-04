@@ -13,3 +13,7 @@ class RowTemplate1(RowTemplate1Template):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
+    self.lblDate.text = str(self.item["Date"])
+    self.lblPayout = str(self.item["Payout"])
+    self.lblRateType = str(self.item["PayRate"])
+    self.cbApproval = self.item["Approval"]

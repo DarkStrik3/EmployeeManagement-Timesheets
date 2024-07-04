@@ -7,7 +7,7 @@ components:
   type: GridPanel
   layout_properties: {slot: default}
   components:
-  - name: button_1
+  - name: btnMenu
     properties: {text: '', icon: 'fa:bars', spacing_above: medium}
     type: Button
     layout_properties: {row: GIPNDZ, width_xs: 1, col_xs: 0}
@@ -71,7 +71,7 @@ components:
     properties: {text: 'Job Title:', align: right, bold: true, spacing_below: none}
     type: Label
     layout_properties: {row: DLMITY, width_xs: 2, col_xs: 0}
-  - name: LblJobTitle
+  - name: lblJobTitle
     properties: {align: left, spacing_below: none}
     type: Label
     layout_properties: {row: DLMITY, width_xs: 2, col_xs: 2}

@@ -31,9 +31,9 @@ def getIfWorking(ID):
 
 
 @anvil.server.callable
-def getUserTimesheets(ID, approved):
+def getUserTimesheets(ID):
   try:
-    userWork = app_tables.tblworkrecords.search(tables.order_by("Date"), ascending = False, UserID=ID, Approval=approved)
+    userWork = app_tables.tblworkrecords.search(tables.order_by("Date", ascending = False), UserID=ID)
     return userWork
   except:
     return None
