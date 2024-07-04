@@ -2,9 +2,9 @@ is_package: true
 container: {type: ColumnPanel}
 components:
 - name: imgProfileImage
-  properties: {}
+  properties: {display_mode: zoom_to_fill}
   type: Image
-  layout_properties: {grid_position: 'RIREOW,XJKGSP'}
+  layout_properties: {grid_position: 'RIREOW,XJKGSP', full_width_row: false}
 - name: lblName
   properties: {text: 'Name:', bold: true}
   type: Label

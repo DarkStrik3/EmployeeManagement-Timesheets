@@ -11,16 +11,32 @@ from datetime import datetime
 
 
 class EditUser(EditUserTemplate):
-  def __init__(self, **properties):
+  def __init__(self, employeeID, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    # self.userID = properties["userID"]
+    
     # Any code you write here will run before the form opens.
     self.dpDoB.max_date = Other.getDate15YearsAgo()  # makes sure that the worker is at least 15 years old which is a requirement to work
     self.dpDoB.format = "%d/%m/%Y"
     self.flUpload.file_types = [".jpg", ".jpeg", ".png", "webp"]
 
-  def addNewUser(self, **event_args):
+    # Sets all pre-existing data into the required inputs
+    userRow = anvil.server.call('getUserInfo', employeeID)
+    self.imgUpload.source = userRow['Profile']
+    self.txtFullName.text = userRow['FullName']
+    self.txtEmail.text = userRow['Email']
+    self.txtPhoneNumber.text = userRow['PhoneNumber']
+    self.dpDoB.date = userRow['DoB']
+    self.txtTitle.text = userRow['Title']
+    self.txtTFN.text = userRow['TFN']
+    self.txtBaseRate.text = str(userRow['BasicRate'])
+    self.txtExtendedRate.text = str(userRow['ExtendedRate'])
+    self.txtPubHolRate.text = str(userRow['PublHolRate'])
+    self.ddEmplType.selected_value = userRow['Employment']
+    self.ddGroup.selected_value = userRow['Group']
+    self.ddGender.selected_value = userRow['Gender']
+
+  def editUser(self, **event_args):
     issues = []
     if not Validation.validateString(
       self.txtFullName.text
@@ -92,7 +108,7 @@ class EditUser(EditUserTemplate):
       ):
         try:
           anvil.server.call(
-            "addNewuser",
+            "editUser",
             self.txtFullName.text,
             self.txtEmail.text,
             self.txtTempPassword.text,

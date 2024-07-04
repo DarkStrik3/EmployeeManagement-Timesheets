@@ -27,10 +27,19 @@ components:
     properties: {height: 84, spacing_above: medium}
     type: Image
     layout_properties: {row: GIPNDZ, width_xs: 1, col_xs: 11}
-  - name: column_panel_1
+  - name: fp1
     properties: {}
-    type: ColumnPanel
-    layout_properties: {row: MHFVCP, width_xs: 3, col_xs: 2}
+    type: FlowPanel
+    layout_properties: {row: MHFVCP, width_xs: 3, col_xs: 1}
+    components:
+    - name: imgProfilePicture
+      properties: {display_mode: zoom_to_fill, height: '190', vertical_align: center}
+      type: Image
+      layout_properties: {width: 203.49731298828124, expand: false}
+    - name: lblFullNAME
+      properties: {align: center, bold: true, font_size: 20}
+      type: Label
+      layout_properties: {expand: true, width: null}
   - name: dgUserWork
     properties:
       columns:
@@ -46,15 +55,15 @@ components:
     - name: rpPastWork
       properties: {item_template: frmProfile.RowTemplate1}
       type: RepeatingPanel
-    layout_properties: {row: MHFVCP, width_xs: 8, col_xs: 3}
-  - name: imgProfilePicture
-    properties: {display_mode: zoom_to_fill, height: '124', vertical_align: center}
-    type: Image
-    layout_properties: {row: UROISY, width_xs: 2, col_xs: 4}
-  - name: lblFullNAME
-    properties: {align: center, bold: true, font_size: 20}
+    layout_properties: {row: MHFVCP, width_xs: 8, col_xs: 4}
+  - name: lblJobTitleLabel
+    properties: {text: 'Job Title:', align: right, bold: true, spacing_below: small}
     type: Label
-    layout_properties: {row: NUZFMI, width_xs: 2, col_xs: 1}
+    layout_properties: {row: NUZFMI, width_xs: 2, col_xs: 0}
+  - name: lblJobTitle
+    properties: {align: left, spacing_below: small}
+    type: Label
+    layout_properties: {row: NUZFMI, width_xs: 2, col_xs: 2}
   - name: lblEmailLabel
     properties: {align: right, bold: true, text: 'Email:'}
     type: Label
@@ -71,12 +80,12 @@ components:
     properties: {}
     type: Label
     layout_properties: {row: NUZFMI, width_xs: 2, col_xs: 10}
-  - name: lblJobTitleLabel
-    properties: {text: 'Job Title:', align: right, bold: true, spacing_below: none}
+  - name: lblWorkTypeLabel
+    properties: {text: 'Employment Type:', align: right, bold: true, spacing_below: small, spacing_above: small}
     type: Label
     layout_properties: {row: DLMITY, width_xs: 2, col_xs: 0}
-  - name: lblJobTitle
-    properties: {align: left, spacing_below: none}
+  - name: lblWorkType
+    properties: {align: left, spacing_below: small, spacing_above: small}
     type: Label
     layout_properties: {row: DLMITY, width_xs: 2, col_xs: 2}
   - name: lblPhoneNumberLabel
@@ -95,12 +104,12 @@ components:
     properties: {}
     type: Label
     layout_properties: {row: DLMITY, width_xs: 2, col_xs: 9}
-  - name: lblWorkTypeLabel
-    properties: {text: 'Employment Type:', align: right, bold: true, spacing_below: none, spacing_above: none}
+  - name: lblIDLabel
+    properties: {text: 'ID:', align: right, bold: true, spacing_above: small, spacing_below: small}
     type: Label
     layout_properties: {row: GJRVWT, width_xs: 2, col_xs: 0}
-  - name: lblWorkType
-    properties: {align: left, spacing_below: none, spacing_above: none}
+  - name: lblUserID
+    properties: {align: left, spacing_above: small, spacing_below: medium}
     type: Label
     layout_properties: {row: GJRVWT, width_xs: 2, col_xs: 2}
   - name: lblDoBlabel
@@ -112,19 +121,19 @@ components:
     type: Label
     layout_properties: {row: GJRVWT, width_xs: 2, col_xs: 5}
   - name: lblPubHolRateLb
-    properties: {text: 'Public Holiday Rate:', align: right, bold: true}
+    properties: {text: 'Pub. Holiday Rate:', align: right, bold: true}
     type: Label
     layout_properties: {row: GJRVWT, width_xs: 2, col_xs: 7}
   - name: lblPublicHolidayRate
     properties: {}
     type: Label
     layout_properties: {row: GJRVWT, width_xs: 2, col_xs: 9}
-  - name: lblIDLabel
-    properties: {text: 'ID:', align: right, bold: true, spacing_above: none, spacing_below: none}
+  - name: lblGroupLabel
+    properties: {text: 'Group:', align: right, bold: true, spacing_above: small}
     type: Label
     layout_properties: {row: LKKTAH, width_xs: 2, col_xs: 0}
-  - name: lblUserID
-    properties: {align: left, spacing_above: none, spacing_below: none}
+  - name: lblGroup
+    properties: {spacing_above: small}
     type: Label
     layout_properties: {row: LKKTAH, width_xs: 2, col_xs: 2}
   - name: lblGenderLabel
@@ -143,12 +152,4 @@ components:
     properties: {}
     type: Label
     layout_properties: {row: LKKTAH, width_xs: 2, col_xs: 10}
-  - name: lblGroupLabel
-    properties: {text: 'Group:', align: right, bold: true, spacing_above: none}
-    type: Label
-    layout_properties: {row: VPZMGJ, width_xs: 2, col_xs: 0}
-  - name: lblGroup
-    properties: {spacing_above: none}
-    type: Label
-    layout_properties: {row: VPZMGJ, width_xs: 2, col_xs: 2}
 is_package: true

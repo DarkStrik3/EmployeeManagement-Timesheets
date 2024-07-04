@@ -11,6 +11,11 @@ components:
   - name: cbDark
     properties: {text: ''}
     type: CheckBox
+- name: btnChangePassword
+  properties: {text: Change Password, bold: true}
+  type: Button
+  layout_properties: {grid_position: 'YIWAOI,EOCEEF'}
+  event_bindings: {click: changePassword}
 - name: btnSave
   properties: {text: Save Changes, bold: true}
   type: Button

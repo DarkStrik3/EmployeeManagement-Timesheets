@@ -22,3 +22,9 @@ class Settings(SettingsTemplate):
   def saveChanges(self, **event_args):
     anvil.server.call('changeSettings', self.userID, self.cbDark.checked)
     alert("Changes were updated.")
+
+  def changePassword(self, **event_args):
+    try:
+      anvil.users.change_password_with_form(require_old_password=True)
+    except:
+      alert("Change failed, please try again.")

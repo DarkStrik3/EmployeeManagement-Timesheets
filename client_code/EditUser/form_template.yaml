@@ -12,7 +12,7 @@ components:
     type: Label
     layout_properties: {grid_position: 'NDTYXL,ZCRNFC'}
   - name: imgUpload
-    properties: {}
+    properties: {display_mode: zoom_to_fill}
     type: Image
     layout_properties: {grid_position: 'OTHRAW,SYRGTI UZZKTL,UKBMPV'}
   - name: flUpload
@@ -36,14 +36,6 @@ components:
     properties: {}
     type: TextBox
     layout_properties: {grid_position: 'OTHRAW,OJHGGK XRBPSO,FSSYVD'}
-  - name: lblTempPassword
-    properties: {align: left, text: 'Temp Password:', bold: true, tooltip: Please enter a temporary password at least 8 characters in length.}
-    type: Label
-    layout_properties: {grid_position: 'OTHRAW,OJHGGK MWRUPL,VMRJLL'}
-  - name: txtTempPassword
-    properties: {}
-    type: TextBox
-    layout_properties: {grid_position: 'OTHRAW,OJHGGK MWRUPL,ALCPPE'}
   - name: lblPhoneNumber
     properties: {text: Phone Number, bold: true, tooltip: PLease enter a phone number in either internation or local format.}
     type: Label
@@ -92,7 +84,7 @@ components:
     layout_properties: {grid_position: 'OTHRAW,IEJKDQ ZLRNHL,IWNFZS WRGXIN,GOCCEX'}
   - name: ddEmplType
     properties:
-      items: [Full Time, Part Time, Contractor]
+      items: [Full Time, Part Time, Contractor, Not in Employment]
       include_placeholder: true
     type: DropDown
     layout_properties: {grid_position: 'OTHRAW,IEJKDQ ZLRNHL,IWNFZS EVKQAW,BJKCDW'}
@@ -134,5 +126,5 @@ components:
     properties: {text: Save Edit, align: full, bold: true}
     type: Button
     layout_properties: {grid_position: 'OTHRAW,IEJKDQ VWUZKU,KILKGZ'}
-    event_bindings: {click: addNewUser}
+    event_bindings: {click: editUser}
 is_package: true

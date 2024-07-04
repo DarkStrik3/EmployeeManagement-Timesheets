@@ -70,6 +70,6 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
     self.cpDashboards.clear()
     self.cpDashboards.add_component(frmProfile(employeeID=userID))
 
-  def editUser(self, user_id, **event_args):
+  def editUser(self, userID, **event_args):
     self.cpDashboards.clear()
-    self.cpDashboards.add_component(EditUser(user_id=user_id))
+    self.cpDashboards.add_component(EditUser(employeeID=userID))
