@@ -27,32 +27,36 @@ components:
     properties: {height: 84, spacing_above: medium}
     type: Image
     layout_properties: {row: GIPNDZ, width_xs: 1, col_xs: 11}
-  - name: imgProfilePicture
-    properties: {display_mode: shrink_to_fit, height: 224}
-    type: Image
-    layout_properties: {row: MHFVCP, width_xs: 2, col_xs: 1}
+  - name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+    layout_properties: {row: MHFVCP, width_xs: 3, col_xs: 2}
   - name: dgUserWork
     properties:
       columns:
-      - {id: JKSDUP, title: Date, data_key: date}
-      - {id: VJQQOR, title: Work Time, data_key: workTime}
-      - {id: OJLQEN, title: Rate Type, data_key: rateType}
-      - {id: GRQBIK, data_key: payout, title: Payout, expand: false}
+      - {id: JKSDUP, title: Date, data_key: Date}
+      - {id: VJQQOR, title: Work Time, data_key: HoursWorked}
+      - {id: OJLQEN, title: Rate Type, data_key: PayRate}
+      - {id: GRQBIK, data_key: Payout, title: Payout, expand: false}
       - {id: TVIIBG, data_key: approval, title: Approval}
       show_page_controls: false
       auto_header: true
     type: DataGrid
     components:
-    - name: repeating_panel_1
+    - name: rpPastWork
       properties: {item_template: frmProfile.RowTemplate1}
       type: RepeatingPanel
     layout_properties: {row: MHFVCP, width_xs: 8, col_xs: 3}
+  - name: imgProfilePicture
+    properties: {display_mode: zoom_to_fill, height: '124', vertical_align: center}
+    type: Image
+    layout_properties: {row: UROISY, width_xs: 2, col_xs: 4}
   - name: lblFullNAME
     properties: {align: center, bold: true, font_size: 20}
     type: Label
     layout_properties: {row: NUZFMI, width_xs: 2, col_xs: 1}
   - name: lblEmailLabel
-    properties: {align: left, bold: true, text: 'Email:'}
+    properties: {align: right, bold: true, text: 'Email:'}
     type: Label
     layout_properties: {row: NUZFMI, width_xs: 2, col_xs: 4}
   - name: lblEmail
@@ -60,7 +64,7 @@ components:
     type: Label
     layout_properties: {row: NUZFMI, width_xs: 2, col_xs: 6}
   - name: lblbaseRateLabel
-    properties: {text: 'Base Rate:', bold: true, align: left}
+    properties: {text: 'Base Rate:', bold: true, align: right}
     type: Label
     layout_properties: {row: NUZFMI, width_xs: 2, col_xs: 8}
   - name: lblBaseRate
@@ -76,7 +80,7 @@ components:
     type: Label
     layout_properties: {row: DLMITY, width_xs: 2, col_xs: 2}
   - name: lblPhoneNumberLabel
-    properties: {text: 'Phone Number:', align: left, bold: true}
+    properties: {text: 'Phone Number:', align: right, bold: true}
     type: Label
     layout_properties: {row: DLMITY, width_xs: 2, col_xs: 3}
   - name: lblPhoneNumber
@@ -84,7 +88,7 @@ components:
     type: Label
     layout_properties: {row: DLMITY, width_xs: 2, col_xs: 5}
   - name: lblExtendedRateLabel
-    properties: {text: 'Extended Rate:', bold: true, align: left}
+    properties: {text: 'Extended Rate:', bold: true, align: right}
     type: Label
     layout_properties: {row: DLMITY, width_xs: 2, col_xs: 7}
   - name: lblExtendedRate
@@ -100,7 +104,7 @@ components:
     type: Label
     layout_properties: {row: GJRVWT, width_xs: 2, col_xs: 2}
   - name: lblDoBlabel
-    properties: {text: 'Date of Birth:', align: left, bold: true}
+    properties: {text: 'Date of Birth:', align: right, bold: true}
     type: Label
     layout_properties: {row: GJRVWT, width_xs: 2, col_xs: 3}
   - name: lblDoB
@@ -108,7 +112,7 @@ components:
     type: Label
     layout_properties: {row: GJRVWT, width_xs: 2, col_xs: 5}
   - name: lblPubHolRateLb
-    properties: {text: 'Public Holiday Rate:', align: left, bold: true}
+    properties: {text: 'Public Holiday Rate:', align: right, bold: true}
     type: Label
     layout_properties: {row: GJRVWT, width_xs: 2, col_xs: 7}
   - name: lblPublicHolidayRate
@@ -124,7 +128,7 @@ components:
     type: Label
     layout_properties: {row: LKKTAH, width_xs: 2, col_xs: 2}
   - name: lblGenderLabel
-    properties: {text: 'Gender:', align: left, bold: true}
+    properties: {text: 'Gender:', align: right, bold: true}
     type: Label
     layout_properties: {row: LKKTAH, width_xs: 2, col_xs: 4}
   - name: lblGender
@@ -132,7 +136,7 @@ components:
     type: Label
     layout_properties: {row: LKKTAH, width_xs: 2, col_xs: 6}
   - name: lblTFNlabel
-    properties: {text: 'TFN:', align: left, bold: true}
+    properties: {text: 'TFN:', align: right, bold: true}
     type: Label
     layout_properties: {row: LKKTAH, width_xs: 2, col_xs: 8}
   - name: lblTFN

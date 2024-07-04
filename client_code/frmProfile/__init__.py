@@ -30,7 +30,7 @@ class frmProfile(frmProfileTemplate):
     self.lblDoB.text = str(userRow['DoB'])
     self.lblBaseRate.text = str(userRow['BasicRate'])
     self.lblExtendedRate.text = str(userRow["ExtendedRate"])
-    self.lblPubHolRateLb.text = str(userRow["PublHolRate"])
+    self.lblPublicHolidayRate.text = str(userRow["PublHolRate"])
     self.lblUserID.text = str(userRow["UserID"])
     self.lblJobTitle.text = str(userRow['Title'])
     self.lblGender.text = str(userRow['Gender'])
@@ -38,7 +38,7 @@ class frmProfile(frmProfileTemplate):
 
     # Displaying the employee's work records.
     userWorkRecords = anvil.server.call('getUserTimesheets', employeeID)
-    self.repeating_panel_1.items = userWorkRecords
+    self.rpPastWork.items = userWorkRecords
 
 
     

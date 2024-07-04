@@ -14,6 +14,6 @@ class RowTemplate1(RowTemplate1Template):
 
     # Any code you write here will run before the form opens.
     self.lblDate.text = str(self.item["Date"])
-    self.lblPayout = str(self.item["Payout"])
-    self.lblRateType = str(self.item["PayRate"])
-    self.cbApproval = self.item["Approval"]
+    self.lblPayout.text = str(self.item["Payout"])
+    self.lblPayRate.text = str(self.item["PayRate"])
+    self.cbApproval.text = self.item["Approval"]

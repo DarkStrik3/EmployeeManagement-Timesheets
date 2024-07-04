@@ -1,15 +1,19 @@
 is_package: true
 container: {type: DataRowPanel}
 components:
+- name: cbApproval
+  properties: {text: Approval, enabled: false}
+  type: CheckBox
+  layout_properties: {column: TVIIBG}
 - name: lblDate
   properties: {}
   type: Label
   layout_properties: {column: JKSDUP}
-- name: lblWorkTime
+- name: lblHoursWorked
   properties: {}
   type: Label
   layout_properties: {column: VJQQOR}
-- name: lblRateType
+- name: lblPayRate
   properties: {}
   type: Label
   layout_properties: {column: OJLQEN}
@@ -17,7 +21,3 @@ components:
   properties: {}
   type: Label
   layout_properties: {column: GRQBIK}
-- name: cbApproval
-  properties: {text: Approval}
-  type: CheckBox
-  layout_properties: {column: TVIIBG}
