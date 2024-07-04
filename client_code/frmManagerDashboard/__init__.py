@@ -10,6 +10,9 @@ from ..AnalyticsReporting import AnalyticsReporting
 from ..Settings import Settings
 from ..Timesheets import Timesheets
 from ..AddUser import AddUser
+from ..EditUser import EditUser
+from ..frmProfile import frmProfile
+
 
 class frmManagerDashboard(frmManagerDashboardTemplate):
   def __init__(self, **properties):
