@@ -14,9 +14,9 @@ class EmployeeManagement(EmployeeManagementTemplate):
         self.refreshEmployeeList()
 
 
-    def refreshEmployeeList(self):
-        self.employees = anvil.server.call("getAllEmployees", self.user["UserID"])
-        self.rpEmployees.items = self.employees
+    def refreshEmployeeList(self, **event_args):
+      self.employees = anvil.server.call("getAllEmployees", self.user["UserID"])
+      self.rpEmployees.items = [{'employee': emp, 'parent': self} for emp in self.employees]
 
     def addUser(self, **event_args):
         self._parent.selectAddNewUser()

@@ -9,20 +9,19 @@ from anvil.tables import app_tables
 class ItemTemplate3(ItemTemplate3Template):
     def __init__(self, **properties):
         self.init_components(**properties)
-        self._parent = get_open_form()
+        self._parent = self.item['parent']
         # Any code you write here will run before the form opens.
-        self.lblEmplName.text = self.item["FullName"]
-        self.lblEmplID.text = self.item["UserID"]
-        self.imgProfileImage.source = self.item["Profile"]
-        self.lblEmplEmployment.text = self.item["Employment"]
+        self.lblEmplName.text = self.item['employee']["FullName"]
+        self.lblEmplID.text = self.item['employee']["UserID"]
+        self.imgProfileImage.source = self.item['employee']["Profile"]
+        self.lblEmplEmployment.text = self.item['employee']["Employment"]
 
     def editUser(self, **event_args):
-      self.raise_event('x-edit-user', user_id=self.item["UserID"])
-  
+      self._parent.editUserDetails(self.item['employee']["UserID"])
+
     def openUser(self, **event_args):
-        self.raise_event('x-open-user', user_id=self.item["UserID"])
+      self._parent.openProfile(self.item['employee']["UserID"])
 
     def archiveUser(self, **event_args):
-      if confirm("Are you sure you want to archive " + self.item["FullName"] + "'s account?"):
-        anvil.server.call("archiveUser", self.item["UserID"])
-        self.raise_event('x-refresh')
+      if confirm("Are you sure you want to archive " + self.item['employee']["FullName"] + "'s account?"):
+        self._parent.archiveUser(self.item['employee']["UserID"])
