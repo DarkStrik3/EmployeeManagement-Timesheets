@@ -11,15 +11,15 @@ from datetime import datetime
 
 
 class EditUser(EditUserTemplate):
-  def __init__(self, employeeID, **properties):
+  def __init__(self, employeeID, p_parent, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    
     # Any code you write here will run before the form opens.
     self.dpDoB.max_date = Other.getDate15YearsAgo()  # makes sure that the worker is at least 15 years old which is a requirement to work
     self.dpDoB.format = "%d/%m/%Y"
     self.flUpload.file_types = [".jpg", ".jpeg", ".png", "webp"]
-
+    self.employeeId = employeeID
+    self._parent = p_parent
     # Sets all pre-existing data into the required inputs
     userRow = anvil.server.call('getUserInfo', employeeID)
     self.imgUpload.source = userRow['Profile']
@@ -38,44 +38,28 @@ class EditUser(EditUserTemplate):
 
   def editUser(self, **event_args):
     issues = []
-    if not Validation.validateString(
-      self.txtFullName.text
-    ):  # makes sure that the name is a valid string
+    if not Validation.validateString(self.txtFullName.text):  # makes sure that the name is a valid string
       issues.append("invalid name")
-    if not Validation.validateString(
-      self.txtTitle.text
-    ):  # makes sure that the title is a valid string
+    if not Validation.validateString(self.txtTitle.text):  # makes sure that the title is a valid string
       issues.append("invalid title")
-    if not Validation.validateEmail(
-      self.txtEmail.text
-    ):  # makes sure that email is valid
+    if not Validation.validateEmail(self.txtEmail.text):  # makes sure that email is valid
       issues.append("invalid email")
     # additional rates are higher than base rate, and base rate is at least minimum wage
-    if not Validation.validateRate(
-      self.txtBaseRate.text, self.txtExtendedRate.text, self.txtPubHolRate.text
-    ):
+    if not Validation.validateRate(self.txtBaseRate.text, self.txtExtendedRate.text, self.txtPubHolRate.text):
       issues.append("invalid rates")
     if not Validation.validateDate(str(self.dpDoB.date)):  # date is valid
       issues.append("invalid date of birth")
-    if (
-      self.ddGender.selected_value is None
-    ):  # make sure one of the specified options is selected
+    if (self.ddGender.selected_value is None):  # make sure one of the specified options is selected
       issues.append("invalid gender")
-    if (
-      self.ddEmplType.selected_value is None
-    ):  # make sure one of the specified options is selected
+    if (self.ddEmplType.selected_value is None):  # make sure one of the specified options is selected
       issues.append("invalid employment type")
-    if (
-      self.ddGroup.selected_value is None
-    ):  # make sure one of the specified options is selected
+    if (self.ddGroup.selected_value is None):  # make sure one of the specified options is selected
       issues.append("invalid group selected")
-    if not Validation.validatePhoneNum(
-      self.txtPhoneNumber.text
-    ):  # Makes sure that the phone number is valid
+    if not Validation.validatePhoneNum(self.txtPhoneNumber.text):  # Makes sure that the phone number is valid
       issues.append("invalid phone number")
     if not Validation.validateTFN(self.txtTFN.text):  # Makes sure that TFN is valid
       issues.append("invalid TFN number")
-    if not Validation.validateUpload(self.flUpload.file):
+    if not Validation.validateUpload(self.imgUpload.source):
       issues.append("invalid file type uploaded")
     if issues == [] or len(issues) == 0:
       # Call the server code to pass the values and create a new user.
@@ -107,6 +91,7 @@ class EditUser(EditUserTemplate):
         try:
           anvil.server.call(
             "editUser",
+            self.employeeId,
             self.txtFullName.text,
             self.txtEmail.text,
             self.txtPhoneNumber.text,
@@ -138,6 +123,8 @@ class EditUser(EditUserTemplate):
         except Exception as e:
           alert(f"An error occurred: {str(e)}")
           self.txtEmail.text = ""
+        if confirm("Would you like to view this profile?"):
+          self._parent.openSelectedProfile(self.employeeId)
     else:
       issueString = ""
       n = 0

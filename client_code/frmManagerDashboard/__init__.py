@@ -68,8 +68,8 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
 
   def openSelectedProfile(self, userID, **event_args):
     self.cpDashboards.clear()
-    self.cpDashboards.add_component(frmProfile(employeeID=userID))
+    self.cpDashboards.add_component(frmProfile(employeeID=userID, p_parent=self))
 
   def editUser(self, userID, **event_args):
     self.cpDashboards.clear()
-    self.cpDashboards.add_component(EditUser(employeeID=userID))
+    self.cpDashboards.add_component(EditUser(employeeID=userID, p_parent=self))

@@ -7,14 +7,15 @@ components:
   type: GridPanel
   layout_properties: {slot: default}
   components:
-  - name: btnMenu
-    properties: {text: '', icon: 'fa:bars', spacing_above: medium}
-    type: Button
-    layout_properties: {row: GIPNDZ, width_xs: 1, col_xs: 0}
   - name: btnBack
     properties: {text: Back, icon: 'fa:angle-left', spacing_above: medium}
     type: Button
-    layout_properties: {row: GIPNDZ, width_xs: 1, col_xs: 0}
+    layout_properties: {row: GIPNDZ, width_xs: 1, col_xs: 1}
+  - name: btnEditProfile
+    properties: {text: Edit Profile, spacing_above: medium}
+    type: Button
+    layout_properties: {row: GIPNDZ, width_xs: 2, col_xs: 2}
+    event_bindings: {click: editProfile}
   - name: imgHeader
     properties: {height: 130, source: _/theme/MANAGEMENT.png}
     type: Image
