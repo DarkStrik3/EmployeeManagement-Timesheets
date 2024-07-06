@@ -11,7 +11,8 @@ from ..Settings import Settings
 from ..Timesheets import Timesheets
 from ..AddUser import AddUser
 from ..EditUser import EditUser
-from ..frmProfile import frmProfile
+from ..frmProfileTimesheets import frmProfileTimesheets
+from ..frmProfileUserDetails import frmProfileUserDetails
 
 
 class frmManagerDashboard(frmManagerDashboardTemplate):
@@ -66,10 +67,14 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
     self.btnTimesheets.background = ""
     self.btnSettings.background = ""
 
-  def openSelectedProfile(self, userID, **event_args):
+  def openProfileUserDetails(self, userID, **event_args):
     self.cpDashboards.clear()
-    self.cpDashboards.add_component(frmProfile(employeeID=userID, p_parent=self))
+    self.cpDashboards.add_component(frmProfileUserDetails(employeeID=userID, p_parent=self))
 
+  def openProfileTimesheets(self, userID, **event_args):
+    self.cpDashboards.clear()
+    self.cpDashboards.add_component(frmProfileTimesheets(employeeID=userID, p_parent=self))
+  
   def editUser(self, userID, **event_args):
     self.cpDashboards.clear()
     self.cpDashboards.add_component(EditUser(employeeID=userID, p_parent=self))

@@ -13,8 +13,6 @@ class frmProfileUserDetails(frmProfileUserDetailsTemplate):
     self.init_components(**properties)
     self._parent = p_parent
     self.employeeId = employeeID
-    # Setting all parts that are only required for the employee view to be invisible.
-
 
     # Displaying all of the Employee details.
     userRow = anvil.server.call('getUserInfo', employeeID)
@@ -33,9 +31,8 @@ class frmProfileUserDetails(frmProfileUserDetailsTemplate):
     self.lblGender.text = str(userRow['Gender'])
     self.lblTFN.text = str(userRow['TFN'])
 
-    # Displaying the employee's work records.
-    userWorkRecords = anvil.server.call('getUserTimesheets', employeeID)
-    self.rpPastWork.items = userWorkRecords
-
   def editProfile(self, **event_args):
     self._parent.editUser(self.employeeId)
+
+  def openTimesheets(self, **event_args):
+    self._parent.openProfileTimesheets(self.employeeId)

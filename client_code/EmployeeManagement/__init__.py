@@ -15,14 +15,24 @@ class EmployeeManagement(EmployeeManagementTemplate):
 
 
     def refreshEmployeeList(self, **event_args):
-      self.employees = anvil.server.call("getAllEmployees", self.user["UserID"])
+      if self.ddSort.selected_value == "ID":
+        sortBy = "UserID"
+      elif self.ddSort.selected_value == "Name":
+        sortBy = "FullName"
+      elif self.ddSort.selected_value == ""
+      self.employees = anvil.server.call("getAllEmployees", self.user["UserID"], sortBy)
+      g
+      
       self.rpEmployees.items = [{'employee': emp, 'parent': self} for emp in self.employees]
 
     def addUser(self, **event_args):
-        self._parent.selectAddNewUser()
+      self._parent.selectAddNewUser()
 
-    def openProfile(self, employeeID, **event_args):
-        self._parent.openSelectedProfile(employeeID)
+    def openProfileTimesheets(self, employeeID, **event_args):
+      self._parent.openProfileTimesheets(employeeID)
+
+    def openProfileUserDetails(self, employeeID, **event_args):
+      self._parent.openProfileUserDetails(employeeID)
 
     def editUserDetails(self, employeeID, **event_args):
-        self._parent.editUser(employeeID)
+      self._parent.editUser(employeeID)

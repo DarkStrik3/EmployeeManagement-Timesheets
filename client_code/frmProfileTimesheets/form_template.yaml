@@ -8,13 +8,13 @@ components:
   layout_properties: {slot: default}
   components:
   - name: btnBack
-    properties: {text: Back, icon: 'fa:angle-left', spacing_above: medium}
+    properties: {text: Back, icon: 'fa:angle-left', spacing_above: small}
     type: Button
-    layout_properties: {row: YDUVHX, width_xs: 1, col_xs: 1}
+    layout_properties: {row: YDUVHX, width_xs: 2, col_xs: 1}
   - name: btnEditProfile
-    properties: {text: Edit Profile, spacing_above: medium}
+    properties: {text: Edit Profile, spacing_above: small}
     type: Button
-    layout_properties: {row: YDUVHX, width_xs: 2, col_xs: 2}
+    layout_properties: {row: YDUVHX, width_xs: 2, col_xs: 3}
     event_bindings: {click: editProfile}
   - name: lblFullNAME
     properties: {align: center, bold: true, font_size: 20}
@@ -43,6 +43,7 @@ components:
     properties: {text: User Details}
     type: Button
     layout_properties: {row: YDUVHX, width_xs: 2, col_xs: 8}
+    event_bindings: {click: openUserDetails}
   - name: btnTimesheets
     properties: {text: User Timesheets, bold: true, background: '#6e6e6e', foreground: '#ffffff'}
     type: Button

@@ -13,32 +13,16 @@ class frmProfileTimesheets(frmProfileTimesheetsTemplate):
     self.init_components(**properties)
     self._parent = p_parent
     self.employeeId = employeeID
-    # Setting all parts that are only required for the employee view to be invisible.
-    self.imgHeader.visible = False
-    self.imgProfile.visible = False
-    self.lblProfileName.visible = False
-    self.btnBack.visible = False
 
-    # Displaying all of the Employee details.
+    # Displaying the Employee name.
     userRow = anvil.server.call("getUserInfo", employeeID)
-    self.imgProfilePicture.source = userRow["Profile"]
     self.lblFullNAME.text = str(userRow["FullName"])
-    self.lblWorkType.text = str(userRow["Employment"])
-    self.lblGroup.text = str(userRow["Group"])
-    self.lblEmail.text = str(userRow["Email"])
-    self.lblPhoneNumber.text = str(userRow["PhoneNumber"])
-    self.lblDoB.text = str(userRow["DoB"])
-    self.lblBaseRate.text = str(userRow["BasicRate"])
-    self.lblExtendedRate.text = str(userRow["ExtendedRate"])
-    self.lblPublicHolidayRate.text = str(userRow["PublHolRate"])
-    self.lblUserID.text = str(userRow["UserID"])
-    self.lblJobTitle.text = str(userRow["Title"])
-    self.lblGender.text = str(userRow["Gender"])
-    self.lblTFN.text = str(userRow["TFN"])
-
     # Displaying the employee's work records.
     userWorkRecords = anvil.server.call("getUserTimesheets", employeeID)
     self.rpPastWork.items = userWorkRecords
 
   def editProfile(self, **event_args):
     self._parent.editUser(self.employeeId)
+
+  def openUserDetails(self, **event_args):
+    self._parent.openProfileUserDetails(self.employeeId)

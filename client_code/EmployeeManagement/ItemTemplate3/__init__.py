@@ -20,7 +20,7 @@ class ItemTemplate3(ItemTemplate3Template):
       self._parent.editUserDetails(self.item['employee']["UserID"])
 
     def openUser(self, **event_args):
-      self._parent.openProfile(self.item['employee']["UserID"])
+      self._parent.openProfileUserDetails(self.item['employee']["UserID"])
 
     def archiveUser(self, **event_args):
       if confirm("Are you sure you want to archive " + self.item['employee']["FullName"] + "'s account?"):

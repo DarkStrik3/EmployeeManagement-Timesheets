@@ -22,9 +22,10 @@ components:
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE KRUDRG,OJLMPO'}
 - name: ddSort
   properties:
-    items: [ID, Name, Group, Permissions, Employment Type]
+    items: [ID, Name, Group, Employment Type]
   type: DropDown
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE IGVGCI,QFTSEW'}
+  event_bindings: {change: refreshEmplpyeeList}
 - name: lblFilters
   properties: {text: Filters, bold: true, align: center, font_size: 20}
   type: Label
