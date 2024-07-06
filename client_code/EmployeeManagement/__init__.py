@@ -19,10 +19,11 @@ class EmployeeManagement(EmployeeManagementTemplate):
         sortBy = "UserID"
       elif self.ddSort.selected_value == "Name":
         sortBy = "FullName"
-      elif self.ddSort.selected_value == ""
+      elif self.ddSort.selected_value == "Group":
+        sortBy = "Group"
+      elif self.ddSort.selected_value == "Employment Type":
+        sortBy = "Employment"
       self.employees = anvil.server.call("getAllEmployees", self.user["UserID"], sortBy)
-      g
-      
       self.rpEmployees.items = [{'employee': emp, 'parent': self} for emp in self.employees]
 
     def addUser(self, **event_args):

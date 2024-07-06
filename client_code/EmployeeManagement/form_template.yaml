@@ -25,7 +25,7 @@ components:
     items: [ID, Name, Group, Employment Type]
   type: DropDown
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE IGVGCI,QFTSEW'}
-  event_bindings: {change: refreshEmplpyeeList}
+  event_bindings: {change: refreshEmployeeList}
 - name: lblFilters
   properties: {text: Filters, bold: true, align: center, font_size: 20}
   type: Label
