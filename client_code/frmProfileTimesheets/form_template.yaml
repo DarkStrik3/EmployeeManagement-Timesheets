@@ -1,0 +1,50 @@
+container:
+  type: HtmlTemplate
+  properties: {html: <div anvil-slot="default"></div>}
+components:
+- name: gpProfile
+  properties: {}
+  type: GridPanel
+  layout_properties: {slot: default}
+  components:
+  - name: btnBack
+    properties: {text: Back, icon: 'fa:angle-left', spacing_above: medium}
+    type: Button
+    layout_properties: {row: YDUVHX, width_xs: 1, col_xs: 1}
+  - name: btnEditProfile
+    properties: {text: Edit Profile, spacing_above: medium}
+    type: Button
+    layout_properties: {row: YDUVHX, width_xs: 2, col_xs: 2}
+    event_bindings: {click: editProfile}
+  - name: lblFullNAME
+    properties: {align: center, bold: true, font_size: 20}
+    type: Label
+    layout_properties: {row: YDUVHX, width_xs: 3, col_xs: 5}
+  - name: dgUserWork
+    properties:
+      columns:
+      - {id: JBHATU, data_key: WorkID, title: WorkID}
+      - {id: JKSDUP, title: Date, data_key: Date}
+      - {id: RGSYUC, data_key: ClockIn, title: Clock In}
+      - {id: PZUJKU, data_key: ClockOut, title: Clock Out}
+      - {id: VJQQOR, title: Hours Worked, data_key: HoursWorked}
+      - {id: OJLQEN, title: Pay Rate, data_key: PayRate}
+      - {id: GRQBIK, data_key: Payout, title: Payout, expand: false}
+      - {id: TVIIBG, data_key: approval, title: Approval}
+      show_page_controls: false
+      auto_header: true
+    type: DataGrid
+    components:
+    - name: rpPastWork
+      properties: {item_template: frmProfileUserDetails.RowTemplate1}
+      type: RepeatingPanel
+    layout_properties: {row: MHFVCP, width_xs: 12, col_xs: 0}
+  - name: btnUserDetails
+    properties: {text: User Details}
+    type: Button
+    layout_properties: {row: YDUVHX, width_xs: 2, col_xs: 8}
+  - name: btnTimesheets
+    properties: {text: User Timesheets, bold: true, background: '#6e6e6e', foreground: '#ffffff'}
+    type: Button
+    layout_properties: {row: YDUVHX, width_xs: 2, col_xs: 10}
+is_package: true

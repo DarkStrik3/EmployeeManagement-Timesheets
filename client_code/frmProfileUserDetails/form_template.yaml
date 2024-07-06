@@ -1,0 +1,136 @@
+container:
+  type: HtmlTemplate
+  properties: {html: <div anvil-slot="default"></div>}
+components:
+- name: gpButtons
+  properties: {}
+  type: GridPanel
+  layout_properties: {slot: default}
+  components:
+  - name: btnBack
+    properties: {text: Back, icon: 'fa:angle-left', spacing_above: medium}
+    type: Button
+    layout_properties: {row: NCBWPW, width_xs: 1, col_xs: 1}
+  - name: btnEditProfile
+    properties: {text: Edit Profile, spacing_above: medium}
+    type: Button
+    layout_properties: {row: NCBWPW, width_xs: 2, col_xs: 2}
+    event_bindings: {click: editProfile}
+  - name: lblFullNAME
+    properties: {align: center, bold: true, font_size: 20, spacing_above: small}
+    type: Label
+    layout_properties: {row: NCBWPW, width_xs: 3, col_xs: 4}
+  - name: btnUserDetails
+    properties: {text: User Details, background: '#6e6e6e', foreground: '#ffffff', bold: true}
+    type: Button
+    layout_properties: {row: NCBWPW, width_xs: 2, col_xs: 7}
+  - name: btnTimesheets
+    properties: {text: User Timesheets, bold: false, background: '', foreground: ''}
+    type: Button
+    layout_properties: {row: NCBWPW, width_xs: 2, col_xs: 9}
+- name: gpProfile
+  properties: {}
+  type: GridPanel
+  layout_properties: {slot: default}
+  components:
+  - name: imgProfilePicture
+    properties: {display_mode: zoom_to_fill, height: '190', vertical_align: center}
+    type: Image
+    layout_properties: {row: JCRYJK, width_xs: 2, col_xs: 4}
+  - name: lblIDLabel
+    properties: {text: 'ID:', align: left, bold: true, spacing_above: small, spacing_below: small}
+    type: Label
+    layout_properties: {row: PPDJHY, width_xs: 2, col_xs: 4}
+  - name: lblUserID
+    properties: {align: left, spacing_above: small, spacing_below: medium}
+    type: Label
+    layout_properties: {row: PPDJHY, width_xs: 2, col_xs: 6}
+  - name: lblJobTitleLabel
+    properties: {text: 'Job Title:', align: left, bold: true, spacing_below: small}
+    type: Label
+    layout_properties: {row: PPDJHY, width_xs: 2, col_xs: 8}
+  - name: lblJobTitle
+    properties: {align: left, spacing_below: small}
+    type: Label
+    layout_properties: {row: PPDJHY, width_xs: 2, col_xs: 10}
+  - name: lblWorkTypeLabel
+    properties: {text: 'Employment Type:', align: left, bold: true, spacing_below: small, spacing_above: small}
+    type: Label
+    layout_properties: {row: DGJFGG, width_xs: 2, col_xs: 4}
+  - name: lblWorkType
+    properties: {align: left, spacing_below: small, spacing_above: small}
+    type: Label
+    layout_properties: {row: DGJFGG, width_xs: 2, col_xs: 6}
+  - name: lblGroupLabel
+    properties: {text: 'Group:', align: left, bold: true, spacing_above: small}
+    type: Label
+    layout_properties: {row: DGJFGG, width_xs: 2, col_xs: 8}
+  - name: lblGroup
+    properties: {spacing_above: small}
+    type: Label
+    layout_properties: {row: DGJFGG, width_xs: 2, col_xs: 10}
+  - name: lblEmailLabel
+    properties: {align: left, bold: true, text: 'Email:'}
+    type: Label
+    layout_properties: {row: NUZFMI, width_xs: 2, col_xs: 4}
+  - name: lblEmail
+    properties: {}
+    type: Label
+    layout_properties: {row: NUZFMI, width_xs: 2, col_xs: 6}
+  - name: lblbaseRateLabel
+    properties: {text: 'Base Rate:', bold: true, align: left}
+    type: Label
+    layout_properties: {row: NUZFMI, width_xs: 2, col_xs: 8}
+  - name: lblBaseRate
+    properties: {}
+    type: Label
+    layout_properties: {row: NUZFMI, width_xs: 2, col_xs: 10}
+  - name: lblPhoneNumberLabel
+    properties: {text: 'Phone Number:', align: left, bold: true}
+    type: Label
+    layout_properties: {row: DLMITY, width_xs: 2, col_xs: 4}
+  - name: lblPhoneNumber
+    properties: {}
+    type: Label
+    layout_properties: {row: DLMITY, width_xs: 2, col_xs: 6}
+  - name: lblExtendedRateLabel
+    properties: {text: 'Extended Rate:', bold: true, align: left}
+    type: Label
+    layout_properties: {row: DLMITY, width_xs: 2, col_xs: 8}
+  - name: lblExtendedRate
+    properties: {}
+    type: Label
+    layout_properties: {row: DLMITY, width_xs: 2, col_xs: 10}
+  - name: lblDoBlabel
+    properties: {text: 'Date of Birth:', align: left, bold: true}
+    type: Label
+    layout_properties: {row: GJRVWT, width_xs: 2, col_xs: 4}
+  - name: lblDoB
+    properties: {}
+    type: Label
+    layout_properties: {row: GJRVWT, width_xs: 2, col_xs: 6}
+  - name: lblPubHolRateLb
+    properties: {text: 'Pub. Holiday Rate:', align: left, bold: true}
+    type: Label
+    layout_properties: {row: GJRVWT, width_xs: 2, col_xs: 8}
+  - name: lblPublicHolidayRate
+    properties: {align: left}
+    type: Label
+    layout_properties: {row: GJRVWT, width_xs: 2, col_xs: 10}
+  - name: lblGenderLabel
+    properties: {text: 'Gender:', align: left, bold: true}
+    type: Label
+    layout_properties: {row: LKKTAH, width_xs: 2, col_xs: 4}
+  - name: lblGender
+    properties: {}
+    type: Label
+    layout_properties: {row: LKKTAH, width_xs: 2, col_xs: 6}
+  - name: lblTFNlabel
+    properties: {text: 'TFN:', align: left, bold: true}
+    type: Label
+    layout_properties: {row: LKKTAH, width_xs: 2, col_xs: 8}
+  - name: lblTFN
+    properties: {}
+    type: Label
+    layout_properties: {row: LKKTAH, width_xs: 2, col_xs: 10}
+is_package: true

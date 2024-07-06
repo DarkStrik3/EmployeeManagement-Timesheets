@@ -1,4 +1,4 @@
-from ._anvil_designer import frmProfileTemplate
+from ._anvil_designer import frmProfileUserDetailsTemplate
 from anvil import *
 import anvil.users
 import anvil.server
@@ -7,17 +7,14 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 
 
-class frmProfile(frmProfileTemplate):
+class frmProfileUserDetails(frmProfileUserDetailsTemplate):
   def __init__(self, employeeID, p_parent, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     self._parent = p_parent
     self.employeeId = employeeID
     # Setting all parts that are only required for the employee view to be invisible.
-    self.imgHeader.visible = False
-    self.imgProfile.visible = False
-    self.lblProfileName.visible = False
-    self.btnBack.visible = False
+
 
     # Displaying all of the Employee details.
     userRow = anvil.server.call('getUserInfo', employeeID)

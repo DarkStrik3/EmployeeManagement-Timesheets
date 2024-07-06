@@ -21,3 +21,15 @@ components:
   properties: {}
   type: Label
   layout_properties: {column: GRQBIK}
+- name: lblWorkID
+  properties: {}
+  type: Label
+  layout_properties: {column: JBHATU}
+- name: lblClockIn
+  properties: {}
+  type: Label
+  layout_properties: {column: RGSYUC}
+- name: lblClockOut
+  properties: {}
+  type: Label
+  layout_properties: {column: PZUJKU}

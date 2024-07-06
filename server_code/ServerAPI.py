@@ -133,7 +133,7 @@ def addNewuser(username, newEmail, password, newPhoneNumber, DateOfBirth, newGen
 def editUser(userID, username, Email, phoneNumber, dateOfBirth, gender, employmentType, group, title, baseRate, extendRate, pubHolRate, tfn, profileImg):
   oldRow = app_tables.tbluserdetails.get(UserID=userID)
   oldRow.update(FullName=username, 
-                Email=email, 
+                Email=Email, 
                 PhoneNumber=phoneNumber, 
                 DoB=dateOfBirth, 
                 Gender=gender, 
