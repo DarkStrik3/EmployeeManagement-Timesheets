@@ -10,7 +10,7 @@ components:
   - name: btnBack
     properties: {text: Back, icon: 'fa:angle-left', spacing_above: small}
     type: Button
-    layout_properties: {row: NCBWPW, width_xs: 2, col_xs: 1}
+    layout_properties: {row: NCBWPW, width_xs: 2, col_xs: 0}
   - name: btnEditProfile
     properties: {text: Edit Profile, spacing_above: small}
     type: Button

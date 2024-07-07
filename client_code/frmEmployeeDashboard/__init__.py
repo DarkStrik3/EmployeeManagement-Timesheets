@@ -5,6 +5,10 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
+from ..EmployeeDashboard import EmployeeDashboard
+from ..frmProfileUserDetails import frmProfileUserDetails
+from ..frmProfileTimesheets import frmProfileTimesheets
+from ..Settings import Settings
 
 class frmEmployeeDashboard(frmEmployeeDashboardTemplate):
   def __init__(self, **properties):
@@ -13,35 +17,40 @@ class frmEmployeeDashboard(frmEmployeeDashboardTemplate):
     self.user = anvil.users.get_user()
     self.userID = self.user['UserID']
 
-    # Set Form Data bindings.
-    self.rpLeft.items = anvil.server.call("getUserTimesheets", self.userID, True)
-    self.rpRight.items = anvil.server.call("getUserTimesheets", self.userID, False)
     # Any code you write here will run before the form opens.
-    self.refresh()
-  
-  def refresh(self, **event_args):
-    workingStatus = anvil.server.call('getIfWorking', self.userID)
-    if workingStatus:
-      self.btnClockinout.text = "Clock Out"
-      self.btnClockinout.background = "#ff0000"
-      self.btnClockinout.tag = 1
-    else:
-      self.btnClockinout.text = "Clock In"
-      self.btnClockinout.background = "#088000"
-      self.btnClockinout.tag = 0
-      
-  def clock(self, **event_args):
-    if self.btnClockinout.tag == 0:
-      self.btnClockinout.text = "Clock Out"
-      self.btnClockinout.background = "#ff0000"
-      self.btnClockinout.tag = 1
-      anvil.server.call('setClock', self.userID)
-    else:
-      self.btnClockinout.text = "Clock In"
-      self.btnClockinout.background = "#088000"
-      self.btnClockinout.tag = 0
-      anvil.server.call('updateClock', self.userID)
+    userRow = anvil.server.call('getUserInfo', self.userID)
+    self.lblProfileName.text = userRow['FullName']
+    self.imgProfile.source = userRow['Profile']
+    self.openEmployeeDashboard()
 
-  def profile(self, **event_args):
-    userID = self.userID
-    open_form('frmProfile', userID)
+
+  def openEmployeeDashboard(self, **event_args):
+    self.cpEmployeeDashboard.clear()
+    self.cpEmployeeDashboard.add_component(EmployeeDashboard())
+
+
+  def openProfileUserDetails(self, employeeID, **event_args):
+    self.cpEmployeeDashboard.clear()
+    self.cpEmployeeDashboard.add_component(frmProfileUserDetails(self.userID, self))
+
+  def openProfileTimesheets(self, employeeID, **event_args):
+    self.cpEmployeeDashboard.clear()
+    self.cpEmployeeDashboard.add_component(frmProfileTimesheets(self.userID, self))
+
+  def openSettings(self, **event_args):
+    self.cpEmployeeDashboard.clear()
+    self.cpEmployeeDashboard.add_component(Settings())
+
+  def signOut(self, **event_args):
+    anvil.users.logout()
+    open_form('frmLogin')
+
+  def menu(self, **Event_args):
+    choice = confirm(title="Pages:\n", buttons=[("Dashboard", 1), ("Profile", 2), ("Settings", 3)], dismissible=True)
+    if choice == 1:
+      self.openEmployeeDashboard()
+    elif choice == 2:
+      self.openProfileUserDetails(self.userID)
+    elif choice == 3:
+      self.openSettings()
+      

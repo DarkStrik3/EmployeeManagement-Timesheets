@@ -38,7 +38,6 @@ def getUserTimesheets(ID):
   except:
     return None
 
-
 @anvil.server.callable
 def getTimesheetsManagers():
   timesheets = app_tables.tblworkrecords.search(tables.order_by("Date"), ascending=False)

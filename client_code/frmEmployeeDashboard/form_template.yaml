@@ -11,54 +11,38 @@ components:
     properties: {text: '', icon: 'fa:bars', font_size: null, spacing_above: medium}
     type: Button
     layout_properties: {row: YXXFRA, width_xs: 1, col_xs: 0}
+    event_bindings: {click: menu}
   - name: btnSignOut
     properties: {text: Sign Out, icon: 'fa:caret-left', spacing_above: medium}
     type: Button
-    layout_properties: {row: YXXFRA, width_xs: 1, col_xs: 1}
-  - name: imgHeader
-    properties: {height: 99, source: _/theme/MANAGEMENT.png}
-    type: Image
+    layout_properties: {row: YXXFRA, width_xs: 2, col_xs: 1}
+    event_bindings: {click: signOut}
+  - name: linkHeader
+    properties: {}
+    type: Link
     layout_properties: {row: YXXFRA, width_xs: 6, col_xs: 3}
+    components:
+    - name: imgHeader
+      properties: {height: 99, source: _/theme/MANAGEMENT.png}
+      type: Image
+      layout_properties: {grid_position: 'OZWGSK,YOFUJS'}
+    event_bindings: {click: openEmployeeDashboard}
   - name: lblProfileName
     properties: {align: right, spacing_above: large}
     type: Label
     layout_properties: {row: YXXFRA, width_xs: 1, col_xs: 10}
-  - name: imgProfile
-    properties: {height: 84, spacing_above: medium}
-    type: Image
+  - name: linkProfile
+    properties: {}
+    type: Link
     layout_properties: {row: YXXFRA, width_xs: 1, col_xs: 11}
-  - name: lblApprovedWork
-    properties: {text: Approved Work, bold: true, align: center, font_size: 30}
-    type: Label
-    layout_properties: {row: AXYEFY, width_xs: 3, col_xs: 0}
-  - name: lblBalance
-    properties: {font_size: 50, align: center, bold: true, spacing_above: large}
-    type: Label
-    layout_properties: {row: AXYEFY, width_xs: 4, col_xs: 4}
-  - name: lblPendingWork
-    properties: {text: Pending Work, bold: true, align: center, font_size: 30}
-    type: Label
-    layout_properties: {row: AXYEFY, width_xs: 3, col_xs: 9}
-  - name: btnClockinout
-    properties: {text: Clock In, background: '#088000', foreground: '#ffffff', align: full, bold: true, font_size: 40, border: ''}
-    type: Button
-    layout_properties: {row: BJQNJT, width_xs: 2, col_xs: 5}
-    event_bindings: {click: clock}
-  - name: rpLeft
-    properties: {item_template: frmEmployeeDashboard.ItemTemplate1}
-    type: RepeatingPanel
-    layout_properties: {row: AVFKUA, width_xs: 3, col_xs: 0}
-  - name: lblTimer
-    properties: {align: center}
-    type: Label
-    layout_properties: {row: AVFKUA, width_xs: 2, col_xs: 5}
-  - name: rpRight
-    properties: {item_template: frmEmployeeDashboard.ItemTemplate1}
-    type: RepeatingPanel
-    layout_properties: {row: AVFKUA, width_xs: 3, col_xs: 9}
-  - name: btnProfile
-    properties: {text: Profile, bold: false, font_size: 20, align: full}
-    type: Button
-    layout_properties: {row: MNARXL, width_xs: 4, col_xs: 4}
-    event_bindings: {click: profile}
+    components:
+    - name: imgProfile
+      properties: {height: 72.49996948242188, spacing_above: medium, display_mode: zoom_to_fill}
+      type: Image
+      layout_properties: {grid_position: 'AQVCPL,NRQYXQ'}
+    event_bindings: {click: openProfileUserDetails}
+  - name: cpEmployeeDashboard
+    properties: {}
+    type: ColumnPanel
+    layout_properties: {row: FSFDTX, width_xs: 12, col_xs: 0}
 is_package: true
