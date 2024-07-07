@@ -1,4 +1,4 @@
-from ._anvil_designer import ItemTemplate3Template
+from ._anvil_designer import IndividualProfileTemplate
 from anvil import *
 import anvil.users
 import anvil.server
@@ -6,7 +6,7 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 
-class ItemTemplate3(ItemTemplate3Template):
+class IndividualProfile(IndividualProfileTemplate):
     def __init__(self, **properties):
         self.init_components(**properties)
         self._parent = self.item['parent']
@@ -24,4 +24,5 @@ class ItemTemplate3(ItemTemplate3Template):
 
     def archiveUser(self, **event_args):
       if confirm("Are you sure you want to archive " + self.item['employee']["FullName"] + "'s account?"):
-        self._parent.archiveUser(self.item['employee']["UserID"])
+        
+        anvil.serval.call("archiveUser", self.item['employee']["UserID"])
