@@ -11,9 +11,9 @@ class WorkRecordTemplate(WorkRecordTemplateTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    self.lblWorkID = str(self.item['WorkID'])
-    self.lblDate = str(self.item['Date'])
-    self.lblHoursWorked = str(self.item['HoursWorked'])
-    self.lblPayout = str(self.item['Payout'])
-    self.lblPayRate = self.item['PayRate']
+    self.lblWorkID.text = "WorkID: " + str(self.item['WorkID'])
+    self.lblDate.text = "Date: " + str(self.item['Date'])
+    self.lblHoursWorked.text = "Time worked: " + str(self.item['HoursWorked'])
+    self.lblPayout.text = "Payout: " + str(self.item['Payout'])
+    self.lblPayRate.text = "Payrate: " + self.item['PayRate']
     # Any code you write here will run before the form opens.

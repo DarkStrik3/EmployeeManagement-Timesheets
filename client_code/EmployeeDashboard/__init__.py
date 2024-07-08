@@ -18,8 +18,8 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
     try:
       self.rpApprovedWork.items = [d for d in allWorkRecords if d['Approval']]
       self.rpPendingWork.items = [d for d in allWorkRecords if not d['Approval']]
-    except:
-      pass
+    except Exception as E:
+      print(E)
     # Any code you write here will run before the form opens.
     self.refresh()
 

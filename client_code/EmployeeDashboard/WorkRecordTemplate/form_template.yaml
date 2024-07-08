@@ -13,11 +13,11 @@ components:
   properties: {}
   type: Label
   layout_properties: {grid_position: 'VZRWBL,MAUQLL GZQHCS,PZVXDE'}
+- name: lblPayRate
+  properties: {}
+  type: Label
+  layout_properties: {grid_position: 'VZRWBL,MAUQLL FFTWXR,AEEZBV'}
 - name: lblPayout
   properties: {}
   type: Label
   layout_properties: {grid_position: 'VZRWBL,MAUQLL FFTWXR,LVMYGR'}
-- name: lblPayRate
-  properties: {}
-  type: Label
-  layout_properties: {grid_position: 'ZGFSNN,IZAVHI'}
