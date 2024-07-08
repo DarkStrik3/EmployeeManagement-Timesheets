@@ -27,8 +27,15 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
             self.btnClockinout.background = "#088000"
             self.btnClockinout.tag = 0
         try:
-            self.rpApprovedWork.items = [d for d in allWorkRecords if d['Approval']][-6:]
-            self.rpPendingWork.items = [d for d in allWorkRecords if not d['Approval']][-6:]
+            self.rpApprovedWork.items = []
+            self.rpPendingWork.items = []
+            # Update the repeating panels 
+            approved_records = [d for d in allWorkRecords if d['Approval']]
+            pending_records = [d for d in allWorkRecords if not d['Approval']]
+            
+            # Set items 
+            self.rpApprovedWork.items = approved_records[-6:]
+            self.rpPendingWork.items = pending_records[-6:]
         except Exception as e:
             print(e)
 
