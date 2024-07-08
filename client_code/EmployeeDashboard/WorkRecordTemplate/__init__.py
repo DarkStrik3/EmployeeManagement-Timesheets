@@ -14,6 +14,12 @@ class WorkRecordTemplate(WorkRecordTemplateTemplate):
     self.border = "thin solid"
     self.lblWorkID.text = "WorkID: " + str(self.item['WorkID'])
     self.lblDate.text = "Date: " + str(self.item['Date'])
-    self.lblHoursWorked.text = "Time worked: " + str(self.item['HoursWorked'])
-    self.lblPayout.text = "Payout: " + str(self.item['Payout'])
+    
+    # Calculate hours and minutes from HoursWorked
+    total_seconds = self.item['HoursWorked'] * 3600  # Convert hours to seconds
+    hours = int(total_seconds // 3600)
+    minutes = int((total_seconds % 3600) // 60)
+    self.lblHoursWorked.text = f"Time worked: {hours}H, {minutes}m"
+    
+    self.lblPayout.text = "Payout: " + str(round(self.item['Payout'], 2))
     self.lblPayRate.text = "Payrate: " + str(self.item['PayRate'])

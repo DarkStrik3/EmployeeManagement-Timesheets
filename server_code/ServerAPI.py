@@ -3,7 +3,8 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
-from datetime import *
+from datetime import datetime, date, timedelta
+
 
 # GETTERS
 @anvil.server.callable
@@ -90,18 +91,18 @@ def newWorkId(ID):
 @anvil.server.callable
 def setClock(ID):
     user = app_tables.tbluserdetails.get(UserID=ID)
-    clockIn = datetime.now()
+    clockIn = datetime.now().replace(tzinfo=None)
     clockDate = date.today()
-    app_tables.tblworkrecords.add_row(UserID=ID, ClockIn=clockIn, Date=clockDate, PayRate=user['BasicRate'])
+    app_tables.tblworkrecords.add_row(WorkID=newWorkId(ID), UserID=ID, ClockIn=clockIn, Date=clockDate, PayRate=user['BasicRate'])
 
 @anvil.server.callable
 def updateClock(ID):
     row = app_tables.tblworkrecords.search(tables.order_by("ClockIn", ascending=False), UserID=ID)[0]
-    clockOutTime = datetime.now()
-    totalWorkTime = clockOutTime - row['ClockIn'] # get total time worked
-    totalWorkHours = totalWorkTime / 3600 # convert total work time to hours
-    payout = totalWork * row['PayRate']
-    row.update(ClockOut=clockOutTime, Payout=payout, HoursWorked=totalWorkHours)
+    clockOutTime = datetime.now().replace(tzinfo=None)
+    totalWork = clockOutTime - row['ClockIn'].replace(tzinfo=None)
+    total_hours = totalWork.total_seconds() / 3600  # convert total work time to hours
+    payout = total_hours * row['PayRate']
+    row.update(ClockOut=clockOutTime, Payout=payout, HoursWorked=total_hours)
 
 @anvil.server.callable
 def addNewuser(username, newEmail, password, newPhoneNumber, DateOfBirth, newGender, employmentType, newGroup, title, baseRate, extendRate, pubHolRate, newTFN, profileImg):
