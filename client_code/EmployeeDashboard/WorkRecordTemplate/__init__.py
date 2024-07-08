@@ -15,5 +15,4 @@ class WorkRecordTemplate(WorkRecordTemplateTemplate):
     self.lblDate.text = "Date: " + str(self.item['Date'])
     self.lblHoursWorked.text = "Time worked: " + str(self.item['HoursWorked'])
     self.lblPayout.text = "Payout: " + str(self.item['Payout'])
-    self.lblPayRate.text = "Payrate: " + self.item['PayRate']
-    # Any code you write here will run before the form opens.
+    self.lblPayRate.text = "Payrate: " + str(self.item['PayRate'])
