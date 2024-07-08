@@ -18,16 +18,16 @@ def getUserInfo(ID):
 
 @anvil.server.callable
 def getIfWorking(ID):
-  try:
-    rows = app_tables.tblworkrecords.search(tables.order_by("ClockIn"), ascending=False, UserID=ID)
-    topRow = rows[0]
-    clockOut = topRow["ClockOut"] # checks if the most recent work has a clock out
-    if clockOut is None:
-      return True # The Clockout row is empty, meaning that they haven't clocked out yet and are still working
-    else:
-      return False # The most recent work record has a clock out, meaning that the employee is going to start working.
-  except:
-    return False # The employee has no history of working at all, failed to get a row out of NoneType
+    try:
+        rows = app_tables.tblworkrecords.search(tables.order_by("ClockIn", ascending=False), UserID=ID)
+        if rows:
+            topRow = rows[0]
+            clockOut = topRow["ClockOut"]
+            if clockOut is None:
+                return True  # The ClockOut field is empty, meaning that they haven't clocked out yet and are still working
+        return False  # The most recent work record has a ClockOut, meaning that the employee is not currently working
+    except:
+        return False  # The employee has no history of working at all
 
 
 @anvil.server.callable
@@ -87,22 +87,21 @@ def newWorkId(ID):
   except:
     return 0 # there wasn't any prior work, meaning that the users
 
-
 @anvil.server.callable
 def setClock(ID):
-  user = app_tables.tbluserdetails.get(UserID=ID)
-  clockIn = datetime.now()
-  clockDate = date.today()
-  app_tables.tblworkrecords.add_row(UserID=ID, WorkID=newWorkId(ID), ClockIn=clockIn, PayRate=user['BasicRate'], Date=clockDate)
+    user = app_tables.tbluserdetails.get(UserID=ID)
+    clockIn = datetime.now()
+    clockDate = date.today()
+    app_tables.tblworkrecords.add_row(UserID=ID, ClockIn=clockIn, Date=clockDate, PayRate=user['BasicRate'])
 
 @anvil.server.callable
 def updateClock(ID):
-  row = app_tables.tblworkrecords.search(tables.order_by("ClockIn", ascending=False), UserID=ID)[0]
-  clockOutTime = datetime.now()
-  totalWork = clockOutTime - row['ClockIn']
-  payout = totalWork * row['PayRate']
-  row.update(ClockOut=clockOutTime, Payout=payout, HoursWorked=totalWork)
-
+    row = app_tables.tblworkrecords.search(tables.order_by("ClockIn", ascending=False), UserID=ID)[0]
+    clockOutTime = datetime.now()
+    totalWorkTime = clockOutTime - row['ClockIn'] # get total time worked
+    totalWorkHours = totalWorkTime / 3600 # convert total work time to hours
+    payout = totalWork * row['PayRate']
+    row.update(ClockOut=clockOutTime, Payout=payout, HoursWorked=totalWorkHours)
 
 @anvil.server.callable
 def addNewuser(username, newEmail, password, newPhoneNumber, DateOfBirth, newGender, employmentType, newGroup, title, baseRate, extendRate, pubHolRate, newTFN, profileImg):

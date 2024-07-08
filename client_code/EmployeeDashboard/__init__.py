@@ -5,43 +5,41 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
+from datetime import datetime, date
 
 
 class EmployeeDashboard(EmployeeDashboardTemplate):
-  def __init__(self, **properties):
-    # Set Form properties.
-    self.init_components(**properties)
-    self.user = anvil.users.get_user()
-    self.userID = self.user["UserID"]
-    # Set Form Data bindings.
-    # Any code you write here will run before the form opens.
-    self.refresxh()
+    def __init__(self, **properties):
+        self.init_components(**properties)
+        self.user = anvil.users.get_user()
+        self.userID = self.user["UserID"]
+        self.refresh()
 
-  def refresh(self, **event_args):
-    workingStatus = anvil.server.call("getIfWorking", self.userID)
-    allWorkRecords = anvil.server.call('getUserTimesheets', self.userID)
-    if workingStatus:
-      self.btnClockinout.text = "Clock Out"
-      self.btnClockinout.background = "#ff0000"
-      self.btnClockinout.tag = 1
-    else:
-      self.btnClockinout.text = "Clock In"
-      self.btnClockinout.background = "#088000"
-      self.btnClockinout.tag = 0
-    try:
-      self.rpApprovedWork.items = [d for d in allWorkRecords if d['Approval']][-6:]
-      self.rpPendingWork.items = [d for d in allWorkRecords if not d['Approval']][-6:]
-    except Exception as E:
-      print(E)
+    def refresh(self, **event_args):
+        workingStatus = anvil.server.call("getIfWorking", self.userID)
+        allWorkRecords = anvil.server.call('getUserTimesheets', self.userID)
+        if workingStatus:
+            self.btnClockinout.text = "Clock Out"
+            self.btnClockinout.background = "#ff0000"
+            self.btnClockinout.tag = 1
+        else:
+            self.btnClockinout.text = "Clock In"
+            self.btnClockinout.background = "#088000"
+            self.btnClockinout.tag = 0
+        try:
+            self.rpApprovedWork.items = [d for d in allWorkRecords if d['Approval']][-6:]
+            self.rpPendingWork.items = [d for d in allWorkRecords if not d['Approval']][-6:]
+        except Exception as e:
+            print(e)
 
-  def clock(self, **event_args):
-    if self.btnClockinout.tag == 0:
-      self.btnClockinout.text = "Clock Out"
-      self.btnClockinout.background = "#ff0000"
-      self.btnClockinout.tag = 1
-      anvil.server.call("setClock", self.userID)
-    else:
-      self.btnClockinout.text = "Clock In"
-      self.btnClockinout.background = "#088000"
-      self.btnClockinout.tag = 0
-      anvil.server.call("updateClock", self.userID)
+    def clock(self, **event_args):
+        if self.btnClockinout.tag == 0:
+            self.btnClockinout.text = "Clock Out"
+            self.btnClockinout.background = "#ff0000"
+            self.btnClockinout.tag = 1
+            anvil.server.call("setClock", self.userID)
+        else:
+            self.btnClockinout.text = "Clock In"
+            self.btnClockinout.background = "#088000"
+            self.btnClockinout.tag = 0
+            anvil.server.call("updateClock", self.userID)
