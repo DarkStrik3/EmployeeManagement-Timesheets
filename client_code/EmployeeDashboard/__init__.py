@@ -5,7 +5,7 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 
 
 class EmployeeDashboard(EmployeeDashboardTemplate):
@@ -43,3 +43,5 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
             self.btnClockinout.background = "#088000"
             self.btnClockinout.tag = 0
             anvil.server.call("updateClock", self.userID)
+        # Refresh the panel after clocking in/out
+        self.refresh()
