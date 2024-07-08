@@ -1,23 +1,25 @@
 is_package: true
-container: {type: ColumnPanel}
+container:
+  type: ColumnPanel
+  properties: {border: thin solid}
 components:
 - name: lblWorkID
-  properties: {}
+  properties: {align: center}
   type: Label
   layout_properties: {grid_position: 'VZRWBL,NUDWMK IRKDQZ,MGENCD'}
 - name: lblHoursWorked
-  properties: {}
+  properties: {align: center}
   type: Label
   layout_properties: {grid_position: 'VZRWBL,NUDWMK AATJII,ZLHETT'}
 - name: lblDate
-  properties: {}
+  properties: {align: center}
   type: Label
   layout_properties: {grid_position: 'VZRWBL,MAUQLL GZQHCS,PZVXDE'}
 - name: lblPayRate
-  properties: {}
+  properties: {align: center}
   type: Label
   layout_properties: {grid_position: 'VZRWBL,MAUQLL FFTWXR,AEEZBV'}
 - name: lblPayout
-  properties: {}
+  properties: {align: center}
   type: Label
   layout_properties: {grid_position: 'VZRWBL,MAUQLL FFTWXR,LVMYGR'}
