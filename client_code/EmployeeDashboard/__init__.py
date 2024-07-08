@@ -14,12 +14,12 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
     self.user = anvil.users.get_user()
     self.userID = self.user["UserID"]
     # Set Form Data bindings.
-    allWorkRecords = anvil.server.call('getUserTimesheets', self.userID)
     # Any code you write here will run before the form opens.
-    self.refresh()
+    self.refresxh()
 
   def refresh(self, **event_args):
     workingStatus = anvil.server.call("getIfWorking", self.userID)
+    allWorkRecords = anvil.server.call('getUserTimesheets', self.userID)
     if workingStatus:
       self.btnClockinout.text = "Clock Out"
       self.btnClockinout.background = "#ff0000"
@@ -29,8 +29,8 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
       self.btnClockinout.background = "#088000"
       self.btnClockinout.tag = 0
     try:
-      self.rpApprovedWork.items = [d for d in allWorkRecords if d['Approval']]
-      self.rpPendingWork.items = [d for d in allWorkRecords if not d['Approval']]
+      self.rpApprovedWork.items = [d for d in allWorkRecords if d['Approval']][-6:]
+      self.rpPendingWork.items = [d for d in allWorkRecords if not d['Approval']][-6:]
     except Exception as E:
       print(E)
 
