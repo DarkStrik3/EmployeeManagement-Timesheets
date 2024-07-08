@@ -18,6 +18,8 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
     def refresh(self, **event_args):
         workingStatus = anvil.server.call("getIfWorking", self.userID)
         allWorkRecords = anvil.server.call('getUserTimesheets', self.userID)
+        
+        # Update clock in/out button based on working status
         if workingStatus:
             self.btnClockinout.text = "Clock Out"
             self.btnClockinout.background = "#ff0000"
@@ -26,16 +28,19 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
             self.btnClockinout.text = "Clock In"
             self.btnClockinout.background = "#088000"
             self.btnClockinout.tag = 0
+        
         try:
+            # Clear existing items
             self.rpApprovedWork.items = []
             self.rpPendingWork.items = []
-            # Update the repeating panels 
-            approved_records = [d for d in allWorkRecords if d['Approval']]
-            pending_records = [d for d in allWorkRecords if not d['Approval']]
             
-            # Set items 
-            self.rpApprovedWork.items = approved_records[-6:]
-            self.rpPendingWork.items = pending_records[-6:]
+            # Assign new items
+            self.rpApprovedWork.items = [d for d in allWorkRecords if d['Approval']][-4:]
+            self.rpPendingWork.items = [d for d in allWorkRecords if not d['Approval']][-4:]
+            
+            # Refresh data bindings to ensure everything is up to date
+            self.refresh_data_bindings()
+            
         except Exception as e:
             print(e)
 
@@ -50,5 +55,6 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
             self.btnClockinout.background = "#088000"
             self.btnClockinout.tag = 0
             anvil.server.call("updateClock", self.userID)
+        
         # Refresh the panel after clocking in/out
         self.refresh()

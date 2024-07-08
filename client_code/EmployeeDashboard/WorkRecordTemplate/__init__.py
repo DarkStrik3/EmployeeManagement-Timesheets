@@ -16,11 +16,14 @@ class WorkRecordTemplate(WorkRecordTemplateTemplate):
     self.lblDate.text = "Date: " + str(self.item['Date'])
     
     # Calculate hours and minutes from HoursWorked
-    if self.item['HoursWorked'] is not None:
+    try:
       total_seconds = self.item['HoursWorked'] * 3600  # Convert hours to seconds
       hours = int(total_seconds // 3600)
       minutes = int((total_seconds % 3600) // 60)
-      self.lblHoursWorked.text = f"Time worked: {hours}H, {minutes}m"
-    
-    self.lblPayout.text = "Payout: " + str(round(self.item['Payout'], 2))
+      self.lblHoursWorked.text = f"Time worked: {hours}h, {minutes}m"
+      self.lblPayout.text = "Payout: " + str(round(self.item['Payout'], 2))
+    except:
+      self.lblHoursWorked.text = "In progress"
+      self.lblPayout.text = "In progress"
+      
     self.lblPayRate.text = "Payrate: " + str(self.item['PayRate'])
