@@ -18,6 +18,8 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
     def refresh(self, **event_args):
         workingStatus = anvil.server.call("getIfWorking", self.userID)
         allWorkRecords = anvil.server.call('getUserTimesheets', self.userID)
+        payout = anvil.server.call('getTotalBalance', self.userID)
+        self.lblBalance.text = str(payout)
         
         # Update clock in/out button based on working status
         if workingStatus:

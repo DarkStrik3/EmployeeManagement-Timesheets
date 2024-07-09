@@ -54,7 +54,17 @@ def getAllEmployees(callerID, sortBy):
     employees = app_tables.tbluserdetails.search(tables.order_by(sortBy, ascending=True), UserID = q.none_of(callerID))
     return employees
 
-
+@anvil.server.callable
+def getTotalBalance(ID):
+    payout = 0
+    try:
+      allWorkRecords = app_tables.tblworkrecords.search(UserID=ID, Payout=q.greater_than(0))
+      for workRecord in allWorkRecords:
+        payout += float(allWorkRecords[payout])
+      return payout
+    except:
+      return 0
+  
 # SETTERS
 
 
