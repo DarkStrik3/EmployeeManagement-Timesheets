@@ -33,9 +33,10 @@ components:
     type: Label
     layout_properties: {grid_position: 'NZXKRN,YQBXMS PUOADY,PQIOBN'}
   - name: workTimer
-    properties: {}
+    properties: {interval: 0.5}
     type: Timer
     layout_properties: {grid_position: 'NZXKRN,YQBXMS DQMCJC,UXGGAF'}
+    event_bindings: {tick: timerTick}
   - name: lblPendingWork
     properties: {text: Pending Work, bold: true, align: center, font_size: 30}
     type: Label

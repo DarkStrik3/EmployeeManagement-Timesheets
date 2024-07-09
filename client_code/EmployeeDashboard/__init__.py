@@ -25,14 +25,27 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
         
         # Update clock in/out button based on working status
         if workingStatus:
+            # User is clocked in, and is clocking out
             self.btnClockinout.text = "Clock Out"
             self.btnClockinout.background = "#ff0000"
             self.btnClockinout.tag = 1
+            self.workTimer.interval = 0
+            self.lblTimer.text = "00:00:00"
+            
         else:
+            # User was clocked out, and is clocking in
             self.btnClockinout.text = "Clock In"
             self.btnClockinout.background = "#088000"
             self.btnClockinout.tag = 0
-        
+            clockOutTime = datetime.now().replace(tzinfo=None)
+            totalWork = clockOutTime - row['ClockIn'].replace(tzinfo=None)
+            totalSeconds = totalWork.total_seconds()  # convert total work time to seconds
+            hours = int(totalSeconds // 3600)
+            minutes = int((totalSeconds % 3600) // 60)
+            seconds = int((totalSeconds % 3600) % 60)
+            self.lblTimer.tag = totalSeconds
+            self.lblTimer.text = f"{hours:.0f}:{minutes:.0f}:{seconds:.0f}"
+            
         try:
             # Clear existing items
             self.rpApprovedWork.items = []
@@ -69,4 +82,7 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
         previousTime = self.lblTimer.tag
         newTime = previousTime + 1
         self.lblTimer.tag = newTime
-        self.lblTimer.text = ""
+        hours = int(newTime // 3600)
+        minutes = int((newTime % 3600) // 60)
+        seconds = int((newTime % 3600) % 60)
+        self.lblTimer.text = f"{hours:.0f}:{minutes:.0f}:{seconds:.0f}"
