@@ -58,13 +58,12 @@ def getAllEmployees(callerID, sortBy):
 def getTotalBalance(ID):
     payout = 0.0
     try:
-        allWorkRecords = app_tables.tblworkrecords.search(UserID=ID)
-        for workRecord in allWorkRecords:
-            if workRecord['Payout'] is not None:
-                payout += float(workRecord['Payout'])
-        return payout
-    except Exception as e:
-        print(e)
+      allWorkRecords = app_tables.tblworkrecords.search(UserID=ID)
+      for workRecord in allWorkRecords:
+        if workRecord['Payout'] is not None:
+          payout += float(workRecord['Payout'])
+      return payout
+    except:
         return 0.0
 
   
