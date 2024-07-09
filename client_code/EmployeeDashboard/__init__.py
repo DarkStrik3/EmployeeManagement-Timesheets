@@ -22,7 +22,6 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
         approvedPayout = anvil.server.call('getTotalApprovedBalance', self.userID)
         self.lblBalance.text = f"Balance: ${payout:.2f}"  # Display balance with 2 decimal places
         self.lblApprovedBalance.text = f"Approved Balance: ${approvedPayout:.2f}"
-        
         # Update clock in/out button based on working status
         if workingStatus:
             # User is clocked in, and is clocking out
@@ -31,12 +30,12 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
             self.btnClockinout.tag = 1
             self.workTimer.interval = 0
             self.lblTimer.text = "00:00:00"
-            
         else:
             # User was clocked out, and is clocking in
             self.btnClockinout.text = "Clock In"
             self.btnClockinout.background = "#088000"
             self.btnClockinout.tag = 0
+            row = anvil.server.call("getClockedInRow", self.userID)
             clockOutTime = datetime.now().replace(tzinfo=None)
             totalWork = clockOutTime - row['ClockIn'].replace(tzinfo=None)
             totalSeconds = totalWork.total_seconds()  # convert total work time to seconds
@@ -45,16 +44,13 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
             seconds = int((totalSeconds % 3600) % 60)
             self.lblTimer.tag = totalSeconds
             self.lblTimer.text = f"{hours:.0f}:{minutes:.0f}:{seconds:.0f}"
-            
         try:
             # Clear existing items
             self.rpApprovedWork.items = []
             self.rpPendingWork.items = []
-            
             # Assign new items
             self.rpApprovedWork.items = [d for d in allWorkRecords if d['Approval']][:4]
             self.rpPendingWork.items = [d for d in allWorkRecords if not d['Approval']][:4]
-            
             # Refresh data bindings to ensure everything is up to date
             self.refresh_data_bindings()
             

@@ -78,7 +78,13 @@ def getTotalApprovedBalance(ID):
     except:
         return 0.0
 
-  
+
+@anvil.server.callable
+def getClockedInRow(ID):
+  row = app_tables.tblworkrecords.search(tables.order_by("ClockIn", ascending=False), UserID=ID)[0]
+  return row
+
+
 # SETTERS
 
 
@@ -127,6 +133,8 @@ def updateClock(ID):
     total_hours = totalWork.total_seconds() / 3600  # convert total work time to hours
     payout = total_hours * row['PayRate']
     row.update(ClockOut=clockOutTime, Payout=payout, HoursWorked=total_hours)
+
+
 
 @anvil.server.callable
 def addNewuser(username, newEmail, password, newPhoneNumber, DateOfBirth, newGender, employmentType, newGroup, title, baseRate, extendRate, pubHolRate, newTFN, profileImg):
