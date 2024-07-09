@@ -19,7 +19,7 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
         workingStatus = anvil.server.call("getIfWorking", self.userID)
         allWorkRecords = anvil.server.call('getUserTimesheets', self.userID)
         payout = anvil.server.call('getTotalBalance', self.userID)
-        self.lblBalance.text = str(payout)
+        self.lblBalance.text = f"${payout:.2f}"  # Display balance with 2 decimal places
         
         # Update clock in/out button based on working status
         if workingStatus:
