@@ -56,9 +56,9 @@ def getAllEmployees(callerID, sortBy):
 
 @anvil.server.callable
 def getTotalBalance(ID):
-    payout = 0
+    payout = 0.0
     try:
-      allWorkRecords = app_tables.tblworkrecords.search(UserID=ID, Payout=q.greater_than(0))
+      allWorkRecords = app_tables.tblworkrecords.search(UserID=ID)
       for workRecord in allWorkRecords:
         payout += float(allWorkRecords[payout])
       return payout
