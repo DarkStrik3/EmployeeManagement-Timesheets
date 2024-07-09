@@ -34,7 +34,7 @@ def getIfWorking(ID):
 @anvil.server.callable
 def getUserTimesheets(ID):
   try:
-    userWork = app_tables.tblworkrecords.search(tables.order_by("Date", ascending = False), UserID=ID)
+    userWork = app_tables.tblworkrecords.search(tables.order_by("WorkID", ascending = False), UserID=ID)
     return userWork
   except:
     return None
@@ -59,6 +59,18 @@ def getTotalBalance(ID):
     payout = 0.0
     try:
       allWorkRecords = app_tables.tblworkrecords.search(UserID=ID)
+      for workRecord in allWorkRecords:
+        if workRecord['Payout'] is not None:
+          payout += float(workRecord['Payout'])
+      return payout
+    except:
+        return 0.0
+
+@anvil.server.callable
+def getTotalApprovedBalance(ID):
+    payout = 0.0
+    try:
+      allWorkRecords = app_tables.tblworkrecords.search(UserID=ID, Approval=True)
       for workRecord in allWorkRecords:
         if workRecord['Payout'] is not None:
           payout += float(workRecord['Payout'])

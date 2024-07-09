@@ -19,7 +19,9 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
         workingStatus = anvil.server.call("getIfWorking", self.userID)
         allWorkRecords = anvil.server.call('getUserTimesheets', self.userID)
         payout = anvil.server.call('getTotalBalance', self.userID)
-        self.lblBalance.text = f"${payout:.2f}"  # Display balance with 2 decimal places
+        approvedPayout = anvil.server.call('getTotalApprovedBalance', self.userID)
+        self.lblBalance.text = f"Balance: ${payout:.2f}"  # Display balance with 2 decimal places
+        self.lblApprovedBalance.text = f"Approved Balance: ${approvedPayout:.2f}"
         
         # Update clock in/out button based on working status
         if workingStatus:
@@ -37,8 +39,8 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
             self.rpPendingWork.items = []
             
             # Assign new items
-            self.rpApprovedWork.items = [d for d in allWorkRecords if d['Approval']][-4:]
-            self.rpPendingWork.items = [d for d in allWorkRecords if not d['Approval']][-4:]
+            self.rpApprovedWork.items = [d for d in allWorkRecords if d['Approval']][:4]
+            self.rpPendingWork.items = [d for d in allWorkRecords if not d['Approval']][:4]
             
             # Refresh data bindings to ensure everything is up to date
             self.refresh_data_bindings()
@@ -60,3 +62,11 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
         
         # Refresh the panel after clocking in/out
         self.refresh()
+
+
+    def timerTick(self, **event_args):
+      if self.btnClockinout.tag == 1:
+        previousTime = self.lblTimer.tag
+        newTime = previousTime + 1
+        self.lblTimer.tag = newTime
+        self.lblTimer.text = ""

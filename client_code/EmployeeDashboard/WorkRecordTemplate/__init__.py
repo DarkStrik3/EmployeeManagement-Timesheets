@@ -20,10 +20,9 @@ class WorkRecordTemplate(WorkRecordTemplateTemplate):
       total_seconds = self.item['HoursWorked'] * 3600  # Convert hours to seconds
       hours = int(total_seconds // 3600)
       minutes = int((total_seconds % 3600) // 60)
-      self.lblHoursWorked.text = f"Time worked: {hours}h, {minutes}m"
-      self.lblPayout.text = "Payout: " + str(round(self.item['Payout'], 2))
+      self.lblHoursWorked.text = f"Time Worked: {hours}h {minutes}m"
+      self.lblPayout.text = "Payout: $" + str(round(self.item['Payout'], 2))
     except:
-      self.lblHoursWorked.text = "In progress"
-      self.lblPayout.text = "In progress"
+      self.lblHoursWorked.text = " Time Worked: WIP"
+      self.lblPayout.text = "Payout: WIP"
       
-    self.lblPayRate.text = "Payrate: " + str(self.item['PayRate'])
