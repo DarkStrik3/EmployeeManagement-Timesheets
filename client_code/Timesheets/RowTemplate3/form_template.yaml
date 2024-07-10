@@ -9,3 +9,23 @@ components:
   properties: {text: Approval}
   type: CheckBox
   layout_properties: {column: FUATGP}
+- name: lblName
+  properties: {}
+  type: Label
+  layout_properties: {column: JKSDUP}
+- name: lblDate
+  properties: {}
+  type: Label
+  layout_properties: {column: VJQQOR}
+- name: lblTimeWorked
+  properties: {}
+  type: Label
+  layout_properties: {column: OJLQEN}
+- name: lblRate
+  properties: {}
+  type: Label
+  layout_properties: {column: NVTRSA}
+- name: lblPayout
+  properties: {}
+  type: Label
+  layout_properties: {column: ZHGZQK}

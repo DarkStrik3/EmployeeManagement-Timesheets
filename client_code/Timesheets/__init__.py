@@ -11,7 +11,8 @@ class Timesheets(TimesheetsTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    
+    allWorkRecords = anvil.server.call('getTimesheetsManagers')
+    self.rpTimesheets.items = allWorkRecords
     # Any code you write here will run before the form opens.
 
   def confirmation(self, btnName):
