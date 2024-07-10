@@ -30,8 +30,7 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
           self.btnClockinout.background = "#ff0000"
           self.btnClockinout.tag = 1
           row = anvil.server.call("getClockedInRow", self.userID)
-          clockInTime = row['ClockIn'].replace(tzinfo=None)
-          elapsed_time = datetime.now().replace(tzinfo=None) - clockInTime
+          elapsed_time = datetime.now().replace(tzinfo=None) - row['ClockIn'].replace(tzinfo=None)
           self.update_timer(elapsed_time.total_seconds())
           self.workTimer.interval = 1
       else:
@@ -49,8 +48,8 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
           self.rpPendingWork.items = []
 
           # Assign new items
-          self.rpApprovedWork.items = [d for d in allWorkRecords if d['Approval']][-4:]
-          self.rpPendingWork.items = [d for d in allWorkRecords if not d['Approval']][-4:]
+          self.rpApprovedWork.items = [d for d in allWorkRecords if d['Approval']][:4]
+          self.rpPendingWork.items = [d for d in allWorkRecords if not d['Approval']][:4]
 
           # Refresh data bindings to ensure everything is up to date
           self.refresh_data_bindings()

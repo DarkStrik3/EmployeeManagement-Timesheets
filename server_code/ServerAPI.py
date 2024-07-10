@@ -123,7 +123,7 @@ def setClock(ID):
     user = app_tables.tbluserdetails.get(UserID=ID)
     clockIn = datetime.now().replace(tzinfo=None)
     clockDate = date.today()
-    app_tables.tblworkrecords.add_row(WorkID=newWorkId(ID), UserID=ID, ClockIn=clockIn, Date=clockDate, PayRate=user['BasicRate'])
+    app_tables.tblworkrecords.add_row(WorkID=newWorkId(ID), UserID=ID, ClockIn=clockIn, Date=clockDate, PayRate=user['BasicRate'], Approval=False, Paid=False)
 
 @anvil.server.callable
 def updateClock(ID):

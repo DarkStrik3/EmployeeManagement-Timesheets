@@ -79,6 +79,9 @@ db_schema:
     - name: UserID
       admin_ui: {width: 200, order: 0.625}
       type: number
+    - name: Paid
+      admin_ui: {width: 200, order: 6}
+      type: bool
     title: tblWorkRecords
   tblsettings:
     client: none
