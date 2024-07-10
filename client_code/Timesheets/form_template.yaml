@@ -5,12 +5,12 @@ components:
 - name: dgTimesheets
   properties:
     columns:
-    - {id: JKSDUP, title: Employee Name, data_key: name}
-    - {id: VJQQOR, title: Date, data_key: date}
-    - {id: OJLQEN, title: Work Time, data_key: time}
-    - {id: NVTRSA, data_key: rate, title: Rate Type}
-    - {id: ZHGZQK, data_key: payout, title: Payout}
-    - {id: FUATGP, data_key: approval, title: Approve}
+    - {id: JKSDUP, title: Employee Name, data_key: FullName}
+    - {id: VJQQOR, title: Date, data_key: Date}
+    - {id: OJLQEN, title: Work Time, data_key: HoursWorked}
+    - {id: NVTRSA, data_key: PayRate, title: Rate Type}
+    - {id: ZHGZQK, data_key: Payout, title: Payout}
+    - {id: FUATGP, data_key: Approval, title: Approve}
     show_page_controls: false
   type: DataGrid
   layout_properties: {grid_position: 'ZVEIKO,MTQYCH'}
