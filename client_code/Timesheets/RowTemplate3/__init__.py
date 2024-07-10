@@ -18,3 +18,4 @@ class RowTemplate3(RowTemplate3Template):
     self.lblPayout = self.item['Payout']
     self.lblRate = self.item['PayRate']
     self.lblTimeWorked = self.item['HoursWorked']
+    self.cbApproval.checked = self.item['Approval']
