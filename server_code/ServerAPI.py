@@ -179,3 +179,9 @@ def editUser(userID, username, Email, phoneNumber, dateOfBirth, gender, employme
                )
   user = app_tables.users.get(UserID=userID)
   user.update(email=Email, Group=group)
+
+def updateApprovalStatus(workIDs, status):
+  for workID in workIDs:
+    row = app_tables.tblworkrecords.get(WorkID=workID)
+    if row:
+      row.update(Approval=status)
