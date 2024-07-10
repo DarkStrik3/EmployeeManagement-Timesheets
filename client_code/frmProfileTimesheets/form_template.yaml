@@ -36,7 +36,7 @@ components:
     type: DataGrid
     components:
     - name: rpPastWork
-      properties: {item_template: frmProfileUserDetails.RowTemplate1}
+      properties: {item_template: frmProfileTimesheets.RowTemplate1}
       type: RepeatingPanel
     layout_properties: {row: MHFVCP, width_xs: 12, col_xs: 0}
   - name: btnUserDetails
