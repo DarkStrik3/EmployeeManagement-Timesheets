@@ -113,7 +113,7 @@ class Other:
         left = [x for x in array if x[key] < pivot[key]]
         middle = [x for x in array if x[key] == pivot[key]]
         right = [x for x in array if x[key] > pivot[key]]
-        return QuickSort(left, key) + middle + QuickSort(right, key)
+        return Other.QuickSort(left, key) + middle + Other.QuickSort(right, key)
 
 
 

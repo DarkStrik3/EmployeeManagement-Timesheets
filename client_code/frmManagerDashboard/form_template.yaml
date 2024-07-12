@@ -29,27 +29,32 @@ components:
     type: Image
     layout_properties: {row: GIPNDZ, width_xs: 1, col_xs: 11}
     name: imgProfile
-  - properties: {text: Employee Management, align: full, bold: true, spacing_below: small, spacing_above: small, background: ''}
-    type: Button
-    layout_properties: {row: SLJRUV, width_xs: 3, col_xs: 0}
-    event_bindings: {click: selectEmployeeManagement}
-    name: btnEmplManage
-  - properties: {text: Timesheets, align: full, bold: true, spacing_above: small, spacing_below: small}
-    type: Button
-    layout_properties: {row: SLJRUV, width_xs: 3, col_xs: 3}
-    event_bindings: {click: selectTimesheets}
-    name: btnTimesheets
-  - properties: {text: Analytics and Reporting, spacing_above: small, spacing_below: small, bold: true, align: full}
-    type: Button
-    layout_properties: {row: SLJRUV, width_xs: 3, col_xs: 6}
-    event_bindings: {click: selectAnalyticsReport}
-    name: btnAnalyticReport
-  - properties: {text: Settings, align: full, bold: true}
-    type: Button
-    layout_properties: {row: SLJRUV, width_xs: 3, col_xs: 9}
-    event_bindings: {click: selectSettings}
-    name: btnSettings
   - properties: {}
     type: ColumnPanel
-    layout_properties: {row: IWFCJG, width_xs: 12, col_xs: 0}
+    layout_properties: {row: IWFCJG, width_xs: 10, col_xs: 0}
     name: cpDashboards
+  - name: lpButtons
+    properties: {}
+    type: LinearPanel
+    layout_properties: {row: IWFCJG, width_xs: 2, col_xs: 10}
+    components:
+    - properties: {text: Employee Management, align: full, bold: true, spacing_below: medium, spacing_above: small, background: ''}
+      type: Button
+      layout_properties: {}
+      event_bindings: {click: selectEmployeeManagement}
+      name: btnEmplManage
+    - properties: {text: Timesheets, align: full, bold: true, spacing_above: medium, spacing_below: medium}
+      type: Button
+      layout_properties: {}
+      event_bindings: {click: selectTimesheets}
+      name: btnTimesheets
+    - properties: {text: Analytics and Reporting, spacing_above: medium, spacing_below: medium, bold: true, align: full}
+      type: Button
+      layout_properties: {}
+      event_bindings: {click: selectAnalyticsReport}
+      name: btnAnalyticReport
+    - properties: {text: Settings, align: full, bold: true, spacing_below: medium, spacing_above: medium}
+      type: Button
+      layout_properties: {}
+      event_bindings: {click: selectSettings}
+      name: btnSettings

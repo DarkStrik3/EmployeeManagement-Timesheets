@@ -20,7 +20,7 @@ class RowTemplate3(RowTemplate3Template):
             userRow = None
 
         try:
-          self.lblUserID.text = userRow['ID']
+          self.lblUserID.text = self.item['UserID']
         except Exception as e:
             print(f"Error setting lblUserID: {e}")
             self.lblUserID.text = "Unknown" 

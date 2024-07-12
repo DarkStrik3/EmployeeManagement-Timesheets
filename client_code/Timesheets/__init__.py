@@ -31,7 +31,7 @@ class Timesheets(TimesheetsTemplate):
         self.loadTimesheets(newOrder)
 
     def filterTimesheets(self, **event_args):
-      
+      pass
 
   
     def loadTimesheets(self, allWorkRecords):
