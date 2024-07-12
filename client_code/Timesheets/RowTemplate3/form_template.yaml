@@ -28,3 +28,7 @@ components:
   properties: {}
   type: Label
   layout_properties: {column: ZHGZQK}
+- name: cbPaid
+  properties: {text: Paid}
+  type: CheckBox
+  layout_properties: {column: RVGLDW}

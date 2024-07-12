@@ -12,8 +12,24 @@ class Timesheets(TimesheetsTemplate):
         self.init_components(**properties)
         self.loadTimesheets()
 
+
+    def resortTimesheets(self, **event_args):
+      sortBy = self.ddSort.selected_value
+      
+
+  
     def loadTimesheets(self):
         allWorkRecords = anvil.server.call('getTimesheetsManagers')
+        totalUnapproved = 0
+        totalUnpaid = 0
+        for record in allWorkRecords:
+          if not record['Approval']:
+            totalUnapproved += 1
+          if not record['Paid']:
+            totalUnpaid += 1
+        self.lblTotalPending.text = str(totalUnapproved)
+        self.lblTotalUnpaid.text = str(totalUnpaid)
+    
         self.rpTimesheets.items = [d for d in allWorkRecords if not d['Paid']]
 
     def confirmation(self, action):

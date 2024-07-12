@@ -14,43 +14,43 @@ class RowTemplate3(RowTemplate3Template):
 
     def dataBindings(self):
         try:
-            userRow = anvil.server.call('getUserInfo', self.item.get('UserID'))
+            userRow = anvil.server.call('getUserInfo', self.item['UserID'])
         except Exception as e:
             print(f"Error fetching user info: {e}")
             userRow = None
         
         try:
-            self.lblName.text = userRow.get('FullName', 'Unknown') if userRow else 'Unknown'
+            self.lblName.text = userRow['FullName']
         except Exception as e:
             print(f"Error setting lblName: {e}")
-            self.lblName.text = 'Unknown'
+            self.lblName.text = "Unknown"
 
         try:
-            self.lblDate.text = self.item['Date'].strftime('%Y-%m-%d') if self.item.get('Date') else 'N/A'
+            self.lblDate.text = self.item['Date'].strftime('%d/%m/%Y')
         except Exception as e:
             print(f"Error setting lblDate: {e}")
             self.lblDate.text = 'N/A'
 
         try:
-            self.lblPayout.text = f"${self.item['Payout']:.2f}" if self.item.get('Payout') is not None else 'N/A'
+            self.lblPayout.text = f"${self.item['Payout']:.2f}" if self.item['Payout'] is not None else 'N/A'
         except Exception as e:
             print(f"Error setting lblPayout: {e}")
             self.lblPayout.text = 'N/A'
 
         try:
-            self.lblRate.text = f"${self.item['PayRate']:.2f}/hr" if self.item.get('PayRate') is not None else 'N/A'
+            self.lblRate.text = f"${self.item['PayRate']:.2f}/hr" if self.item['PayRate'] is not None else 'N/A'
         except Exception as e:
             print(f"Error setting lblRate: {e}")
             self.lblRate.text = 'N/A'
 
         try:
-            self.lblTimeWorked.text = f"{self.item['HoursWorked']:.2f} hours" if self.item.get('HoursWorked') is not None else 'N/A'
+            self.lblTimeWorked.text = f"{self.item['HoursWorked']:.2f} hours" if self.item['HoursWorked'] is not None else 'N/A'
         except Exception as e:
             print(f"Error setting lblTimeWorked: {e}")
             self.lblTimeWorked.text = 'N/A'
 
         try:
-            self.cbApproval.checked = self.item.get('Approval', False)
+            self.cbApproval.checked = self.item['Approval']
         except Exception as e:
             print(f"Error setting cbApproval: {e}")
             self.cbApproval.checked = False

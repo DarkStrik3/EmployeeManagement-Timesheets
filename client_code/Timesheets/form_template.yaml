@@ -11,6 +11,7 @@ components:
     - {id: NVTRSA, data_key: PayRate, title: Rate Type}
     - {id: ZHGZQK, data_key: Payout, title: Payout}
     - {id: FUATGP, data_key: Approval, title: Approve}
+    - {id: RVGLDW, data_key: Paid, title: Paid}
     show_page_controls: false
   type: DataGrid
   layout_properties: {grid_position: 'ZVEIKO,MTQYCH'}
@@ -24,13 +25,21 @@ components:
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE KRUDRG,OJLMPO'}
 - name: ddSort
   properties:
-    items: [Name, Permissions, mployment Type]
+    items: [Name, Employee ID, Date, Payout, Work Time]
   type: DropDown
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE IGVGCI,QFTSEW'}
 - name: lblFilters
   properties: {text: Filters, bold: true, align: center, font_size: 20}
   type: Label
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE MWNKGJ,UMSNFV'}
+- name: cbApprovedFilter
+  properties: {text: Approved}
+  type: CheckBox
+  layout_properties: {grid_position: 'ZVEIKO,SKDDBE MMUFNY,ERZAXU'}
+- name: cbPaidFilter
+  properties: {text: Paid}
+  type: CheckBox
+  layout_properties: {grid_position: 'ZVEIKO,SKDDBE MMUFNY,HZURYT'}
 - name: ddGroup
   properties:
     items: [All, Warehouse, Manager, Accountant, Admin]
@@ -52,11 +61,19 @@ components:
 - name: btnRejectSelected
   properties: {text: Reject Selected, align: full}
   type: Button
-  layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,UUOFHL DCJBMT,SLVVWX'}
+  layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,UUOFHL MYXAXP,MZAOSG'}
 - name: btnApproveSelected
   properties: {text: Approve Selected, align: full}
   type: Button
-  layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,UUOFHL NJEONJ,UHKHRB'}
+  layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,UUOFHL XKWQOZ,NVMDKO'}
+- name: lblUnpaid
+  properties: {text: 'Unpaid:', bold: true}
+  type: Label
+  layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,UUOFHL FDOTOV,CMOTYG'}
+- name: btnPaySelected
+  properties: {text: Mark Selected as Paid, align: full}
+  type: Button
+  layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,UUOFHL XNAZMN,ZWAIOF'}
 - name: lblTotalPending
   properties: {}
   type: Label
@@ -64,9 +81,21 @@ components:
 - name: btnRejectAll
   properties: {text: Reject All, align: full}
   type: Button
-  layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,LZVAWN HRXEMK,UKUDXX'}
+  layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,LZVAWN RNNDSF,PBKHEQ'}
 - name: btnApproveAll
   properties: {text: Approve All, align: full}
   type: Button
-  layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,LZVAWN QHRUBS,FBKMVC'}
+  layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,LZVAWN ASYZGF,CSSBPN'}
+- name: lblTotalUnpaid
+  properties: {}
+  type: Label
+  layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,LZVAWN WQTXYX,EXDLXT'}
+- name: btnPayAll
+  properties:
+    text: |-
+      Mark All as
+       Paid
+    align: full
+  type: Button
+  layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,LZVAWN BFZEXM,XZPRTW'}
 is_package: true

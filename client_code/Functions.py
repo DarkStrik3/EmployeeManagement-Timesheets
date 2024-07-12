@@ -95,7 +95,6 @@ class Validation:
       return False
 
 class Other:
-
   
   def getDate15YearsAgo():
     current_date = datetime.now()
@@ -105,7 +104,9 @@ class Other:
       # This handles the case where the original date is Feb 29 and the target year is not a leap year.
       date_15_years_ago = current_date.replace(month=2, day=28, year=current_date.year - 15)
     return date_15_years_ago.date()
-    
+
+  def QuickSort():
+    pass
 
 
 
