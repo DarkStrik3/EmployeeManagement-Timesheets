@@ -27,7 +27,8 @@ components:
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE KRUDRG,OJLMPO'}
 - name: ddSort
   properties:
-    items: [Name, Employee ID, Date, Payout, Work Time]
+    items: [WorkID, Date, Payout, Work Time]
+    include_placeholder: true
   type: DropDown
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE IGVGCI,QFTSEW'}
 - name: lblFilters

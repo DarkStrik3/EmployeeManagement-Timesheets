@@ -23,7 +23,7 @@ class RowTemplate3(RowTemplate3Template):
           self.lblUserID.text = userRow['ID']
         except Exception as e:
             print(f"Error setting lblUserID: {e}")
-            self.lblName.text = "Unknown" 
+            self.lblUserID.text = "Unknown" 
       
         try:
             self.lblName.text = userRow['FullName']
@@ -35,7 +35,7 @@ class RowTemplate3(RowTemplate3Template):
           self.lblWorkID.text = self.item['WorkID']
         except Exception as e:
             print(f"Error setting lblWorkID: {e}")
-            self.lblName.text = "Unknown"
+            self.lblWorkID.text = "Unknown"
       
         try:
             self.lblDate.text = self.item['Date'].strftime('%d/%m/%Y')

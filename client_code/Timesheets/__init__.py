@@ -17,12 +17,18 @@ class Timesheets(TimesheetsTemplate):
 
     def resortTimesheets(self, **event_args):
       sortBy = self.ddSort.selected_value
-      if sortBy == "Name":
-        newOrder = Other.QuickSort(self.allWorkRecords, "Fullname")
+      if sortBy == "WorkID":
+        newOrder = Other.QuickSort(self.allWorkRecords, "WorkID")
         self.loadTimesheets(newOrder)
-      elif sortBy == "Employee ID":
-        newOrder = Other.QuickSort(self.allWorkRecords, "ID")
-      
+      elif sortBy == "Date":
+        newOrder = Other.QuickSort(self.allWorkRecords, "Date")
+        self.loadTimesheets(newOrder)
+      elif sortBy == "Payout":
+        newOrder = Other.QuickSort(self.allWorkRecords, "Payout")
+        self.loadTimesheets(newOrder)      
+      elif sortBy == "Work Time":
+        newOrder = Other.QuickSort(self.allWorkRecords, "HoursWorked")
+        self.loadTimesheets(newOrder)
 
   
     def loadTimesheets(self, allWorkRecords):
