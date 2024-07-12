@@ -30,6 +30,9 @@ class Timesheets(TimesheetsTemplate):
         newOrder = Other.QuickSort(self.allWorkRecords, "HoursWorked")
         self.loadTimesheets(newOrder)
 
+    def filterTimesheets(self, **event_args):
+      
+
   
     def loadTimesheets(self, allWorkRecords):
         totalUnapproved = 0
