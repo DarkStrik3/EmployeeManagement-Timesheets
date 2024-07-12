@@ -105,8 +105,16 @@ class Other:
       date_15_years_ago = current_date.replace(month=2, day=28, year=current_date.year - 15)
     return date_15_years_ago.date()
 
-  def QuickSort():
-    pass
+  def QuickSort(array, key):
+    if len(array) <= 1:
+        return array
+    else:
+        pivot = array[len(array) // 2]
+        left = [x for x in array if x[key] < pivot[key]]
+        middle = [x for x in array if x[key] == pivot[key]]
+        right = [x for x in array if x[key] > pivot[key]]
+        return QuickSort(left, key) + middle + QuickSort(right, key)
+
 
 
 

@@ -5,6 +5,8 @@ components:
 - name: dgTimesheets
   properties:
     columns:
+    - {id: FRNJEB, data_key: WorkID, title: Work ID}
+    - {id: MYNCXC, data_key: UserID, title: User ID}
     - {id: JKSDUP, title: Employee Name, data_key: FullName}
     - {id: VJQQOR, title: Date, data_key: Date}
     - {id: OJLQEN, title: Work Time, data_key: HoursWorked}

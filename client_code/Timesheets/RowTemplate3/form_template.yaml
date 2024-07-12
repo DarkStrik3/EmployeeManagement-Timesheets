@@ -32,3 +32,11 @@ components:
   properties: {text: Paid}
   type: CheckBox
   layout_properties: {column: RVGLDW}
+- name: lblWorkID
+  properties: {}
+  type: Label
+  layout_properties: {column: FRNJEB}
+- name: lblUserID
+  properties: {}
+  type: Label
+  layout_properties: {column: MYNCXC}

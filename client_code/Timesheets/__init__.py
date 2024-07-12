@@ -5,21 +5,27 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
+from ..Functions import Other
 
 class Timesheets(TimesheetsTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
-        self.loadTimesheets()
+        self.allWorkRecords = anvil.server.call('getTimesheetsManagers')
+        self.loadTimesheets(self.allWorkRecords)
 
 
     def resortTimesheets(self, **event_args):
       sortBy = self.ddSort.selected_value
+      if sortBy == "Name":
+        newOrder = Other.QuickSort(self.allWorkRecords, "Fullname")
+        self.loadTimesheets(newOrder)
+      elif sortBy == "Employee ID":
+        newOrder = Other.QuickSort(self.allWorkRecords, "ID")
       
 
   
-    def loadTimesheets(self):
-        allWorkRecords = anvil.server.call('getTimesheetsManagers')
+    def loadTimesheets(self, allWorkRecords):
         totalUnapproved = 0
         totalUnpaid = 0
         for record in allWorkRecords:

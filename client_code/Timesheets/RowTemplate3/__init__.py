@@ -18,13 +18,25 @@ class RowTemplate3(RowTemplate3Template):
         except Exception as e:
             print(f"Error fetching user info: {e}")
             userRow = None
-        
+
+        try:
+          self.lblUserID.text = userRow['ID']
+        except Exception as e:
+            print(f"Error setting lblUserID: {e}")
+            self.lblName.text = "Unknown" 
+      
         try:
             self.lblName.text = userRow['FullName']
         except Exception as e:
             print(f"Error setting lblName: {e}")
             self.lblName.text = "Unknown"
 
+        try:
+          self.lblWorkID.text = self.item['WorkID']
+        except Exception as e:
+            print(f"Error setting lblWorkID: {e}")
+            self.lblName.text = "Unknown"
+      
         try:
             self.lblDate.text = self.item['Date'].strftime('%d/%m/%Y')
         except Exception as e:
