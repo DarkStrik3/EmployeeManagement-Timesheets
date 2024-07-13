@@ -22,7 +22,7 @@ class Validation:
         return False # False is returned
 
   def validateDate(date):  # The inputted date is validated
-    dateFormatCode = "%Y-%m-%d"
+    dateFormatCode = "%d/%m/%Y"
     try:  # Attempt to validate the date format and contents
         # Ensure the inputted date isn't blank and has the correct length
         assert date != "" and len(date) == 10

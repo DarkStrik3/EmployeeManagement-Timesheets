@@ -12,6 +12,8 @@ class Timesheets(TimesheetsTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
+        self.dateFormat = "%d/%m/%Y"
+        self.dpDateFilter.format = self.dateFormat
         self.allWorkRecords = anvil.server.call('getTimesheetsManagers')
         self.user_info_cache = {}  # Dictionary to store userRow data
         self.loadTimesheets(self.allWorkRecords)
@@ -39,41 +41,42 @@ class Timesheets(TimesheetsTemplate):
 
     def filterTimesheets(self, **event_args):
       if self.cbFiltersEnabled.checked:
-        newFilter = []
-        for record in self.allWorkRecords:
-          userRow = self.getUserRow(record['UserID'])
-          add = True
-          # Date format for comparison
-          date_format = "%Y-%m-%d"
-          # Check date filter
-          if Validation.validateDate(self.dpDateFilter.date):
-            record_date_str = record['Date'].strftime(date_format)
-            filter_date_str = self.dpDateFilter.date.strftime(date_format)
-            if record_date_str != filter_date_str:
-                add = False
-          # Check approval filter
-          if record['Approval'] != self.cbApprovedFilter.checked:
-              add = False
-          # Check paid filter
-          if record['Paid'] != self.cbPaidFilter.checked:
-              add = False
-          # Check gender filter
-          if self.ddGender.selected_value and userRow['Gender'] != str(self.ddGender.selected_value):
-              add = False
-          # Check group filter
-          if self.ddGroup.selected_value and userRow['Group'] != str(self.ddGroup.selected_value):
-              add = False
-          if add:
-              newFilter.append(record)
-        
-        self.filteredWorkRecords = newFilter
-        self.loadTimesheets(self.filteredWorkRecords)
+          newFilter = []
+          for record in self.allWorkRecords:
+              userRow = self.getUserRow(record['UserID'])
+              add = True
+              # Check date filter
+              if self.dpDateFilter.date:
+                  record_date_str = record['Date'].strftime(self.dateFormat)
+                  filter_date_str = (self.dpDateFilter.date).strftime(self.dateFormat)
+                  print(record_date_str)
+                  print(filter_date_str)
+                  if record_date_str != filter_date_str:
+                      add = False
+              # Check approval filter
+              if self.cbApprovedFilter.checked is not None and record['Approval'] != self.cbApprovedFilter.checked:
+                  add = False
+              # Check paid filter
+              if self.cbPaidFilter.checked is not None and record['Paid'] != self.cbPaidFilter.checked:
+                  add = False
+              # Check gender filter
+              if self.ddGender.selected_value and str(self.ddGender.selected_value) != "All" and userRow['Gender'] != str(self.ddGender.selected_value):
+                  add = False
+              # Check group filter
+              if self.ddGroup.selected_value and str(self.ddGroup.selected_value) != "All" and userRow['Group'] != str(self.ddGroup.selected_value):
+                  add = False
+              if add:
+                  newFilter.append(record)
+          
+          self.filteredWorkRecords = newFilter
+          self.loadTimesheets(self.filteredWorkRecords)
       else:
-        # Restore unfiltered records while retaining sorting features
-        self.loadTimesheets(self.allWorkRecords)
-        self.resortTimesheets()
+          # Restore unfiltered records while retaining sorting
+          self.loadTimesheets(self.allWorkRecords)
+          self.resortTimesheets()
 
-    def loadTimesheets(self, allWorkRecords):
+
+    def loadTimesheets(self, allWorkRecords, **event_args):
         totalUnapproved = 0
         totalUnpaid = 0
         for record in allWorkRecords:
