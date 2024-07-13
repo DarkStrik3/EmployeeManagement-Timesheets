@@ -29,7 +29,7 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
 
   def selectEmployeeManagement(self, **event_args):
     self.cpDashboards.clear()
-    self.cpDashboards.add_component(EmployeeManagement(p_parent=self))
+    self.cpDashboards.add_component(EmployeeManagement(p_parent=self), full_width_row=True)
     self.btnEmplManage.background = "#6e6e6e"
     self.btnAnalyticReport.background = ""
     self.btnTimesheets.background = ""
@@ -37,7 +37,7 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
 
   def selectAnalyticsReport(self, **event_args):
     self.cpDashboards.clear()
-    self.cpDashboards.add_component(AnalyticsReporting())
+    self.cpDashboards.add_component(AnalyticsReporting(), full_width_row=True)
     self.btnEmplManage.background = ""
     self.btnAnalyticReport.background = "#6e6e6e"
     self.btnTimesheets.background = ""
@@ -45,7 +45,7 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
 
   def selectTimesheets(self, **event_args):
     self.cpDashboards.clear()
-    self.cpDashboards.add_component(Timesheets())
+    self.cpDashboards.add_component(Timesheets(), full_width_row=True)
     self.btnEmplManage.background = ""
     self.btnAnalyticReport.background = ""
     self.btnTimesheets.background = "#6e6e6e"
@@ -53,7 +53,7 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
 
   def selectSettings(self, **event_args):
     self.cpDashboards.clear()
-    self.cpDashboards.add_component(Settings())
+    self.cpDashboards.add_component(Settings(), full_width_row=True)
     self.btnEmplManage.background = ""
     self.btnAnalyticReport.background = ""
     self.btnTimesheets.background = ""
@@ -61,7 +61,7 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
 
   def selectAddNewUser(self, **event_args):
     self.cpDashboards.clear()
-    self.cpDashboards.add_component(AddUser())
+    self.cpDashboards.add_component(AddUser(), full_width_row=True)
     self.btnEmplManage.background = ""
     self.btnAnalyticReport.background = ""
     self.btnTimesheets.background = ""
@@ -69,12 +69,12 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
 
   def openProfileUserDetails(self, userID, **event_args):
     self.cpDashboards.clear()
-    self.cpDashboards.add_component(frmProfileUserDetails(employeeID=userID, p_parent=self))
+    self.cpDashboards.add_component(frmProfileUserDetails(employeeID=userID, p_parent=self), full_width_row=True)
 
   def openProfileTimesheets(self, userID, **event_args):
     self.cpDashboards.clear()
-    self.cpDashboards.add_component(frmProfileTimesheets(employeeID=userID, p_parent=self))
+    self.cpDashboards.add_component(frmProfileTimesheets(employeeID=userID, p_parent=self), full_width_row=True)
   
   def editUser(self, userID, **event_args):
     self.cpDashboards.clear()
-    self.cpDashboards.add_component(EditUser(employeeID=userID, p_parent=self))
+    self.cpDashboards.add_component(EditUser(employeeID=userID, p_parent=self), full_width_row=True)

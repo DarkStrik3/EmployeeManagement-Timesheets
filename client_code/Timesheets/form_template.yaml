@@ -1,6 +1,6 @@
 container:
   type: ColumnPanel
-  properties: {col_widths: '{"SKDDBE":15}'}
+  properties: {col_widths: '{"SKDDBE":12,"MTQYCH":35}', wrap_on: mobile}
 components:
 - name: dgTimesheets
   properties:
@@ -16,7 +16,7 @@ components:
     - {id: RVGLDW, data_key: Paid, title: Paid}
     show_page_controls: false
   type: DataGrid
-  layout_properties: {grid_position: 'ZVEIKO,MTQYCH'}
+  layout_properties: {grid_position: 'ZVEIKO,MTQYCH', full_width_row: true}
   components:
   - name: rpTimesheets
     properties: {item_template: Timesheets.RowTemplate3}
@@ -36,16 +36,20 @@ components:
   properties: {text: Filters, bold: true, align: center, font_size: 20}
   type: Label
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE MWNKGJ,UMSNFV'}
+- name: lblEnblFltrs
+  properties: {text: 'Enable Filters:', bold: true, align: left}
+  type: Label
+  layout_properties: {grid_position: 'ZVEIKO,SKDDBE IWEEMM,LCWYBI'}
 - name: cbFiltersEnabled
-  properties: {text: Filters Enabled, align: center}
+  properties: {text: '', align: left}
   type: CheckBox
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE IWEEMM,PGFWDG'}
 - name: cbApprovedFilter
-  properties: {text: Approved}
+  properties: {text: Approved, align: left}
   type: CheckBox
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE MMUFNY,ERZAXU'}
 - name: cbPaidFilter
-  properties: {text: Paid}
+  properties: {text: Paid, align: left}
   type: CheckBox
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE MMUFNY,HZURYT'}
 - name: ddGroup
