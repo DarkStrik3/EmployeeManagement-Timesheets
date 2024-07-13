@@ -12,7 +12,13 @@ class Timesheets(TimesheetsTemplate):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
         self.allWorkRecords = anvil.server.call('getTimesheetsManagers')
+        self.user_info_cache = {}  # Dictionary to store userRow data
         self.loadTimesheets(self.allWorkRecords)
+
+    def getUserRow(self, user_id):
+        if user_id not in self.user_info_cache:
+            self.user_info_cache[user_id] = anvil.server.call('getUserInfo', user_id)
+        return self.user_info_cache[user_id]
 
     def resortTimesheets(self, **event_args):
         sortBy = self.ddSort.selected_value
@@ -33,7 +39,7 @@ class Timesheets(TimesheetsTemplate):
         newFilter = []
         if self.cbFiltersEnabled.checked:
             for record in self.allWorkRecords:
-                userRow = anvil.server.call('getUserInfo', record['UserID'])
+                userRow = self.getUserRow(record['UserID'])
                 add = True
                 # Date format for comparison
                 date_format = "%Y-%m-%d"
@@ -72,31 +78,31 @@ class Timesheets(TimesheetsTemplate):
         self.lblTotalPending.text = str(totalUnapproved)
         self.lblTotalUnpaid.text = str(totalUnpaid)
     
-        self.rpTimesheets.items = [d for d in allWorkRecords if not d['Paid']]
+        self.rpTimesheets.items = [{'item': d, 'user_info_cache': self.user_info_cache, 'p_parent': self} for d in allWorkRecords]
 
     def confirmation(self, action):
         return confirm(f"Are you sure you want to {action}?")
 
     def rejectSelected(self, **event_args):
         if self.confirmation("reject selected items"):
-            selected_ids = [item['WorkID'] for item in self.rpTimesheets.items if item['selected']]
+            selected_ids = [item['item']['WorkID'] for item in self.rpTimesheets.items if item['item']['selected']]
             anvil.server.call('updateApprovalStatus', selected_ids, False)
             self.loadTimesheets()
 
     def rejectAll(self, **event_args):
         if self.confirmation("reject all items"):
-            all_ids = [item['WorkID'] for item in self.rpTimesheets.items]
+            all_ids = [item['item']['WorkID'] for item in self.rpTimesheets.items]
             anvil.server.call('updateApprovalStatus', all_ids, False)
             self.loadTimesheets()
 
     def approveSelected(self, **event_args):
         if self.confirmation("approve selected items"):
-            selected_ids = [item['WorkID'] for item in self.rpTimesheets.items if item['selected']]
+            selected_ids = [item['item']['WorkID'] for item in self.rpTimesheets.items if item['item']['selected']]
             anvil.server.call('updateApprovalStatus', selected_ids, True)
             self.loadTimesheets()
 
     def approveAll(self, **event_args):
         if self.confirmation("approve all items"):
-            all_ids = [item['WorkID'] for item in self.rpTimesheets.items]
+            all_ids = [item['item']['WorkID'] for item in self.rpTimesheets.items]
             anvil.server.call('updateApprovalStatus', all_ids, True)
             self.loadTimesheets()
