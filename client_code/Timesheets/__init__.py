@@ -60,7 +60,7 @@ def filterTimesheets(self, **event_args):
                 newFilter.append(record)
     
     self.filteredWorkRecords = newFilter
-    self.rpTimesheets.items = self.filteredWorkRecords
+    self.loadTimesheets(self.filteredWorkRecords)
 
             
               
