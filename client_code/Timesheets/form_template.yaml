@@ -44,28 +44,34 @@ components:
   properties: {text: '', align: left}
   type: CheckBox
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE IWEEMM,PGFWDG'}
+  event_bindings: {change: filterTimesheets}
 - name: cbApprovedFilter
   properties: {text: Approved, align: left}
   type: CheckBox
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE MMUFNY,ERZAXU'}
+  event_bindings: {change: filterTimesheets}
 - name: cbPaidFilter
   properties: {text: Paid, align: left}
   type: CheckBox
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE MMUFNY,HZURYT'}
+  event_bindings: {change: filterTimesheets}
 - name: ddGroup
   properties:
     items: [All, Warehouse, Manager, Accountant, Admin]
   type: DropDown
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE GNRVNH,MQUZDC'}
+  event_bindings: {change: filterTimesheets}
 - name: ddGender
   properties:
     items: [All, Male, Female, Other]
   type: DropDown
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE ZRRVSI,NMPHLO'}
+  event_bindings: {change: filterTimesheets}
 - name: dpDateFilter
   properties: {}
   type: DatePicker
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE RKHARR,AXAKMF'}
+  event_bindings: {change: filterTimesheets}
 - name: lblPending
   properties: {text: 'Pending:', bold: true}
   type: Label
