@@ -30,9 +30,40 @@ class Timesheets(TimesheetsTemplate):
         newOrder = Other.QuickSort(self.allWorkRecords, "HoursWorked")
         self.loadTimesheets(newOrder)
 
-    def filterTimesheets(self, **event_args):
-      pass
+def filterTimesheets(self, **event_args):
+    newFilter = []
+    if self.cbFiltersEnabled.checked:
+        for record in self.allWorkRecords:
+            userRow = anvil.server.call('getUserInfo', record['UserID'])
+            add = True
+            # Date format for comparison
+            date_format = "%Y-%m-%d"
+            # Check date filter
+            if self.dpDateFilter.date:
+                record_date_str = record['Date'].strftime(date_format)
+                filter_date_str = self.dpDateFilter.date.strftime(date_format)
+                if record_date_str != filter_date_str:
+                    add = False
+            # Check approval filter
+            if self.cbApprovedFilter.checked is not None and record['Approval'] != self.cbApprovedFilter.checked:
+                add = False
+            # Check paid filter
+            if self.cbPaidFilter.checked is not None and record['Paid'] != self.cbPaidFilter.checked:
+                add = False
+            # Check gender filter
+            if self.ddGender.selected_value and userRow['Gender'] != str(self.ddGender.selected_value):
+                add = False
+            # Check group filter
+            if self.ddGroup.selected_value and userRow['Group'] != str(self.ddGroup.selected_value):
+                add = False
+            if add:
+                newFilter.append(record)
+    
+    self.filteredWorkRecords = newFilter
+    self.rpTimesheets.items = self.filteredWorkRecords
 
+            
+              
   
     def loadTimesheets(self, allWorkRecords):
         totalUnapproved = 0
