@@ -28,7 +28,7 @@ components:
 - name: ddSort
   properties:
     items: [WorkID, Date, Payout, Work Time]
-    include_placeholder: true
+    include_placeholder: false
   type: DropDown
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE IGVGCI,QFTSEW'}
   event_bindings: {change: resortTimesheets}

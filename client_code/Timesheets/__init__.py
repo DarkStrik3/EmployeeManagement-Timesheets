@@ -6,6 +6,7 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 from ..Functions import Other
+from ..Functions import Validation
 
 class Timesheets(TimesheetsTemplate):
     def __init__(self, **properties):
@@ -14,6 +15,7 @@ class Timesheets(TimesheetsTemplate):
         self.allWorkRecords = anvil.server.call('getTimesheetsManagers')
         self.user_info_cache = {}  # Dictionary to store userRow data
         self.loadTimesheets(self.allWorkRecords)
+        self.resortTimesheets()
 
     def getUserRow(self, user_id):
         if user_id not in self.user_info_cache:
@@ -21,19 +23,19 @@ class Timesheets(TimesheetsTemplate):
         return self.user_info_cache[user_id]
 
     def resortTimesheets(self, **event_args):
-        sortBy = self.ddSort.selected_value
-        if sortBy == "WorkID":
-            newOrder = Other.QuickSort(self.allWorkRecords, "WorkID")
-            self.loadTimesheets(newOrder)
-        elif sortBy == "Date":
-            newOrder = Other.QuickSort(self.allWorkRecords, "Date")
-            self.loadTimesheets(newOrder)
-        elif sortBy == "Payout":
-            newOrder = Other.QuickSort(self.allWorkRecords, "Payout")
-            self.loadTimesheets(newOrder)      
-        elif sortBy == "Work Time":
-            newOrder = Other.QuickSort(self.allWorkRecords, "HoursWorked")
-            self.loadTimesheets(newOrder)
+      sortBy = self.ddSort.selected_value
+      if sortBy == "WorkID":
+          newOrder = Other.QuickSort(self.allWorkRecords, "WorkID")
+          self.loadTimesheets(newOrder)
+      elif sortBy == "Date":
+          newOrder = Other.QuickSort(self.allWorkRecords, "Date")
+          self.loadTimesheets(newOrder)
+      elif sortBy == "Payout":
+          newOrder = Other.QuickSort(self.allWorkRecords, "Payout")
+          self.loadTimesheets(newOrder)      
+      elif sortBy == "Work Time":
+          newOrder = Other.QuickSort(self.allWorkRecords, "HoursWorked")
+          self.loadTimesheets(newOrder)
 
     def filterTimesheets(self, **event_args):
       if self.cbFiltersEnabled.checked:
@@ -44,16 +46,16 @@ class Timesheets(TimesheetsTemplate):
           # Date format for comparison
           date_format = "%Y-%m-%d"
           # Check date filter
-          if self.dpDateFilter.date:
-              record_date_str = record['Date'].strftime(date_format)
-              filter_date_str = self.dpDateFilter.date.strftime(date_format)
-              if record_date_str != filter_date_str:
-                  add = False
+          if Validation.validateDate(self.dpDateFilter.date):
+            record_date_str = record['Date'].strftime(date_format)
+            filter_date_str = self.dpDateFilter.date.strftime(date_format)
+            if record_date_str != filter_date_str:
+                add = False
           # Check approval filter
-          if self.cbApprovedFilter.checked is not None and record['Approval'] != self.cbApprovedFilter.checked:
+          if record['Approval'] != self.cbApprovedFilter.checked:
               add = False
           # Check paid filter
-          if self.cbPaidFilter.checked is not None and record['Paid'] != self.cbPaidFilter.checked:
+          if record['Paid'] != self.cbPaidFilter.checked:
               add = False
           # Check gender filter
           if self.ddGender.selected_value and userRow['Gender'] != str(self.ddGender.selected_value):
@@ -66,6 +68,10 @@ class Timesheets(TimesheetsTemplate):
         
         self.filteredWorkRecords = newFilter
         self.loadTimesheets(self.filteredWorkRecords)
+      else:
+        # Restore unfiltered records while retaining sorting features
+        self.loadTimesheets(self.allWorkRecords)
+        self.resortTimesheets()
 
     def loadTimesheets(self, allWorkRecords):
         totalUnapproved = 0
