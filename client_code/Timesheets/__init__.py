@@ -24,6 +24,21 @@ class Timesheets(TimesheetsTemplate):
             self.user_info_cache[user_id] = anvil.server.call('getUserInfo', user_id)
         return self.user_info_cache[user_id]
 
+    def sortFilteredTimesheets(self, timesheets, **event_args):
+      sortBy = self.ddSort.selected_value
+      if sortBy == "WorkID":
+          newOrder = Other.QuickSort(timesheets, "WorkID")
+          self.loadTimesheets(newOrder)
+      elif sortBy == "Date":
+          newOrder = Other.QuickSort(timesheets, "Date")
+          self.loadTimesheets(newOrder)
+      elif sortBy == "Payout":
+          newOrder = Other.QuickSort(timesheets, "Payout")
+          self.loadTimesheets(newOrder)      
+      elif sortBy == "Work Time":
+          newOrder = Other.QuickSort(timesheets, "HoursWorked")
+          self.loadTimesheets(newOrder)
+  
     def resortTimesheets(self, **event_args):
       sortBy = self.ddSort.selected_value
       if sortBy == "WorkID":
@@ -67,9 +82,8 @@ class Timesheets(TimesheetsTemplate):
                   add = False
               if add:
                   newFilter.append(record)
-          
-          self.filteredWorkRecords = newFilter
-          self.loadTimesheets(self.filteredWorkRecords)
+          self.loadTimesheets(newFilter)
+          self.sortFilteredTimesheets(newFilter)
       else:
           # Restore unfiltered records while retaining sorting
           self.loadTimesheets(self.allWorkRecords)
