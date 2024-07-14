@@ -24,7 +24,7 @@ class Timesheets(TimesheetsTemplate):
             self.user_info_cache[user_id] = anvil.server.call('getUserInfo', user_id)
         return self.user_info_cache[user_id]
 
-    def sortFilteredTimesheets(self, timesheets, **event_args):
+    def resortInputTimesheets(self, timesheets, **event_args):
       sortBy = self.ddSort.selected_value
       if sortBy == "WorkID":
           newOrder = Other.QuickSort(timesheets, "WorkID")
@@ -44,15 +44,19 @@ class Timesheets(TimesheetsTemplate):
       if sortBy == "WorkID":
           newOrder = Other.QuickSort(self.allWorkRecords, "WorkID")
           self.loadTimesheets(newOrder)
+          return newOrder
       elif sortBy == "Date":
           newOrder = Other.QuickSort(self.allWorkRecords, "Date")
           self.loadTimesheets(newOrder)
+          return newOrder
       elif sortBy == "Payout":
           newOrder = Other.QuickSort(self.allWorkRecords, "Payout")
-          self.loadTimesheets(newOrder)      
+          self.loadTimesheets(newOrder)     
+          return newOrder
       elif sortBy == "Work Time":
           newOrder = Other.QuickSort(self.allWorkRecords, "HoursWorked")
           self.loadTimesheets(newOrder)
+          return newOrder
 
     def filterTimesheets(self, **event_args):
       if self.cbFiltersEnabled.checked:
@@ -64,8 +68,6 @@ class Timesheets(TimesheetsTemplate):
               if self.dpDateFilter.date:
                   record_date_str = record['Date'].strftime(self.dateFormat)
                   filter_date_str = (self.dpDateFilter.date).strftime(self.dateFormat)
-                  print(record_date_str)
-                  print(filter_date_str)
                   if record_date_str != filter_date_str:
                       add = False
               # Check approval filter
@@ -83,7 +85,8 @@ class Timesheets(TimesheetsTemplate):
               if add:
                   newFilter.append(record)
           self.loadTimesheets(newFilter)
-          self.sortFilteredTimesheets(newFilter)
+          self.resortInputTimesheets(newFilter)
+          return newFilter
       else:
           # Restore unfiltered records while retaining sorting
           self.loadTimesheets(self.allWorkRecords)
@@ -100,8 +103,15 @@ class Timesheets(TimesheetsTemplate):
                 totalUnpaid += 1
         self.lblTotalPending.text = str(totalUnapproved)
         self.lblTotalUnpaid.text = str(totalUnpaid)
-    
         self.rpTimesheets.items = [{'item': d, 'user_info_cache': self.user_info_cache, 'p_parent': self} for d in allWorkRecords]
+
+    def sortFilteredRecords(self, **event_args):
+      if self.cbFiltersEnabled.checked:
+        filteredRecords = self.filterTimesheets()
+        sortedRecords = self.resortInputTimesheets(filteredRecords)
+      else:
+        self.resortTimesheets()
+
 
     def confirmation(self, action):
         return confirm(f"Are you sure you want to {action}?")
@@ -110,22 +120,34 @@ class Timesheets(TimesheetsTemplate):
         if self.confirmation("reject selected items"):
             selected_ids = [item['item']['WorkID'] for item in self.rpTimesheets.items if item['item']['selected']]
             anvil.server.call('updateApprovalStatus', selected_ids, False)
-            self.loadTimesheets()
+            self.sortFilteredRecords()
 
     def rejectAll(self, **event_args):
         if self.confirmation("reject all items"):
             all_ids = [item['item']['WorkID'] for item in self.rpTimesheets.items]
             anvil.server.call('updateApprovalStatus', all_ids, False)
-            self.loadTimesheets()
+            self.sortFilteredRecords()
 
     def approveSelected(self, **event_args):
         if self.confirmation("approve selected items"):
-            selected_ids = [item['item']['WorkID'] for item in self.rpTimesheets.items if item['item']['selected']]
+            selected_ids = [item['item']['WorkID'] for item in self.rpTimesheets.items if item['item']['Approved']]
             anvil.server.call('updateApprovalStatus', selected_ids, True)
-            self.loadTimesheets()
+            self.sortFilteredRecords()
 
     def approveAll(self, **event_args):
         if self.confirmation("approve all items"):
-            all_ids = [item['item']['WorkID'] for item in self.rpTimesheets.items]
-            anvil.server.call('updateApprovalStatus', all_ids, True)
-            self.loadTimesheets()
+            allIDs = [item['item']['WorkID'] for item in self.rpTimesheets.items]
+            anvil.server.call('updateApprovalStatus', allIDs, True)
+            self.sortFilteredRecords()
+
+    def markSelectedPaid(self, **event_args):
+      if self.confirmation("mark selected selected items as paid"):
+            selectedIDs = [item['item']['WorkID'] for item in self.rpTimesheets.items if item['item']['Paid']]
+            anvil.server.call('updatePaymentStatus', selectedIDs, True)
+            self.sortFilteredRecords()
+
+    def markAllPaid(self, **event_args):
+      if self.confirmation("mark all items as paid"):
+        allIDs = [item['item']['WorkID'] for item in self.rpTimesheets.items]
+        anvil.server.call('updatePaymentStatus', allIDs, True)
+        self.sortFilteredRecords()

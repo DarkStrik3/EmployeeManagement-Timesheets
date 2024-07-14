@@ -185,3 +185,9 @@ def updateApprovalStatus(workIDs, status):
     row = app_tables.tblworkrecords.get(WorkID=workID)
     if row:
       row.update(Approval=status)
+
+def updatePaymentStatus(workIDs, status):
+  for workID in workIDs:
+    row = app_tables.tblworkrecords.get(WorkID=workID)
+    if row:
+      row.update(Paid=status)
