@@ -19,7 +19,7 @@ class WorkRecordTemplateEmployee(WorkRecordTemplateEmployeeTemplate):
     try:
       total_seconds = self.item['HoursWorked'] * 3600  # Convert hours to seconds
       hours = int(total_seconds // 3600)
-      minutes = int((total_seconds % 3600) // 60)mployee
+      minutes = int((total_seconds % 3600) // 60)
       self.lblHoursWorked.text = f"Time Worked: {hours}h {minutes}m"
       self.lblPayout.text = "Payout: $" + str(round(self.item['Payout'], 2))
     except:

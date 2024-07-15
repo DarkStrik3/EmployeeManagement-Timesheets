@@ -5,8 +5,8 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-from datetime import datetime, timedelta
-
+from datetime import datetime, timedelta, timezone
+import WorkRecordTemplateEmployee
 
 class EmployeeDashboard(EmployeeDashboardTemplate):
     def __init__(self, **properties):
@@ -30,10 +30,10 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
             self.btnClockinout.background = "#ff0000"
             self.btnClockinout.tag = 1
             row = anvil.server.call("getClockedInRow", self.userID)
-            clock_in_time = row['ClockIn'].replace(tzinfo=None)
-            current_time = datetime.now().replace(tzinfo=None)
-            elapsed_time = current_time - clock_in_time
-            self.update_timer(elapsed_time.total_seconds())
+            clockInTime = (row['ClockIn']).replace(tzinfo=timezone.utc)
+            currentTime = datetime.utcnow().replace(tzinfo=timezone.utc)
+            elapsedTime = currentTime - clockInTime          
+            self.update_timer(elapsedTime.total_seconds())
             self.workTimer.interval = 1
         else:
             # User is clocked out
@@ -65,6 +65,7 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
             self.btnClockinout.background = "#ff0000"
             self.btnClockinout.tag = 1
             anvil.server.call("setClock", self.userID)
+            self.lblTimer.tag = 0
             self.workTimer.interval = 1
         else:
             self.btnClockinout.text = "Clock In"
@@ -72,6 +73,7 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
             self.btnClockinout.tag = 0
             anvil.server.call("updateClock", self.userID)
             self.workTimer.interval = 0
+            alert("Final Work time " + self.lblTimer.text + ".")
             self.lblTimer.text = "00:00:00"
             self.lblTimer.tag = 0
 

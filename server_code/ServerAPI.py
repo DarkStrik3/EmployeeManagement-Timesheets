@@ -3,7 +3,7 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
-from datetime import datetime, date, timedelta
+from datetime import datetime, date, timedelta, timezone
 
 
 # GETTERS
@@ -60,7 +60,7 @@ def getTotalBalance(ID):
     try:
       allWorkRecords = app_tables.tblworkrecords.search(UserID=ID)
       for workRecord in allWorkRecords:
-        if workRecord['Payout'] is not None:
+        if workRecord['Payout'] is not None and not workRecord['Paid']:
           payout += float(workRecord['Payout'])
       return payout
     except:
@@ -72,7 +72,7 @@ def getTotalApprovedBalance(ID):
     try:
       allWorkRecords = app_tables.tblworkrecords.search(UserID=ID, Approval=True)
       for workRecord in allWorkRecords:
-        if workRecord['Payout'] is not None:
+        if workRecord['Payout'] is not None and not workRecord['Paid']:
           payout += float(workRecord['Payout'])
       return payout
     except:
@@ -80,9 +80,12 @@ def getTotalApprovedBalance(ID):
 
 
 @anvil.server.callable
-def getClockedInRow(ID):
-  row = app_tables.tblworkrecords.search(tables.order_by("ClockIn", ascending=False), UserID=ID)[0]
-  return row
+def getClockedInRow(user_id):
+    clocked_in_row = app_tables.tblworkrecords.get(UserID=user_id, ClockOut=None)
+    if clocked_in_row:
+        # Ensure the ClockIn time is returned in UTC
+        clocked_in_row['ClockIn'] = clocked_in_row['ClockIn'].replace(tzinfo=timezone.utc)
+    return clocked_in_row
 
 
 # SETTERS
@@ -121,15 +124,15 @@ def newWorkId(ID):
 @anvil.server.callable
 def setClock(ID):
     user = app_tables.tbluserdetails.get(UserID=ID)
-    clockIn = datetime.now().replace(tzinfo=None)
+    clockIn = datetime.now().replace(tzinfo=timezone.utc)
     clockDate = date.today()
     app_tables.tblworkrecords.add_row(WorkID=newWorkId(ID), UserID=ID, ClockIn=clockIn, Date=clockDate, PayRate=user['BasicRate'], Approval=False, Paid=False)
 
 @anvil.server.callable
 def updateClock(ID):
     row = app_tables.tblworkrecords.search(tables.order_by("ClockIn", ascending=False), UserID=ID)[0]
-    clockOutTime = datetime.now().replace(tzinfo=None)
-    totalWork = clockOutTime - row['ClockIn'].replace(tzinfo=None)
+    clockOutTime = datetime.now().replace(tzinfo=timezone.utc)
+    totalWork = clockOutTime - row['ClockIn'].replace(tzinfo=timezone.utc)
     total_hours = totalWork.total_seconds() / 3600  # convert total work time to hours
     payout = total_hours * row['PayRate']
     row.update(ClockOut=clockOutTime, Payout=payout, HoursWorked=total_hours)
