@@ -112,20 +112,16 @@ class Timesheets(TimesheetsTemplate):
       else:
         self.resortTimesheets()
 
-
-    def confirmation(self, action):
-        return confirm(f"Are you sure you want to {action}?")
-
     def rejectSelected(self, **event_args):
-        if self.confirmation("reject selected items"):
-            selected_ids = [item['item']['WorkID'] for item in self.rpTimesheets.items if item['item']['selected']]
-            anvil.server.call('updateApprovalStatus', selected_ids, False)
+        if confirm("Are you sure you want to reject selected items? Rejected items are deleted."):
+            selectedIDs = [item['item']['WorkID'] for item in self.rpTimesheets.items if item['item']['Approved']]
+            anvil.server.call('updateApprovalStatus', selectedIDs, False)
             self.sortFilteredRecords()
 
     def rejectAll(self, **event_args):
-        if self.confirmation("reject all items"):
-            all_ids = [item['item']['WorkID'] for item in self.rpTimesheets.items]
-            anvil.server.call('updateApprovalStatus', all_ids, False)
+        if confirm("Are you sure you want to reject all items? Rejected items are deleted."):
+            allIDs = [item['item']['WorkID'] for item in self.rpTimesheets.items]
+            anvil.server.call('updateApprovalStatus', allIDs, False)
             self.sortFilteredRecords()
 
     def approveSelected(self, **event_args):
@@ -149,5 +145,5 @@ class Timesheets(TimesheetsTemplate):
     def markAllPaid(self, **event_args):
       if self.confirmation("mark all items as paid"):
         allIDs = [item['item']['WorkID'] for item in self.rpTimesheets.items]
-        anvil.server.call('updatePaymentStatus', allIDs, True)
+        anvil.server.call('updatePaymentStatus', allIDs)
         self.sortFilteredRecords()

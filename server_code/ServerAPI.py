@@ -182,12 +182,15 @@ def editUser(userID, username, Email, phoneNumber, dateOfBirth, gender, employme
 
 def updateApprovalStatus(workIDs, status):
   for workID in workIDs:
-    row = app_tables.tblworkrecords.get(WorkID=workID)
-    if row:
-      row.update(Approval=status)
+    if status:
+      row = app_tables.tblworkrecords.get(WorkID=workID)
+      if row:
+        row.update(Approval=True)
+    else:
+      row.delete()
 
-def updatePaymentStatus(workIDs, status):
+def updatePaymentStatus(workIDs):
   for workID in workIDs:
     row = app_tables.tblworkrecords.get(WorkID=workID)
     if row:
-      row.update(Paid=status)
+      row.update(Paid=True)
