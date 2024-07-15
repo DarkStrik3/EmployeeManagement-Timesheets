@@ -180,6 +180,7 @@ def editUser(userID, username, Email, phoneNumber, dateOfBirth, gender, employme
   user = app_tables.users.get(UserID=userID)
   user.update(email=Email, Group=group)
 
+@anvil.server.callable
 def updateApprovalStatus(workIDs, status):
   for workID in workIDs:
     if status:
@@ -189,6 +190,7 @@ def updateApprovalStatus(workIDs, status):
     else:
       row.delete()
 
+@anvil.server.callable
 def updatePaymentStatus(workIDs):
   for workID in workIDs:
     row = app_tables.tblworkrecords.get(WorkID=workID)

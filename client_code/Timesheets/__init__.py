@@ -114,7 +114,7 @@ class Timesheets(TimesheetsTemplate):
 
     def rejectSelected(self, **event_args):
         if confirm("Are you sure you want to reject selected items? Rejected items are deleted."):
-            selectedIDs = [item['item']['WorkID'] for item in self.rpTimesheets.items if item['item']['Approved']]
+            selectedIDs = [item['item']['WorkID'] for item in self.rpTimesheets.items if item['item']['Approval']]
             anvil.server.call('updateApprovalStatus', selectedIDs, False)
             self.sortFilteredRecords()
 
@@ -125,25 +125,25 @@ class Timesheets(TimesheetsTemplate):
             self.sortFilteredRecords()
 
     def approveSelected(self, **event_args):
-        if self.confirmation("approve selected items"):
-            selected_ids = [item['item']['WorkID'] for item in self.rpTimesheets.items if item['item']['Approved']]
-            anvil.server.call('updateApprovalStatus', selected_ids, True)
+        if confirm("Are you sure you want to approve selected items?"):
+            selectedIDs = [item['item']['WorkID'] for item in self.rpTimesheets.items if item['item']['Approval']]
+            anvil.server.call('updateApprovalStatus', selectedIDs, True)
             self.sortFilteredRecords()
 
     def approveAll(self, **event_args):
-        if self.confirmation("approve all items"):
+        if confirm("Are you sure you want to approve all items?"):
             allIDs = [item['item']['WorkID'] for item in self.rpTimesheets.items]
             anvil.server.call('updateApprovalStatus', allIDs, True)
             self.sortFilteredRecords()
 
     def markSelectedPaid(self, **event_args):
-      if self.confirmation("mark selected selected items as paid"):
+      if confirm("Are you sure you want to mark selected selected items as paid? This action cannot be undone."):
             selectedIDs = [item['item']['WorkID'] for item in self.rpTimesheets.items if item['item']['Paid']]
             anvil.server.call('updatePaymentStatus', selectedIDs, True)
             self.sortFilteredRecords()
 
     def markAllPaid(self, **event_args):
-      if self.confirmation("mark all items as paid"):
+      if confirm("Are you sure you want to mark all items as paid? This action cannot be undone."):
         allIDs = [item['item']['WorkID'] for item in self.rpTimesheets.items]
         anvil.server.call('updatePaymentStatus', allIDs)
         self.sortFilteredRecords()

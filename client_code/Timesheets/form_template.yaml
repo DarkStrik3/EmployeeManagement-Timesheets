@@ -80,10 +80,12 @@ components:
   properties: {text: Reject Selected, align: full}
   type: Button
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,UUOFHL MYXAXP,MZAOSG'}
+  event_bindings: {click: rejectSelected}
 - name: btnApproveSelected
   properties: {text: Approve Selected, align: full}
   type: Button
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,UUOFHL XKWQOZ,NVMDKO'}
+  event_bindings: {click: approveSelected}
 - name: lblUnpaid
   properties: {text: 'Unpaid:', bold: true}
   type: Label
@@ -92,6 +94,7 @@ components:
   properties: {text: Mark Selected as Paid, align: full}
   type: Button
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,UUOFHL XNAZMN,ZWAIOF'}
+  event_bindings: {click: markSelectedPaid}
 - name: lblTotalPending
   properties: {}
   type: Label
@@ -100,10 +103,12 @@ components:
   properties: {text: Reject All, align: full}
   type: Button
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,LZVAWN RNNDSF,PBKHEQ'}
+  event_bindings: {click: rejectAll}
 - name: btnApproveAll
   properties: {text: Approve All, align: full}
   type: Button
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,LZVAWN ASYZGF,CSSBPN'}
+  event_bindings: {click: approveAll}
 - name: lblTotalUnpaid
   properties: {}
   type: Label
@@ -116,4 +121,5 @@ components:
     align: full
   type: Button
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,LZVAWN BFZEXM,XZPRTW'}
+  event_bindings: {click: markAllPaid}
 is_package: true
