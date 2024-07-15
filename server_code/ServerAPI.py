@@ -183,10 +183,9 @@ def editUser(userID, username, Email, phoneNumber, dateOfBirth, gender, employme
 @anvil.server.callable
 def updateApprovalStatus(workIDs, status):
   for workID in workIDs:
+    row = app_tables.tblworkrecords.get(WorkID=workID)
     if status:
-      row = app_tables.tblworkrecords.get(WorkID=workID)
-      if row:
-        row.update(Approval=True)
+      row.update(Approval=True)
     else:
       row.delete()
 

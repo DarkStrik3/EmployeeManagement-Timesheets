@@ -5,7 +5,7 @@ container:
   properties: {auto_display_data: false}
 components:
 - name: cbApproval
-  properties: {text: Approval}
+  properties: {text: Approval, enabled: false}
   type: CheckBox
   layout_properties: {column: FUATGP}
 - name: lblName
@@ -29,7 +29,7 @@ components:
   type: Label
   layout_properties: {column: ZHGZQK}
 - name: cbPaid
-  properties: {text: Paid}
+  properties: {text: Paid, enabled: false}
   type: CheckBox
   layout_properties: {column: RVGLDW}
 - name: lblWorkID
@@ -40,3 +40,8 @@ components:
   properties: {}
   type: Label
   layout_properties: {column: MYNCXC}
+- name: cbSelect
+  properties: {text: '', align: center}
+  type: CheckBox
+  layout_properties: {column: BKQAPW}
+  event_bindings: {change: setSelected}

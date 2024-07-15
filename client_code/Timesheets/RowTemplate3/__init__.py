@@ -69,6 +69,5 @@ class RowTemplate3(RowTemplate3Template):
             print(f"Error setting cbApproval: {e}")
             self.cbApproval.checked = False
 
-    def cbApproval_change(self, **event_args):
-        self.item['item']['Approval'] = self.cbApproval.checked
-        self.item['item']['selected'] = True
+    def selectedChange(self, **event_args):
+      self._parent.changeSelectedStatus(self.item['item']['WorkID'], self.cbSelect.checked)
