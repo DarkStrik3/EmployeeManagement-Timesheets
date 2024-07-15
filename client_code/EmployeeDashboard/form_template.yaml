@@ -12,7 +12,7 @@ components:
     type: Label
     layout_properties: {grid_position: 'NZXKRN,DZLYLB DIVCPY,ULKZPW'}
   - name: rpApprovedWork
-    properties: {item_template: EmployeeDashboard.WorkRecordTemplate}
+    properties: {item_template: EmployeeDashboard.WorkRecordTemplateEmployee}
     type: RepeatingPanel
     layout_properties: {grid_position: 'NZXKRN,DZLYLB TQKEHW,PFCIWL'}
   - name: lblBalance
@@ -42,7 +42,7 @@ components:
     type: Label
     layout_properties: {grid_position: 'NZXKRN,ZKQKSK UIRFVA,LQUOCP'}
   - name: rpPendingWork
-    properties: {item_template: EmployeeDashboard.WorkRecordTemplate}
+    properties: {item_template: EmployeeDashboard.WorkRecordTemplateEmployee}
     type: RepeatingPanel
     layout_properties: {grid_position: 'NZXKRN,ZKQKSK JZAJSO,INJHYL'}
 is_package: true

@@ -1,5 +1,7 @@
 is_package: true
-container: {type: ColumnPanel}
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{"XJKGSP":15,"WJYECR":45}'}
 components:
 - name: imgProfileImage
   properties: {display_mode: zoom_to_fill}

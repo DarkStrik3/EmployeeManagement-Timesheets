@@ -44,4 +44,4 @@ components:
   properties: {text: '', align: center}
   type: CheckBox
   layout_properties: {column: BKQAPW}
-  event_bindings: {change: setSelected}
+  event_bindings: {change: selectedChange}

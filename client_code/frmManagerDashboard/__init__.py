@@ -20,6 +20,9 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
     self.init_components(**properties)
     self.user = anvil.users.get_user()
     self.userID = self.user['UserID']
+    self.userDetails = anvil.server.call('getUserInfo', self.userID)
+    self.lblProfileName.text = self.userDetails['FullName']
+    self.imgProfile.source = self.userDetails['Profile']
     self.selectEmployeeManagement()
     
 

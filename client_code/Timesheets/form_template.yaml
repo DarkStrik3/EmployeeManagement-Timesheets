@@ -20,7 +20,7 @@ components:
   layout_properties: {grid_position: 'ZVEIKO,MTQYCH', full_width_row: true}
   components:
   - name: rpTimesheets
-    properties: {item_template: Timesheets.RowTemplate3}
+    properties: {item_template: Timesheets.WorkRecordTemplateManager}
     type: RepeatingPanel
 - name: lblSort
   properties: {text: Sort By, align: center, bold: true, font_size: 20}
@@ -73,6 +73,10 @@ components:
   type: DatePicker
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE RKHARR,AXAKMF'}
   event_bindings: {change: filterTimesheets}
+- name: lblStatusUpdate
+  properties: {text: Status Updates, bold: true, align: center, font_size: 20}
+  type: Label
+  layout_properties: {grid_position: 'ZVEIKO,SKDDBE MPCHBH,DQVKOA'}
 - name: lblPending
   properties: {text: 'Pending:', bold: true}
   type: Label

@@ -1,4 +1,4 @@
-from ._anvil_designer import WorkRecordTemplateTemplate
+from ._anvil_designer import WorkRecordTemplateEmployeeTemplate
 from anvil import *
 import anvil.server
 import anvil.users
@@ -7,7 +7,7 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 
 
-class WorkRecordTemplate(WorkRecordTemplateTemplate):
+class WorkRecordTemplateEmployee(WorkRecordTemplateEmployeeTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
@@ -19,7 +19,7 @@ class WorkRecordTemplate(WorkRecordTemplateTemplate):
     try:
       total_seconds = self.item['HoursWorked'] * 3600  # Convert hours to seconds
       hours = int(total_seconds // 3600)
-      minutes = int((total_seconds % 3600) // 60)
+      minutes = int((total_seconds % 3600) // 60)mployee
       self.lblHoursWorked.text = f"Time Worked: {hours}h {minutes}m"
       self.lblPayout.text = "Payout: $" + str(round(self.item['Payout'], 2))
     except:
