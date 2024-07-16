@@ -16,6 +16,7 @@ class AnalyticsReporting(AnalyticsReportingTemplate):
     # Any code you write here will run before the form opens.
     self.allRecords = anvil.server.call('getTimesheetsManagers')
     self.allUsers = anvil.server.call('getAllEmployees', self.userID, "UserID", True)
+    self.refreshGraphs()
 
   def refreshGraphs(self, **event_args):
     timeChoice = self.ddDates.selected_value
@@ -38,7 +39,7 @@ class AnalyticsReporting(AnalyticsReportingTemplate):
           totalAmount += float(record['HoursWorked'])
     # Set Plots
     self.plotPieDistribution.data = go.Pie(labels=typeArr, values=infoArr)
-    self.plotGroupStats.data = 
+    self.plotGroupStats.data = go.Bar(labels=typeArr, values=infoArr)
     
     
     

@@ -18,16 +18,19 @@ components:
       properties:
         items: [Today, Yesterday, Last 7 days, Last Fortnight, Last Month, All Time]
       type: DropDown
+      event_bindings: {change: refreshGraphs}
     - name: ddGroup
       properties:
         items: [Groups, Employment Type, Employees]
       type: DropDown
       layout_properties: {}
+      event_bindings: {change: refreshGraphs}
     - name: ddInfoShown
       properties:
         items: [Payout, Time Worked]
       type: DropDown
       layout_properties: {}
+      event_bindings: {change: refreshGraphs}
   - name: plotGroupStats
     properties: {height: '250'}
     type: Plot
