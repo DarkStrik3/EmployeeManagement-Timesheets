@@ -12,7 +12,7 @@ class EmployeeManagement(EmployeeManagementTemplate):
         self.init_components(**properties)
         self._parent = p_parent
         self.user = anvil.users.get_user()
-        self.employees = anvil.server.call("getAllEmployees", self.user["UserID"], "UserID")
+        self.employees = anvil.server.call("getAllEmployees", self.user["UserID"], "UserID", False)
         self.employeeSelected = {emp["UserID"]: False for emp in self.employees}
         self.refreshEmployeeList(self.employees)
 

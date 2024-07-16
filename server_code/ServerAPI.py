@@ -50,8 +50,11 @@ def getUserSettings(ID):
   return setting
   
 @anvil.server.callable
-def getAllEmployees(callerID, sortBy):
-    employees = app_tables.tbluserdetails.search(tables.order_by(sortBy, ascending=True), UserID = q.none_of(callerID))
+def getAllEmployees(callerID, sortBy, includeUser):
+    if includeUser:
+      employees = app_tables.tbluserdetails.search(tables.order_by(sortBy, ascending=True))
+    else:
+      employees = app_tables.tbluserdetails.search(tables.order_by(sortBy, ascending=True), UserID = q.none_of(callerID))
     return employees
 
 @anvil.server.callable
