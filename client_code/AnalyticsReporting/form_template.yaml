@@ -14,11 +14,6 @@ components:
       properties: {text: Selections, bold: true, font_size: 20, align: center}
       type: Label
       layout_properties: {}
-    - name: ddEmploymentType
-      properties:
-        items: [All, Part Time, Full Time, Contractor]
-      type: DropDown
-      layout_properties: {}
     - name: ddDates
       properties:
         items: [Today, Yesterday, Last 7 days, Last Fortnight, Last Month, All Time]
@@ -29,8 +24,10 @@ components:
       type: DropDown
       layout_properties: {}
     - name: ddInfoShown
-      properties: {}
+      properties:
+        items: [Payout, Time Worked]
       type: DropDown
+      layout_properties: {}
   - name: plotGroupStats
     properties: {height: '250'}
     type: Plot
