@@ -26,8 +26,58 @@ class AnalyticsReporting(AnalyticsReportingTemplate):
     infoArr = []
     if typeChoice == "Groups":
       typeArr = ["Warehouse", "Management", "Admin", "Accounting"]
+      warehouse = 0
+      management = 0
+      admin = 0
+      accounting = 0
+      for record in self.allRecords:
+        recordUser = self.allUsers[record['UserID']]
+        if recordUser['Group'] == "Warehouse":
+          if infoChoice == "Payout":
+            warehouse += record['Payout']
+          elif infoChoice == "Time Worked":
+            warehouse += record['HoursWorked']
+        elif recordUser['Group'] == "Management":
+          if infoChoice == "Payout":
+            management += record['Payout']
+          elif infoChoice == "Time Worked":
+            management += record['HoursWorked']
+        elif recordUser['Group'] == "Admin":
+          if infoChoice == "Payout":
+            admin += record['Payout']
+          elif infoChoice == "Time Worked":
+            admin += record['HoursWorked']
+        elif recordUser['Group'] == "Accounting":
+          if infoChoice == "Payout":
+            accounting += record['Payout']
+          elif infoChoice == "Time Worked":
+            accounting += record['HoursWorked']
+      infoArr = [warehouse, management, admin, accounting]
+
     elif typeChoice == "Employment Type":
       typeArr = ["Full Time", "Part Time", "Contractor"]
+      fullTime = 0
+      partTime = 0
+      contractor = 0
+      for record in self.allRecords:
+        recordUser = self.allUsers[record['UserID']]
+        if recordUser['Employment'] == "Part-Time":
+          if infoChoice == "Payout":
+            partTime += record['Payout']
+          elif infoChoice == "Time Worked":
+            partTime += record['HoursWorked']
+        elif recordUser['Employment'] == "Full-Time":
+          if infoChoice == "Payout":
+            fullTime += record['Payout']
+          elif infoChoice == "Time Worked":
+            fullTime += record['HoursWorked']
+        elif recordUser['Employment'] == "Contractor":
+          if infoChoice == "Payout":
+            contractor += record['Payout']
+          elif infoChoice == "Time Worked":
+            contractor += record['HoursWorked']
+      infoArr = [fullTime, partTime, contractor]
+  
     elif typeChoice == "Employees":
       for user in self.allUsers:
         typeArr.append(user['FullName'])
@@ -37,9 +87,11 @@ class AnalyticsReporting(AnalyticsReportingTemplate):
           totalAmount += float(record['Payout'])
         elif infoChoice == "Time Worked":
           totalAmount += float(record['HoursWorked'])
+      infoArr.append(totalAmount)
+
     # Set Plots
     self.plotPieDistribution.data = go.Pie(labels=typeArr, values=infoArr)
-    self.plotGroupStats.data = go.Bar(labels=typeArr, values=infoArr)
+    self.plotGroupStats.data = go.Bar(x=typeArr, y=infoArr)
     
     
     
