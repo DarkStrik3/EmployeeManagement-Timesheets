@@ -11,5 +11,14 @@ class AnalyticsReporting(AnalyticsReportingTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-
+    
     # Any code you write here will run before the form opens.
+    self.allRecords = anvil.server.call('getTimesheetsManagers')
+
+  def refreshGraphs(self, **event_args):
+    timeChoice = self.ddDates.selected_value
+    typeChoice = self.ddGroup.selected_value
+    infoChoice = self.ddInfoShown.selected_value
+    for record in self.allRecords:
+      if 
+    

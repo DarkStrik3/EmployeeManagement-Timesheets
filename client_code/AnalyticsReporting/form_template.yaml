@@ -14,30 +14,28 @@ components:
       properties: {text: Selections, bold: true, font_size: 20, align: center}
       type: Label
       layout_properties: {}
-    - name: ddEmployees
-      properties:
-        items: [All]
-      type: DropDown
     - name: ddEmploymentType
       properties:
-        items: [All, Part Time, Full Time]
+        items: [All, Part Time, Full Time, Contractor]
       type: DropDown
-    - name: dpDate
-      properties: {}
-      type: DatePicker
+      layout_properties: {}
     - name: ddDates
       properties:
         items: [Today, Yesterday, Last 7 days, Last Fortnight, Last Month, All Time]
       type: DropDown
     - name: ddGroup
       properties:
-        items: [All, Warehouse, Admin, Manager, Accountant]
+        items: [Groups, Employment Type, Employees]
       type: DropDown
-  - name: plot_1
+      layout_properties: {}
+    - name: ddInfoShown
+      properties: {}
+      type: DropDown
+  - name: plotGroupStats
     properties: {height: '250'}
     type: Plot
     layout_properties: {row: UDCADG, width_xs: 4, col_xs: 3}
-  - name: plot_2
+  - name: plotPieDistribution
     properties: {height: 248.08331298828125}
     type: Plot
     layout_properties: {row: UDCADG, width_xs: 5, col_xs: 7}
@@ -78,7 +76,7 @@ components:
       - name: repeating_panel_1
         properties: {item_template: AnalyticsReporting.RowTemplate2}
         type: RepeatingPanel
-  - name: plot_3
+  - name: plotDateDistribution
     properties: {height: 512.5}
     type: Plot
     layout_properties: {row: ARUBVA, width_xs: 9, col_xs: 3}
