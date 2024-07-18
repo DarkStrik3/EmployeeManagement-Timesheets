@@ -32,11 +32,11 @@ components:
       layout_properties: {}
       event_bindings: {change: refreshGraphs}
   - name: plotGroupStats
-    properties: {height: '250'}
+    properties: {height: 243.5}
     type: Plot
     layout_properties: {row: UDCADG, width_xs: 4, col_xs: 3}
   - name: plotPieDistribution
-    properties: {height: 248.08331298828125}
+    properties: {height: '243.5'}
     type: Plot
     layout_properties: {row: UDCADG, width_xs: 5, col_xs: 7}
   - name: lpData
@@ -44,6 +44,9 @@ components:
     type: LinearPanel
     layout_properties: {row: ARUBVA, width_xs: 3, col_xs: 0}
     components:
+    - name: lblTotals
+      properties: {text: 'Totals:', align: center, bold: true, font_size: 20}
+      type: Label
     - name: lblTotalPayout
       properties: {text: 'Total Payout:', bold: true, align: center}
       type: Label
@@ -63,21 +66,30 @@ components:
       properties: {align: center}
       type: Label
       layout_properties: {}
-    - name: ddName
-      properties: {}
+    - name: ddTableInfoShown
+      properties:
+        items: [Payout, Time Worked, Pay Rate, User ID]
       type: DropDown
-    - name: dg
+      layout_properties: {}
+      event_bindings: {change: refreshEmployeeInfoTable}
+    - name: dgEmployeeInfoTable
       properties:
         columns:
         - {id: JKSDUP, title: Name, data_key: name}
-        - {id: OJLQEN, title: Payout Amount, data_key: payout}
+        - {id: OJLQEN, title: Info, data_key: payout}
+        show_page_controls: false
       type: DataGrid
       components:
-      - name: repeating_panel_1
+      - name: rpTable
         properties: {item_template: AnalyticsReporting.RowTemplate2}
         type: RepeatingPanel
+      layout_properties: {}
   - name: plotDateDistribution
-    properties: {height: 512.5}
+    properties: {height: 562.5}
     type: Plot
     layout_properties: {row: ARUBVA, width_xs: 9, col_xs: 3}
+  - name: btnDownloadData
+    properties: {text: Download Data, bold: true, align: full}
+    type: Button
+    layout_properties: {row: HAVMNJ, width_xs: 2, col_xs: 0}
 is_package: true

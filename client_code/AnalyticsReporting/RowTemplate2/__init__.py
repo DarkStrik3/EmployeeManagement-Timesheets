@@ -11,5 +11,6 @@ class RowTemplate2(RowTemplate2Template):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-
+    self.lblName.text = self.item['name']
+    self.lblInfo.text = self.item['info']
     # Any code you write here will run before the form opens.

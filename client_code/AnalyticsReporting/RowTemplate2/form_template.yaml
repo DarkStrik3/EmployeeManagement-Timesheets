@@ -2,4 +2,12 @@ is_package: true
 container:
   type: DataRowPanel
   properties: {italic: false}
-components: []
+components:
+- name: lblName
+  properties: {}
+  type: Label
+  layout_properties: {column: JKSDUP}
+- name: lblInfo
+  properties: {}
+  type: Label
+  layout_properties: {column: OJLQEN}
