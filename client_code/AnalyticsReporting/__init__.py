@@ -189,3 +189,39 @@ class AnalyticsReporting(AnalyticsReportingTemplate):
     values = list(date_dict.values())
 
     return go.Bar(x=dates, y=values)
+
+  def downloadUserDetails(self, **event_args):
+    filter_option = confirm("Do you want to download all data or filtered data based on the selected time period?", buttons=["All", "Filtered", "Cancel"])
+    if filter_option == "All":
+        csv_data = anvil.server.call('getUserDetailsForDownload', True)
+    elif filter_option == "Filtered":
+        csv_data = anvil.server.call('getUserDetailsForDownload', False)
+    else:
+        return  # Cancel was selected, do nothing
+
+    # Encode the CSV data to bytes
+    csv_bytes = csv_data.encode('utf-8')
+
+    # Create a file and download it
+    media = anvil.BlobMedia('text/csv', csv_bytes, name='user_details.csv')
+    download(media)
+
+
+
+def downloadWorkRecords(self, **event_args):
+    filter_option = confirm("Do you want to download all data or filtered data based on the selected time period?", buttons=["All", "Filtered", "Cancel"])
+    if filter_option == "All":
+        csv_data = anvil.server.call('getWorkRecordsForDownloads', "All Time")
+    elif filter_option == "Filtered":
+        time_choice = self.ddDates.selected_value
+        csv_data = anvil.server.call('getWorkRecordsForDownloads', time_choice)
+    else:
+        return  # Cancel was selected, do nothing
+
+    # Encode the CSV data to bytes
+    csv_bytes = csv_data.encode('utf-8')
+
+    # Create a file and download it
+    media = anvil.BlobMedia('text/csv', csv_bytes, name='work_records.csv')
+    download(media)
+

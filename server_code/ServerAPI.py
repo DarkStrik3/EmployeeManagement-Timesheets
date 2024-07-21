@@ -4,6 +4,8 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
 from datetime import datetime, date, timedelta, timezone
+import csv
+import io
 
 
 # GETTERS
@@ -29,6 +31,56 @@ def getIfWorking(ID):
         return False  # The most recent work record has a ClockOut, meaning that the employee is not currently working
     except:
         return False  # The employee has no history of working at all
+
+
+@anvil.server.callable
+def getWorkRecordsForDownloads(time_filter):
+    if time_filter == "All Time":
+        records = app_tables.tblworkrecords.search()
+    else:
+        start_date = get_start_date(time_filter)
+        records = app_tables.tblworkrecords.search(ClockIn=q.greater_than_or_equal_to(start_date))
+
+    record_data = []
+    for record in records:
+        record_data.append({
+            'WorkID': record['WorkID'],
+            'UserID': record['UserID'],
+            'HoursWorked': record['HoursWorked'],
+            'PayRate': record['PayRate'],
+            'ClockIn': record['ClockIn'].strftime('%Y-%m-%d %H:%M:%S') if record['ClockIn'] else '',
+            'ClockOut': record['ClockOut'].strftime('%Y-%m-%d %H:%M:%S') if record['ClockOut'] else '',
+            'Payout': record['Payout'],
+            'Approval': record['Approval'],
+            'Date': record['Date'].strftime('%Y-%m-%d') if record['Date'] else '',
+            'Paid': record['Paid']
+        })
+    csv_data = convert_to_csv(record_data)
+    return csv_data
+
+@anvil.server.callable
+def getUserDetailsForDownload(include_all):
+    users = app_tables.tbluserdetails.search() if include_all else app_tables.tbluserdetails.search(UserID=q.none_of([]))
+    user_data = []
+    for user in users:
+        user_data.append({
+            'UserID': user['UserID'],
+            'FullName': user['FullName'],
+            'Email': user['Email'],
+            'PhoneNumber': user['PhoneNumber'],
+            'DoB': str(user['DoB'].strftime('%Y-%m-%d')) if user['DoB'] else '',
+            'Gender': user['Gender'],
+            'Employment': user['Employment'],
+            'Group': user['Group'],
+            'Title': user['Title'],
+            'BasicRate': user['BasicRate'],
+            'ExtendedRate': user['ExtendedRate'],
+            'PublHolRate': user['PublHolRate'],
+            'TFN': user['TFN']
+        })
+    csv_data = convert_to_csv(user_data)
+    return csv_data
+
 
 
 @anvil.server.callable
@@ -108,22 +160,6 @@ def changeSettings(userID, checkedStatus):
   userSettings.update(DarkMode=checkedStatus)
   
 
-def createID():
-  try:
-    lastID = app_tables.users.search(tables.order_by("UserID", ascending=False))[0]['UserID']
-    newID = int(lastID) + 1
-    return newID
-  except:
-    return 0 # there aren't any prior users, meaning that a new user would have the ID of 0.
-
-def newWorkId(ID):
-  try:
-    lastID = app_tables.tblworkrecords.search(tables.order_by("WorkID", ascending=False))[0]['WorkID']
-    newID = int(lastID) + 1
-    return newID
-  except:
-    return 0 # there wasn't any prior work, meaning that the users
-
 @anvil.server.callable
 def setClock(ID):
     user = app_tables.tbluserdetails.get(UserID=ID)
@@ -193,7 +229,8 @@ def updateApprovalStatus(workIDs, status):
     if status:
       row.update(Approval=True)
     else:
-      row.delete()
+      if not row['Approval'] and not row['Paid']:
+        row.delete()
 
 @anvil.server.callable
 def updatePaymentStatus(workIDs):
@@ -201,3 +238,43 @@ def updatePaymentStatus(workIDs):
     row = app_tables.tblworkrecords.get(WorkID=workID)
     if row:
       row.update(Paid=True)
+
+# OTHER FUNCTIONS:
+
+def createID():
+  try:
+    lastID = app_tables.users.search(tables.order_by("UserID", ascending=False))[0]['UserID']
+    newID = int(lastID) + 1
+    return newID
+  except:
+    return 0 # there aren't any prior users, meaning that a new user would have the ID of 0.
+
+def newWorkId(ID):
+  try:
+    lastID = app_tables.tblworkrecords.search(tables.order_by("WorkID", ascending=False))[0]['WorkID']
+    newID = int(lastID) + 1
+    return newID
+  except:
+    return 0 # there wasn't any prior work, meaning that the users
+
+def get_start_date(time_filter):
+    if time_filter == "Today":
+        return datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
+    elif time_filter == "Yesterday":
+        return datetime.now().replace(hour=0, minute=0, second=0, microsecond=0) - timedelta(days=1)
+    elif time_filter == "Last 7 days":
+        return datetime.now().replace(hour=0, minute=0, second=0, microsecond=0) - timedelta(days=7)
+    elif time_filter == "Last Fortnight":
+        return datetime.now().replace(hour=0, minute=0, second=0, microsecond=0) - timedelta(days=14)
+    elif time_filter == "Last Month":
+        return (datetime.now().replace(day=1) - timedelta(days=1)).replace(day=1)
+    else:
+        return datetime.min
+
+def convert_to_csv(data):
+    output = io.StringIO()
+    writer = csv.DictWriter(output, fieldnames=data[0].keys())
+    writer.writeheader()
+    writer.writerows(data)
+    return output.getvalue()
+

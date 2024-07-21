@@ -84,12 +84,17 @@ components:
         properties: {item_template: AnalyticsReporting.RowTemplate2}
         type: RepeatingPanel
       layout_properties: {}
+    - name: btnDownloadRecords
+      properties: {text: Download Work Records, bold: true, align: full}
+      type: Button
+      layout_properties: {}
+      event_bindings: {click: downloadWorkRecords}
+    - name: btnDownloadUserDetails
+      properties: {text: Download User Details, align: full, bold: true}
+      type: Button
+      event_bindings: {click: downloadUserDetails}
   - name: plotDateDistribution
     properties: {height: 562.5}
     type: Plot
     layout_properties: {row: ARUBVA, width_xs: 9, col_xs: 3}
-  - name: btnDownloadData
-    properties: {text: Download Data, bold: true, align: full}
-    type: Button
-    layout_properties: {row: HAVMNJ, width_xs: 2, col_xs: 0}
 is_package: true
