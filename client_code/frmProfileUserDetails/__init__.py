@@ -14,8 +14,6 @@ class frmProfileUserDetails(frmProfileUserDetailsTemplate):
     self.init_components(**properties)
     self._parent = p_parent
     self.employeeId = employeeID
-    userSettings = anvil.server.call('getUserSettings', self.userID)
-    Other.apply_mode(userSettings['DarkMode'], self)  # Apply mode using helper function
     # Displaying all of the Employee details.
     userRow = anvil.server.call('getUserInfo', employeeID)
     self.imgProfilePicture.source = userRow['Profile']

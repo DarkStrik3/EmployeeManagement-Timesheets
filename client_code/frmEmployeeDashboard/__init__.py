@@ -17,8 +17,6 @@ class frmEmployeeDashboard(frmEmployeeDashboardTemplate):
     self.init_components(**properties)
     self.user = anvil.users.get_user()
     self.userID = self.user['UserID']
-    userSettings = anvil.server.call('getUserSettings', self.userID)
-    Other.apply_mode(userSettings['DarkMode'], self)  # Apply mode using helper function
     # Any code you write here will run before the form opens.
     userRow = anvil.server.call('getUserInfo', self.userID)
     self.lblProfileName.text = userRow['FullName']

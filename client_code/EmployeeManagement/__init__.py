@@ -15,9 +15,6 @@ class EmployeeManagement(EmployeeManagementTemplate):
       self.employees = anvil.server.call("getAllEmployees", self.user["UserID"], "UserID", False)
       self.employeeSelected = {emp["UserID"]: False for emp in self.employees}
       self.refreshEmployeeList(self.employees)
-      self.add_class('anvil-role-light-mode')
-      userSettings = anvil.server.call('getUserSettings', self.userID)
-      Other.apply_mode(userSettings['DarkMode'], self)  # Apply mode using helper function
 
     def getUserRow(self, user_id):
         return next((emp for emp in self.employees if emp["UserID"] == user_id), None)

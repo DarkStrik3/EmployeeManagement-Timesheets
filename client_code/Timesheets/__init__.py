@@ -12,9 +12,6 @@ class Timesheets(TimesheetsTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
-        self.add_class('anvil-role-light-mode')
-        userSettings = anvil.server.call('getUserSettings', self.userID)
-        Other.apply_mode(userSettings['DarkMode'], self)  # Apply mode using helper function
         # Initialize necessary attributes
         self.dateFormat = "%d/%m/%Y"
         self.dpDateFilter.format = self.dateFormat

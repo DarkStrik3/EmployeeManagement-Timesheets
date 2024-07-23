@@ -25,8 +25,7 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
     self.lblProfileName.text = self.userDetails['FullName']
     self.imgProfile.source = self.userDetails['Profile']
     self.selectEmployeeManagement()
-    userSettings = anvil.server.call('getUserSettings', self.userID)
-    Other.apply_mode(userSettings['DarkMode'], self)  # Apply mode using helper function
+    
 
 
   def signOut(self, **event_args):

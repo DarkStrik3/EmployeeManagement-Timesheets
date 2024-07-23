@@ -15,9 +15,7 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
       self.user = anvil.users.get_user()
       self.userID = self.user["UserID"]
       self.refresh()
-      self.add_class('anvil-role-light-mode')
-      userSettings = anvil.server.call('getUserSettings', self.userID)
-      Other.apply_mode(userSettings['DarkMode'], self)  # Apply mode using helper function
+
       
     def refresh(self, **event_args):
         workingStatus = anvil.server.call("getIfWorking", self.userID)

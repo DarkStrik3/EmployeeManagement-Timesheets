@@ -48,11 +48,11 @@ def getWorkRecordsForDownloads(time_filter):
             'UserID': record['UserID'],
             'HoursWorked': record['HoursWorked'],
             'PayRate': record['PayRate'],
-            'ClockIn': record['ClockIn'].strftime('%Y-%m-%d %H:%M:%S') if record['ClockIn'] else '',
-            'ClockOut': record['ClockOut'].strftime('%Y-%m-%d %H:%M:%S') if record['ClockOut'] else '',
+            'ClockIn': str(record['ClockIn'].strftime('%Y-%m-%d %H:%M:%S')) if record['ClockIn'] else '',
+            'ClockOut': str(record['ClockOut'].strftime('%Y-%m-%d %H:%M:%S')) if record['ClockOut'] else '',
             'Payout': record['Payout'],
             'Approval': record['Approval'],
-            'Date': record['Date'].strftime('%Y-%m-%d') if record['Date'] else '',
+            'Date': str(record['Date'].strftime('%Y-%m-%d')) if record['Date'] else '',
             'Paid': record['Paid']
         })
     csv_data = convert_to_csv(record_data)

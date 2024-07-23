@@ -17,7 +17,7 @@ components:
     layout_properties: {row: GIPNDZ, width_xs: 2, col_xs: 0}
     event_bindings: {click: signOut}
     name: btnBack
-  - properties: {height: 130, source: _/theme/MANAGEMENT.png}
+  - properties: {height: 130, source: _/theme/transparent.png}
     type: Image
     layout_properties: {row: GIPNDZ, width_xs: 5, col_xs: 4}
     name: imgHeader

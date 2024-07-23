@@ -16,18 +16,9 @@ class Settings(SettingsTemplate):
     userSettings = anvil.server.call('getUserSettings', self.userID)
     Other.apply_mode(userSettings['DarkMode'], self)  # Apply mode using helper function
 
-  def apply_dark_mode(self, enabled):
-    form = get_open_form()
-    if enabled:
-      form.remove_class('anvil-role-light-mode')
-      form.add_class('anvil-role-dark-mode')
-    else:
-      form.remove_class('anvil-role-dark-mode')
-      form.add_class('anvil-role-light-mode')
 
   def saveChanges(self, **event_args):
     anvil.server.call('changeSettings', self.userID, self.cbDark.checked)
-    self.apply_dark_mode(self.cbDark.checked)
     alert("Changes were updated.")
 
   def changePassword(self, **event_args):

@@ -19,9 +19,6 @@ class AnalyticsReporting(AnalyticsReportingTemplate):
     self.allRecords = anvil.server.call('getTimesheetsManagers')
     self.allUsers = anvil.server.call('getAllEmployees', self.userID, "UserID", True)
     self.refreshGraphs()
-    self.add_class('anvil-role-light-mode')
-    userSettings = anvil.server.call('getUserSettings', self.userID)
-    Other.apply_mode(userSettings['DarkMode'], self)  # Apply mode using helper function
 
   def refreshGraphs(self, **event_args):
     timeChoice = self.ddDates.selected_value
@@ -195,8 +192,8 @@ class AnalyticsReporting(AnalyticsReportingTemplate):
     return go.Bar(x=dates, y=values)
 
   def downloadUserDetails(self, **event_args):
-    filter_option = confirm("Do you want to download all data or filtered data based on the selected time period?", buttons=["All", "Cancel"])
-    if filter_option == "All":
+    filter_option = confirm("Are you sure you want to download all user details? (User profile images will not be included)")
+    if filter_option:
         csv_data = anvil.server.call('getUserDetailsForDownload', True)
     else:
         return  # Cancel was selected, do nothing
@@ -210,20 +207,23 @@ class AnalyticsReporting(AnalyticsReportingTemplate):
 
 
 
-def downloadWorkRecords(self, **event_args):
-    filter_option = confirm("Do you want to download all data or filtered data based on the selected time period?", buttons=["All", "Filtered", "Cancel"])
-    if filter_option == "All":
-        csv_data = anvil.server.call('getWorkRecordsForDownloads', "All Time")
-    elif filter_option == "Filtered":
-        time_choice = self.ddDates.selected_value
-        csv_data = anvil.server.call('getWorkRecordsForDownloads', time_choice)
-    else:
-        return  # Cancel was selected, do nothing
-
-    # Encode the CSV data to bytes
-    csv_bytes = csv_data.encode('utf-8')
-
-    # Create a file and download it
-    media = anvil.BlobMedia('text/csv', csv_bytes, name='work_records.csv')
-    download(media)
+  def downloadWorkRecords(self, **event_args):
+    try:
+      filter_option = confirm("Do you want to download all data or filtered data based on the selected time period?", buttons=["All", "Filtered", "Cancel"])
+      if filter_option == "All":
+          csv_data = anvil.server.call('getWorkRecordsForDownloads', "All Time")
+      elif filter_option == "Filtered":
+          time_choice = self.ddDates.selected_value
+          csv_data = anvil.server.call('getWorkRecordsForDownloads', time_choice)
+      else:
+          return  # Cancel was selected, do nothing
+  
+      # Encode the CSV data to bytes
+      csv_bytes = csv_data.encode('utf-8')
+  
+      # Create a file and download it
+      media = anvil.BlobMedia('text/csv', csv_bytes, name='work_records.csv')
+      download(media)
+    except:
+      alert("There isn't any data to download for the specified time period.")
 

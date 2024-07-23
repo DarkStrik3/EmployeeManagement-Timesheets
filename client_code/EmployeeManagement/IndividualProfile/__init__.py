@@ -5,14 +5,10 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-from ..Functions import Other
 
 class IndividualProfile(IndividualProfileTemplate):
     def __init__(self, **properties):
         self.init_components(**properties)
-        self.add_class('anvil-role-light-mode')
-        userSettings = anvil.server.call('getUserSettings', self.userID)
-        Other.apply_mode(userSettings['DarkMode'], self)  # Apply mode using helper function
         self._parent = self.item['parent']
         # Any code you write here will run before the form opens.
         self.lblEmplName.text = self.item['employee']["FullName"]

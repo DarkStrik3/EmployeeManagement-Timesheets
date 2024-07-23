@@ -14,8 +14,6 @@ class frmProfileTimesheets(frmProfileTimesheetsTemplate):
     self.init_components(**properties)
     self._parent = p_parent
     self.employeeId = employeeID
-    userSettings = anvil.server.call('getUserSettings', self.userID)
-    Other.apply_mode(userSettings['DarkMode'], self)  # Apply mode using helper function
     # Displaying the Employee name.
     userRow = anvil.server.call("getUserInfo", employeeID)
     self.lblFullNAME.text = str(userRow["FullName"])

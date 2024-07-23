@@ -117,14 +117,7 @@ class Other:
         right = [x for x in array if x[key] > pivot[key]]
         return Other.QuickSort(left, key) + middle + Other.QuickSort(right, key)
 
-  def apply_mode(enabled, p_parent):
-      form = p_parent
-      if enabled:
-          form.remove_class('anvil-role-light-mode')
-          form.add_class('anvil-role-dark-mode')
-      else:
-          form.remove_class('anvil-role-dark-mode')
-          form.add_class('anvil-role-light-mode')
+
 
 
 
