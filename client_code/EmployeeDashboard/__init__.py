@@ -14,7 +14,26 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
         self.user = anvil.users.get_user()
         self.userID = self.user["UserID"]
         self.refresh()
+        userSettings = anvil.server.call('getUserSettings', self.userID)
+        self.apply_dark_mode(userSettings['DarkMode'])
 
+    def apply_dark_mode(self, enabled):
+      if enabled:
+        get_open_form().add_class('dark-mode')
+      else:
+        get_open_form().remove_class('dark-mode')
+
+    def apply_dark_mode_to_all_forms(self, enabled):
+      if enabled:
+        get_open_form().add_class('dark-mode')
+      else:
+        get_open_form().remove_class('dark-mode')
+      for form in get_open_form().get_forms():
+        if enabled:
+          form.add_class('dark-mode')
+        else:
+          form.remove_class('dark-mode')
+      
     def refresh(self, **event_args):
         workingStatus = anvil.server.call("getIfWorking", self.userID)
         allWorkRecords = anvil.server.call('getUserTimesheets', self.userID)

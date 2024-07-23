@@ -191,11 +191,9 @@ class AnalyticsReporting(AnalyticsReportingTemplate):
     return go.Bar(x=dates, y=values)
 
   def downloadUserDetails(self, **event_args):
-    filter_option = confirm("Do you want to download all data or filtered data based on the selected time period?", buttons=["All", "Filtered", "Cancel"])
+    filter_option = confirm("Do you want to download all data or filtered data based on the selected time period?", buttons=["All", "Cancel"])
     if filter_option == "All":
         csv_data = anvil.server.call('getUserDetailsForDownload', True)
-    elif filter_option == "Filtered":
-        csv_data = anvil.server.call('getUserDetailsForDownload', False)
     else:
         return  # Cancel was selected, do nothing
 
