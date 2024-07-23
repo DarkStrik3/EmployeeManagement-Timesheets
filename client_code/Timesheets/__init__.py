@@ -29,7 +29,7 @@ class Timesheets(TimesheetsTemplate):
         for record in self.allWorkRecords:
             self.workRecordSelected[record['WorkID']] = False
 
-    def changeSelectedStatus(self, workID, status, **event_args):
+    def changeSelectedStatus(self, workID, status, **event_args): 
         self.workRecordSelected[workID] = status
 
     def getAllSelected(self):
