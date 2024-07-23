@@ -7,6 +7,7 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 from datetime import datetime, timedelta, timezone
+from ..Functions import Other
 
 class AnalyticsReporting(AnalyticsReportingTemplate):
   def __init__(self, **properties):
@@ -18,6 +19,9 @@ class AnalyticsReporting(AnalyticsReportingTemplate):
     self.allRecords = anvil.server.call('getTimesheetsManagers')
     self.allUsers = anvil.server.call('getAllEmployees', self.userID, "UserID", True)
     self.refreshGraphs()
+    self.add_class('anvil-role-light-mode')
+    userSettings = anvil.server.call('getUserSettings', self.userID)
+    Other.apply_mode(userSettings['DarkMode'], self)  # Apply mode using helper function
 
   def refreshGraphs(self, **event_args):
     timeChoice = self.ddDates.selected_value

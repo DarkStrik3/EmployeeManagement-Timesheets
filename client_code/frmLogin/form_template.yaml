@@ -3,7 +3,7 @@ container:
   properties: {html: <div anvil-slot="default"></div>}
 components:
 - name: gpLogin
-  properties: {background: '#342d2d'}
+  properties: {background: ''}
   type: GridPanel
   layout_properties: {slot: default}
   components:
@@ -12,7 +12,7 @@ components:
     type: Image
     layout_properties: {row: SHSWYP, width_xs: 6, col_xs: 3}
   - name: spacerLogin
-    properties: {height: 49.5}
+    properties: {height: 67}
     type: Spacer
     layout_properties: {row: ZHVFTN, width_xs: 2, col_xs: 5}
   - name: btnLogin

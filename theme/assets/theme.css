@@ -7,3 +7,13 @@
   background-color: #333333 !important;
   color: #ffffff !important;
 }
+
+.anvil-role-light-mode {
+  background-color: #ffffff !important;
+  color: #121212 !important;
+}
+
+.anvil-role-light-mode button {
+  background-color: #ffffff !important;
+  color: #121212 !important;
+}

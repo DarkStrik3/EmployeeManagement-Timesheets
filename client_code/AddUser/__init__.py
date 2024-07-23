@@ -18,6 +18,9 @@ class AddUser(AddUserTemplate):
     self.dpDoB.max_date = Other.getDate15YearsAgo() # makes sure that the worker is at least 15 years old which is a requirement to work
     self.dpDoB.format = "%d/%m/%Y"
     self.flUpload.file_types = ['.jpg', '.jpeg', '.png', 'webp']
+    self.add_class('anvil-role-light-mode')
+    userSettings = anvil.server.call('getUserSettings', self.userID)
+    Other.apply_mode(userSettings['DarkMode'], self)  # Apply mode using helper function
 
   def addNewUser(self, **event_args):
     issues = []

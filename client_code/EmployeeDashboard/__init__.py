@@ -7,32 +7,17 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 from datetime import datetime, timedelta, timezone
 import WorkRecordTemplateEmployee
+from ..Functions import Other
 
 class EmployeeDashboard(EmployeeDashboardTemplate):
     def __init__(self, **properties):
-        self.init_components(**properties)
-        self.user = anvil.users.get_user()
-        self.userID = self.user["UserID"]
-        self.refresh()
-        userSettings = anvil.server.call('getUserSettings', self.userID)
-        self.apply_dark_mode(userSettings['DarkMode'])
-
-    def apply_dark_mode(self, enabled):
-      if enabled:
-        get_open_form().add_class('dark-mode')
-      else:
-        get_open_form().remove_class('dark-mode')
-
-    def apply_dark_mode_to_all_forms(self, enabled):
-      if enabled:
-        get_open_form().add_class('dark-mode')
-      else:
-        get_open_form().remove_class('dark-mode')
-      for form in get_open_form().get_forms():
-        if enabled:
-          form.add_class('dark-mode')
-        else:
-          form.remove_class('dark-mode')
+      self.init_components(**properties)
+      self.user = anvil.users.get_user()
+      self.userID = self.user["UserID"]
+      self.refresh()
+      self.add_class('anvil-role-light-mode')
+      userSettings = anvil.server.call('getUserSettings', self.userID)
+      Other.apply_mode(userSettings['DarkMode'], self)  # Apply mode using helper function
       
     def refresh(self, **event_args):
         workingStatus = anvil.server.call("getIfWorking", self.userID)

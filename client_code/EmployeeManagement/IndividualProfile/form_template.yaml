@@ -42,7 +42,7 @@ components:
   layout_properties: {grid_position: 'RIREOW,WJYECR XMHKPW,YBROUC'}
   event_bindings: {click: editUser}
 - name: btnArchiveProfile
-  properties: {text: Archive, spacing_above: medium, align: full, bold: true}
+  properties: {text: Archive, spacing_above: medium, align: full, bold: true, background: ''}
   type: Button
   layout_properties: {grid_position: 'RIREOW,WJYECR XMHKPW,ZMBSOJ'}
   event_bindings: {click: archiveUser}

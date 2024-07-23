@@ -35,7 +35,10 @@ class EditUser(EditUserTemplate):
     self.ddEmplType.selected_value = userRow['Employment']
     self.ddGroup.selected_value = userRow['Group']
     self.ddGender.selected_value = userRow['Gender']
-
+    self.add_class('anvil-role-light-mode')
+    userSettings = anvil.server.call('getUserSettings', self.userID)
+    Other.apply_mode(userSettings['DarkMode'], self)  # Apply mode using helper function
+    
   def editUser(self, **event_args):
     issues = []
     if not Validation.validateString(self.txtFullName.text):  # makes sure that the name is a valid string

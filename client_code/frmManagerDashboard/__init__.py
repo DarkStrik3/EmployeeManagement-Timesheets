@@ -13,6 +13,7 @@ from ..AddUser import AddUser
 from ..EditUser import EditUser
 from ..frmProfileTimesheets import frmProfileTimesheets
 from ..frmProfileUserDetails import frmProfileUserDetails
+from ..Functions import Other
 
 
 class frmManagerDashboard(frmManagerDashboardTemplate):
@@ -25,25 +26,8 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
     self.imgProfile.source = self.userDetails['Profile']
     self.selectEmployeeManagement()
     userSettings = anvil.server.call('getUserSettings', self.userID)
-    self.apply_dark_mode(userSettings['DarkMode'])
+    Other.apply_mode(userSettings['DarkMode'], self)  # Apply mode using helper function
 
-  def apply_dark_mode(self, enabled):
-    if enabled:
-      get_open_form().add_class('dark-mode')
-    else:
-      get_open_form().remove_class('dark-mode')
-
-
-  def apply_dark_mode_to_all_forms(self, enabled):
-    if enabled:
-      get_open_form().add_class('dark-mode')
-    else:
-      get_open_form().remove_class('dark-mode')
-    for form in get_open_form().get_forms():
-      if enabled:
-        form.add_class('dark-mode')
-      else:
-        form.remove_class('dark-mode')
 
   def signOut(self, **event_args):
     anvil.users.logout()
