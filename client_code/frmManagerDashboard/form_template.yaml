@@ -1,18 +1,18 @@
 is_package: true
 container:
   type: HtmlTemplate
-  properties: {html: <div anvil-slot="default"></div>}
+  properties: {html: <div anvil-slot="default"></div>, background: '#131313', border: solid, foreground: '#131313'}
 components:
-- properties: {}
+- properties: {background: '#131313', border: solid, foreground: '#131313'}
   type: GridPanel
   layout_properties: {slot: default}
   name: gpProfile
   components:
-  - properties: {text: '', icon: 'fa:bars', spacing_above: medium}
+  - properties: {text: '', icon: 'fa:bars', spacing_above: medium, background: '#333333', foreground: '#ffffff'}
     type: Button
     layout_properties: {row: GIPNDZ, width_xs: 1, col_xs: 0}
     name: button_1
-  - properties: {text: Sign Out, icon: 'fa:caret-left', spacing_above: medium}
+  - properties: {text: Sign Out, icon: 'fa:caret-left', spacing_above: medium, background: '#333333', foreground: '#ffffff', border: ''}
     type: Button
     layout_properties: {row: GIPNDZ, width_xs: 2, col_xs: 0}
     event_bindings: {click: signOut}
@@ -38,22 +38,22 @@ components:
     type: LinearPanel
     layout_properties: {row: IWFCJG, width_xs: 2, col_xs: 10}
     components:
-    - properties: {text: Employee Management, align: full, bold: true, spacing_below: medium, spacing_above: small, background: ''}
+    - properties: {text: Employee Management, align: full, bold: true, spacing_below: medium, spacing_above: small, background: '#333333', foreground: '#ffffff'}
       type: Button
       layout_properties: {}
       event_bindings: {click: selectEmployeeManagement}
       name: btnEmplManage
-    - properties: {text: Timesheets, align: full, bold: true, spacing_above: medium, spacing_below: medium}
+    - properties: {text: Timesheets, align: full, bold: true, spacing_above: medium, spacing_below: medium, background: '#333333', foreground: '#ffffff'}
       type: Button
       layout_properties: {}
       event_bindings: {click: selectTimesheets}
       name: btnTimesheets
-    - properties: {text: Analytics and Reporting, spacing_above: medium, spacing_below: medium, bold: true, align: full}
+    - properties: {text: Analytics and Reporting, spacing_above: medium, spacing_below: medium, bold: true, align: full, background: '#333333', foreground: '#ffffff'}
       type: Button
       layout_properties: {}
       event_bindings: {click: selectAnalyticsReport}
       name: btnAnalyticReport
-    - properties: {text: Settings, align: full, bold: true, spacing_below: medium, spacing_above: medium}
+    - properties: {text: Settings, align: full, bold: true, spacing_below: medium, spacing_above: medium, background: '#333333', foreground: '#ffffff'}
       type: Button
       layout_properties: {}
       event_bindings: {click: selectSettings}

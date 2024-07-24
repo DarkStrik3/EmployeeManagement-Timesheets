@@ -12,9 +12,9 @@ class Settings(SettingsTemplate):
     self.init_components(**properties)
     user = anvil.users.get_user()
     self.userID = user['UserID']
-    self.add_class('anvil-role-light-mode')
     userSettings = anvil.server.call('getUserSettings', self.userID)
-    Other.apply_mode(userSettings['DarkMode'], self)  # Apply mode using helper function
+    self.cbDark.checked = userSettings['DarkMode']
+
 
 
   def saveChanges(self, **event_args):

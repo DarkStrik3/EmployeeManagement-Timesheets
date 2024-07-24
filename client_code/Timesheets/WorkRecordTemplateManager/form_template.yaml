@@ -5,43 +5,43 @@ container:
   properties: {auto_display_data: false}
 components:
 - name: cbApproval
-  properties: {text: Approval, enabled: false}
+  properties: {text: Approval, enabled: false, foreground: '#ffffff'}
   type: CheckBox
   layout_properties: {column: FUATGP}
 - name: lblName
-  properties: {}
+  properties: {foreground: '#ffffff'}
   type: Label
   layout_properties: {column: JKSDUP}
 - name: lblDate
-  properties: {}
+  properties: {foreground: '#ffffff'}
   type: Label
   layout_properties: {column: VJQQOR}
 - name: lblTimeWorked
-  properties: {}
+  properties: {foreground: '#ffffff'}
   type: Label
   layout_properties: {column: OJLQEN}
 - name: lblRate
-  properties: {}
+  properties: {foreground: '#ffffff'}
   type: Label
   layout_properties: {column: NVTRSA}
 - name: lblPayout
-  properties: {}
+  properties: {foreground: '#ffffff'}
   type: Label
   layout_properties: {column: ZHGZQK}
 - name: cbPaid
-  properties: {text: Paid, enabled: false}
+  properties: {text: Paid, enabled: false, foreground: '#ffffff'}
   type: CheckBox
   layout_properties: {column: RVGLDW}
 - name: lblWorkID
-  properties: {}
+  properties: {foreground: '#ffffff'}
   type: Label
   layout_properties: {column: FRNJEB}
 - name: lblUserID
-  properties: {}
+  properties: {foreground: '#ffffff'}
   type: Label
   layout_properties: {column: MYNCXC}
 - name: cbSelect
-  properties: {text: '', align: center}
+  properties: {text: '', align: center, foreground: '#ffffff'}
   type: CheckBox
   layout_properties: {column: BKQAPW}
   event_bindings: {change: selectedChange}

@@ -1,7 +1,9 @@
-container: {type: ColumnPanel}
+container:
+  type: ColumnPanel
+  properties: {background: '#131313', border: solid}
 components:
 - name: gpAnalyticsReporting
-  properties: {}
+  properties: {background: '#131313', border: solid}
   type: GridPanel
   layout_properties: {grid_position: 'OQBTGP,XHTDFU', full_width_row: true}
   components:
@@ -11,23 +13,30 @@ components:
     layout_properties: {row: UDCADG, width_xs: 3, col_xs: 0}
     components:
     - name: lblSelections
-      properties: {text: Selections, bold: true, font_size: 20, align: center}
+      properties: {text: Selections, bold: true, font_size: 20, align: center, foreground: '#ffffff'}
       type: Label
       layout_properties: {}
     - name: ddDates
       properties:
         items: [Today, Yesterday, Last 7 days, Last Fortnight, Last Month, All Time]
+        background: '#333333'
+        foreground: '#ffffff'
       type: DropDown
       event_bindings: {change: refreshGraphs}
+      layout_properties: {}
     - name: ddGroup
       properties:
         items: [Groups, Employment Type, Employees]
+        background: '#333333'
+        foreground: '#ffffff'
       type: DropDown
       layout_properties: {}
       event_bindings: {change: refreshGraphs}
     - name: ddInfoShown
       properties:
         items: [Payout, Time Worked]
+        background: '#333333'
+        foreground: '#ffffff'
       type: DropDown
       layout_properties: {}
       event_bindings: {change: refreshGraphs}
@@ -45,30 +54,38 @@ components:
     layout_properties: {row: ARUBVA, width_xs: 3, col_xs: 0}
     components:
     - name: lblTotals
-      properties: {text: 'Totals:', align: center, bold: true, font_size: 20}
+      properties: {text: 'Totals:', align: center, bold: true, font_size: 20, foreground: '#ffffff'}
       type: Label
+      layout_properties: {}
     - name: lblTotalPayout
-      properties: {text: 'Total Payout:', bold: true, align: center}
+      properties: {text: 'Total Payout:', bold: true, align: center, foreground: '#ffffff'}
       type: Label
+      layout_properties: {}
     - name: lblPayout
-      properties: {align: center}
+      properties: {align: center, foreground: '#ffffff'}
       type: Label
+      layout_properties: {}
     - name: lblTotalTime
-      properties: {text: 'Total Time:', align: center, bold: true}
+      properties: {text: 'Total Time:', align: center, bold: true, foreground: '#ffffff'}
       type: Label
+      layout_properties: {}
     - name: lblTime
-      properties: {align: center}
+      properties: {align: center, foreground: '#ffffff'}
       type: Label
+      layout_properties: {}
     - name: lblTotalEmployees
-      properties: {text: 'Total Employees:', bold: true, align: center}
+      properties: {text: 'Total Employees:', bold: true, align: center, foreground: '#ffffff'}
       type: Label
+      layout_properties: {}
     - name: lblEmployees
-      properties: {align: center}
+      properties: {align: center, background: '', foreground: '#ffffff'}
       type: Label
       layout_properties: {}
     - name: ddTableInfoShown
       properties:
         items: [Payout, Time Worked, Pay Rate, User ID]
+        background: '#333333'
+        foreground: '#ffffff'
       type: DropDown
       layout_properties: {}
       event_bindings: {change: refreshEmployeeInfoTable}
@@ -78,6 +95,7 @@ components:
         - {id: JKSDUP, title: Name, data_key: name}
         - {id: OJLQEN, title: Info, data_key: payout}
         show_page_controls: false
+        foreground: '#ffffff'
       type: DataGrid
       components:
       - name: rpTable
@@ -85,14 +103,15 @@ components:
         type: RepeatingPanel
       layout_properties: {}
     - name: btnDownloadRecords
-      properties: {text: Download Work Records, bold: true, align: full}
+      properties: {text: Download Work Records, bold: true, align: full, background: '#333333', foreground: '#ffffff'}
       type: Button
       layout_properties: {}
       event_bindings: {click: downloadWorkRecords}
     - name: btnDownloadUserDetails
-      properties: {text: Download User Details, align: full, bold: true}
+      properties: {text: Download User Details, align: full, bold: true, background: '#333333', foreground: '#ffffff'}
       type: Button
       event_bindings: {click: downloadUserDetails}
+      layout_properties: {}
   - name: plotDateDistribution
     properties: {height: 562.5}
     type: Plot

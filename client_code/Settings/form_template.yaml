@@ -1,7 +1,9 @@
-container: {type: ColumnPanel}
+container:
+  type: ColumnPanel
+  properties: {background: '#131313', border: solid}
 components:
 - name: fpSettings
-  properties: {}
+  properties: {foreground: '#ffffff'}
   type: FlowPanel
   layout_properties: {grid_position: 'YIWAOI,XUZQIQ'}
   components:
@@ -12,13 +14,17 @@ components:
     properties: {text: ''}
     type: CheckBox
 - name: btnChangePassword
-  properties: {text: Change Password, bold: true}
+  properties: {text: Change Password, bold: true, foreground: '#ffffff', background: '#333333'}
   type: Button
   layout_properties: {grid_position: 'YIWAOI,EOCEEF'}
   event_bindings: {click: changePassword}
 - name: btnSave
-  properties: {text: Save Changes, bold: true}
+  properties: {text: Save Changes, bold: true, background: '#333333', foreground: '#ffffff'}
   type: Button
-  layout_properties: {grid_position: 'OXFRDE,EXXQFW'}
+  layout_properties: {grid_position: 'LXSRMK,IHVWBO', full_width_row: true}
   event_bindings: {click: saveChanges}
+- name: spacerSettings
+  properties: {height: 628}
+  type: Spacer
+  layout_properties: {grid_position: 'MVMDNJ,LOYTCU'}
 is_package: true

@@ -1,9 +1,9 @@
 container:
   type: HtmlTemplate
-  properties: {html: <div anvil-slot="default"></div>}
+  properties: {html: <div anvil-slot="default"></div>, background: '#121212', foreground: '#121212', border: solid}
 components:
 - name: gpLogin
-  properties: {background: ''}
+  properties: {background: '#121212', role: null}
   type: GridPanel
   layout_properties: {slot: default}
   components:
@@ -12,12 +12,16 @@ components:
     type: Image
     layout_properties: {row: SHSWYP, width_xs: 6, col_xs: 3}
   - name: spacerLogin
-    properties: {height: 67}
+    properties: {height: 153}
     type: Spacer
     layout_properties: {row: ZHVFTN, width_xs: 2, col_xs: 5}
   - name: btnLogin
-    properties: {text: LOGIN, align: full, bold: true, font_size: 30}
+    properties: {text: LOGIN, align: full, bold: true, font_size: 30, background: '#333333', foreground: '#ffffff'}
     type: Button
     layout_properties: {row: LVWDWI, width_xs: 2, col_xs: 5}
     event_bindings: {click: login}
+  - name: spacerLogin2
+    properties: {height: 383}
+    type: Spacer
+    layout_properties: {row: VDJQNY, width_xs: 2, col_xs: 5}
 is_package: true

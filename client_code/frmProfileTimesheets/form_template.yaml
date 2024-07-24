@@ -1,23 +1,23 @@
 container:
   type: HtmlTemplate
-  properties: {html: <div anvil-slot="default"></div>}
+  properties: {html: <div anvil-slot="default"></div>, background: '#131313', foreground: '', border: solid}
 components:
 - name: gpProfile
-  properties: {}
+  properties: {background: '#131313'}
   type: GridPanel
   layout_properties: {slot: default}
   components:
   - name: btnBack
-    properties: {text: Back, icon: 'fa:angle-left', spacing_above: small}
+    properties: {text: Back, icon: 'fa:angle-left', spacing_above: small, background: '#333333', foreground: '#ffffff'}
     type: Button
     layout_properties: {row: YDUVHX, width_xs: 2, col_xs: 1}
   - name: btnEditProfile
-    properties: {text: Edit Profile, spacing_above: small}
+    properties: {text: Edit Profile, spacing_above: small, background: '#333333', foreground: '#ffffff'}
     type: Button
     layout_properties: {row: YDUVHX, width_xs: 2, col_xs: 3}
     event_bindings: {click: editProfile}
   - name: lblFullNAME
-    properties: {align: center, bold: true, font_size: 20}
+    properties: {align: center, bold: true, font_size: 20, foreground: '#ffffff'}
     type: Label
     layout_properties: {row: YDUVHX, width_xs: 3, col_xs: 5}
   - name: dgUserWork
@@ -40,12 +40,12 @@ components:
       type: RepeatingPanel
     layout_properties: {row: MHFVCP, width_xs: 12, col_xs: 0}
   - name: btnUserDetails
-    properties: {text: User Details}
+    properties: {text: User Details, background: '#333333', foreground: '#ffffff'}
     type: Button
     layout_properties: {row: YDUVHX, width_xs: 2, col_xs: 8}
     event_bindings: {click: openUserDetails}
   - name: btnTimesheets
-    properties: {text: User Timesheets, bold: true, background: '#6e6e6e', foreground: '#ffffff'}
+    properties: {text: User Timesheets, bold: true, background: '#8f8f8f', foreground: '#ffffff'}
     type: Button
     layout_properties: {row: YDUVHX, width_xs: 2, col_xs: 10}
 is_package: true

@@ -32,17 +32,17 @@ components:
   type: Label
   layout_properties: {grid_position: 'RIREOW,WJYECR LZQMEO,SREUYW'}
 - name: btnOpen
-  properties: {text: Open, spacing_above: medium, align: full, bold: true}
+  properties: {text: Open, spacing_above: medium, align: full, bold: true, background: '#333333', foreground: '#ffffff'}
   type: Button
   layout_properties: {grid_position: 'RIREOW,WJYECR XMHKPW,VYVEGN'}
   event_bindings: {click: openUser}
 - name: btnEditProfile
-  properties: {text: Edit, spacing_above: medium, align: full, bold: true}
+  properties: {text: Edit, spacing_above: medium, align: full, bold: true, background: '#333333', foreground: '#ffffff'}
   type: Button
   layout_properties: {grid_position: 'RIREOW,WJYECR XMHKPW,YBROUC'}
   event_bindings: {click: editUser}
 - name: btnArchiveProfile
-  properties: {text: Archive, spacing_above: medium, align: full, bold: true, background: ''}
+  properties: {text: Archive, spacing_above: medium, align: full, bold: true, background: '#333333', foreground: '#ffffff'}
   type: Button
   layout_properties: {grid_position: 'RIREOW,WJYECR XMHKPW,ZMBSOJ'}
   event_bindings: {click: archiveUser}

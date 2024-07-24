@@ -48,11 +48,11 @@ def getWorkRecordsForDownloads(time_filter):
             'UserID': record['UserID'],
             'HoursWorked': record['HoursWorked'],
             'PayRate': record['PayRate'],
-            'ClockIn': str(record['ClockIn'].strftime('%Y-%m-%d %H:%M:%S')), #if record['ClockIn'] else '',
-            'ClockOut': str(record['ClockOut'].strftime('%Y-%m-%d %H:%M:%S')), #if record['ClockOut'] else '',
+            'ClockIn': str(record['ClockIn']) if record['ClockIn'] else '',
+            'ClockOut': str(record['ClockOut']) if record['ClockOut'] else '',
+            'Date': str(record['Date']),
             'Payout': record['Payout'],
             'Approval': record['Approval'],
-            'Date': str(record['Date'].strftime('%Y-%m-%d')) if record['Date'] else '',
             'Paid': record['Paid']
         })
     csv_data = convert_to_csv(record_data)
@@ -68,7 +68,7 @@ def getUserDetailsForDownload(include_all):
             'FullName': user['FullName'],
             'Email': user['Email'],
             'PhoneNumber': user['PhoneNumber'],
-            'DoB': str(user['DoB'].strftime('%Y-%m-%d')), # if user['DoB'] else '',
+            'DoB': str(user['DoB']),
             'Gender': user['Gender'],
             'Employment': user['Employment'],
             'Group': user['Group'],
@@ -165,16 +165,27 @@ def setClock(ID):
     user = app_tables.tbluserdetails.get(UserID=ID)
     clockIn = datetime.now().replace(tzinfo=timezone.utc)
     clockDate = date.today()
-    app_tables.tblworkrecords.add_row(WorkID=newWorkId(ID), UserID=ID, ClockIn=clockIn, Date=clockDate, PayRate=user['BasicRate'], Approval=False, Paid=False)
+    app_tables.tblworkrecords.add_row(WorkID=newWorkId(ID), UserID=ID, ClockIn=clockIn, Date=clockDate, Approval=False, Paid=False)
 
 @anvil.server.callable
 def updateClock(ID):
     row = app_tables.tblworkrecords.search(tables.order_by("ClockIn", ascending=False), UserID=ID)[0]
+    user = app_tables.tbluserdetails.get(UserID=ID)
     clockOutTime = datetime.now().replace(tzinfo=timezone.utc)
     totalWork = clockOutTime - row['ClockIn'].replace(tzinfo=timezone.utc)
     total_hours = totalWork.total_seconds() / 3600  # convert total work time to hours
-    payout = total_hours * row['PayRate']
-    row.update(ClockOut=clockOutTime, Payout=payout, HoursWorked=total_hours)
+    if total_hours > 3:
+      payout = total_hours * user['ExtendedRate']
+      payrate = user['ExtendedRate']
+    else:
+      weekno = datetime.datetime.today().weekday()
+      if weekno < 5: # day is weekday and worked less than 3 hours
+        payout = total_hours * user['BasicRate']
+        payrate = user['BasicRate']
+      else:  # 5 Sat, 6 Sun
+        payout = total_hours * user['ExtendedRate']
+        payrate = user['ExtendedRate']
+    row.update(ClockOut=clockOutTime, Payout=payout, HoursWorked=total_hours, PayRate=payrate)
 
 
 

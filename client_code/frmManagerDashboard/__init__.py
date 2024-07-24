@@ -35,42 +35,42 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
   def selectEmployeeManagement(self, **event_args):
     self.cpDashboards.clear()
     self.cpDashboards.add_component(EmployeeManagement(p_parent=self), full_width_row=True)
-    self.btnEmplManage.background = "#6e6e6e"
-    self.btnAnalyticReport.background = ""
-    self.btnTimesheets.background = ""
-    self.btnSettings.background = ""
+    self.btnEmplManage.background = "#8f8f8f"
+    self.btnAnalyticReport.background = "#333333"
+    self.btnTimesheets.background = "#333333"
+    self.btnSettings.background = "#333333"
 
   def selectAnalyticsReport(self, **event_args):
     self.cpDashboards.clear()
     self.cpDashboards.add_component(AnalyticsReporting(), full_width_row=True)
-    self.btnEmplManage.background = ""
-    self.btnAnalyticReport.background = "#6e6e6e"
-    self.btnTimesheets.background = ""
-    self.btnSettings.background = ""
+    self.btnEmplManage.background = "#333333"
+    self.btnAnalyticReport.background = "#8f8f8f"
+    self.btnTimesheets.background = "#333333"
+    self.btnSettings.background = "#333333"
 
   def selectTimesheets(self, **event_args):
     self.cpDashboards.clear()
     self.cpDashboards.add_component(Timesheets(), full_width_row=True)
-    self.btnEmplManage.background = ""
-    self.btnAnalyticReport.background = ""
-    self.btnTimesheets.background = "#6e6e6e"
-    self.btnSettings.background = ""
+    self.btnEmplManage.background = "#333333"
+    self.btnAnalyticReport.background = "#333333"
+    self.btnTimesheets.background = "#8f8f8f"
+    self.btnSettings.background = "#333333"
 
   def selectSettings(self, **event_args):
     self.cpDashboards.clear()
     self.cpDashboards.add_component(Settings(), full_width_row=True)
-    self.btnEmplManage.background = ""
-    self.btnAnalyticReport.background = ""
-    self.btnTimesheets.background = ""
-    self.btnSettings.background = "#6e6e6e"
+    self.btnEmplManage.background = "#333333"
+    self.btnAnalyticReport.background = "#333333"
+    self.btnTimesheets.background = "#333333"
+    self.btnSettings.background = "#8f8f8f"
 
   def selectAddNewUser(self, **event_args):
     self.cpDashboards.clear()
     self.cpDashboards.add_component(AddUser(), full_width_row=True)
-    self.btnEmplManage.background = ""
-    self.btnAnalyticReport.background = ""
-    self.btnTimesheets.background = ""
-    self.btnSettings.background = ""
+    self.btnEmplManage.background = "#333333"
+    self.btnAnalyticReport.background = "#333333"
+    self.btnTimesheets.background = "#333333"
+    self.btnSettings.background = "#333333"
 
   def openProfileUserDetails(self, userID, **event_args):
     self.cpDashboards.clear()
