@@ -390,7 +390,7 @@ def editUser(userID, username, Email, phoneNumber, dateOfBirth, gender, employme
     - tfn (str): The tax file number of the user.
     - profileImg (Media object): The profile image of the user.
     
-    Output: None
+    Output: Changes to the user details database.
     """
     oldRow = app_tables.tbluserdetails.get(UserID=userID)
     oldRow.update(FullName=username, 
@@ -419,7 +419,7 @@ def updateApprovalStatus(workIDs, status):
     - workIDs (list of str): The list of WorkIDs to update.
     - status (bool): The new approval status.
     
-    Output: None
+    Output: Update timesheets (work record table)
     """
     for workID in workIDs:
         row = app_tables.tblworkrecords.get(WorkID=workID)
