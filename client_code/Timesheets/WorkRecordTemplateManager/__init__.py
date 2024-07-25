@@ -5,6 +5,7 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
+from ...Functions import Other
 
 class WorkRecordTemplateManager(WorkRecordTemplateManagerTemplate):
     def __init__(self, **properties):
@@ -26,7 +27,7 @@ class WorkRecordTemplateManager(WorkRecordTemplateManagerTemplate):
         self.lblDate.text = self.item['item']['Date'].strftime('%d/%m/%Y')
         self.lblPayout.text = f"${self.item['item']['Payout']:.2f}" if self.item['item']['Payout'] is not None else 'N/A'
         self.lblRate.text = f"${self.item['item']['PayRate']:.2f}/hr" if self.item['item']['PayRate'] is not None else 'N/A'
-        self.lblTimeWorked.text = f"{self.item['item']['HoursWorked']:.2f} hours" if self.item['item']['HoursWorked'] is not None else 'N/A'
+        self.lblTimeWorked.text = Other.convertStringToFloat(self.item['item']['HoursWorked']) if self.item['item']['HoursWorked'] is not None else 'N/A'
         self.cbApproval.checked = self.item['item']['Approval']
         self.cbPaid.checked = self.item['item']['Paid']
 

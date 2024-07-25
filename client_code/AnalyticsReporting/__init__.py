@@ -24,7 +24,6 @@ class AnalyticsReporting(AnalyticsReportingTemplate):
     timeChoice = self.ddDates.selected_value
     typeChoice = self.ddGroup.selected_value
     infoChoice = self.ddInfoShown.selected_value
-
     # Filter records based on the selected time range
     filteredRecords = self.filterRecordsByTime(self.allRecords, timeChoice)
     
@@ -104,15 +103,34 @@ class AnalyticsReporting(AnalyticsReportingTemplate):
       infoArr.append(totalAmount)
 
     # Set Plots
+
+    # Update the pie chart
     self.plotPieDistribution.data = go.Pie(labels=typeArr, values=infoArr, hole=0.3)
-    self.plotPieDistribution.layout.update(margin=dict(l=20, r=20, t=20, b=20))
-
+    self.plotPieDistribution.layout.update(
+        margin=dict(l=20, r=20, t=20, b=20),
+        plot_bgcolor='#333333',  # Background color for the plotting area
+        paper_bgcolor='#333333',  # Background color for the entire graph
+        font=dict(color='white')  # Text color for better visibility against the dark background
+    )
+    
+    # Update the top bar chart
     self.plotGroupStats.data = go.Bar(x=typeArr, y=infoArr)
-    self.plotGroupStats.layout.update(margin=dict(l=20, r=20, t=20, b=20))
-
-    # Implement bottom graph (e.g., Date distribution)
+    self.plotGroupStats.layout.update(
+        margin=dict(l=20, r=20, t=20, b=20),
+        plot_bgcolor='#333333',  # Background color for the plotting area
+        paper_bgcolor='#333333',  # Background color for the entire graph
+        font=dict(color='white')  # Text color for better visibility against the dark background
+    )
+    
+    # Update the bottom graph (e.g., Date distribution)
     self.plotDateDistribution.data = self.getDateDistribution(filteredRecords, infoChoice)
-    self.plotDateDistribution.layout.update(margin=dict(l=20, r=20, t=20, b=20))
+    self.plotDateDistribution.layout.update(
+        margin=dict(l=20, r=20, t=20, b=20),
+        plot_bgcolor='#333333',  # Background color for the plotting area
+        paper_bgcolor='#333333',  # Background color for the entire graph
+        font=dict(color='white')  # Text color for better visibility against the dark background
+    )
+
 
     # Refresh the employee info table
     self.refreshEmployeeInfoTable()

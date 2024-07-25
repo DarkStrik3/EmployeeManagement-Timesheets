@@ -27,7 +27,7 @@ components:
       foreground: '#ffffff'
     type: DropDown
     layout_properties: {grid_position: 'RJRQGI,CNJGEP YISBCX,HCDKIX', full_width_row: true}
-    event_bindings: {change: refreshEmployeeList}
+    event_bindings: {change: sortFilteredEmployees}
   - name: lblFilters
     properties: {text: Filters, bold: true, align: center, font_size: 20, spacing_above: medium, spacing_below: none, foreground: '#ffffff'}
     type: Label

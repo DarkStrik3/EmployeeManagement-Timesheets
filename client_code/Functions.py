@@ -5,7 +5,6 @@ import anvil.tables.query as q
 import re
 from anvil.tables import app_tables
 from datetime import datetime
-from anvil import get_open_form
 
 
 class Validation:
@@ -86,21 +85,33 @@ class Validation:
 
 
 class Other:
-    def getDate15YearsAgo():  # Get the date 15 years ago from today
-        current_date = datetime.now()
-        try:
-            date_15_years_ago = current_date.replace(year=current_date.year - 15)  # Calculate the date 15 years ago
-        except ValueError:
-            # Handle the case where the original date is Feb 29 and the target year is not a leap year
-            date_15_years_ago = current_date.replace(month=2, day=28, year=current_date.year - 15)
-        return date_15_years_ago.date()  # Return the date 15 years ago
+  def getDate15YearsAgo():  # Get the date 15 years ago from today
+      current_date = datetime.now()
+      try:
+          date_15_years_ago = current_date.replace(year=current_date.year - 15)  # Calculate the date 15 years ago
+      except ValueError:
+          # Handle the case where the original date is Feb 29 and the target year is not a leap year
+          date_15_years_ago = current_date.replace(month=2, day=28, year=current_date.year - 15)
+      return date_15_years_ago.date()  # Return the date 15 years ago
 
-    def QuickSort(array, key):  # QuickSort algorithm
-        if len(array) <= 1:
-            return array  # Base case: array with 0 or 1 element is already sorted
-        else:
-            pivot = array[len(array) // 2]  # Choose the pivot element
-            left = [x for x in array if x[key] < pivot[key]]  # Elements less than the pivot
-            middle = [x for x in array if x[key] == pivot[key]]  # Elements equal to the pivot
-            right = [x for x in array if x[key] > pivot[key]]  # Elements greater than the pivot
-            return Other.QuickSort(left, key) + middle + Other.QuickSort(right, key)  # Combine sorted sub-arrays
+  def QuickSort(array, key):  # QuickSort algorithm
+      if len(array) <= 1:
+          return array  # Base case: array with 0 or 1 element is already sorted
+      else:
+          pivot = array[len(array) // 2]  # Choose the pivot element
+          left = [x for x in array if x[key] < pivot[key]]  # Elements less than the pivot
+          middle = [x for x in array if x[key] == pivot[key]]  # Elements equal to the pivot
+          right = [x for x in array if x[key] > pivot[key]]  # Elements greater than the pivot
+          return Other.QuickSort(left, key) + middle + Other.QuickSort(right, key)  # Combine sorted sub-arrays
+
+
+  def convertFloatToString(hoursFloat):
+    # Convert the input hours to an integer number of hours, minutes, and seconds
+    totalSeconds = int(hoursFloat * 3600)  # Total seconds
+    hours = totalSeconds // 3600  # Calculate hours
+    totalSeconds %= 3600  # Remaining seconds after hours are calculated
+    minutes = totalSeconds // 60  # Calculate minutes
+    seconds = totalSeconds % 60  # Remaining seconds after minutes are calculated
+    
+    # Return formatted string
+    return f"{hours}h {minutes}m {seconds}s"

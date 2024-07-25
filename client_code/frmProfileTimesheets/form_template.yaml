@@ -31,8 +31,10 @@ components:
       - {id: OJLQEN, title: Pay Rate, data_key: PayRate}
       - {id: GRQBIK, data_key: Payout, title: Payout, expand: false}
       - {id: TVIIBG, data_key: approval, title: Approval}
+      - {id: TOCTNQ, data_key: Paid, title: Paid}
       show_page_controls: false
       auto_header: true
+      foreground: theme:Dark Theme - Foreground
     type: DataGrid
     components:
     - name: rpPastWork

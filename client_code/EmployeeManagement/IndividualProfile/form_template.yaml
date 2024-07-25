@@ -8,27 +8,27 @@ components:
   type: Image
   layout_properties: {grid_position: 'RIREOW,XJKGSP', full_width_row: false}
 - name: lblName
-  properties: {text: 'Name:', bold: true}
+  properties: {text: 'Name:', bold: true, foreground: 'theme:Dark Theme - Foreground'}
   type: Label
   layout_properties: {grid_position: 'RIREOW,WJYECR JCLKRO,CKIFUB'}
 - name: lblEmplName
-  properties: {}
+  properties: {foreground: 'theme:Dark Theme - Foreground'}
   type: Label
   layout_properties: {grid_position: 'RIREOW,WJYECR JCLKRO,NBCIJM'}
 - name: lblEmploymentStat
-  properties: {text: 'Employment Status:', bold: true}
+  properties: {text: 'Employment Status:', bold: true, foreground: 'theme:Dark Theme - Foreground'}
   type: Label
   layout_properties: {grid_position: 'RIREOW,WJYECR RABWMP,QFGMWA'}
 - name: lblEmplEmployment
-  properties: {}
+  properties: {foreground: 'theme:Dark Theme - Foreground'}
   type: Label
   layout_properties: {grid_position: 'RIREOW,WJYECR RABWMP,UKMKRA'}
 - name: lblEmployeeIdentification
-  properties: {text: 'Employee ID:', bold: true}
+  properties: {text: 'Employee ID:', bold: true, foreground: 'theme:Dark Theme - Foreground'}
   type: Label
   layout_properties: {grid_position: 'RIREOW,WJYECR LZQMEO,TSWXSB'}
 - name: lblEmplID
-  properties: {}
+  properties: {foreground: 'theme:Dark Theme - Foreground'}
   type: Label
   layout_properties: {grid_position: 'RIREOW,WJYECR LZQMEO,SREUYW'}
 - name: btnOpen

@@ -33,3 +33,7 @@ components:
   properties: {foreground: '#ffffff'}
   type: Label
   layout_properties: {column: PZUJKU}
+- name: cbPaid
+  properties: {text: Paid, enabled: false}
+  type: CheckBox
+  layout_properties: {column: TOCTNQ}

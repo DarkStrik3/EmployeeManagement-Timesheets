@@ -19,12 +19,6 @@ class EmployeeManagement(EmployeeManagementTemplate):
     def getUserRow(self, user_id):
         return next((emp for emp in self.employees if emp["UserID"] == user_id), None)
 
-    def changeSelectedStatus(self, userID, status, **event_args):
-        self.employeeSelected[userID] = status
-
-    def getAllSelected(self):
-        return [userID for userID, selected in self.employeeSelected.items() if selected]
-
     def refreshEmployeeList(self, employeeList, **event_args):
         self.rpEmployees.items = [{'employee': emp, 'parent': self} for emp in employeeList]
 
@@ -33,9 +27,9 @@ class EmployeeManagement(EmployeeManagementTemplate):
             filteredEmployees = self.filterEmployees()
             self.resortProfiles(filteredEmployees)
         else:
-            self.resortProfiles()
+            self.resortProfiles(self.employees)
 
-    def resortProfiles(self, employees=None, **event_args):
+    def resortProfiles(self, employees, **event_args):
         employees = employees if employees is not None else self.employees
         sortBy = self.ddSort.selected_value
 
@@ -56,25 +50,20 @@ class EmployeeManagement(EmployeeManagementTemplate):
 
             for employee in self.employees:
                 add = True
-
                 if self.ddGender.selected_value and str(self.ddGender.selected_value) != "All" and employee['Gender'] != str(self.ddGender.selected_value):
                     add = False
-
                 if self.ddGroup.selected_value and str(self.ddGroup.selected_value) != "All" and employee['Group'] != str(self.ddGroup.selected_value):
                     add = False
-
                 if self.ddEmploymentType.selected_value and str(self.ddEmploymentType.selected_value) != "All" and employee['Employment'] != str(self.ddEmploymentType.selected_value):
                     add = False
-
                 if add:
                     newFilter.append(employee)
-
             self.refreshEmployeeList(newFilter)
             self.resortProfiles(newFilter)
             return newFilter
         else:
             self.refreshEmployeeList(self.employees)
-            self.resortProfiles()
+            self.resortProfiles(self.employees)
 
     def addUser(self, **event_args):
         self._parent.selectAddNewUser()
