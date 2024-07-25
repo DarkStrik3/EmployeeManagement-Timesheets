@@ -16,30 +16,32 @@ Employee Management System
 
   Classes and Methods
   
-  Validation Class
-  Contains methods to validate various types of input data.
-  
-  validateString(name): Validates that a string is not empty or whitespace.
-  validateDate(date): Validates a date string in the format dd/mm/yyyy.
-  validateRate(baseRate, extendedRate, pubholrate): Validates that rates meet the specified conditions.
-  validateEmail(email): Validates the format of an email address.
-  validatePhoneNum(phoneNumber): Validates the format of a phone number.
-  validateTFN(tfn): Validates a Tax File Number (TFN).
-  validateUpload(imgFile): Validates an image file upload.
-  Other Class
-  Provides additional utility methods.
-  
-  getDate15YearsAgo(): Returns the date 15 years ago from today.
-  QuickSort(array, key): Implements the QuickSort algorithm for sorting an array of dictionaries based on a specified key.
+    Validation Class
+      Contains methods to validate various types of input data.
+      
+      validateString(name): Validates that a string is not empty or whitespace.
+      validateDate(date): Validates a date string in the format dd/mm/yyyy.
+      validateRate(baseRate, extendedRate, pubholrate): Validates that rates meet the specified conditions.
+      validateEmail(email): Validates the format of an email address.
+      validatePhoneNum(phoneNumber): Validates the format of a phone number.
+      validateTFN(tfn): Validates a Tax File Number (TFN).
+      validateUpload(imgFile): Validates an image file upload.
+    Other Class
+    Provides additional utility methods, such as:
+      getDate15YearsAgo(): Returns the date 15 years ago from today (to make sure only people who are at least 15 years old can be added as employees to meet the law).
+      QuickSort(array, key): Implements the QuickSort algorithm for sorting an array of dictionaries based on a specified key.
+
+
   Manager Login
-  Email: manager1@kimikim.com
-  Password: 87654321
+    Email: manager1@kimikim.com
+    Password: 87654321
   Employee Login
-  Email: employee1@kimikim.com
-  Password: 12345678
+    Email: employee1@kimikim.com
+    Password: 12345678
+
+    
   Usage
-  Login: Use the provided manager or employee login details to access the system.
-  Data Entry: Enter employee details, rates, and other relevant information.
-  Validation: Utilize the validation methods to ensure the integrity of the entered data.
-  File Uploads: Upload employee images and ensure they meet the specified criteria.
-  Additional Features: Use the utility methods for date calculations and sorting as needed.
+    Login: Use the provided manager or employee login details to access the system.
+    Data Entry: Enter employee details, rates, and other relevant information.
+    Validation: Utilize the validation methods through adding a user or editing user details.
+    File Uploads: Upload employee images and ensure they meet the specified criteria.
