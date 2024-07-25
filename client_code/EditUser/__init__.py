@@ -22,6 +22,10 @@ class EditUser(EditUserTemplate):
     self._parent = p_parent
     # Sets all pre-existing data into the required inputs
     userRow = anvil.server.call('getUserInfo', employeeID)
+    if userRow['Group'] == "Warehouse":
+      self.txtBaseRate.enabled = False
+      self.txtExtendedRate.enabled = False
+      self.txtPubHolRate.enabled = False
     self.imgUpload.source = userRow['Profile']
     self.txtFullName.text = userRow['FullName']
     self.txtEmail.text = userRow['Email']
