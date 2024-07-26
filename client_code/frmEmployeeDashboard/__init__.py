@@ -18,7 +18,7 @@ class frmEmployeeDashboard(frmEmployeeDashboardTemplate):
     self.user = anvil.users.get_user()
     self.userID = self.user['UserID']
     # Any code you write here will run before the form opens.
-    userRow = anvil.server.call('getUserInfo', self.userID)
+    userRow = anvil.server.call('getUserInfo' , self.userID)
     self.lblProfileName.text = userRow['FullName']
     self.imgProfile.source = userRow['Profile']
     self.openEmployeeDashboard()

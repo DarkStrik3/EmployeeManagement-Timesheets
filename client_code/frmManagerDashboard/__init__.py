@@ -72,18 +72,21 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
     self.btnTimesheets.background = "#333333"
     self.btnSettings.background = "#333333"
 
+  # Open your own profile
   def openOwnProfileUserDetails(self, userID, **event_args):
-    self.cpDashboards.clear()
-    self.cpDashboards.add_component(frmProfileUserDetails(employeeID=userID, p_parent=self), full_width_row=True)
-  
+    self.openProfileUserDetails(self.userID)
+
+  # Open an employee profile
   def openProfileUserDetails(self, userID, **event_args):
     self.cpDashboards.clear()
     self.cpDashboards.add_component(frmProfileUserDetails(employeeID=userID, p_parent=self), full_width_row=True)
 
+  # Still inside the User Profile, check their timesheets.
   def openProfileTimesheets(self, userID, **event_args):
     self.cpDashboards.clear()
     self.cpDashboards.add_component(frmProfileTimesheets(employeeID=userID, p_parent=self), full_width_row=True)
-  
+
+  # Open the edit user page.
   def editUser(self, userID, **event_args):
     self.cpDashboards.clear()
     self.cpDashboards.add_component(EditUser(employeeID=userID, p_parent=self), full_width_row=True)
