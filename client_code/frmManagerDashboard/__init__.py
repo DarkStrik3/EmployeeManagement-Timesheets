@@ -27,7 +27,6 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
     self.selectEmployeeManagement()
     
 
-
   def signOut(self, **event_args):
     anvil.users.logout()
     open_form('frmLogin')
@@ -73,7 +72,7 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
     self.btnSettings.background = "#333333"
 
   # Open your own profile
-  def openOwnProfileUserDetails(self, userID, **event_args):
+  def openOwnProfileUserDetails(self, **event_args):
     self.openProfileUserDetails(self.userID)
 
   # Open an employee profile

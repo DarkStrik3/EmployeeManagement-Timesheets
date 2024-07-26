@@ -7,19 +7,15 @@ components:
   type: GridPanel
   layout_properties: {slot: default}
   components:
-  - name: btnBack
-    properties: {text: Back, icon: 'fa:angle-left', spacing_above: small, background: '#333333', foreground: '#ffffff'}
-    type: Button
-    layout_properties: {row: YDUVHX, width_xs: 2, col_xs: 1}
   - name: btnEditProfile
     properties: {text: Edit Profile, spacing_above: small, background: '#333333', foreground: '#ffffff'}
     type: Button
-    layout_properties: {row: YDUVHX, width_xs: 2, col_xs: 3}
+    layout_properties: {row: YDUVHX, width_xs: 3, col_xs: 0}
     event_bindings: {click: editProfile}
   - name: lblFullNAME
     properties: {align: center, bold: true, font_size: 20, foreground: '#ffffff'}
     type: Label
-    layout_properties: {row: YDUVHX, width_xs: 3, col_xs: 5}
+    layout_properties: {row: YDUVHX, width_xs: 2, col_xs: 5}
   - name: dgUserWork
     properties:
       columns:
@@ -44,10 +40,10 @@ components:
   - name: btnUserDetails
     properties: {text: User Details, background: '#333333', foreground: '#ffffff'}
     type: Button
-    layout_properties: {row: YDUVHX, width_xs: 2, col_xs: 8}
+    layout_properties: {row: YDUVHX, width_xs: 2, col_xs: 7}
     event_bindings: {click: openUserDetails}
   - name: btnTimesheets
     properties: {text: User Timesheets, bold: true, background: '#8f8f8f', foreground: '#ffffff'}
     type: Button
-    layout_properties: {row: YDUVHX, width_xs: 2, col_xs: 10}
+    layout_properties: {row: YDUVHX, width_xs: 2, col_xs: 9}
 is_package: true

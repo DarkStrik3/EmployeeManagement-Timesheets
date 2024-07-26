@@ -23,11 +23,9 @@ class frmEmployeeDashboard(frmEmployeeDashboardTemplate):
     self.imgProfile.source = userRow['Profile']
     self.openEmployeeDashboard()
 
-
   def openEmployeeDashboard(self, **event_args):
     self.cpEmployeeDashboard.clear()
     self.cpEmployeeDashboard.add_component(EmployeeDashboard())
-
 
   def openProfileUserDetails(self, employeeID, **event_args):
     self.cpEmployeeDashboard.clear()

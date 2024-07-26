@@ -36,3 +36,4 @@ class frmProfileUserDetails(frmProfileUserDetailsTemplate):
 
   def openTimesheets(self, **event_args):
     self._parent.openProfileTimesheets(self.employeeId)
+
