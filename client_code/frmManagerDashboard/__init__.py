@@ -72,6 +72,10 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
     self.btnTimesheets.background = "#333333"
     self.btnSettings.background = "#333333"
 
+  def openOwnProfileUserDetails(self, userID, **event_args):
+    self.cpDashboards.clear()
+    self.cpDashboards.add_component(frmProfileUserDetails(employeeID=userID, p_parent=self), full_width_row=True)
+  
   def openProfileUserDetails(self, userID, **event_args):
     self.cpDashboards.clear()
     self.cpDashboards.add_component(frmProfileUserDetails(employeeID=userID, p_parent=self), full_width_row=True)

@@ -14,6 +14,19 @@ Employee Management System
 
 
   Unincluded Features
+    The following features are ones that I was going to include, but was unable to due to time limitation, instead preferring to focus on essential features.
+    No-ClockOut Notification:
+      Since it requires a check that goes across every row and requires concatination into a single message, while also allowing the manager to see the exact rows highlighted in the Timesheets. Due to the additional Anvil functionality that
+      would have to be researched, I preferred to skip it.
+    Public Holiday Rate: 
+      I didn't end up implementing a public holiday rate check into the clock-out logic that calculated the total payout. This is because I couldn't find a decent API that would give me all the Australian public holidays.
+      Furthermore, I didn't want to mess with the logic any further since I didn't want to break anything that was already working in the clock out code.
+    Employee Repeating Panel:
+      Initially, I was planning to have up to 5 employees per row in the Employee Management dashboard, however after attempting to use just 1 repeating panel for it, I realised that it simply wasn't supported. 
+      Instead, I would have to create multiple repeating panels that would be controlled through the logic, rather than by the default settings. I didn't have enough time to make this work,
+      so instead I just had 1 repeating panel with 1 employee per row.
+    Popups:
+      Quite a few of the "pop-ups" I wanted previously are now just their own pages. Not only they are easier to program, but Anvil doesn't support such large popups like the proposed Add User and Edit User forms.
     
 
   Classes and Methods
