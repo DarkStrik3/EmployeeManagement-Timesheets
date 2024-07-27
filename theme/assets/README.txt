@@ -27,7 +27,8 @@ Employee Management System
       so instead I just had 1 repeating panel with 1 employee per row.
     Popups:
       Quite a few of the "pop-ups" I wanted previously are now just their own pages. Not only they are easier to program, but Anvil doesn't support such large popups like the proposed Add User and Edit User forms.
-    
+    Sidebar Menu:
+      Since I chose to use a Blank HTML, unfortunately I am unable to implement a sidebar menu as the only way to do so is to use a Material Design.
 
   Classes and Methods
   
