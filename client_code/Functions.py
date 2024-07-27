@@ -48,6 +48,7 @@ class Validation:
         except:
             return False  # Return False if rates are invalid
 
+    @staticmethod 
     def validateEmail(email):  # Validate email
         try:
             email = email.strip()  # Remove leading and trailing spaces
@@ -62,6 +63,7 @@ class Validation:
         except:
             return False  # Return False if email is invalid
 
+    @staticmethod
     def validatePhoneNum(phoneNumber):  # Validate phone number
         try:
             assert len(phoneNumber) >= 10  # Ensure phone number is at least 10 characters long
@@ -71,6 +73,7 @@ class Validation:
         except:
             return False  # Return False if phone number is invalid
 
+    @staticmethod
     def validateTFN(tfn):  # Validate TFN (Tax File Number)
         try:
             tfn = tfn.strip()  # Remove leading and trailing spaces
@@ -80,6 +83,7 @@ class Validation:
         except:
             return False  # Return False if TFN is invalid
 
+    @staticmethod
     def validateUpload(imgFile):  # Validate image file upload
         try:
             assert imgFile is not None  # Ensure an image file is provided
@@ -92,6 +96,7 @@ class Validation:
 
 
 class Other:
+  @staticmethod
   def getDate15YearsAgo():  # Get the date 15 years ago from today
       current_date = datetime.now()
       try:
@@ -101,6 +106,7 @@ class Other:
           date_15_years_ago = current_date.replace(month=2, day=28, year=current_date.year - 15)
       return date_15_years_ago.date()  # Return the date 15 years ago
 
+  @staticmethod
   def QuickSort(array, key):  # QuickSort algorithm
       if len(array) <= 1:
           return array  # Base case: array with 0 or 1 element is already sorted
