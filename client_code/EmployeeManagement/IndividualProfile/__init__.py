@@ -10,15 +10,15 @@ class IndividualProfile(IndividualProfileTemplate):
     def __init__(self, **properties):
         self.init_components(**properties)
         self._parent = self.item['parent']
+        self.user = anvil.server.call("getUser", self.item['employee']["UserID"])
         # Any code you write here will run before the form opens.
         self.lblEmplName.text = self.item['employee']["FullName"]
         self.lblEmplID.text = self.item['employee']["UserID"]
         self.imgProfileImage.source = self.item['employee']["Profile"]
         self.lblEmplEmployment.text = self.item['employee']["Employment"]
-        if self.item['employee']["Employment"] == "Not in Employment":
-          self.lblEmplName.foreground == "#aa6041"
-          self.lblEmplID.foreground == "#aa6041"
-          self.lblEmplEmployment.foreground == "#aa6041"
+        if not self.user['enabled']:
+          self.btnArchiveProfile.text = "Unarchive"
+
           
     def editUser(self, **event_args):
       self._parent.editUserDetails(self.item['employee']["UserID"])
@@ -27,7 +27,15 @@ class IndividualProfile(IndividualProfileTemplate):
       self._parent.openProfileUserDetails(self.item['employee']["UserID"])
 
     def archiveUser(self, **event_args):
-      if confirm("Are you sure you want to archive " + self.item['employee']["FullName"] + "'s account?"):
-        anvil.server.call("archiveUser", self.item['employee']["UserID"])
-        # resorts the 
-        self._parent.sortFilteredEmployees()
+      if self.user['enabled']:
+        if confirm("Are you sure you want to archive " + self.item['employee']["FullName"] + "'s account?"):
+          anvil.server.call("archiveUser", self.item['employee']["UserID"], True, None)
+          # refreshes the entire repeating panel
+          self._parent.sortFilteredEmployees()
+      elif not self.user['enabled']:
+        if confirm("Are you sure you want to unarchive " + self.item['employee']["FullName"] + "'s account?"):
+          employmentType = confirm("How are they employed?", buttons=["Full Time", "Part Time", "Contractor"])
+          if employmentType:
+            anvil.server.call("archiveUser", self.item['employee']["UserID"], False, employmentType)
+            # refreshes the entire repeating panel
+            self._parent.sortFilteredEmployees()

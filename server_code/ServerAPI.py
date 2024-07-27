@@ -24,6 +24,20 @@ def Authenticate(inputEmail):
     return existingRow
 
 @anvil.server.callable
+def getUser(ID):
+  """
+    Retrieve the user row.
+    
+    Input:
+    - ID (str): The UserID of the user.
+    
+    Output:
+    - user (Row or None): The row from the 'users' table corresponding to the UserID, otherwise None.
+    """
+  user = app_tables.users.get(UserID=ID)
+  return user
+
+@anvil.server.callable
 def getUserInfo(ID):
     """
     Retrieve detailed information for a user.
@@ -253,19 +267,25 @@ def getClockedInRow(user_id):
 # SETTERS
 
 @anvil.server.callable
-def archiveUser(userID):
+def archiveUser(userID, do_or_undo, employmentType):
     """
-    Archive a user by updating their employment status and disabling their account.
+    Archive a user by updating their employment status and disabling their account. Or vice versa.
     
     Input:
-    - userID (str): The UserID of the user.
+    - userID (str): The UserID of the user. Whether to eanble or disable an account.
     
-    Output: Changes the user to not employed, and disables their login.
+    Output: Changes the user to not employed, and disables their login. Or vice versa.
     """
-    userDetails = app_tables.tbluserdetails.get(UserID=userID)
-    userDetails.update(Employment="Not in Employment")
-    user = app_tables.users.get(UserID=userID)
-    user.update(enabled=False)
+    if do_or_undo:
+      userDetails = app_tables.tbluserdetails.get(UserID=userID)
+      userDetails.update(Employment="Not in Employment")
+      user = app_tables.users.get(UserID=userID)
+      user.update(enabled=False)
+    elif not do_or_undo:
+      userDetails = app_tables.tbluserdetails.get(UserID=userID)
+      userDetails.update(Employment=employmentType)
+      user = app_tables.users.get(UserID=userID)
+      user.update(enabled=True)
 
 @anvil.server.callable
 def changeSettings(userID, checkedStatus):
