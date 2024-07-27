@@ -1,17 +1,18 @@
-Employee Management System
+Kimikim Organics Timesheets: Employee Management System
 
   Overview
     This Employee Management System is designed to facilitate the management of employee details, timesheets, rates, and other related information. 
     It includes validation methods to ensure the integrity of the data entered.
     For managers, they have the ability to approve work records, make changes to employee details, and view graphs in relation to employee performance.
+
+  Requirements:
+    Any computer that can run applications within a browser. Not recommended on Mobile due to aspect ratio, but still usable to an extent.
   
   Features
     User Validation: Validates user inputs such as names, dates, rates, emails, phone numbers, and TFNs.
     File Uploads: Ensures that uploaded image files meet specified criteria.
     Graphs: Provides graphs that are reflective of employee work.
     Data display: Displays user details in a repeating format, while also allowing them to be opened in full page.
-
-
 
   Unincluded Features
     The following features are ones that I was going to include, but was unable to due to time limitation, instead preferring to focus on essential features.
@@ -28,9 +29,13 @@ Employee Management System
     Popups:
       Quite a few of the "pop-ups" I wanted previously are now just their own pages. Not only they are easier to program, but Anvil doesn't support such large popups like the proposed Add User and Edit User forms.
     Sidebar Menu:
-      Since I chose to use a Blank HTML, unfortunately I am unable to implement a sidebar menu as the only way to do so is to use a Material Design.
+      Since I chose to use a Blank HTML, unfortunately I am unable to implement a sidebar menu as the only way to do so is to use a Material Design. Instead there is a popup with buttons to select desired page.
+    Themes/Dark Mode:
+      I ended up making the default be dark mode. Although you can change dark mode in the settings, applying light mode/removing dark mode is not yet enabled.
+    Login:
+      The login page features a button that opens up Anvil's login form, meaning that it isn't through textboxes like previously concieved.
 
-  Classes and Methods
+  Classes and Methods (of Functions module)
   
     Validation Class
       Contains methods to validate various types of input data.

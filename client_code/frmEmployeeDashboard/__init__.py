@@ -51,4 +51,3 @@ class frmEmployeeDashboard(frmEmployeeDashboardTemplate):
       self.openProfileUserDetails(self.userID)
     elif choice == 3:
       self.openSettings()
-      

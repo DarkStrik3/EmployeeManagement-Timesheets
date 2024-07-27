@@ -17,14 +17,21 @@ class Validation:
         except:
             return False  # Return False if invalid
 
-    def validateDate(date):  # Validate date
+    @staticmethod
+    def validateDate(date_str):  # Validate date
         dateFormatCode = "%d/%m/%Y"
         try:
-            assert date != "" and len(date) == 10  # Ensure date is not empty and has correct length
-            date_object = datetime.strptime(date, dateFormatCode)  # Parse date
-            reformatted_date
-            day, month, year = map(int, date.split('/'))  # Split the date into day, month, and year
-            assert 1 <= day <= 31 and 1 <= month <= 12  # Ensure day and month are within valid ranges
+            # Ensure date is not empty and has correct length
+            assert date_str != "" and len(date_str) == 10
+            # Parse date string to date object
+            date_object = datetime.strptime(date_str, dateFormatCode)
+            # Extract day, month, and year from date string
+            day, month, year = map(int, date_str.split('/'))
+            # Ensure day and month are within valid ranges
+            assert 1 <= day <= 31 and 1 <= month <= 12
+            # Ensure the date string reformatted matches original string
+            reformatted_date = date_object.strftime(dateFormatCode)
+            assert reformatted_date == date_str
             return True  # Return True if the date is valid
         except:
             return False  # Return False if the date is invalid
