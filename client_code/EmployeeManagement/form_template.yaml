@@ -59,7 +59,7 @@ components:
     event_bindings: {change: filterEmployees}
   - name: ddEmploymentType
     properties:
-      items: [All, Full-Time, Part-Time, Contractor]
+      items: [All, Full Time, Part Time, Contractor]
       background: '#333333'
       foreground: '#ffffff'
     type: DropDown

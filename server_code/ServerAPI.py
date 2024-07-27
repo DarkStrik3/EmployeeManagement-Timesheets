@@ -260,7 +260,7 @@ def archiveUser(userID):
     Input:
     - userID (str): The UserID of the user.
     
-    Output: None
+    Output: Changes the user to not employed, and disables their login.
     """
     userDetails = app_tables.tbluserdetails.get(UserID=userID)
     userDetails.update(Employment="Not in Employment")
