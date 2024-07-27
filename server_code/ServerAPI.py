@@ -315,7 +315,7 @@ def updateClock(ID):
         payout = total_hours * user['ExtendedRate']
         payrate = user['ExtendedRate']
     else:
-        weekno = datetime.datetime.today().weekday()
+        weekno = datetime.today().weekday()
         if weekno < 5:  # day is weekday and worked less than 3 hours
             payout = total_hours * user['BasicRate']
             payrate = user['BasicRate']

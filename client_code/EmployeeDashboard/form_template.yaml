@@ -1,6 +1,6 @@
 container:
   type: HtmlTemplate
-  properties: {html: <div anvil-slot="default"></div>, background: '#131313', border: solid}
+  properties: {html: <div anvil-slot="default"></div>, background: '#131313', border: ''}
 components:
 - name: cpEmployeeDashboard
   properties: {background: '#131313'}

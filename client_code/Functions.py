@@ -8,6 +8,7 @@ from datetime import datetime
 
 
 class Validation:
+    @staticmethod
     def validateString(name):  # Validate user name
         name = name.strip()  # Remove leading and trailing spaces
         try:
@@ -36,6 +37,7 @@ class Validation:
         except:
             return False  # Return False if the date is invalid
 
+    @staticmethod
     def validateRate(baseRate, extendedRate, pubholrate):  # Validate rates
         try:
             baseRate = float(baseRate.strip())  # Convert base rate to float
@@ -117,7 +119,7 @@ class Other:
           right = [x for x in array if x[key] > pivot[key]]  # Elements greater than the pivot
           return Other.QuickSort(left, key) + middle + Other.QuickSort(right, key)  # Combine sorted sub-arrays
 
-
+  @staticmethod
   def convertFloatToString(hoursFloat):
     # Convert the input hours to an integer number of hours, minutes, and seconds
     totalSeconds = int(hoursFloat * 3600)  # Total seconds
