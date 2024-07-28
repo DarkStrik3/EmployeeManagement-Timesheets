@@ -15,7 +15,7 @@ components:
     - {id: FUATGP, data_key: Approval, title: Approve}
     - {id: RVGLDW, data_key: Paid, title: Paid}
     - {id: BKQAPW, data_key: Selected, title: Select}
-    show_page_controls: false
+    show_page_controls: true
     background: '#131313'
     foreground: '#ffffff'
   type: DataGrid
@@ -89,16 +89,16 @@ components:
   properties: {text: 'Pending:', bold: true, foreground: '#ffffff'}
   type: Label
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,UUOFHL JSDNIP,BTNPKO'}
-- name: btnRejectSelected
-  properties: {text: Reject Selected, align: full, background: '#333333', foreground: '#ffffff'}
-  type: Button
-  layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,UUOFHL MYXAXP,MZAOSG'}
-  event_bindings: {click: rejectSelected}
 - name: btnApproveSelected
   properties: {text: Approve Selected, align: full, background: '#333333', foreground: '#ffffff'}
   type: Button
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,UUOFHL XKWQOZ,NVMDKO'}
   event_bindings: {click: approveSelected}
+- name: btnApproveAll
+  properties: {text: Approve All, align: full, background: '#333333', foreground: '#ffffff'}
+  type: Button
+  layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,UUOFHL ZJEHNC,HZHUBZ'}
+  event_bindings: {click: approveAll}
 - name: lblUnpaid
   properties: {text: 'Unpaid:', bold: true, foreground: '#ffffff'}
   type: Label
@@ -112,16 +112,16 @@ components:
   properties: {foreground: '#ffffff'}
   type: Label
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,LZVAWN ZCZINC,KBGQLM'}
+- name: btnRejectSelected
+  properties: {text: Reject Selected, align: full, background: '#333333', foreground: '#ffffff'}
+  type: Button
+  layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,LZVAWN DAMOOU,BGJPIQ'}
+  event_bindings: {click: rejectSelected}
 - name: btnRejectAll
   properties: {text: Reject All, align: full, background: '#333333', foreground: '#ffffff'}
   type: Button
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,LZVAWN RNNDSF,PBKHEQ'}
   event_bindings: {click: rejectAll}
-- name: btnApproveAll
-  properties: {text: Approve All, align: full, background: '#333333', foreground: '#ffffff'}
-  type: Button
-  layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,LZVAWN ASYZGF,CSSBPN'}
-  event_bindings: {click: approveAll}
 - name: lblTotalUnpaid
   properties: {foreground: '#ffffff'}
   type: Label

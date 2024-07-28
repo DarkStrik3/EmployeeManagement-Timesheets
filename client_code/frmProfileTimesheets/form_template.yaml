@@ -1,6 +1,7 @@
 container:
   type: HtmlTemplate
   properties: {html: <div anvil-slot="default"></div>, background: '#131313', foreground: '', border: solid}
+  data_bindings: []
 components:
 - name: gpProfile
   properties: {background: '#131313'}
@@ -28,9 +29,10 @@ components:
       - {id: GRQBIK, data_key: Payout, title: Payout, expand: false}
       - {id: TVIIBG, data_key: approval, title: Approval}
       - {id: TOCTNQ, data_key: Paid, title: Paid}
-      show_page_controls: false
+      show_page_controls: true
       auto_header: true
       foreground: theme:Dark Theme - Foreground
+      role: null
     type: DataGrid
     components:
     - name: rpPastWork

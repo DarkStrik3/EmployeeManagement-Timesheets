@@ -51,7 +51,7 @@ class EditUser(EditUserTemplate):
     # additional rates are higher than base rate, and base rate is at least minimum wage
     if not Validation.validateRate(self.txtBaseRate.text, self.txtExtendedRate.text, self.txtPubHolRate.text):
       issues.append("invalid rates")
-    if not Validation.validateDate(str(self.dpDoB.date)):  # date is valid
+    if not Validation.validateDate(self.dpDoB.date.strftime("%d/%m/%Y")):  # date is valid
       issues.append("invalid date of birth")
     if (self.ddGender.selected_value is None):  # make sure one of the specified options is selected
       issues.append("invalid gender")
@@ -93,6 +93,10 @@ class EditUser(EditUserTemplate):
         + self.txtTFN.text
       ):
         try:
+          if self.flUpload.file is None:
+            image = self.imgUpload.source
+          else:
+            image = self.flUpload.file
           anvil.server.call(
             "editUser",
             self.employeeId,
@@ -108,10 +112,9 @@ class EditUser(EditUserTemplate):
             float(self.txtExtendedRate.text),
             float(self.txtPubHolRate.text),
             self.txtTFN.text,
-            self.flUpload.file,
+            image
           )
           self.imgUpload.source = None
-          self.flUpload.clear()
           self.txtFullName.text = ""
           self.txtEmail.text = ""
           self.txtPhoneNumber.text = ""
@@ -124,11 +127,12 @@ class EditUser(EditUserTemplate):
           self.ddGender.selected_value = None
           self.ddGroup.selected_value = None
           self.dpDoB.date = None
+          self.flUpload.clear()
         except Exception as e:
           alert(f"An error occurred: {str(e)}")
           self.txtEmail.text = ""
         if confirm("Would you like to view this profile?"):
-          self._parent.openSelectedProfile(self.employeeId)
+          self._parent.openProfileUserDetails(self.employeeId)
     else:
       issueString = ""
       n = 0

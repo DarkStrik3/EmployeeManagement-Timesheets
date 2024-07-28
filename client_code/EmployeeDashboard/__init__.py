@@ -75,7 +75,7 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
             self.btnClockinout.tag = 0
             anvil.server.call("updateClock", self.userID)
             self.workTimer.interval = 0
-            alert("Final Work time " + self.lblTimer.text + ".")
+            alert("Final Work time " + self.lblTimer.text + ". \n\n*Note: This was calculated locally. The final work time will not be exactly the same.")
             self.lblTimer.text = "00:00:00"
             self.lblTimer.tag = 0
 

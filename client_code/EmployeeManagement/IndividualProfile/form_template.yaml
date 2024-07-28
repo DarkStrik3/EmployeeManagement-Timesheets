@@ -1,7 +1,7 @@
 is_package: true
 container:
   type: ColumnPanel
-  properties: {col_widths: '{"XJKGSP":15,"WJYECR":45}'}
+  properties: {col_widths: '{"XJKGSP":15,"WJYECR":45}', border: thin solid, foreground: 'theme:Dark Theme - Selected Button background'}
 components:
 - name: imgProfileImage
   properties: {display_mode: zoom_to_fill}
@@ -20,7 +20,7 @@ components:
   type: Label
   layout_properties: {grid_position: 'RIREOW,WJYECR RABWMP,QFGMWA'}
 - name: lblEmplEmployment
-  properties: {foreground: 'theme:Dark Theme - Foreground'}
+  properties: {foreground: 'theme:Dark Theme - Foreground', border: ''}
   type: Label
   layout_properties: {grid_position: 'RIREOW,WJYECR RABWMP,UKMKRA'}
 - name: lblEmployeeIdentification

@@ -1,6 +1,6 @@
 container:
   type: ColumnPanel
-  properties: {col_widths: '{}', background: '#131313', border: solid}
+  properties: {col_widths: '{}', background: '#131313', border: solid, foreground: ''}
 components:
 - name: cpEmployeeManagement
   properties: {col_widths: '{"ZZXRSP":45,"CNJGEP":15}', background: '#131313'}
