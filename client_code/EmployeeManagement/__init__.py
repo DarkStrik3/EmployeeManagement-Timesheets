@@ -89,22 +89,9 @@ class EmployeeManagement(EmployeeManagementTemplate):
         Output: (list) - Filtered list of employees.
         """
         if self.cbFiltersEnabled.checked:
-            newFilter = []
-
-            for employee in self.employees:
-                add = True
-                if self.ddGender.selected_value and str(self.ddGender.selected_value) != "All" and employee['Gender'] != str(self.ddGender.selected_value):
-                    add = False
-                if self.ddGroup.selected_value and str(self.ddGroup.selected_value) != "All" and employee['Group'] != str(self.ddGroup.selected_value):
-                    add = False
-                if self.ddEmploymentType.selected_value and str(self.ddEmploymentType.selected_value) != "All" and employee['Employment'] != str(self.ddEmploymentType.selected_value):
-                    add = False
-                if add:
-                    newFilter.append(employee)
-            self.refreshEmployeeList(newFilter)
-            self.resortProfiles(newFilter)
-            return newFilter
+          self.filterEmployeesDropdown() # This is done to asve duplicating the code
         else:
+          # If the filters get disabled, everything is reset to the original view without any filters enabled
             self.refreshEmployeeList(self.employees)
             self.resortProfiles(self.employees)
 
@@ -131,7 +118,7 @@ class EmployeeManagement(EmployeeManagementTemplate):
                   newFilter.append(employee)
           self.refreshEmployeeList(newFilter)
           self.resortProfiles(newFilter)
-          return newFilter
+          return newFilter 
 
     def addUser(self, **event_args):
         """
