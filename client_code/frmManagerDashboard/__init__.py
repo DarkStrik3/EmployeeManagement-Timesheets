@@ -18,38 +18,29 @@ from ..Functions import Other
 class frmManagerDashboard(frmManagerDashboardTemplate):
     def __init__(self, **properties):
         """
-        Initialize the Manager Dashboard form and set up user details.
+        Initialize the Manager Dashboard form with user details and default view.
         """
-        self.init_components(**properties)  # Set up the form properties and data bindings
-
-        # Get the current logged-in user
-        self.user = anvil.users.get_user()
-        self.userID = self.user['UserID']
-        
-        # Fetch user details from the server
-        self.userDetails = anvil.server.call('getUserInfo', self.userID)
-        
-        # Set user details in the form
-        self.lblProfileName.text = self.userDetails['FullName']
-        self.imgProfile.source = self.userDetails['Profile']
-        
-        # Load the Employee Management component by default
-        self.selectEmployeeManagement()
+        self.init_components(**properties)  # Set up form components and data bindings
+        self.user = anvil.users.get_user()  # Get the currently logged-in user
+        self.userID = self.user['UserID']  # Store the user ID
+        self.userDetails = anvil.server.call('getUserInfo', self.userID)  # Fetch user information
+        self.lblProfileName.text = self.userDetails['FullName']  # Display user's full name
+        self.imgProfile.source = self.userDetails['Profile']  # Display user's profile picture
+        self.selectEmployeeManagement()  # Load the Employee Management view by default
 
     def signOut(self, **event_args):
         """
         Log out the user and open the login form.
         """
-        anvil.users.logout()  # Log out the current user
-        open_form('frmLogin')  # Redirect to the login form
+        anvil.users.logout()
+        open_form('frmLogin')
 
     def selectEmployeeManagement(self, **event_args):
         """
-        Display the Employee Management component and update button backgrounds.
+        Load the Employee Management component into the view.
         """
-        self.cpDashboards.clear()  # Clear current content in the dashboard panel
-        self.cpDashboards.add_component(EmployeeManagement(p_parent=self), full_width_row=True)  # Add Employee Management component
-        # Update button backgrounds to indicate selection
+        self.cpDashboards.clear()
+        self.cpDashboards.add_component(EmployeeManagement(p_parent=self), full_width_row=True)
         self.btnEmplManage.background = "#8f8f8f"
         self.btnAnalyticReport.background = "#333333"
         self.btnTimesheets.background = "#333333"
@@ -57,11 +48,10 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
 
     def selectAnalyticsReport(self, **event_args):
         """
-        Display the Analytics Reporting component and update button backgrounds.
+        Load the Analytics Reporting component into the view.
         """
-        self.cpDashboards.clear()  # Clear current content in the dashboard panel
-        self.cpDashboards.add_component(AnalyticsReporting(), full_width_row=True)  # Add Analytics Reporting component
-        # Update button backgrounds to indicate selection
+        self.cpDashboards.clear()
+        self.cpDashboards.add_component(AnalyticsReporting(), full_width_row=True)
         self.btnEmplManage.background = "#333333"
         self.btnAnalyticReport.background = "#8f8f8f"
         self.btnTimesheets.background = "#333333"
@@ -69,11 +59,10 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
 
     def selectTimesheets(self, **event_args):
         """
-        Display the Timesheets component and update button backgrounds.
+        Load the Timesheets component into the view.
         """
-        self.cpDashboards.clear()  # Clear current content in the dashboard panel
-        self.cpDashboards.add_component(Timesheets(), full_width_row=True)  # Add Timesheets component
-        # Update button backgrounds to indicate selection
+        self.cpDashboards.clear()
+        self.cpDashboards.add_component(Timesheets(), full_width_row=True)
         self.btnEmplManage.background = "#333333"
         self.btnAnalyticReport.background = "#333333"
         self.btnTimesheets.background = "#8f8f8f"
@@ -81,11 +70,10 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
 
     def selectSettings(self, **event_args):
         """
-        Display the Settings component and update button backgrounds.
+        Load the Settings component into the view.
         """
-        self.cpDashboards.clear()  # Clear current content in the dashboard panel
-        self.cpDashboards.add_component(Settings(), full_width_row=True)  # Add Settings component
-        # Update button backgrounds to indicate selection
+        self.cpDashboards.clear()
+        self.cpDashboards.add_component(Settings(), full_width_row=True)
         self.btnEmplManage.background = "#333333"
         self.btnAnalyticReport.background = "#333333"
         self.btnTimesheets.background = "#333333"
@@ -93,11 +81,10 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
 
     def selectAddNewUser(self, **event_args):
         """
-        Display the Add User component and update button backgrounds.
+        Load the Add User component into the view.
         """
-        self.cpDashboards.clear()  # Clear current content in the dashboard panel
-        self.cpDashboards.add_component(AddUser(), full_width_row=True)  # Add Add User component
-        # Update button backgrounds to indicate selection
+        self.cpDashboards.clear()
+        self.cpDashboards.add_component(AddUser(), full_width_row=True)
         self.btnEmplManage.background = "#333333"
         self.btnAnalyticReport.background = "#333333"
         self.btnTimesheets.background = "#333333"
@@ -107,25 +94,25 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
         """
         Open the current user's profile details.
         """
-        self.openProfileUserDetails(self.userID)  # Open profile details for the current user
+        self.openProfileUserDetails(self.userID)
 
     def openProfileUserDetails(self, userID, **event_args):
         """
-        Open the profile details of a specified user.
+        Load the profile details of the specified user into the view.
         """
-        self.cpDashboards.clear()  # Clear current content in the dashboard panel
-        self.cpDashboards.add_component(frmProfileUserDetails(employeeID=userID, p_parent=self), full_width_row=True)  # Add Profile User Details component
+        self.cpDashboards.clear()
+        self.cpDashboards.add_component(frmProfileUserDetails(employeeID=userID, p_parent=self), full_width_row=True)
 
     def openProfileTimesheets(self, userID, **event_args):
         """
-        Open the timesheets for a specified user.
+        Load the timesheets for the specified user into the view.
         """
-        self.cpDashboards.clear()  # Clear current content in the dashboard panel
-        self.cpDashboards.add_component(frmProfileTimesheets(employeeID=userID, p_parent=self), full_width_row=True)  # Add Profile Timesheets component
+        self.cpDashboards.clear()
+        self.cpDashboards.add_component(frmProfileTimesheets(employeeID=userID, p_parent=self), full_width_row=True)
 
     def editUser(self, userID, **event_args):
         """
-        Open the Edit User component for a specified user.
+        Load the Edit User component for the specified user into the view.
         """
-        self.cpDashboards.clear()  # Clear current content in the dashboard panel
-        self.cpDashboards.add_component(EditUser(employeeID=userID, p_parent=self), full_width_row=True)  # Add Edit User component
+        self.cpDashboards.clear()
+        self.cpDashboards.add_component(EditUser(employeeID=userID, p_parent=self), full_width_row=True)
