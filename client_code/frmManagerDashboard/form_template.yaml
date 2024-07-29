@@ -8,13 +8,9 @@ components:
   layout_properties: {slot: default}
   name: gpProfile
   components:
-  - properties: {text: '', icon: 'fa:bars', spacing_above: medium, background: '#333333', foreground: '#ffffff'}
-    type: Button
-    layout_properties: {row: GIPNDZ, width_xs: 1, col_xs: 0}
-    name: btnMenu
   - properties: {text: Sign Out, icon: 'fa:caret-left', spacing_above: medium, background: '#333333', foreground: '#ffffff', border: ''}
     type: Button
-    layout_properties: {row: GIPNDZ, width_xs: 2, col_xs: 0}
+    layout_properties: {row: GIPNDZ, width_xs: 1, col_xs: 0}
     event_bindings: {click: signOut}
     name: btnBack
   - name: linkHeader

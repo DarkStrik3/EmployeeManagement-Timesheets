@@ -108,6 +108,31 @@ class EmployeeManagement(EmployeeManagementTemplate):
             self.refreshEmployeeList(self.employees)
             self.resortProfiles(self.employees)
 
+
+    def filterEmployeesDropdown(self, **event_args):
+      """
+      Purpose: Filter the employee list based on user-selected criteria.
+      Input: **event_args (dict) - Additional event arguments.
+      Process: Filters the employees based on gender, group, and employment type.
+      Output: (list) - Filtered list of employees.
+      """
+      if self.cbFiltersEnabled.checked:
+          newFilter = []
+
+          for employee in self.employees:
+              add = True
+              if self.ddGender.selected_value and str(self.ddGender.selected_value) != "All" and employee['Gender'] != str(self.ddGender.selected_value):
+                  add = False
+              if self.ddGroup.selected_value and str(self.ddGroup.selected_value) != "All" and employee['Group'] != str(self.ddGroup.selected_value):
+                  add = False
+              if self.ddEmploymentType.selected_value and str(self.ddEmploymentType.selected_value) != "All" and employee['Employment'] != str(self.ddEmploymentType.selected_value):
+                  add = False
+              if add:
+                  newFilter.append(employee)
+          self.refreshEmployeeList(newFilter)
+          self.resortProfiles(newFilter)
+          return newFilter
+
     def addUser(self, **event_args):
         """
         Purpose: Trigger the addition of a new user.
