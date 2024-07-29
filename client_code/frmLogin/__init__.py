@@ -9,28 +9,21 @@ from anvil.tables import app_tables
 class frmLogin(frmLoginTemplate):
     def __init__(self, **properties):
         """
-        Initialize the Login form and set up any necessary components.
+        Initialize the Login form with default settings.
         """
-        self.init_components(**properties)  # Set up the form properties and data bindings
+        self.init_components(**properties)  # Set up form components and data bindings
 
     def login(self, **event_args):
         """
-        Handle user login process.
+        Perform login using the built-in Anvil form and redirect based on user group.
         """
-        # Display the login form and get user credentials
-        user = anvil.users.login_with_form(
-            show_signup_option=False,  # Do not show the signup option
-            allow_remembered=False,    # Do not allow remembered login
-            remember_by_default=False,  # Do not remember login by default
-            allow_cancel=True          # Allow the user to cancel the login
-        )
-        
+        user = anvil.users.login_with_form(show_signup_option=False, allow_remembered=False, remember_by_default=False, allow_cancel=True)
+        ID = user['UserID']  # Retrieve user ID
+        userGroup = user['Group']  # Retrieve user group
         if user:
-            ID = user['UserID']  # Get the user ID
-            userGroup = user['Group']  # Get the user group
-            
-            # Open the appropriate dashboard based on user group
+            # Open the appropriate dashboard based on the user's group
             if userGroup == "Warehouse":
-                open_form("frmEmployeeDashboard", userID=ID)  # Open the Employee Dashboard for warehouse employees
+                open_form("frmEmployeeDashboard", userID=ID) # Open employee Dashboard
             else:
-                open_form('frmManagerDashboard', userID=ID)  # Open the Manager Dashboard for managers/accountants
+                open_form('frmManagerDashboard', userID=ID) # Open the dashboard thats shown to every other group (Managers, etc)
+
