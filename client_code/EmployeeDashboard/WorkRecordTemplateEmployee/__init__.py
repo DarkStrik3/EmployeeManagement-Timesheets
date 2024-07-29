@@ -19,12 +19,8 @@ class WorkRecordTemplateEmployee(WorkRecordTemplateEmployeeTemplate):
     # Calculate hours and minutes from HoursWorked
     try:
       self.lblHoursWorked.text = Other.convertFloatToString(self.item['HoursWorked'])
-      #total_seconds = self.item['HoursWorked'] * 3600  # Convert hours to seconds
-      #hours = int(total_seconds // 3600)
-      #minutes = int((total_seconds % 3600) // 60)
-      #self.lblHoursWorked.text = f"Time Worked: {hours}h {minutes}m"
       self.lblPayout.text = "Payout: $" + str(round(self.item['Payout'], 2))
-    except:
+    except: # The employee hasnt yet clocked out, meaning there isnt any data for hours worked or payout
       self.lblHoursWorked.text = " Time Worked: WIP"
       self.lblPayout.text = "Payout: WIP"
       

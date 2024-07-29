@@ -9,20 +9,49 @@ from ..Functions import Other
 
 class EmployeeManagement(EmployeeManagementTemplate):
     def __init__(self, p_parent, **properties):
-      self.init_components(**properties)
-      self._parent = p_parent
-      self.user = anvil.users.get_user()
-      self.employees = anvil.server.call("getAllEmployees", self.user["UserID"], "UserID", False)
-      self.employeeSelected = {emp["UserID"]: False for emp in self.employees}
-      self.refreshEmployeeList(self.employees)
+        """
+        Purpose: Initialize the EmployeeManagement form with default properties.
+        Input: 
+            p_parent (object) - Parent form or container.
+            **properties (dict) - Additional properties.
+        Process: Sets form components, initializes user and employee data, and refreshes the employee list.
+        Output: None
+        """
+        self.init_components(**properties)
+        self._parent = p_parent
+        self.user = anvil.users.get_user()
+        self.employees = anvil.server.call("getAllEmployees", self.user["UserID"], "UserID", False)
+        self.employeeSelected = {emp["UserID"]: False for emp in self.employees}
+        self.refreshEmployeeList(self.employees)
 
     def getUserRow(self, user_id):
+        """
+        Purpose: Retrieve the employee data row based on user_id.
+        Input: 
+            user_id (int) - Unique identifier for the user.
+        Process: Searches the employees list for the matching user_id.
+        Output: (dict) - Employee data row.
+        """
         return next((emp for emp in self.employees if emp["UserID"] == user_id), None)
 
     def refreshEmployeeList(self, employeeList, **event_args):
+        """
+        Purpose: Refresh the displayed employee list.
+        Input: 
+            employeeList (list) - List of employee data.
+            **event_args (dict) - Additional event arguments.
+        Process: Updates the repeating panel with the new employee list.
+        Output: None
+        """
         self.rpEmployees.items = [{'employee': emp, 'parent': self} for emp in employeeList]
 
     def sortFilteredEmployees(self, **event_args):
+        """
+        Purpose: Sort and filter the employee list based on user-selected criteria.
+        Input: **event_args (dict) - Additional event arguments.
+        Process: Filters and sorts employees if filters are enabled; otherwise, sorts the full list.
+        Output: None
+        """
         if self.cbFiltersEnabled.checked:
             filteredEmployees = self.filterEmployees()
             self.resortProfiles(filteredEmployees)
@@ -30,6 +59,14 @@ class EmployeeManagement(EmployeeManagementTemplate):
             self.resortProfiles(self.employees)
 
     def resortProfiles(self, employees, **event_args):
+        """
+        Purpose: Sort the employee profiles based on selected criteria.
+        Input: 
+            employees (list) - List of employee data.
+            **event_args (dict) - Additional event arguments.
+        Process: Sorts the employees based on the selected sort option.
+        Output: None
+        """
         employees = employees if employees is not None else self.employees
         sortBy = self.ddSort.selected_value
 
@@ -45,6 +82,12 @@ class EmployeeManagement(EmployeeManagementTemplate):
         self.refreshEmployeeList(newOrder)
 
     def filterEmployees(self, **event_args):
+        """
+        Purpose: Filter the employee list based on user-selected criteria.
+        Input: **event_args (dict) - Additional event arguments.
+        Process: Filters the employees based on gender, group, and employment type.
+        Output: (list) - Filtered list of employees.
+        """
         if self.cbFiltersEnabled.checked:
             newFilter = []
 
@@ -66,13 +109,43 @@ class EmployeeManagement(EmployeeManagementTemplate):
             self.resortProfiles(self.employees)
 
     def addUser(self, **event_args):
+        """
+        Purpose: Trigger the addition of a new user.
+        Input: **event_args (dict) - Additional event arguments.
+        Process: Calls the parent form's selectAddNewUser method.
+        Output: None
+        """
         self._parent.selectAddNewUser()
 
     def openProfileTimesheets(self, employeeID, **event_args):
+        """
+        Purpose: Open the timesheet profile for the selected employee.
+        Input: 
+            employeeID (int) - Unique identifier for the employee.
+            **event_args (dict) - Additional event arguments.
+        Process: Calls the parent form's openProfileTimesheets method.
+        Output: None
+        """
         self._parent.openProfileTimesheets(employeeID)
 
     def openProfileUserDetails(self, employeeID, **event_args):
+        """
+        Purpose: Open the user details profile for the selected employee.
+        Input: 
+            employeeID (int) - Unique identifier for the employee.
+            **event_args (dict) - Additional event arguments.
+        Process: Calls the parent form's openProfileUserDetails method.
+        Output: None
+        """
         self._parent.openProfileUserDetails(employeeID)
 
     def editUserDetails(self, employeeID, **event_args):
+        """
+        Purpose: Trigger the editing of user details for the selected employee.
+        Input: 
+            employeeID (int) - Unique identifier for the employee.
+            **event_args (dict) - Additional event arguments.
+        Process: Calls the parent form's editUser method.
+        Output: None
+        """
         self._parent.editUser(employeeID)

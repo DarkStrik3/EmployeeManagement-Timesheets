@@ -9,18 +9,25 @@ from ...Functions import Other
 
 class WorkRecordTemplateManager(WorkRecordTemplateManagerTemplate):
     def __init__(self, **properties):
+        """
+        Initialize the WorkRecordTemplateManager form.
+        """
         self.init_components(**properties)
-        self._parent = self.item['p_parent']
+        self._parent = self.item['p_parent']  # Reference to the parent form
         self.dataBindings()
 
     def dataBindings(self):
+        """
+        Bind data to the template components.
+        """
         user_id = self.item['item']['UserID']
         try:
-            userRow = self._parent.getUserRow(user_id)
+            userRow = self._parent.getUserRow(user_id)  # Fetch user info from parent form
         except KeyError as e:
             print(f"Error fetching user info: {e}")
             userRow = None
 
+        # Set the text properties of labels based on the item data and user info
         self.lblUserID.text = self.item['item']['UserID']
         self.lblName.text = userRow['FullName'] if userRow else "Unknown"
         self.lblWorkID.text = self.item['item']['WorkID']
@@ -36,4 +43,7 @@ class WorkRecordTemplateManager(WorkRecordTemplateManagerTemplate):
         self.cbPaid.enabled = False
 
     def selectedChange(self, **event_args):
+        """
+        Update the selection status of the work record based on the checkbox status.
+        """
         self._parent.changeSelectedStatus(self.item['item']['WorkID'], self.cbSelect.checked)

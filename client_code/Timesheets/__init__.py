@@ -10,13 +10,14 @@ from ..Functions import Validation
 
 class Timesheets(TimesheetsTemplate):
     def __init__(self, **properties):
-        # Set Form properties and Data Bindings.
+        """
+        Initialize the Timesheets form, set up data bindings, and load initial data.
+        """
         self.init_components(**properties)
-        # Initialize necessary attributes
-        self.dateFormat = "%d/%m/%Y"
-        self.dpDateFilter.format = self.dateFormat
-        self.user_info_cache = {}  # Dictionary to store userRow data
-        self.workRecordSelected = {}  # Dictionary to track selected work records
+        self.dateFormat = "%d/%m/%Y"  # Date format used throughout the form
+        self.dpDateFilter.format = self.dateFormat  # Set the date picker format
+        self.user_info_cache = {}  # Cache for storing user information
+        self.workRecordSelected = {}  # Dictionary to track selection status of work records
 
         # Load all work records and initialize selection statuses
         self.getAllWorkRecords()
@@ -24,22 +25,37 @@ class Timesheets(TimesheetsTemplate):
         self.resortTimesheets()
 
     def getAllWorkRecords(self, **event_args):
+        """
+        Fetch all work records from the server and initialize their selection statuses.
+        """
         self.allWorkRecords = anvil.server.call('getTimesheetsManagers')
         for record in self.allWorkRecords:
             self.workRecordSelected[record['WorkID']] = False
 
     def changeSelectedStatus(self, workID, status, **event_args):
+        """
+        Update the selection status of a work record.
+        """
         self.workRecordSelected[workID] = status
 
     def getAllSelected(self):
+        """
+        Get a list of IDs of all selected work records.
+        """
         return [workID for workID, selected in self.workRecordSelected.items() if selected]
 
     def getUserRow(self, user_id):
+        """
+        Retrieve user information from cache or fetch from the server if not cached.
+        """
         if user_id not in self.user_info_cache:
             self.user_info_cache[user_id] = anvil.server.call('getUserInfo', user_id)
         return self.user_info_cache[user_id]
 
     def resortInputTimesheets(self, timesheets, **event_args):
+        """
+        Sort the timesheets based on the selected sorting criteria.
+        """
         sortBy = self.ddSort.selected_value
         if sortBy == "WorkID":
             newOrder = Other.QuickSort(timesheets, "WorkID")
@@ -52,9 +68,15 @@ class Timesheets(TimesheetsTemplate):
         self.loadTimesheets(newOrder)
 
     def resortTimesheets(self, **event_args):
+        """
+        Resort the timesheets using the current criteria.
+        """
         self.resortInputTimesheets(self.allWorkRecords)
 
     def filterTimesheets(self, **event_args):
+        """
+        Filter timesheets based on user-selected filters and update the display.
+        """
         if self.cbFiltersEnabled.checked:
             newFilter = []
             for record in self.allWorkRecords:
@@ -83,6 +105,9 @@ class Timesheets(TimesheetsTemplate):
             self.resortTimesheets()
 
     def loadTimesheets(self, allWorkRecords, **event_args):
+        """
+        Load the timesheets into the repeating panel and update the totals.
+        """
         totalUnapproved = 0
         totalUnpaid = 0
         for record in allWorkRecords:
@@ -95,6 +120,9 @@ class Timesheets(TimesheetsTemplate):
         self.rpTimesheets.items = [{'item': d, 'user_info_cache': self.user_info_cache, 'p_parent': self} for d in allWorkRecords]
 
     def sortFilteredRecords(self, **event_args):
+        """
+        Sort the records based on current filters and sorting criteria.
+        """
         if self.cbFiltersEnabled.checked:
             filteredRecords = self.filterTimesheets()
             self.resortInputTimesheets(filteredRecords)
@@ -102,6 +130,9 @@ class Timesheets(TimesheetsTemplate):
             self.resortTimesheets()
 
     def rejectSelected(self, **event_args):
+        """
+        Reject the selected work records by updating their approval status.
+        """
         if confirm("Are you sure you want to reject selected items? Rejected items are deleted."):
             selectedIDs = self.getAllSelected()
             anvil.server.call('updateApprovalStatus', selectedIDs, False)
@@ -109,6 +140,9 @@ class Timesheets(TimesheetsTemplate):
             self.sortFilteredRecords()
 
     def rejectAll(self, **event_args):
+        """
+        Reject all work records by updating their approval status.
+        """
         if confirm("Are you sure you want to reject all items? Rejected items are deleted."):
             allIDs = [item['item']['WorkID'] for item in self.rpTimesheets.items]
             anvil.server.call('updateApprovalStatus', allIDs, False)
@@ -116,6 +150,9 @@ class Timesheets(TimesheetsTemplate):
             self.sortFilteredRecords()
 
     def approveSelected(self, **event_args):
+        """
+        Approve the selected work records by updating their approval status.
+        """
         if confirm("Are you sure you want to approve selected items?"):
             selectedIDs = self.getAllSelected()
             anvil.server.call('updateApprovalStatus', selectedIDs, True)
@@ -123,6 +160,9 @@ class Timesheets(TimesheetsTemplate):
             self.sortFilteredRecords()
 
     def approveAll(self, **event_args):
+        """
+        Approve all work records by updating their approval status.
+        """
         if confirm("Are you sure you want to approve all items?"):
             allIDs = [item['item']['WorkID'] for item in self.rpTimesheets.items]
             anvil.server.call('updateApprovalStatus', allIDs, True)
@@ -130,6 +170,9 @@ class Timesheets(TimesheetsTemplate):
             self.sortFilteredRecords()
 
     def markSelectedPaid(self, **event_args):
+        """
+        Mark selected work records as paid.
+        """
         if confirm("Are you sure you want to mark selected items as paid? This action cannot be undone."):
             selectedIDs = self.getAllSelected()
             anvil.server.call('updatePaymentStatus', selectedIDs)
@@ -137,6 +180,9 @@ class Timesheets(TimesheetsTemplate):
             self.sortFilteredRecords()
 
     def markAllPaid(self, **event_args):
+        """
+        Mark all work records as paid.
+        """
         if confirm("Are you sure you want to mark all items as paid? This action cannot be undone."):
             allIDs = [item['item']['WorkID'] for item in self.rpTimesheets.items]
             anvil.server.call('updatePaymentStatus', allIDs)

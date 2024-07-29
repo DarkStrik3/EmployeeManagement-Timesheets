@@ -11,13 +11,24 @@ from ..Functions import Other
 
 class EmployeeDashboard(EmployeeDashboardTemplate):
     def __init__(self, **properties):
-      self.init_components(**properties)
-      self.user = anvil.users.get_user()
-      self.userID = self.user["UserID"]
-      self.refresh()
+        """
+        Purpose: Initialize the EmployeeDashboard form with default properties.
+        Input: **properties (dict) - additional properties.
+        Process: Sets form components and initializes user data.
+        Output: None
+        """
+        self.init_components(**properties)
+        self.user = anvil.users.get_user()
+        self.userID = self.user["UserID"]
+        self.refresh()
 
-      
     def refresh(self, **event_args):
+        """
+        Purpose: Refresh the dashboard with the latest data.
+        Input: **event_args (dict) - event arguments.
+        Process: Updates working status, work records, and balance.
+        Output: None
+        """
         workingStatus = anvil.server.call("getIfWorking", self.userID)
         allWorkRecords = anvil.server.call('getUserTimesheets', self.userID)
         payout = anvil.server.call('getTotalBalance', self.userID)
@@ -27,7 +38,6 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
 
         # Update clock in/out button based on working status
         if workingStatus:
-            # User is clocked in
             self.btnClockinout.text = "Clock Out"
             self.btnClockinout.background = "#aa6041"
             self.btnClockinout.tag = 1
@@ -38,7 +48,6 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
             self.update_timer(elapsedTime.total_seconds())
             self.workTimer.interval = 1
         else:
-            # User is clocked out
             self.btnClockinout.text = "Clock In"
             self.btnClockinout.background = "#3e8a38"
             self.btnClockinout.tag = 0
@@ -62,6 +71,12 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
             print(e)
 
     def clock(self, **event_args):
+        """
+        Purpose: Handle clock in and clock out actions.
+        Input: **event_args (dict) - event arguments.
+        Process: Toggles clock in/out status and updates the server.
+        Output: None
+        """
         if self.btnClockinout.tag == 0:
             self.btnClockinout.text = "Clock Out"
             self.btnClockinout.background = "#aa6041"
@@ -83,12 +98,24 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
         self.refresh()
 
     def timerTick(self, **event_args):
+        """
+        Purpose: Update the work timer every tick.
+        Input: **event_args (dict) - event arguments.
+        Process: Increments the timer if the user is clocked in.
+        Output: None
+        """
         if self.btnClockinout.tag == 1:
             previousTime = self.lblTimer.tag
             newTime = previousTime + 1
             self.update_timer(newTime)
 
     def update_timer(self, total_seconds):
+        """
+        Purpose: Update the timer label with the elapsed time.
+        Input: total_seconds (int) - total elapsed seconds.
+        Process: Converts seconds to hours, minutes, and seconds and updates the label.
+        Output: None
+        """
         self.lblTimer.tag = total_seconds
         hours = int(total_seconds // 3600)
         minutes = int((total_seconds % 3600) // 60)
