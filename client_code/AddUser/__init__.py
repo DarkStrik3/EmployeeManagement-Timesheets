@@ -26,30 +26,30 @@ class AddUser(AddUserTemplate):
         """
         issues = []  # Initialize issues list
         if not Validation.validateString(self.txtFullName.text):  # Validate full name
-            issues.append("invalid name")
+            issues.append("Invalid name")
         if not Validation.validateString(self.txtTitle.text):  # Validate title
-            issues.append("invalid title")
+            issues.append("Invalid title")
         if not Validation.validateEmail(self.txtEmail.text):  # Validate email
-            issues.append("invalid email")
+            issues.append("Invalid email")
         # Validate rates: additional rates > base rate, and base rate >= minimum wage
         if not Validation.validateRate(self.txtBaseRate.text, self.txtExtendedRate.text, self.txtPubHolRate.text):
-            issues.append("invalid rates")
-        if not Validation.validateDate(self.dpDoB.date.strftime("%d/%m/%Y")):  # Validate date of birth
-            issues.append("invalid date of birth")
+            issues.append("Invalid rates")
+        if not Validation.validateDate(self.dpDoB.date.strftime("%d/%m/%Y")) and not None:  # Validate date of birth
+            issues.append("Invalid date of birth")
         if self.ddGender.selected_value is None:  # Validate gender selection
-            issues.append("invalid gender")
+            issues.append("Invalid gender")
         if self.ddEmplType.selected_value is None:  # Validate employment type selection
-            issues.append("invalid employment type")
+            issues.append("Invalid employment type")
         if self.ddGroup.selected_value is None:  # Validate group selection
-            issues.append("invalid group selected")
+            issues.append("Invalid group selected")
         if not Validation.validatePhoneNum(self.txtPhoneNumber.text):  # Validate phone number
-            issues.append("invalid phone number")
+            issues.append("Invalid phone number")
         if not Validation.validateTFN(self.txtTFN.text):  # Validate TFN number
-            issues.append("invalid TFN number")
+            issues.append("Invalid TFN number")
         if not Validation.validateUpload(self.flUpload.file):  # Validate file upload
-            issues.append("invalid file type uploaded")
+            issues.append("Invalid file type uploaded")
         if len(self.txtTempPassword.text) < 8:  # Validate temporary password length
-            issues.append("invalid temporary password")
+            issues.append("Invalid temporary password")
         if issues == [] or len(issues) == 0:  # Check if there are no validation issues
             # Confirm user details before proceeding
             if confirm("Please confirm that the following details are correct prior to continuing:\n" +
