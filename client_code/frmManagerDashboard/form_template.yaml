@@ -66,3 +66,11 @@ components:
       layout_properties: {}
       event_bindings: {click: selectSettings}
       name: btnSettings
+- name: spacermanagerHome
+  properties: {height: 32}
+  type: Spacer
+  layout_properties: {slot: default}
+- name: lblDeets
+  properties: {text: 'Ver: 0.1', align: right, foreground: 'theme:Dark Theme - Foreground'}
+  type: Label
+  layout_properties: {slot: default}

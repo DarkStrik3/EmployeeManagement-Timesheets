@@ -24,4 +24,8 @@ components:
     properties: {height: 383}
     type: Spacer
     layout_properties: {row: VDJQNY, width_xs: 2, col_xs: 5}
+- name: lblDeets
+  properties: {align: right, text: 'Ver: 0.1', foreground: 'theme:Dark Theme - Foreground'}
+  type: Label
+  layout_properties: {slot: default}
 is_package: true

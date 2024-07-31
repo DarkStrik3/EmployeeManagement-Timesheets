@@ -1,6 +1,6 @@
 container:
   type: HtmlTemplate
-  properties: {html: <div anvil-slot="default"></div>, background: '#131313', border: solid}
+  properties: {html: <div anvil-slot="default"></div>, background: '#131313', border: ''}
 components:
 - name: gpButtons
   properties: {background: '#131313'}
@@ -26,14 +26,14 @@ components:
     layout_properties: {row: NCBWPW, width_xs: 2, col_xs: 9}
     event_bindings: {click: openTimesheets}
 - name: cpUserDetails
-  properties: {col_widths: '{"HYCQWC":20,"AFJZNC":20,"JBLRQZ":20,"OHSPMW":25}', background: '#131313'}
+  properties: {col_widths: '{"HYCQWC":20,"AFJZNC":20,"JBLRQZ":20}', background: '#131313'}
   type: ColumnPanel
   layout_properties: {slot: default}
   components:
   - name: imgProfilePicture
     properties: {display_mode: zoom_to_fill, height: 265.4999694824219, vertical_align: center}
     type: Image
-    layout_properties: {grid_position: 'UUKBEA,HYCQWC'}
+    layout_properties: {grid_position: 'UUKBEA,HYCQWC', full_width_row: false}
   - name: lblIDLabel
     properties: {text: 'ID:', align: left, bold: true, spacing_above: small, spacing_below: small, foreground: '#ffffff'}
     type: Label

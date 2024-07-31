@@ -10,7 +10,7 @@ from ..Functions import Other
 from datetime import datetime
 
 class EditUser(EditUserTemplate):
-    def __init__(self, employeeID, p_parent, **properties):
+    def __init__(self, employeeID, p_parent, isManager, **properties):
         """
         Purpose: Initialize the EditUser form with default properties.
         Input: employeeID (str) - the ID of the employee to edit.
@@ -27,10 +27,13 @@ class EditUser(EditUserTemplate):
         self._parent = p_parent
         # Sets all pre-existing data into the required inputs
         userRow = anvil.server.call('getUserInfo', employeeID)
-        if userRow['Group'] == "Warehouse":
+        if not isManager:
             self.txtBaseRate.enabled = False
             self.txtExtendedRate.enabled = False
             self.txtPubHolRate.enabled = False
+            self.ddEmplType.enabled = False
+            self.ddGroup.enabled = False
+            self.txtTitle.enabled = False
         self.imgUpload.source = userRow['Profile']
         self.txtFullName.text = userRow['FullName']
         self.txtEmail.text = userRow['Email']

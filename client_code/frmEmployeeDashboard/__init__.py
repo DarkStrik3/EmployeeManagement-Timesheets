@@ -10,6 +10,7 @@ from ..frmProfileUserDetails import frmProfileUserDetails
 from ..frmProfileTimesheets import frmProfileTimesheets
 from ..Settings import Settings
 from ..Functions import Other
+from ..EditUser import EditUser
 
 class frmEmployeeDashboard(frmEmployeeDashboardTemplate):
     def __init__(self, **properties):
@@ -31,13 +32,21 @@ class frmEmployeeDashboard(frmEmployeeDashboardTemplate):
         Load the Employee Dashboard component into the container.
         """
         self.cpEmployeeDashboard.clear()  # Clear the container
+        self.spacerEmplHome.height = 222
         self.cpEmployeeDashboard.add_component(EmployeeDashboard())  # Add the Employee Dashboard component
 
-    def openProfileUserDetails(self, employeeID, **event_args):
+    def openProfileUserDetailsClick(self, **event_args):
+        """
+        Load the User Details profile component into the container.
+        """
+        self.openProfileUserDetails(self.userID) # runs the function below
+  
+    def openProfileUserDetails(self, employeeID, **event_args): # Just to catch the employee ID to get rid of an error when using the same form for both manager and employee side
         """
         Load the User Details profile component into the container.
         """
         self.cpEmployeeDashboard.clear()  # Clear the container
+        self.spacerEmplHome.height = 330
         self.cpEmployeeDashboard.add_component(frmProfileUserDetails(self.userID, self))  # Add the User Details component
 
     def openProfileTimesheets(self, employeeID, **event_args):
@@ -45,13 +54,15 @@ class frmEmployeeDashboard(frmEmployeeDashboardTemplate):
         Load the Timesheets profile component into the container.
         """
         self.cpEmployeeDashboard.clear()  # Clear the container
-        self.cpEmployeeDashboard.add_component(frmProfileTimesheets(self.userID, self))  # Add the Timesheets component
+        self.spacerEmplHome.height = 0
+        self.cpEmployeeDashboard.add_component(frmProfileTimesheets(self.userID, self), full_width_row=True)  # Add the Timesheets component
 
     def openSettings(self, **event_args):
         """
         Load the Settings component into the container.
         """
         self.cpEmployeeDashboard.clear()  # Clear the container
+        self.spacerEmplHome.height = 550
         self.cpEmployeeDashboard.add_component(Settings())  # Add the Settings component
 
     def signOut(self, **event_args):
@@ -60,6 +71,14 @@ class frmEmployeeDashboard(frmEmployeeDashboardTemplate):
         """
         anvil.users.logout()  # Log out the user
         open_form('frmLogin')  # Open the login form
+
+    def editUser(self, employeeID, **event_args):
+        """
+        Allow the user to edit their profile details
+        """
+        self.cpEmployeeDashboard.clear() # Clear the container
+        self.spacerEmplHome.height = 310
+        self.cpEmployeeDashboard.add_component(EditUser(self.userID, self, False))  # Add the Edit User component.
 
     def menu(self, **Event_args):
         """

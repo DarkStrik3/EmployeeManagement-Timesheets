@@ -40,6 +40,7 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
         Load the Employee Management component into the view.
         """
         self.cpDashboards.clear()
+        self.spacermanagerHome.height = 0
         self.cpDashboards.add_component(EmployeeManagement(p_parent=self), full_width_row=True)
         self.btnEmplManage.background = "#8f8f8f"
         self.btnAnalyticReport.background = "#333333"
@@ -51,6 +52,7 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
         Load the Analytics Reporting component into the view.
         """
         self.cpDashboards.clear()
+        self.spacermanagerHome.height = 0
         self.cpDashboards.add_component(AnalyticsReporting(), full_width_row=True)
         self.btnEmplManage.background = "#333333"
         self.btnAnalyticReport.background = "#8f8f8f"
@@ -62,6 +64,7 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
         Load the Timesheets component into the view.
         """
         self.cpDashboards.clear()
+        self.spacermanagerHome.height = 0
         self.cpDashboards.add_component(Timesheets(), full_width_row=True)
         self.btnEmplManage.background = "#333333"
         self.btnAnalyticReport.background = "#333333"
@@ -73,6 +76,7 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
         Load the Settings component into the view.
         """
         self.cpDashboards.clear()
+        self.spacermanagerHome.height = 515
         self.cpDashboards.add_component(Settings(), full_width_row=True)
         self.btnEmplManage.background = "#333333"
         self.btnAnalyticReport.background = "#333333"
@@ -84,6 +88,7 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
         Load the Add User component into the view.
         """
         self.cpDashboards.clear()
+        self.spacermanagerHome.height = 330
         self.cpDashboards.add_component(AddUser(), full_width_row=True)
         self.btnEmplManage.background = "#333333"
         self.btnAnalyticReport.background = "#333333"
@@ -101,6 +106,7 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
         Load the profile details of the specified user into the view.
         """
         self.cpDashboards.clear()
+        self.spacermanagerHome.height = 330
         self.cpDashboards.add_component(frmProfileUserDetails(employeeID=userID, p_parent=self), full_width_row=True)
 
     def openProfileTimesheets(self, userID, **event_args):
@@ -108,6 +114,7 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
         Load the timesheets for the specified user into the view.
         """
         self.cpDashboards.clear()
+        self.spacermanagerHome.height = 330
         self.cpDashboards.add_component(frmProfileTimesheets(employeeID=userID, p_parent=self), full_width_row=True)
 
     def editUser(self, userID, **event_args):
@@ -115,4 +122,5 @@ class frmManagerDashboard(frmManagerDashboardTemplate):
         Load the Edit User component for the specified user into the view.
         """
         self.cpDashboards.clear()
-        self.cpDashboards.add_component(EditUser(employeeID=userID, p_parent=self), full_width_row=True)
+        self.spacermanagerHome.height = 330
+        self.cpDashboards.add_component(EditUser(userID, self, True), full_width_row=True)

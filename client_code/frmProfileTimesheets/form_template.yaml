@@ -1,6 +1,6 @@
 container:
   type: HtmlTemplate
-  properties: {html: <div anvil-slot="default"></div>, background: '#131313', foreground: '', border: solid}
+  properties: {html: <div anvil-slot="default"></div>, background: '#131313', foreground: '', border: ''}
   data_bindings: []
 components:
 - name: gpProfile
@@ -20,15 +20,15 @@ components:
   - name: dgUserWork
     properties:
       columns:
-      - {id: JBHATU, data_key: WorkID, title: WorkID}
-      - {id: JKSDUP, title: Date, data_key: Date}
-      - {id: RGSYUC, data_key: ClockIn, title: Clock In}
-      - {id: PZUJKU, data_key: ClockOut, title: Clock Out}
+      - {id: JBHATU, data_key: WorkID, title: WorkID, width: 192, expand: false}
+      - {id: JKSDUP, title: Date, data_key: Date, width: 275, expand: false}
+      - {id: RGSYUC, data_key: ClockIn, title: Clock In, width: 367, expand: false}
+      - {id: PZUJKU, data_key: ClockOut, title: Clock Out, width: 366, expand: false}
       - {id: VJQQOR, title: Hours Worked, data_key: HoursWorked}
       - {id: OJLQEN, title: Pay Rate, data_key: PayRate}
-      - {id: GRQBIK, data_key: Payout, title: Payout, expand: false}
-      - {id: TVIIBG, data_key: approval, title: Approval}
-      - {id: TOCTNQ, data_key: Paid, title: Paid}
+      - {id: GRQBIK, data_key: Payout, title: Payout, expand: false, width: 294}
+      - {id: TVIIBG, data_key: approval, title: Approval, width: 166, expand: false}
+      - {id: TOCTNQ, data_key: Paid, title: Paid, width: 165, expand: false}
       show_page_controls: true
       auto_header: true
       foreground: theme:Dark Theme - Foreground
