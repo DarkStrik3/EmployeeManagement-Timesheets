@@ -38,6 +38,8 @@ Kimikim Organics Timesheets: Employee Management System
       I ended up making the default be dark mode. Although you can change dark mode in the settings, applying light mode/removing dark mode is not yet enabled.
     Login:
       The login page features a button that opens up Anvil's login form, meaning that it isn't through textboxes like previously concieved.
+    Employee-side work record viewing:
+      Employees didn't end up getting the "extend" link at the bottom of the page to extend the amount of work records they see. Instead, they see only 4 in each column.
 
   Classes and Methods (of Functions module)
   
