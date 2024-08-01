@@ -23,7 +23,7 @@ class RowTemplate1(RowTemplate1Template):
         try: # If it works, that means it is a work record that is complete.
           self.lblHoursWorked.text = Other.convertFloatToString(self.item["HoursWorked"])  # Convert hours worked to string format
           self.lblClockOut.text = str(self.item["ClockOut"])  # Display the ClockOut time
-          self.lblPayout.text = str(self.item["Payout"])  # Display the payout amount
+          self.lblPayout.text = "$" + str(format(self.item["Payout"],".2f"))  # Display the payout amount
         except: # If this fails, that means there is a NoneType and the user is still working. Therefore, non-final values are replaced with "WIP"
           self.lblHoursWorked.text = "WIP"
           self.lblClockOut.text = "WIP"

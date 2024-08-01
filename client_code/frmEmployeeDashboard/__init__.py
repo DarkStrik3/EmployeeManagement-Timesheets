@@ -27,13 +27,24 @@ class frmEmployeeDashboard(frmEmployeeDashboardTemplate):
         self.imgProfile.source = userRow['Profile']  # Set the profile image
         self.openEmployeeDashboard()  # Load the default employee dashboard component
 
+    def disableUserInput(self, **event_args):
+      self.linkHeader.remove_event_handler('click')
+      self.linkProfile.remove_event_handler('click')
+
+    def enableUserInput(self, **event_args):
+      self.linkHeader.set_event_handler('click')
+      self.linkProfile.set_event_handler('click')
+
+  
     def openEmployeeDashboard(self, **event_args):
         """
         Load the Employee Dashboard component into the container.
         """
+        self.disableUserInput() # Make sure user cant spam
         self.cpEmployeeDashboard.clear()  # Clear the container
         self.spacerEmplHome.height = 222
         self.cpEmployeeDashboard.add_component(EmployeeDashboard())  # Add the Employee Dashboard component
+        self.enableUserInput() # Lets user change screen again
 
     def openProfileUserDetailsClick(self, **event_args):
         """
@@ -45,25 +56,31 @@ class frmEmployeeDashboard(frmEmployeeDashboardTemplate):
         """
         Load the User Details profile component into the container.
         """
+        self.disableUserInput() # Make sure user cant spam
         self.cpEmployeeDashboard.clear()  # Clear the container
         self.spacerEmplHome.height = 330
         self.cpEmployeeDashboard.add_component(frmProfileUserDetails(self.userID, self))  # Add the User Details component
+        self.enableUserInput() # Lets user change screen again
 
     def openProfileTimesheets(self, employeeID, **event_args):
         """
         Load the Timesheets profile component into the container.
         """
+        self.disableUserInput() # Make sure user cant spam
         self.cpEmployeeDashboard.clear()  # Clear the container
         self.spacerEmplHome.height = 0
         self.cpEmployeeDashboard.add_component(frmProfileTimesheets(self.userID, self), full_width_row=True)  # Add the Timesheets component
+        self.enableUserInput() # Lets user change screen again
 
     def openSettings(self, **event_args):
         """
         Load the Settings component into the container.
         """
+        self.disableUserInput() # Make sure user cant spam
         self.cpEmployeeDashboard.clear()  # Clear the container
         self.spacerEmplHome.height = 550
         self.cpEmployeeDashboard.add_component(Settings())  # Add the Settings component
+        self.enableUserInput() # Lets user change screen again
 
     def signOut(self, **event_args):
         """
@@ -76,9 +93,11 @@ class frmEmployeeDashboard(frmEmployeeDashboardTemplate):
         """
         Allow the user to edit their profile details
         """
+        self.disableUserInput() # Make sure user cant spam
         self.cpEmployeeDashboard.clear() # Clear the container
         self.spacerEmplHome.height = 310
         self.cpEmployeeDashboard.add_component(EditUser(self.userID, self, False))  # Add the Edit User component.
+        self.enableUserInput() # Lets user change screen again
 
     def menu(self, **Event_args):
         """

@@ -21,18 +21,19 @@ components:
     properties:
       columns:
       - {id: JBHATU, data_key: WorkID, title: WorkID, width: 192, expand: false}
-      - {id: JKSDUP, title: Date, data_key: Date, width: 275, expand: false}
-      - {id: RGSYUC, data_key: ClockIn, title: Clock In, width: 367, expand: false}
-      - {id: PZUJKU, data_key: ClockOut, title: Clock Out, width: 366, expand: false}
-      - {id: VJQQOR, title: Hours Worked, data_key: HoursWorked}
-      - {id: OJLQEN, title: Pay Rate, data_key: PayRate}
-      - {id: GRQBIK, data_key: Payout, title: Payout, expand: false, width: 294}
-      - {id: TVIIBG, data_key: approval, title: Approval, width: 166, expand: false}
-      - {id: TOCTNQ, data_key: Paid, title: Paid, width: 165, expand: false}
+      - {id: JKSDUP, title: Date, data_key: Date, width: 180, expand: false}
+      - {id: RGSYUC, data_key: ClockIn, title: Clock In, width: 285, expand: false}
+      - {id: PZUJKU, data_key: ClockOut, title: Clock Out, width: 260, expand: false}
+      - {id: VJQQOR, title: Hours Worked, data_key: HoursWorked, width: 252, expand: false}
+      - {id: OJLQEN, title: Pay Rate, data_key: PayRate, width: 171, expand: false}
+      - {id: GRQBIK, data_key: Payout, title: Payout, expand: false, width: 115}
+      - {id: TVIIBG, data_key: approval, title: Approval, width: 107, expand: false}
+      - {id: TOCTNQ, data_key: Paid, title: Paid, width: 112, expand: false}
       show_page_controls: true
       auto_header: true
       foreground: theme:Dark Theme - Foreground
       role: null
+      wrap_on: mobile
     type: DataGrid
     components:
     - name: rpPastWork
