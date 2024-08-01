@@ -51,45 +51,45 @@ class frmEmployeeDashboard(frmEmployeeDashboardTemplate):
 
 
     def openProfileTimesheets(self, employeeID, **event_args):
-        """
-        Load the Timesheets profile component into the container.
-        """
-        self.cpEmployeeDashboard.clear()  # Clear the container
-        self.spacerEmplHome.height = 0
-        self.cpEmployeeDashboard.add_component(frmProfileTimesheets(self.userID, self), full_width_row=True)  # Add the Timesheets component
+      """
+      Load the Timesheets profile component into the container.
+      """
+      self.cpEmployeeDashboard.clear()  # Clear the container
+      self.spacerEmplHome.height = 0
+      self.cpEmployeeDashboard.add_component(frmProfileTimesheets(self.userID, self), full_width_row=True)  # Add the Timesheets component
 
     def openSettings(self, **event_args):
-        """
-        Load the Settings component into the container.
-        """
-        self.cpEmployeeDashboard.clear()  # Clear the container
-        self.spacerEmplHome.height = 550
-        self.cpEmployeeDashboard.add_component(Settings())  # Add the Settings component
+      """
+      Load the Settings component into the container.
+      """
+      self.cpEmployeeDashboard.clear()  # Clear the container
+      self.spacerEmplHome.height = 550
+      self.cpEmployeeDashboard.add_component(Settings())  # Add the Settings component
 
 
     def signOut(self, **event_args):
-        """
-        Log out the current user and redirect to the login form.
-        """
-        anvil.users.logout()  # Log out the user
-        open_form('frmLogin')  # Open the login form
+      """
+      Log out the current user and redirect to the login form.
+      """
+      anvil.users.logout()  # Log out the user
+      open_form('frmLogin')  # Open the login form
 
     def editUser(self, employeeID, **event_args):
-        """
-        Allow the user to edit their profile details
-        """
-        self.cpEmployeeDashboard.clear() # Clear the container
-        self.spacerEmplHome.height = 310
-        self.cpEmployeeDashboard.add_component(EditUser(self.userID, self, False))  # Add the Edit User component.
+      """
+      Allow the user to edit their profile details
+      """
+      self.cpEmployeeDashboard.clear() # Clear the container
+      self.spacerEmplHome.height = 310
+      self.cpEmployeeDashboard.add_component(EditUser(self.userID, self, False))  # Add the Edit User component.
 
     def menu(self, **Event_args):
-        """
-        Show a menu for selecting different pages and navigate accordingly.
-        """
-        choice = confirm(title="Pages:\n", buttons=[("Dashboard", 1), ("Profile", 2), ("Settings", 3)], dismissible=True)
-        if choice == 1:
-            self.openEmployeeDashboard()  # Open the Employee Dashboard
-        elif choice == 2:
-            self.openProfileUserDetails(self.userID)  # Open the Profile User Details
-        elif choice == 3:
-            self.openSettings()  # Open the Settings page
+      """
+      Show a menu for selecting different pages and navigate accordingly.
+      """
+      choice = confirm(title="Pages:\n", buttons=[("Dashboard", 1), ("Profile", 2), ("Settings", 3)], dismissible=True)
+      if choice == 1:
+          self.openEmployeeDashboard()  # Open the Employee Dashboard
+      elif choice == 2:
+          self.openProfileUserDetails(self.userID)  # Open the Profile User Details
+      elif choice == 3:
+          self.openSettings()  # Open the Settings page

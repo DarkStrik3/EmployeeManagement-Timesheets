@@ -14,6 +14,10 @@ Kimikim Organics Timesheets: Employee Management System
     Graphs: Provides graphs that are reflective of employee work.
     Data display: Displays user details in a repeating format, while also allowing them to be opened in full page.
 
+  Analytics Page:
+    The selections panel is responsible for changing the all the graphs and data displayed beneath (total payout, time worked, and employees). The time-restrictive dropdown is also responsible for the filtered work record downloads.
+    However, the bottom table is only controlled by the dropdown located above it. Its contents are all relevent records (i.e. all not yet paid records), and the other information is not time sensitive.
+
   Unincluded Features
     The following features are ones that I was going to include, but was unable to due to time limitation, instead preferring to focus on essential features.
     No-ClockOut Notification:

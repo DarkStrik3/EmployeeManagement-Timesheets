@@ -13,30 +13,20 @@ components:
     layout_properties: {row: GIPNDZ, width_xs: 1, col_xs: 0}
     event_bindings: {click: signOut}
     name: btnBack
-  - name: linkHeader
-    properties: {}
-    type: Link
-    layout_properties: {row: GIPNDZ, width_xs: 5, col_xs: 4}
-    components:
-    - properties: {height: 95, source: _/theme/transparent.png}
-      type: Image
-      layout_properties: {grid_position: 'SKRZUG,ENGBVD'}
-      name: imgHeader
-    event_bindings: {click: selectEmployeeManagement}
+  - properties: {height: 95, source: _/theme/transparent.png}
+    type: Image
+    layout_properties: {row: GIPNDZ, width_xs: 6, col_xs: 3}
+    name: imgHeader
+    event_bindings: {mouse_down: selectEmployeeManagement}
   - properties: {spacing_above: large, align: right, foreground: 'theme:Dark Theme - Foreground'}
     type: Label
     layout_properties: {row: GIPNDZ, width_xs: 1, col_xs: 10}
     name: lblProfileName
-  - name: linkProfile
-    properties: {}
-    type: Link
+  - properties: {height: '85', spacing_above: medium}
+    type: Image
     layout_properties: {row: GIPNDZ, width_xs: 1, col_xs: 11}
-    components:
-    - properties: {height: 84, spacing_above: medium}
-      type: Image
-      layout_properties: {grid_position: 'DBKQZD,VWPFNI'}
-      name: imgProfile
-    event_bindings: {click: openOwnProfileUserDetails}
+    name: imgProfile
+    event_bindings: {mouse_down: openOwnProfileUserDetails}
   - properties: {col_spacing: none}
     type: ColumnPanel
     layout_properties: {row: IWFCJG, width_xs: 10, col_xs: 0}

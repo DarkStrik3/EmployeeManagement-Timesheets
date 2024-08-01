@@ -17,30 +17,20 @@ components:
     type: Button
     layout_properties: {row: YXXFRA, width_xs: 2, col_xs: 1}
     event_bindings: {click: signOut}
-  - name: linkHeader
-    properties: {}
-    type: Link
+  - name: imgHeader
+    properties: {height: 94, source: _/theme/transparent.png}
+    type: Image
     layout_properties: {row: YXXFRA, width_xs: 5, col_xs: 4}
-    components:
-    - name: imgHeader
-      properties: {height: 94, source: _/theme/transparent.png}
-      type: Image
-      layout_properties: {grid_position: 'OZWGSK,YOFUJS'}
-    event_bindings: {click: openEmployeeDashboard}
+    event_bindings: {mouse_down: openEmployeeDashboard}
   - name: lblProfileName
     properties: {align: right, spacing_above: large, foreground: 'theme:Dark Theme - Foreground'}
     type: Label
     layout_properties: {row: YXXFRA, width_xs: 1, col_xs: 10}
-  - name: linkProfile
-    properties: {}
-    type: Link
+  - name: imgProfile
+    properties: {height: '85', spacing_above: medium, display_mode: zoom_to_fill}
+    type: Image
     layout_properties: {row: YXXFRA, width_xs: 1, col_xs: 11}
-    components:
-    - name: imgProfile
-      properties: {height: 81.5, spacing_above: medium, display_mode: zoom_to_fill}
-      type: Image
-      layout_properties: {grid_position: 'AQVCPL,NRQYXQ'}
-    event_bindings: {click: openProfileUserDetailsClick}
+    event_bindings: {mouse_down: openProfileUserDetailsClick}
   - name: cpEmployeeDashboard
     properties: {background: '#121212', col_spacing: none}
     type: ColumnPanel

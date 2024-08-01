@@ -41,46 +41,47 @@ components:
       layout_properties: {}
       event_bindings: {change: refreshGraphs}
   - name: plotGroupStats
-    properties: {height: 243.5}
+    properties: {height: '260'}
     type: Plot
     layout_properties: {row: UDCADG, width_xs: 4, col_xs: 3}
   - name: plotPieDistribution
-    properties: {height: '243.5'}
+    properties: {height: '260'}
     type: Plot
     layout_properties: {row: UDCADG, width_xs: 5, col_xs: 7}
+  - name: cpTotals
+    properties: {col_widths: '{}'}
+    type: ColumnPanel
+    layout_properties: {row: MWLBON, width_xs: 3, col_xs: 0}
+    components:
+    - name: lblTotalPayout
+      properties: {text: 'Total Payout:', bold: true, align: left, foreground: '#ffffff'}
+      type: Label
+      layout_properties: {grid_position: 'OGWRAI,FIGEFG'}
+    - name: lblPayout
+      properties: {align: left, foreground: '#ffffff'}
+      type: Label
+      layout_properties: {grid_position: 'OGWRAI,YHBJVV'}
+    - name: lblTotalTime
+      properties: {text: 'Total Time:', align: left, bold: true, foreground: '#ffffff'}
+      type: Label
+      layout_properties: {grid_position: 'VETNAJ,OUTKHX RGIPIV,QESWGP'}
+    - name: lblTotalEmployees
+      properties: {text: 'Total Employees:', bold: true, align: left, foreground: '#ffffff'}
+      type: Label
+      layout_properties: {grid_position: 'VETNAJ,OUTKHX GCOADL,RMHFWJ'}
+    - name: lblTime
+      properties: {align: left, foreground: '#ffffff'}
+      type: Label
+      layout_properties: {grid_position: 'VETNAJ,YYXKQJ LJKNWE,WEJUCV'}
+    - name: lblEmployees
+      properties: {align: left, background: '', foreground: '#ffffff'}
+      type: Label
+      layout_properties: {grid_position: 'VETNAJ,YYXKQJ WVPMWJ,HJOXXB'}
   - name: lpData
     properties: {}
     type: LinearPanel
     layout_properties: {row: ARUBVA, width_xs: 3, col_xs: 0}
     components:
-    - name: lblTotals
-      properties: {text: 'Totals:', align: center, bold: true, font_size: 20, foreground: '#ffffff'}
-      type: Label
-      layout_properties: {}
-    - name: lblTotalPayout
-      properties: {text: 'Total Payout:', bold: true, align: center, foreground: '#ffffff'}
-      type: Label
-      layout_properties: {}
-    - name: lblPayout
-      properties: {align: center, foreground: '#ffffff'}
-      type: Label
-      layout_properties: {}
-    - name: lblTotalTime
-      properties: {text: 'Total Time:', align: center, bold: true, foreground: '#ffffff'}
-      type: Label
-      layout_properties: {}
-    - name: lblTime
-      properties: {align: center, foreground: '#ffffff'}
-      type: Label
-      layout_properties: {}
-    - name: lblTotalEmployees
-      properties: {text: 'Total Employees:', bold: true, align: center, foreground: '#ffffff'}
-      type: Label
-      layout_properties: {}
-    - name: lblEmployees
-      properties: {align: center, background: '', foreground: '#ffffff'}
-      type: Label
-      layout_properties: {}
     - name: ddTableInfoShown
       properties:
         items: [Payout, Time Worked, Pay Rate, User ID]
