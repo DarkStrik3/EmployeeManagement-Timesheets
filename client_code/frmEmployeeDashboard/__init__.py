@@ -32,8 +32,8 @@ class frmEmployeeDashboard(frmEmployeeDashboardTemplate):
       self.linkProfile.remove_event_handler('click')
 
     def enableUserInput(self, **event_args):
-      self.linkHeader.set_event_handler('click')
-      self.linkProfile.set_event_handler('click')
+      self.linkHeader.set_event_handler('click', self.openEmployeeDashboard())
+      self.linkProfile.set_event_handler('click', self.openProfileUserDetailsClick())
 
   
     def openEmployeeDashboard(self, **event_args):

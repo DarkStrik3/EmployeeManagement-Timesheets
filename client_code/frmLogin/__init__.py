@@ -23,7 +23,7 @@ class frmLogin(frmLoginTemplate):
           userGroup = user['Group']  # Retrieve user group
           if user:
               # Open the appropriate dashboard based on the user's group
-              if userGroup == "Warehouse":
+              if str(userGroup) == "Warehouse":
                   open_form("frmEmployeeDashboard", userID=ID) # Open employee Dashboard
               else:
                   open_form('frmManagerDashboard', userID=ID) # Open the dashboard thats shown to every other group (Managers, etc)
