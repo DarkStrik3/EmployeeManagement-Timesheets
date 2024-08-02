@@ -63,7 +63,7 @@ Kimikim Organics Timesheets: Employee Management System
     Email: manager1@kimikim.com
     Password: 87654321
   Employee Login
-    Email: employee1@kimikim.com
+    Email: employee1@gmail.com
     Password: 12345678
 
     
