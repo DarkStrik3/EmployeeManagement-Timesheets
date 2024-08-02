@@ -20,7 +20,7 @@ components:
   - name: imgHeader
     properties: {height: 94, source: _/theme/transparent.png}
     type: Image
-    layout_properties: {row: YXXFRA, width_xs: 5, col_xs: 4}
+    layout_properties: {row: YXXFRA, width_xs: 6, col_xs: 3}
     event_bindings: {mouse_down: openEmployeeDashboard}
   - name: lblProfileName
     properties: {align: right, spacing_above: large, foreground: 'theme:Dark Theme - Foreground'}
