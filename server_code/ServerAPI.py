@@ -10,20 +10,6 @@ import io
 # GETTERS
 
 @anvil.server.callable
-def Authenticate(inputEmail):
-    """
-    Authenticate a user based on their email.
-    
-    Input:
-    - inputEmail (str): The email of the user.
-    
-    Output:
-    - existingRow (Row or None): The row from the 'users' table if the email exists, otherwise None.
-    """
-    existingRow = app_tables.users.get(Email=inputEmail)
-    return existingRow
-
-@anvil.server.callable
 def getUser(ID):
   """
     Retrieve the user row.
@@ -34,8 +20,10 @@ def getUser(ID):
     Output:
     - user (Row or None): The row from the 'users' table corresponding to the UserID, otherwise None.
     """
-  user = app_tables.users.get(UserID=ID)
-  return user
+  try:
+    return app_tables.users.get(UserID=ID)
+  except:
+    return None
 
 @anvil.server.callable
 def getUserInfo(ID):
