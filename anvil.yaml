@@ -53,31 +53,31 @@ db_schema:
     server: full
     columns:
     - name: WorkID
-      admin_ui: {width: 200, order: 0}
+      admin_ui: {order: 0, width: 52}
       type: number
     - name: HoursWorked
       admin_ui: {width: 200, order: 2}
       type: number
     - name: PayRate
-      admin_ui: {width: 200, order: 3}
+      admin_ui: {order: 3, width: 89}
       type: number
     - name: ClockIn
-      admin_ui: {order: 1.5, width: 200}
+      admin_ui: {order: 1.5, width: 83}
       type: datetime
     - name: ClockOut
-      admin_ui: {width: 200, order: 1.75}
+      admin_ui: {order: 1.75, width: 78}
       type: datetime
     - name: Payout
-      admin_ui: {width: 200, order: 4}
+      admin_ui: {order: 4, width: 80}
       type: number
     - name: Approval
-      admin_ui: {width: 200, order: 5}
+      admin_ui: {order: 5, width: 73}
       type: bool
     - name: Date
-      admin_ui: {width: 200, order: 1.25}
+      admin_ui: {order: 1.25, width: 75}
       type: date
     - name: UserID
-      admin_ui: {width: 200, order: 0.625}
+      admin_ui: {order: 0.625, width: 63}
       type: number
     - name: Paid
       admin_ui: {width: 200, order: 6}
