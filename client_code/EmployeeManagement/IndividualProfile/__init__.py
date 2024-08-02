@@ -24,8 +24,15 @@ class IndividualProfile(IndividualProfileTemplate):
         self.imgProfileImage.source = self.item['employee']["Profile"]
         self.lblEmplEmployment.text = self.item['employee']["Employment"]
         
-        if not self.user['enabled']:
-            self.btnArchiveProfile.text = "Unarchive"
+        if not self.user['enabled']: # If the user is archived
+          self.btnArchiveProfile.text = "Unarchive"
+          self.lblEmplEmployment.text = "Not In Employment"
+          self.lblEmplEmployment.foreground = "#aa6041"
+          self.lblEmplID.foreground = "#aa6041"
+          self.lblEmplName.foreground = "#aa6041"
+          self.lblEmployeeIdentification.foreground = "#aa6041"
+          self.lblEmploymentStat.foreground = "#aa6041"
+          self.lblName.foreground = "#aa6041"
 
     def editUser(self, **event_args):
         """
