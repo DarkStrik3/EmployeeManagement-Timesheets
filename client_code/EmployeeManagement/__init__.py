@@ -89,10 +89,10 @@ class EmployeeManagement(EmployeeManagementTemplate):
         Output: (list) - Filtered list of employees.
         """
         if self.cbFiltersEnabled.checked:
-          self.filterEmployeesDropdown() # This is done to asve duplicating the code
+          self.filterEmployeesDropdown() # This is done to save duplicating the code
         else:
           # If the filters get disabled, everything is reset to the original view without any filters enabled.
-            self.refreshEmployeeList(self.employees)
+            #self.refreshEmployeeList(self.employees)
             self.resortProfiles(self.employees)
 
 
