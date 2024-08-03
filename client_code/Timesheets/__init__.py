@@ -73,6 +73,13 @@ class Timesheets(TimesheetsTemplate):
         """
         self.resortInputTimesheets(self.allWorkRecords)
 
+    def filterTimsheetsDropdown(self, **event_args):
+      """
+      Only for dropdowns, so no changes would be made if filters arent enabled.
+      """
+      if self.cbFiltersEnabled.checked:
+        self.filterTimesheets()
+  
     def filterTimesheets(self, **event_args):
         """
         Filter timesheets based on user-selected filters and update the display.

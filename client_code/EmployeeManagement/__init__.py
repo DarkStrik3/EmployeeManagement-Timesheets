@@ -53,8 +53,7 @@ class EmployeeManagement(EmployeeManagementTemplate):
         Output: None
         """
         if self.cbFiltersEnabled.checked:
-            filteredEmployees = self.filterEmployees()
-            self.resortProfiles(filteredEmployees)
+            self.filterEmployees()
         else:
             self.resortProfiles(self.employees)
 
@@ -92,7 +91,6 @@ class EmployeeManagement(EmployeeManagementTemplate):
           self.filterEmployeesDropdown() # This is done to save duplicating the code
         else:
           # If the filters get disabled, everything is reset to the original view without any filters enabled.
-            #self.refreshEmployeeList(self.employees)
             self.resortProfiles(self.employees)
 
 
@@ -117,7 +115,6 @@ class EmployeeManagement(EmployeeManagementTemplate):
               if add:
                   newFilter.append(employee)
           self.refreshEmployeeList(newFilter)
-          self.resortProfiles(newFilter)
           return newFilter 
 
     def addUser(self, **event_args):

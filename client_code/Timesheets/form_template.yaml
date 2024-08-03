@@ -54,12 +54,12 @@ components:
   properties: {text: Approved, align: left, foreground: '#ffffff'}
   type: CheckBox
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE MMUFNY,ERZAXU'}
-  event_bindings: {change: filterTimesheets}
+  event_bindings: {change: filterTimsheetsDropdown}
 - name: cbPaidFilter
   properties: {text: Paid, align: left, foreground: '#ffffff'}
   type: CheckBox
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE MMUFNY,HZURYT'}
-  event_bindings: {change: filterTimesheets}
+  event_bindings: {change: filterTimsheetsDropdown}
 - name: ddGroup
   properties:
     items: [All, Warehouse, Manager, Accountant, Admin]
@@ -67,7 +67,7 @@ components:
     foreground: '#ffffff'
   type: DropDown
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE GNRVNH,MQUZDC'}
-  event_bindings: {change: filterTimesheets}
+  event_bindings: {change: filterTimsheetsDropdown}
 - name: ddGender
   properties:
     items: [All, Male, Female, Other]
@@ -75,12 +75,12 @@ components:
     foreground: '#ffffff'
   type: DropDown
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE ZRRVSI,NMPHLO'}
-  event_bindings: {change: filterTimesheets}
+  event_bindings: {change: filterTimsheetsDropdown}
 - name: dpDateFilter
   properties: {background: '#333333', foreground: '#ffffff'}
   type: DatePicker
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE RKHARR,AXAKMF'}
-  event_bindings: {change: filterTimesheets}
+  event_bindings: {change: filterTimsheetsDropdown}
 - name: lblStatusUpdate
   properties: {text: Status Updates, bold: true, align: center, font_size: 20, foreground: '#ffffff'}
   type: Label
