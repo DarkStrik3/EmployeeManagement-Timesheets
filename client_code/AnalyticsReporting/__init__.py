@@ -76,37 +76,40 @@ class AnalyticsReporting(AnalyticsReportingTemplate):
             infoArr = [warehouse, management, admin, accounting]  # Populate information array
 
         elif typeChoice == "Employment Type":
-            typeArr = ["Full Time", "Part Time", "Contractor"]
-            fullTime = partTime = contractor = 0  # Initialize counters
-            for record in filteredRecords:
-                recordUser = self.allUsers[record['UserID']]
-                if recordUser['Employment'] == "Part-Time":
-                    if infoChoice == "Payout":
-                        partTime += record['Payout']
-                    elif infoChoice == "Time Worked":
-                        partTime += record['HoursWorked']
-                elif recordUser['Employment'] == "Full-Time":
-                    if infoChoice == "Payout":
-                        fullTime += record['Payout']
-                    elif infoChoice == "Time Worked":
-                        fullTime += record['HoursWorked']
-                elif recordUser['Employment'] == "Contractor":
-                    if infoChoice == "Payout":
-                        contractor += record['Payout']
-                    elif infoChoice == "Time Worked":
-                        contractor += record['HoursWorked']
-            infoArr = [fullTime, partTime, contractor]  # Populate information array
+          typeArr = ["Full Time", "Part Time", "Contractor"]
+          fullTime = 0
+          partTime = 0
+          contractor = 0
+          for record in filteredRecords:
+              recordUser = self.allUsers[record['UserID']]
+              if str(recordUser['Employment']).strip() == "Part Time":
+                  if infoChoice == "Payout":
+                      partTime += record['Payout']
+                  elif infoChoice == "Time Worked":
+                      partTime += record['HoursWorked']
+              elif str(recordUser['Employment']).strip() == "Full Time":
+                  if infoChoice == "Payout":
+                      fullTime += record['Payout']
+                  elif infoChoice == "Time Worked":
+                      fullTime += record['HoursWorked']
+              elif str(recordUser['Employment']).strip() == "Contractor":
+                  if infoChoice == "Payout":
+                      contractor += record['Payout']
+                  elif infoChoice == "Time Worked":
+                      contractor += record['HoursWorked']
+          infoArr = [fullTime, partTime, contractor]
+
 
         elif typeChoice == "Employees":
-            for user in self.allUsers:
-                typeArr.append(user['FullName'])  # Add each employee's name to type array
-            totalAmount = 0  # Initialize total amount
-            for record in filteredRecords:
-                if infoChoice == "Payout":
-                    totalAmount += float(record['Payout'])
-                elif infoChoice == "Time Worked":
-                    totalAmount += float(record['HoursWorked'])
-            infoArr.append(totalAmount)  # Add total amount to information array
+          totalAmountPerEmployee = {user['UserID']: 0 for user in self.allUsers}  # Initialize total amount per employee
+          for record in filteredRecords:
+              if infoChoice == "Payout":
+                  totalAmountPerEmployee[record['UserID']] += float(record['Payout'])
+              elif infoChoice == "Time Worked":
+                  totalAmountPerEmployee[record['UserID']] += float(record['HoursWorked'])
+          typeArr = [user['FullName'] for user in self.allUsers]  # List of employee names
+          infoArr = [totalAmountPerEmployee[user['UserID']] for user in self.allUsers]  # Corresponding amounts
+
 
         # Set Plots
 
