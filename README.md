@@ -1,88 +1,76 @@
-# About This [Anvil](https://anvil.works/?utm_source=github:app_README) App
+# Kimikim Organics Timesheets: Employee Management System
 
-### Build web apps with nothing but Python.
+## Overview
+This Employee Management System is designed to facilitate the management of employee details, timesheets, rates, and other related information. It includes validation methods to ensure the integrity of the data entered. For managers, they have the ability to approve work records, make changes to employee details, and view graphs in relation to employee performance.
 
-The app in this repository is built with [Anvil](https://anvil.works?utm_source=github:app_README), the framework for building web apps with nothing but Python. You can clone this app into your own Anvil account to use and modify.
+## Requirements
+- Any computer that can run applications within a browser. Not recommended on mobile due to aspect ratio, but still usable to an extent.
 
-Below, you will find:
-- [How to open this app](#opening-this-app-in-anvil-and-getting-it-online) in Anvil and deploy it online
-- Information [about Anvil](#about-anvil)
-- And links to some handy [documentation and tutorials](#tutorials-and-documentation)
+## Features
+- **User Validation**: Validates user inputs such as names, dates, rates, emails, phone numbers, and TFNs.
+- **File Uploads**: Ensures that uploaded image files meet specified criteria.
+- **Graphs**: Provides graphs that are reflective of employee work.
+- **Data display**: Displays user details in a repeating format, while also allowing them to be opened in full page.
 
-## Opening this app in Anvil and getting it online
+## Analytics Page
+The selections panel is responsible for changing all the graphs and data displayed beneath (total payout, time worked, and employees). The time-restrictive dropdown is also responsible for the filtered work record downloads. However, the bottom table is only controlled by the dropdown located above it. Its contents are all relevant records (i.e., all not yet paid records), and the other information is not time-sensitive.
 
-### Cloning the app
+## Unincluded Features
+The following features were intended to be included but were omitted due to time limitations, prioritizing essential features:
 
-Go to the [Anvil Editor](https://anvil.works/build?utm_source=github:app_README) (you might need to sign up for a free account) and click on “Clone from GitHub” (underneath the “Blank App” option):
+- **No-ClockOut Notification**:  
+  Since it requires a check that goes across every row and requires concatenation into a single message, while also allowing the manager to see the exact rows highlighted in the Timesheets. Due to the additional Anvil functionality that would have to be researched, I preferred to skip it.
 
-<img src="https://anvil.works/docs/version-control-new-ide/img/git/clone-from-github.png" alt="Clone from GitHub"/>
+- **Public Holiday Rate**:  
+  I didn't implement a public holiday rate check into the clock-out logic that calculated the total payout because I couldn't find a decent API that would provide all the Australian public holidays. Additionally, I didn't want to complicate the logic further and risk breaking the existing clock-out code.
 
-Enter the URL of this GitHub repository. If you're not yet logged in, choose "GitHub credentials" as the authentication method and click "Connect to GitHub".
+- **Employee Repeating Panel**:  
+  Initially, I planned to have up to 5 employees per row in the Employee Management dashboard. However, after attempting to use just one repeating panel for it, I realized that it wasn't supported. Instead, I would have had to create multiple repeating panels controlled through logic rather than default settings. Due to time constraints, I opted for a single repeating panel with one employee per row.
 
-<img src="https://anvil.works/docs/version-control-new-ide/img/git/clone-app-from-git.png" alt="Clone App from Git modal"/>
+- **Popups**:  
+  Many of the "pop-ups" I initially wanted are now standalone pages. Not only are they easier to program, but Anvil doesn't support large pop-ups like the proposed Add User and Edit User forms.
 
-Finally, click "Clone App".
+- **Sidebar Menu**:  
+  Since I chose to use a Blank HTML, I couldn't implement a sidebar menu. Instead, a popup with buttons selects the desired page.
 
-This app will then be in your Anvil account, ready for you to run it or start editing it! **Any changes you make will be automatically pushed back to this repository, if you have permission!** You might want to [make a new branch](https://anvil.works/docs/version-control-new-ide?utm_source=github:app_README).
+- **Themes/Dark Mode**:  
+  The default is dark mode. Although you can change dark mode in the settings, applying light mode/removing dark mode is not yet enabled.
 
-### Running the app yourself:
+- **Login**:  
+  The login page features a button that opens up Anvil's login form, meaning it isn't through textboxes as previously conceived.
 
-Find the **Run** button at the top-right of the Anvil editor:
+- **Employee-side Work Record Viewing**:  
+  Employees didn't get the "extend" link at the bottom of the page to extend the number of work records they see. Instead, they only see 4 records in each column.
 
-<img src="https://anvil.works/docs/img/run-button-new-ide.png"/>
+## Classes and Methods (of Functions Module)
 
+### Validation Class
+Contains methods to validate various types of input data.
 
-### Publishing the app on your own URL
+- **validateString(name)**: Validates that a string is not empty or whitespace.
+- **validateDate(date)**: Validates a date string in the format dd/mm/yyyy.
+- **validateRate(baseRate, extendedRate, pubholrate)**: Validates that rates meet the specified conditions.
+- **validateEmail(email)**: Validates the format of an email address.
+- **validatePhoneNum(phoneNumber)**: Validates the format of a phone number.
+- **validateTFN(tfn)**: Validates a Tax File Number (TFN).
+- **validateUpload(imgFile)**: Validates an image file upload.
 
-Now you've cloned the app, you can [deploy it on the internet with two clicks](https://anvil.works/docs/deployment/quickstart?utm_source=github:app_README)! Find the **Publish** button at the top-right of the editor:
+### Other Class
+Provides additional utility methods, such as:
 
-<img src="https://anvil.works/docs/deployment-new-ide/img/environments/publish-button.png"/>
+- **getDate15YearsAgo()**: Returns the date 15 years ago from today (to ensure only individuals who are at least 15 years old can be added as employees, meeting legal requirements).
+- **QuickSort(array, key)**: Implements the QuickSort algorithm for sorting an array of dictionaries based on a specified key.
 
-When you click it, you will see the Publish dialog:
+## Manager Login
+- **Email**: manager1@kimikim.com
+- **Password**: 87654321
 
-<img src="https://anvil.works/docs/deployment-new-ide/img/quickstart/empty-environments-dialog.png"/>
+## Employee Login
+- **Email**: employee1@gmail.com
+- **Password**: 12345678
 
-Click **Publish This App**, and you will see that your app has been deployed at a new, public URL:
-
-<img src="https://anvil.works/docs/deployment-new-ide/img/quickstart/default-public-environment.png"/>
-
-That's it - **your app is now online**. Click the link and try it!
-
-## About Anvil
-
-If you’re new to Anvil, welcome! Anvil is a platform for building full-stack web apps with nothing but Python. No need to wrestle with JS, HTML, CSS, Python, SQL and all their frameworks – just build it all in Python.
-
-<figure>
-<figcaption><h3>Learn About Anvil In 80 Seconds👇</h3></figcaption>
-<a href="https://www.youtube.com/watch?v=3V-3g1mQ5GY" target="_blank">
-<img
-  src="https://anvil-website-static.s3.eu-west-2.amazonaws.com/anvil-in-80-seconds-YouTube.png"
-  alt="Anvil In 80 Seconds"
-/>
-</a>
-</figure>
-<br><br>
-
-[![Try Anvil Free](https://anvil-website-static.s3.eu-west-2.amazonaws.com/mark-complete.png)](https://anvil.works?utm_source=github:app_README)
-
-To learn more about Anvil, visit [https://anvil.works](https://anvil.works?utm_source=github:app_README).
-
-## Tutorials and documentation
-
-### Tutorials
-
-If you are just starting out with Anvil, why not **[try the 10-minute Feedback Form tutorial](https://anvil.works/learn/tutorials/feedback-form?utm_source=github:app_README)**? It features step-by-step tutorials that will introduce you to the most important parts of Anvil.
-
-Anvil has tutorials on:
-- [Building Dashboards](https://anvil.works/learn/tutorials/data-science#dashboarding?utm_source=github:app_README)
-- [Multi-User Applications](https://anvil.works/learn/tutorials/multi-user-apps?utm_source=github:app_README)
-- [Building Web Apps with an External Database](https://anvil.works/learn/tutorials/external-database?utm_source=github:app_README)
-- [Deploying Machine Learning Models](https://anvil.works/learn/tutorials/deploy-machine-learning-model?utm_source=github:app_README)
-- [Taking Payments with Stripe](https://anvil.works/learn/tutorials/stripe?utm_source=github:app_README)
-- And [much more....](https://anvil.works/learn/tutorials?utm_source=github:app_README)
-
-### Reference Documentation
-
-The Anvil reference documentation provides comprehensive information on how to use Anvil to build web applications. You can find the documentation [here](https://anvil.works/docs/overview?utm_source=github:app_README).
-
-If you want to get to the basics as quickly as possible, each section of this documentation features a [Quick-Start Guide](https://anvil.works/docs/overview/quickstarts?utm_source=github:app_README).
+## Usage
+- **Login**: Use the provided manager or employee login details to access the system.
+- **Data Entry**: Enter employee details, rates, and other relevant information.
+- **Validation**: Utilize the validation methods through adding a user or editing user details.
+- **File Uploads**: Upload employee images and ensure they meet the specified criteria.
