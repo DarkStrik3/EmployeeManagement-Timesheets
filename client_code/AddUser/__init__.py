@@ -34,8 +34,11 @@ class AddUser(AddUserTemplate):
         # Validate rates: additional rates > base rate, and base rate >= minimum wage
         if not Validation.validateRate(self.txtBaseRate.text, self.txtExtendedRate.text, self.txtPubHolRate.text):
             issues.append("Invalid rates")
-        if not Validation.validateDate(self.dpDoB.date.strftime("%d/%m/%Y")) and not None:  # Validate date of birth
+        try:
+          if not Validation.validateDate(self.dpDoB.date.strftime("%d/%m/%Y")) and not None:  # Validate date of birth
             issues.append("Invalid date of birth")
+        except:
+          issues.append("Invalid date of birth")
         if self.ddGender.selected_value is None:  # Validate gender selection
             issues.append("Invalid gender")
         if self.ddEmplType.selected_value is None:  # Validate employment type selection

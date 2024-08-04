@@ -65,9 +65,12 @@ class EditUser(EditUserTemplate):
         # Validate rates
         if not Validation.validateRate(self.txtBaseRate.text, self.txtExtendedRate.text, self.txtPubHolRate.text):
             issues.append("invalid rates")
-        # Validate date of birth
-        if not Validation.validateDate(self.dpDoB.date.strftime("%d/%m/%Y")):
-            issues.append("invalid date of birth")
+        try:
+          # Validate date of birth
+          if not Validation.validateDate(self.dpDoB.date.strftime("%d/%m/%Y")):
+              issues.append("invalid date of birth")
+        except:
+          issues.append("invalid date of birth")
         # Validate gender selection
         if self.ddGender.selected_value is None:
             issues.append("invalid gender")
