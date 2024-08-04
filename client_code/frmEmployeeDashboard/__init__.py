@@ -20,7 +20,6 @@ class frmEmployeeDashboard(frmEmployeeDashboardTemplate):
       self.init_components(**properties)
       self.user = anvil.users.get_user()  # Get the currently logged-in user
       self.userID = self.user['UserID']  # Store the user ID
-
       # Fetch user information from the server and set up the profile display
       userRow = anvil.server.call('getUserInfo', self.userID)
       self.lblProfileName.text = userRow['FullName']  # Set the profile name
