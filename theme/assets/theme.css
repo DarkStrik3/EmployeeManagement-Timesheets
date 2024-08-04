@@ -1,3 +1,12 @@
+body.anvil-show-banner #anvil-header {
+    display: none;
+}
+
+body.anvil-show-banner {
+    margin-top: 0px;
+}
+
+
 .form-background {
     background-color: #131313; /* Use your desired background color here */
     height: 100vh; /* Ensure it covers the full viewport height */
