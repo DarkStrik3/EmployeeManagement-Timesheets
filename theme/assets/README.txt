@@ -5,6 +5,27 @@ Kimikim Organics Timesheets: Employee Management System
     It includes validation methods to ensure the integrity of the data entered.
     For managers, they have the ability to approve work records, make changes to employee details, and view graphs in relation to employee performance.
 
+  How to Test:
+    Employee Side:
+      - Clock in, and clock out. Final clock out time dislayed initially would NOT be the same as final time recorded in the database due to code processing time. It is a difference of a few seconds give or take.
+      - View 4 pending and 4 approved work records on the main page
+      - View their profile with all their details displayed, and view their own timesheets in a table format.
+      - Edit their profile except for company-sensitive details like their payrate, title and group (user cant promote themselves)
+      - Change password in settings page, also change dark mode.
+    Manager Side:
+      Employee Management:
+        - Add a new user with all of their details and a temporary password
+        - View all employees in a sorted fashion
+        - Resort the employees based on their details
+        - Filter the employees based on their details
+        - Open an employee Profile
+        - Open the employee editing page
+        - Archive a user (account becomes disabled, user shown as Not in Employment)
+      Timesheets:
+        - View all Timesheets, and the user it is associated to (users are cached to reduce server load)
+        - Resort the timesheets based on the user details or the 
+      
+
   Requirements:
     Any computer that can run applications within a browser. Not recommended on Mobile due to aspect ratio, but still usable to an extent.
   
