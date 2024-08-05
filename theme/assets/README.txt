@@ -23,7 +23,30 @@ Kimikim Organics Timesheets: Employee Management System
         - Archive a user (account becomes disabled, user shown as Not in Employment)
       Timesheets:
         - View all Timesheets, and the user it is associated to (users are cached to reduce server load)
-        - Resort the timesheets based on the user details or the 
+        - Resort the timesheets based on the user details or the record's details itself\
+        - Filter the records based on Group, gender, employment type, or date. Filter by employee might come later.
+        - Filter by whether it is approved, and/or paid
+        - Approve either selected records (extra column) or all records
+        - Reject either selected records or all records (on unnapporved and unpaid, deletes the record)
+        - Mark selected records or all records as paid
+      Analytics & Reporting:
+       - Download all User Details (except profile picture) as a CSV file
+       - Download all work records or time-filtered work records as a CSV file
+       - View Graphs displaying payout/time worked in comparison to either all groups, all employees or the different employment types
+        - Pie graph showing breakdown
+        - Bar chart with total across the time
+        - Bar chart with dates across that time
+       - View a table with employees, and you can choose what to view from their User ID, payrate, balance (unpaid work records), etc. 
+        - WIP as more options into what to view, especiall to the with balance.
+       - View total employees
+       - View total payout across all employees (unpaid)
+       - View total time worked across all employees (unpaid)
+      Settings:
+       - Change dark mode
+       - Change password
+      Home Page:
+       - Logo 
+      
       
 
   Requirements:
