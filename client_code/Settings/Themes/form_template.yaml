@@ -1,0 +1,26 @@
+is_package: true
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{"WJYECR":45}', border: thin solid, foreground: 'theme:Dark Theme - Selected Button background'}
+components:
+- name: lblChoose
+  properties: {text: Choose your desired theme, align: center, bold: true, font_size: 20}
+  type: Label
+  layout_properties: {grid_position: 'RIREOW,WJYECR GPGVHH,RZIXYV'}
+- name: btnDarkTheme
+  properties: {text: Dark Mode, icon: 'fa:moon-o'}
+  type: Button
+  layout_properties: {grid_position: 'YDSXDG,BQSAKN'}
+- name: btnLightTheme
+  properties: {text: Light Mode, icon: 'fa:sun-o'}
+  type: Button
+  layout_properties: {grid_position: 'YDSXDG,XAQVWT'}
+- name: btnCyanTheme
+  properties: {text: Cyan Mode, icon: 'fa:bath'}
+  type: Button
+  layout_properties: {grid_position: 'YDSXDG,ZIREYI'}
+- name: btnArchiveProfile
+  properties: {text: Save Theme, spacing_above: medium, align: full, bold: true, background: '', foreground: ''}
+  type: Button
+  layout_properties: {grid_position: 'XMHKPW,ZMBSOJ'}
+  event_bindings: {click: archiveUser}

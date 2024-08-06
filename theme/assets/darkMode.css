@@ -1,0 +1,140 @@
+body.darkMode {
+    background: linear-gradient(to right, #2b2b2b, #131313);
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+}
+
+.darkMode .button, .darkMode .btn {
+    background: linear-gradient(to right, #333333, #444444);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.darkMode .button:hover, .darkMode .btn:hover {
+    background: linear-gradient(to right, #777777, #666666);
+}
+
+.darkMode .header {
+    background: linear-gradient(to right, #333333, #222222);
+    color: white;
+    padding: 10px;
+}
+
+.darkMode .footer {
+    background: linear-gradient(to right, #444444, #333333);
+    color: white;
+    padding: 10px;
+}
+
+.darkMode .anvil-component .form-control:not(select), .darkMode .anvil-component.form-control, .darkMode .form-inline .form-control {
+    background-color: #444;
+    color: #ccc;
+    border: 1px solid #555;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.darkMode .textbox:focus, .darkMode .form-inline .form-control:focus, .darkMode .anvil-component .form-control:not(select):focus, .darkMode .anvil-component.form-control:focus {
+    border-color: #777;
+}
+
+.darkMode .link-text {
+    color: #ccc;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.darkMode .link-text:hover {
+    color: #fff;
+}
+
+.darkMode .modal-content {
+    background: linear-gradient(to right, #2b2b2b, #1b1b1b);
+    color: #ccc;
+}
+
+.darkMode .radio {
+    display: inline-block;
+    margin-right: 10px;
+    position: relative;
+}
+
+.darkMode .radio input[type="radio"] {
+    opacity: 100;
+    position: absolute;
+    cursor: pointer;
+}
+
+.darkMode .radio .radio-label {
+    padding: 10px 15px;
+    background: linear-gradient(to right, #555555, #444444);
+    border: 2px solid transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.darkMode .radio input[type="radio"]:checked + .radio-label {
+    border-color: #ccc;
+}
+
+.darkMode .number-stepper {
+    background: #444;
+    border: 1px solid #555;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    color: #ccc;
+    transition: border-color 0.3s;
+}
+
+.darkMode .number-stepper:focus {
+    border-color: #777;
+}
+
+.darkMode .dropdown-menu {
+    background-color: #444;
+    border: 1px solid #555;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #ccc;
+}
+
+.darkMode .dropdown-item {
+    padding: 10px;
+    transition: background 0.3s;
+}
+
+.darkMode .dropdown-item:hover {
+    background: #666;
+}
+
+.darkMode .plotly-graph {
+    background: linear-gradient(to right, #2b2b2b, #1b1b1b);
+    color: #ccc;
+}
+
+.darkMode .tab-button {
+    background: #333;
+    color: #ccc;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.darkMode .tab-button.active {
+    background: #4e79a7;
+    color: white;
+}
+
+
+

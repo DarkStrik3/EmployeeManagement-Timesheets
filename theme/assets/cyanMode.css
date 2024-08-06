@@ -1,0 +1,140 @@
+body.cyanMode {
+    background: linear-gradient(to right, #d6e3ff, #e2d1ff);
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+}
+
+.cyanMode .button, .cyanMode .btn {
+    background: linear-gradient(to right, #4e79a7, #9e79a7);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.cyanMode .button:hover, .cyanMode .btn:hover {
+    background: linear-gradient(to right, #3a5a8b, #7a5a8b);
+}
+
+.cyanMode .header {
+    background: linear-gradient(to right, #9e79a7, #4e79a7);
+    color: white;
+    padding: 10px;
+}
+
+.cyanMode .footer {
+    background: linear-gradient(to right, #b4a0d8, #4e79a7);
+    color: white;
+    padding: 10px;
+}
+
+.cyanMode .anvil-component .form-control:not(select), .cyanMode .anvil-component.form-control, .cyanMode .form-inline .form-control {
+    background-color: #e2d1ff;
+    color: #333;
+    border: 1px solid #4e79a7;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.cyanMode .textbox:focus, .cyanMode .form-inline .form-control:focus, .cyanMode .anvil-component .form-control:not(select):focus, .cyanMode .anvil-component.form-control:focus {
+    border-color: #4e79a7;
+}
+
+.cyanMode .link-text {
+    color: #4e79a7;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.cyanMode .link-text:hover {
+    color: #9e79a7;
+}
+
+.cyanMode .modal-content {
+    background: linear-gradient(to right, #d6e3ff, #e2d1ff);
+    color: #333;
+}
+
+.cyanMode .radio {
+    display: inline-block;
+    margin-right: 10px;
+    position: relative;
+}
+
+.cyanMode .radio input[type="radio"] {
+    opacity: 100;
+    position: absolute;
+    cursor: pointer;
+}
+
+.cyanMode .radio .radio-label {
+    padding: 10px 15px;
+    background: linear-gradient(to right, #4e79a7, #9e79a7);
+    border: 2px solid transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.cyanMode .radio input[type="radio"]:checked + .radio-label {
+    border-color: #333;
+}
+
+.cyanMode .number-stepper {
+    background: #e2d1ff;
+    border: 1px solid #4e79a7;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+    transition: border-color 0.3s;
+}
+
+.cyanMode .number-stepper:focus {
+    border-color: #4e79a7;
+}
+
+.cyanMode .dropdown-menu {
+    background-color: #e2d1ff;
+    border: 1px solid #4e79a7;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+.cyanMode .dropdown-item {
+    padding: 10px;
+    transition: background 0.3s;
+}
+
+.cyanMode .dropdown-item:hover {
+    background: #d6e3ff;
+}
+
+.cyanMode .plotly-graph {
+    background: linear-gradient(to right, #d6e3ff, #e2d1ff);
+    color: #333;
+}
+
+.cyanMode .tab-button {
+    background: #eee;
+    color: #333;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.cyanMode .tab-button.active {
+    background: #4e79a7;
+    color: white;
+}
+
+
+

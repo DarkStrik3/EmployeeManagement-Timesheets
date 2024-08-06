@@ -6,6 +6,7 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 from ..Functions import Other
+from .Themes import Themes
 
 class Settings(SettingsTemplate):
   def __init__(self, **properties):
@@ -43,3 +44,29 @@ class Settings(SettingsTemplate):
       anvil.users.change_password_with_form(require_old_password=True)  # Open a form to change the password, requiring the old password.
     except:
       alert("Change failed, please try again.")  # Show an alert if the password change fails.
+
+
+  def Themes(self, **event_args):
+    """
+    Let user select a theme
+    """
+    alert(content=Themes(), large=True, buttons=[], title="Themes")
+      
+    # Function to get the user's currently saved theme and apply it at init
+  def applyUserTheme(self):
+    theme = anvil.server.call('getUserTheme')
+    self.apply_theme(theme)
+
+    # Function to change CSS class which is active to select theme
+  def applyTheme(self, theme_name):
+    js_code = f"""
+    document.body.className = '';
+    document.body.classList.add('{theme_name}');
+    """
+    self.callJS(js_code)
+
+  def callJS(self, js_code):
+    """
+    Add JS
+    """
+    anvil.js.window.eval(js_code)

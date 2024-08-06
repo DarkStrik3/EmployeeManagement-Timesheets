@@ -1,0 +1,142 @@
+body.lightMode {
+    background: linear-gradient(to right, #ffffff, #f5f5f5);
+    color: #333;
+    font-family: 'Arial', sans-serif;
+}
+
+.lightMode .button, .lightMode .btn {
+    background: linear-gradient(to right, #cccccc, #aaaaaa);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.lightMode .button:hover, .lightMode .btn:hover {
+    background: linear-gradient(to right, #aaaaaa, #888888);
+}
+
+.lightMode .header {
+    background: linear-gradient(to right, #cccccc, #aaaaaa);
+    color: white;
+    padding: 10px;
+}
+
+.lightMode .footer {
+    background: linear-gradient(to right, #cccccc, #aaaaaa);
+    color: white;
+    padding: 10px;
+}
+
+.lightMode .anvil-component .form-control:not(select), .lightMode .anvil-component.form-control, .lightMode .form-inline .form-control {
+    background-color: #f5f5f5;
+    color: #333;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+.lightMode .textbox:focus, .lightMode .form-inline .form-control:focus, .lightMode .anvil-component .form-control:not(select):focus, .lightMode .anvil-component.form-control:focus {
+    border-color: #aaaaaa;
+}
+
+.lightMode .link-text {
+    color: #aaaaaa;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.lightMode .link-text:hover {
+    color: #888888;
+}
+
+.lightMode .modal-content {
+    background: linear-gradient(to right, #ffffff, #f5f5f5);
+    color: #333;
+}
+
+.lightMode .radio {
+    display: inline-block;
+    margin-right: 10px;
+    position: relative;
+}
+
+.lightMode .radio input[type="radio"] {
+    opacity: 100;
+    position: absolute;
+    cursor: pointer;
+}
+
+.lightMode .radio .radio-label {
+    padding: 10px 15px;
+    background: linear-gradient(to right, #cccccc, #aaaaaa);
+    border: 2px solid transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.lightMode .radio input[type="radio"]:checked + .radio-label {
+    border-color: #333;
+}
+
+.lightMode .number-stepper {
+    background: #f5f5f5;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+    transition: border-color 0.3s;
+}
+
+.lightMode .number-stepper:focus {
+    border-color: #aaaaaa;
+}
+
+.lightMode .dropdown-menu {
+    background-color: #f5f5f5;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+.lightMode .dropdown-item {
+    padding: 10px;
+    transition: background 0.3s;
+}
+
+.lightMode .dropdown-item:hover {
+    background: #f5f5f5;
+}
+
+.lightMode .plotly-graph {
+    background: linear-gradient(to right, #ffffff, #f5f5f5);
+    color: #333;
+}
+
+/* Light Theme */
+.lightMode .tab-button {
+    background: #fff;
+    color: #333;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.lightMode .tab-button.active {
+    background: #d3d3d3;
+    color: black;
+}
+
+
+
+
+
+
