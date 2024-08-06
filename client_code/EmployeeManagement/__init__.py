@@ -158,3 +158,22 @@ class EmployeeManagement(EmployeeManagementTemplate):
         Output: None
         """
         self._parent.editUser(employeeID)
+
+    # Function to get the user's currently saved theme and apply it at init
+    def applyUserTheme(self):
+      theme = anvil.server.call('getUserSettings')['Theme']
+      self.apply_theme(theme)
+  
+      # Function to change CSS class which is active to select theme
+    def applyTheme(self, theme_name):
+      js_code = f"""
+      document.body.className = '';
+      document.body.classList.add('{theme_name}');
+      """
+      self.callJS(js_code)
+  
+    def callJS(self, js_code):
+      """
+      Add JS
+      """
+      anvil.js.window.eval(js_code)

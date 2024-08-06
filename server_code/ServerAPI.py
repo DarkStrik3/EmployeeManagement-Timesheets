@@ -276,18 +276,18 @@ def archiveUser(userID, do_or_undo, employmentType):
       user.update(enabled=True)
 
 @anvil.server.callable
-def changeSettings(userID, checkedStatus):
+def changeSettings(userID, theme):
     """
     Update the dark mode setting for a user.
     
     Input:
     - userID (str): The UserID of the user.
-    - checkedStatus (bool): The new status of the dark mode setting.
+    - theme (str): The new theme of the user.
     
     Output: None
     """
     userSettings = app_tables.tblsettings.get(UserID=userID)
-    userSettings.update(Theme=checkedStatus)
+    userSettings.update(Theme=theme)
 
 @anvil.server.callable
 def setClock(ID):

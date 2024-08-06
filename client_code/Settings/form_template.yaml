@@ -2,25 +2,14 @@ container:
   type: ColumnPanel
   properties: {background: '#131313', border: ''}
 components:
-- name: fpSettings
-  properties: {foreground: '#ffffff', align: center}
-  type: FlowPanel
-  layout_properties: {grid_position: 'YIWAOI,XUZQIQ'}
-  components:
-  - name: lblDarkMode
-    properties: {text: 'Dark Mode:', align: right, bold: true}
-    type: Label
-  - name: cbDark
-    properties: {text: ''}
-    type: CheckBox
+- name: btnThemes
+  properties: {text: ' Themes', icon: 'fa:gears'}
+  type: Button
+  layout_properties: {grid_position: 'YIWAOI,RHMGME'}
+  event_bindings: {click: Themes}
 - name: btnChangePassword
-  properties: {text: Change Password, bold: true, foreground: '#ffffff', background: '#333333'}
+  properties: {text: ' Change Password', bold: true, foreground: '#ffffff', background: '#333333', icon: 'fa:address-card'}
   type: Button
   layout_properties: {grid_position: 'YIWAOI,EOCEEF'}
   event_bindings: {click: changePassword}
-- name: btnSave
-  properties: {text: Save Changes, bold: true, background: '#333333', foreground: '#ffffff'}
-  type: Button
-  layout_properties: {grid_position: 'LXSRMK,IHVWBO', full_width_row: true}
-  event_bindings: {click: saveChanges}
 is_package: true

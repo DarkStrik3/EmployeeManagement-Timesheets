@@ -8,17 +8,20 @@ components:
   type: Label
   layout_properties: {grid_position: 'RIREOW,WJYECR GPGVHH,RZIXYV'}
 - name: btnDarkTheme
-  properties: {text: Dark Mode, icon: 'fa:moon-o'}
+  properties: {text: Dark Mode, icon: 'fa:moon-o', background: '#131313', foreground: '#ffffff'}
   type: Button
   layout_properties: {grid_position: 'YDSXDG,BQSAKN'}
+  event_bindings: {click: ThemeDarkMode}
 - name: btnLightTheme
   properties: {text: Light Mode, icon: 'fa:sun-o'}
   type: Button
   layout_properties: {grid_position: 'YDSXDG,XAQVWT'}
+  event_bindings: {click: ThemeLightMode}
 - name: btnCyanTheme
-  properties: {text: Cyan Mode, icon: 'fa:bath'}
+  properties: {text: Cyan Mode, icon: 'fa:bath', background: '#4e79a7', foreground: '#ffffff'}
   type: Button
   layout_properties: {grid_position: 'YDSXDG,ZIREYI'}
+  event_bindings: {click: ThemeCyanMode}
 - name: btnArchiveProfile
   properties: {text: Save Theme, spacing_above: medium, align: full, bold: true, background: '', foreground: ''}
   type: Button

@@ -12,19 +12,33 @@ class Themes(ThemesTemplate):
     self.init_components(**properties)
 
 
-    def btnColourThemeLightMode(self, **event_args):
-        anvil.server.call('changeSettings', 'lightMode')
-        get_open_form().apply_theme('lightMode')
+  def ThemeLightMode(self, **event_args):
+      anvil.server.call('changeSettings', "lightMode")
+      get_open_form().applyTheme('lightMode')
 
-    def btnColourThemeDarkMode(self, **event_args):
-        anvil.server.call('changeSettings', 'darkMode')
-        get_open_form().apply_theme('darkMode')
+  def ThemeDarkMode(self, **event_args):
+      anvil.server.call('changeSettings', "darkMode")
+      get_open_form().applyTheme('darkMode')
 
-    def btnColourThemeCyanMode(self, **event_args):
-        anvil.server.call('changeSettings', 'cyanMode')
-        get_open_form().apply_theme('cyanMode')
-      
-    def saveTheme(self, **event_args):
-      """This method is called when the button is clicked"""
-      # Command to close the form with this button
-      self.raise_event("x-close-alert", value=42)
+  def ThemeCyanMode(self, **event_args):
+      anvil.server.call('changeSettings', "cyanMode")
+      get_open_form().applyTheme('cyanMode')
+    
+  def saveTheme(self, **event_args):
+    """This method is called when the button is clicked"""
+    # Command to close the form with this button
+    self.raise_event("x-close-alert", value=42)
+
+      # Function to change CSS class which is active to select theme
+  def applyTheme(self, theme_name):
+    js_code = f"""
+    document.body.className = '';
+    document.body.classList.add('{theme_name}');
+    """
+    self.callJS(js_code)
+
+  def callJS(self, js_code):
+    """
+    Add JS
+    """
+    anvil.js.window.eval(js_code)

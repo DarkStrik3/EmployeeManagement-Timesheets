@@ -21,17 +21,7 @@ class Settings(SettingsTemplate):
     user = anvil.users.get_user()  # Get the currently logged-in user.
     self.userID = user['UserID']  # Store the user's ID for future use.
     userSettings = anvil.server.call('getUserSettings', self.userID)  # Fetch user settings from the server.
-    self.cbDark.checked = userSettings['DarkMode']  # Set the dark mode checkbox based on the user's settings.
 
-  def saveChanges(self, **event_args):
-    """
-    Save changes to the user settings. Updates the dark mode setting on the server.
-    
-    Parameters:
-    event_args (dict): Event arguments passed by the Anvil framework.
-    """
-    anvil.server.call('changeSettings', self.userID, self.cbDark.checked)  # Call the server to update the dark mode setting.
-    alert("Changes were updated.")  # Show a confirmation alert to the user.
 
   def changePassword(self, **event_args):
     """
@@ -52,21 +42,3 @@ class Settings(SettingsTemplate):
     """
     alert(content=Themes(), large=True, buttons=[], title="Themes")
       
-    # Function to get the user's currently saved theme and apply it at init
-  def applyUserTheme(self):
-    theme = anvil.server.call('getUserTheme')
-    self.apply_theme(theme)
-
-    # Function to change CSS class which is active to select theme
-  def applyTheme(self, theme_name):
-    js_code = f"""
-    document.body.className = '';
-    document.body.classList.add('{theme_name}');
-    """
-    self.callJS(js_code)
-
-  def callJS(self, js_code):
-    """
-    Add JS
-    """
-    anvil.js.window.eval(js_code)
