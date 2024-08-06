@@ -1,11 +1,11 @@
 body.cyanMode {
-    background: linear-gradient(to right, #d6e3ff, #e2d1ff);
+    background: linear-gradient(to right, #d6e3ff, #00fae5);
     color: #333;
     font-family: 'Roboto', sans-serif;
 }
 
 .cyanMode .button, .cyanMode .btn {
-    background: linear-gradient(to right, #4e79a7, #9e79a7);
+    background: linear-gradient(to right, #4e79a7, ##00e5fa);
     color: white;
     border: none;
     border-radius: 5px;
@@ -16,23 +16,23 @@ body.cyanMode {
 }
 
 .cyanMode .button:hover, .cyanMode .btn:hover {
-    background: linear-gradient(to right, #3a5a8b, #7a5a8b);
+    background: linear-gradient(to right, #3a5a8b, #2100fa);
 }
 
 .cyanMode .header {
-    background: linear-gradient(to right, #9e79a7, #4e79a7);
+    background: linear-gradient(to right, #00e5fa, #4e79a7);
     color: white;
     padding: 10px;
 }
 
 .cyanMode .footer {
-    background: linear-gradient(to right, #b4a0d8, #4e79a7);
+    background: linear-gradient(to right, #00e5fa, #4e79a7);
     color: white;
     padding: 10px;
 }
 
 .cyanMode .anvil-component .form-control:not(select), .cyanMode .anvil-component.form-control, .cyanMode .form-inline .form-control {
-    background-color: #e2d1ff;
+    background-color: #00e5fa;
     color: #333;
     border: 1px solid #4e79a7;
     border-radius: 5px;
@@ -53,11 +53,11 @@ body.cyanMode {
 }
 
 .cyanMode .link-text:hover {
-    color: #9e79a7;
+    color: #00e5fa;
 }
 
 .cyanMode .modal-content {
-    background: linear-gradient(to right, #d6e3ff, #e2d1ff);
+    background: linear-gradient(to right, #d6e3ff, #00fae5);
     color: #333;
 }
 
@@ -75,7 +75,7 @@ body.cyanMode {
 
 .cyanMode .radio .radio-label {
     padding: 10px 15px;
-    background: linear-gradient(to right, #4e79a7, #9e79a7);
+    background: linear-gradient(to right, #4e79a7, #4e79a7);
     border: 2px solid transparent;
     border-radius: 50%;
     cursor: pointer;
