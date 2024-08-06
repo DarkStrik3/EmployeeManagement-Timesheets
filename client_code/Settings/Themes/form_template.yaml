@@ -23,4 +23,4 @@ components:
   properties: {text: Save Theme, spacing_above: medium, align: full, bold: true, background: '', foreground: ''}
   type: Button
   layout_properties: {grid_position: 'XMHKPW,ZMBSOJ'}
-  event_bindings: {click: archiveUser}
+  event_bindings: {click: saveTheme}
