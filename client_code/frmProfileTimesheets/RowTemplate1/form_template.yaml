@@ -2,35 +2,35 @@ is_package: true
 container: {type: DataRowPanel}
 components:
 - name: cbApproval
-  properties: {text: Approval, enabled: false, foreground: '#ffffff'}
+  properties: {text: Approval, enabled: false, foreground: ''}
   type: CheckBox
   layout_properties: {column: TVIIBG}
 - name: lblDate
-  properties: {foreground: '#ffffff'}
+  properties: {foreground: ''}
   type: Label
   layout_properties: {column: JKSDUP}
 - name: lblHoursWorked
-  properties: {foreground: '#ffffff'}
+  properties: {foreground: ''}
   type: Label
   layout_properties: {column: VJQQOR}
 - name: lblPayRate
-  properties: {foreground: '#ffffff'}
+  properties: {foreground: ''}
   type: Label
   layout_properties: {column: OJLQEN}
 - name: lblPayout
-  properties: {foreground: '#ffffff'}
+  properties: {foreground: ''}
   type: Label
   layout_properties: {column: GRQBIK}
 - name: lblWorkID
-  properties: {foreground: '#ffffff'}
+  properties: {foreground: ''}
   type: Label
   layout_properties: {column: JBHATU}
 - name: lblClockIn
-  properties: {foreground: '#ffffff'}
+  properties: {foreground: ''}
   type: Label
   layout_properties: {column: RGSYUC}
 - name: lblClockOut
-  properties: {foreground: '#ffffff'}
+  properties: {foreground: ''}
   type: Label
   layout_properties: {column: PZUJKU}
 - name: cbPaid

@@ -1,6 +1,6 @@
 container:
   type: ColumnPanel
-  properties: {col_widths: '{"SKDDBE":12,"MTQYCH":35}', wrap_on: mobile, background: '#131313'}
+  properties: {col_widths: '{"SKDDBE":12,"MTQYCH":35}', wrap_on: mobile, background: ''}
 components:
 - name: dgTimesheets
   properties:
@@ -16,8 +16,8 @@ components:
     - {id: RVGLDW, data_key: Paid, title: Paid}
     - {id: BKQAPW, data_key: Selected, title: Select}
     show_page_controls: true
-    background: '#131313'
-    foreground: '#ffffff'
+    background: ''
+    foreground: ''
   type: DataGrid
   layout_properties: {grid_position: 'ZVEIKO,MTQYCH', full_width_row: true}
   components:
@@ -32,17 +32,17 @@ components:
   properties:
     items: [WorkID, Date, Payout, Work Time]
     include_placeholder: false
-    background: '#333333'
-    foreground: '#ffffff'
+    background: ''
+    foreground: ''
   type: DropDown
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE IGVGCI,QFTSEW'}
   event_bindings: {change: sortFilteredRecords}
 - name: lblFilters
-  properties: {text: Filters, bold: true, align: center, font_size: 20, foreground: '#ffffff'}
+  properties: {text: Filters, bold: true, align: center, font_size: 20, foreground: ''}
   type: Label
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE MWNKGJ,UMSNFV'}
 - name: lblEnblFltrs
-  properties: {text: 'Enable Filters:', bold: true, align: left, foreground: '#ffffff'}
+  properties: {text: 'Enable Filters:', bold: true, align: left, foreground: ''}
   type: Label
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE IWEEMM,LCWYBI'}
 - name: cbFiltersEnabled
@@ -51,33 +51,33 @@ components:
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE IWEEMM,PGFWDG'}
   event_bindings: {change: filterTimesheets}
 - name: cbApprovedFilter
-  properties: {text: Approved, align: left, foreground: '#ffffff'}
+  properties: {text: Approved, align: left, foreground: ''}
   type: CheckBox
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE MMUFNY,ERZAXU'}
   event_bindings: {change: filterTimsheetsDropdown}
 - name: cbPaidFilter
-  properties: {text: Paid, align: left, foreground: '#ffffff'}
+  properties: {text: Paid, align: left, foreground: ''}
   type: CheckBox
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE MMUFNY,HZURYT'}
   event_bindings: {change: filterTimsheetsDropdown}
 - name: ddGroup
   properties:
     items: [All, Warehouse, Manager, Accountant, Admin]
-    background: '#333333'
-    foreground: '#ffffff'
+    background: ''
+    foreground: ''
   type: DropDown
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE GNRVNH,MQUZDC'}
   event_bindings: {change: filterTimsheetsDropdown}
 - name: ddGender
   properties:
     items: [All, Male, Female, Other]
-    background: '#333333'
-    foreground: '#ffffff'
+    background: ''
+    foreground: ''
   type: DropDown
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE ZRRVSI,NMPHLO'}
   event_bindings: {change: filterTimsheetsDropdown}
 - name: dpDateFilter
-  properties: {background: '#333333', foreground: '#ffffff'}
+  properties: {background: '', foreground: ''}
   type: DatePicker
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE RKHARR,AXAKMF'}
   event_bindings: {change: filterTimsheetsDropdown}
@@ -86,16 +86,16 @@ components:
   type: Label
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE MPCHBH,DQVKOA'}
 - name: lblPending
-  properties: {text: 'Pending:', bold: true, foreground: '#ffffff'}
+  properties: {text: 'Pending:', bold: true, foreground: ''}
   type: Label
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,UUOFHL JSDNIP,BTNPKO'}
 - name: btnApproveSelected
-  properties: {text: Approve Selected, align: full, background: '#333333', foreground: '#ffffff'}
+  properties: {text: Approve Selected, align: full, background: '', foreground: ''}
   type: Button
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,UUOFHL XKWQOZ,NVMDKO'}
   event_bindings: {click: approveSelected}
 - name: btnApproveAll
-  properties: {text: Approve All, align: full, background: '#333333', foreground: '#ffffff'}
+  properties: {text: Approve All, align: full, background: '', foreground: ''}
   type: Button
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,UUOFHL ZJEHNC,HZHUBZ'}
   event_bindings: {click: approveAll}
@@ -104,7 +104,7 @@ components:
   type: Label
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,UUOFHL FDOTOV,CMOTYG'}
 - name: btnPaySelected
-  properties: {text: Mark Selected as Paid, align: full, background: '#333333', foreground: '#ffffff'}
+  properties: {text: Mark Selected as Paid, align: full, background: '', foreground: ''}
   type: Button
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,UUOFHL XNAZMN,ZWAIOF'}
   event_bindings: {click: markSelectedPaid}
@@ -113,12 +113,12 @@ components:
   type: Label
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,LZVAWN ZCZINC,KBGQLM'}
 - name: btnRejectSelected
-  properties: {text: Reject Selected, align: full, background: '#333333', foreground: '#ffffff'}
+  properties: {text: Reject Selected, align: full, background: '', foreground: ''}
   type: Button
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,LZVAWN DAMOOU,BGJPIQ'}
   event_bindings: {click: rejectSelected}
 - name: btnRejectAll
-  properties: {text: Reject All, align: full, background: '#333333', foreground: '#ffffff'}
+  properties: {text: Reject All, align: full, background: '', foreground: ''}
   type: Button
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,LZVAWN RNNDSF,PBKHEQ'}
   event_bindings: {click: rejectAll}
@@ -132,8 +132,8 @@ components:
       Mark All as
        Paid
     align: full
-    background: '#333333'
-    foreground: '#ffffff'
+    background: ''
+    foreground: ''
   type: Button
   layout_properties: {grid_position: 'ZVEIKO,SKDDBE CYARCZ,LZVAWN BFZEXM,XZPRTW'}
   event_bindings: {click: markAllPaid}

@@ -1,19 +1,19 @@
 container:
   type: HtmlTemplate
-  properties: {html: <div anvil-slot="default"></div>, background: '#131313', border: solid, foreground: '#333333'}
+  properties: {html: <div anvil-slot="default"></div>, background: '', border: '', foreground: ''}
 components:
 - name: gpEmployee
-  properties: {background: '#121212'}
+  properties: {background: ''}
   type: GridPanel
   layout_properties: {slot: default}
   components:
   - name: btnMenu
-    properties: {text: '', icon: 'fa:bars', font_size: null, spacing_above: medium, background: '#333333', foreground: '#ffffff'}
+    properties: {text: '', icon: 'fa:bars', font_size: null, spacing_above: medium, background: '', foreground: ''}
     type: Button
     layout_properties: {row: YXXFRA, width_xs: 1, col_xs: 0}
     event_bindings: {click: menu}
   - name: btnSignOut
-    properties: {text: Sign Out, icon: 'fa:caret-left', spacing_above: medium, background: '#333333', foreground: '#ffffff'}
+    properties: {text: Sign Out, icon: 'fa:caret-left', spacing_above: medium, background: '', foreground: ''}
     type: Button
     layout_properties: {row: YXXFRA, width_xs: 2, col_xs: 1}
     event_bindings: {click: signOut}
@@ -23,7 +23,7 @@ components:
     layout_properties: {row: YXXFRA, width_xs: 6, col_xs: 3}
     event_bindings: {mouse_down: openEmployeeDashboard}
   - name: lblProfileName
-    properties: {align: right, spacing_above: large, foreground: 'theme:Dark Theme - Foreground'}
+    properties: {align: right, spacing_above: large, foreground: ''}
     type: Label
     layout_properties: {row: YXXFRA, width_xs: 1, col_xs: 10}
   - name: imgProfile
@@ -32,7 +32,7 @@ components:
     layout_properties: {row: YXXFRA, width_xs: 1, col_xs: 11}
     event_bindings: {mouse_down: openProfileUserDetailsClick}
   - name: cpEmployeeDashboard
-    properties: {background: '#121212', col_spacing: none}
+    properties: {background: '', col_spacing: none}
     type: ColumnPanel
     layout_properties: {row: FSFDTX, width_xs: 12, col_xs: 0}
 - name: spacerEmplHome

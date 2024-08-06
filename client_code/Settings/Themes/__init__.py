@@ -9,20 +9,25 @@ from anvil.tables import app_tables
 
 class Themes(ThemesTemplate):
   def __init__(self, **properties):
+    self.user = anvil.users.get_user()
+    self.userID = self.user['UserID']
     self.init_components(**properties)
 
 
   def ThemeLightMode(self, **event_args):
-      anvil.server.call('changeSettings', "lightMode")
+      
       get_open_form().applyTheme('lightMode')
+      anvil.server.call('changeSettings', self.userID, "lightMode")
 
   def ThemeDarkMode(self, **event_args):
-      anvil.server.call('changeSettings', "darkMode")
+      
       get_open_form().applyTheme('darkMode')
+      anvil.server.call('changeSettings', self.userID, "darkMode")
 
   def ThemeCyanMode(self, **event_args):
-      anvil.server.call('changeSettings', "cyanMode")
+      
       get_open_form().applyTheme('cyanMode')
+      anvil.server.call('changeSettings', self.userID, "cyanMode")
     
   def saveTheme(self, **event_args):
     """This method is called when the button is clicked"""

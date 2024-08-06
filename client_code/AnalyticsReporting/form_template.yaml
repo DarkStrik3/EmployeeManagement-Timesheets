@@ -1,9 +1,9 @@
 container:
   type: ColumnPanel
-  properties: {background: '#131313', border: solid}
+  properties: {background: '', border: ''}
 components:
 - name: gpAnalyticsReporting
-  properties: {background: '#131313', border: solid}
+  properties: {background: '', border: ''}
   type: GridPanel
   layout_properties: {grid_position: 'OQBTGP,XHTDFU', full_width_row: true}
   components:
@@ -19,24 +19,24 @@ components:
     - name: ddDates
       properties:
         items: [Today, Yesterday, Last 7 days, Last Fortnight, Last Month, All Time]
-        background: '#333333'
-        foreground: '#ffffff'
+        background: ''
+        foreground: ''
       type: DropDown
       event_bindings: {change: refreshGraphs}
       layout_properties: {}
     - name: ddGroup
       properties:
         items: [Groups, Employment Type, Employees]
-        background: '#333333'
-        foreground: '#ffffff'
+        background: ''
+        foreground: ''
       type: DropDown
       layout_properties: {}
       event_bindings: {change: refreshGraphs}
     - name: ddInfoShown
       properties:
         items: [Payout, Time Worked]
-        background: '#333333'
-        foreground: '#ffffff'
+        background: ''
+        foreground: ''
       type: DropDown
       layout_properties: {}
       event_bindings: {change: refreshGraphs}
@@ -54,27 +54,27 @@ components:
     layout_properties: {row: MWLBON, width_xs: 3, col_xs: 0}
     components:
     - name: lblTotalPayout
-      properties: {text: 'Total Payout:', bold: true, align: left, foreground: '#ffffff'}
+      properties: {text: 'Total Payout:', bold: true, align: left, foreground: ''}
       type: Label
       layout_properties: {grid_position: 'OGWRAI,FIGEFG'}
     - name: lblPayout
-      properties: {align: left, foreground: '#ffffff'}
+      properties: {align: left, foreground: ''}
       type: Label
       layout_properties: {grid_position: 'OGWRAI,YHBJVV'}
     - name: lblTotalTime
-      properties: {text: 'Total Time:', align: left, bold: true, foreground: '#ffffff'}
+      properties: {text: 'Total Time:', align: left, bold: true, foreground: ''}
       type: Label
       layout_properties: {grid_position: 'VETNAJ,OUTKHX RGIPIV,QESWGP'}
     - name: lblTotalEmployees
-      properties: {text: 'Total Employees:', bold: true, align: left, foreground: '#ffffff'}
+      properties: {text: 'Total Employees:', bold: true, align: left, foreground: ''}
       type: Label
       layout_properties: {grid_position: 'VETNAJ,OUTKHX GCOADL,RMHFWJ'}
     - name: lblTime
-      properties: {align: left, foreground: '#ffffff'}
+      properties: {align: left, foreground: ''}
       type: Label
       layout_properties: {grid_position: 'VETNAJ,YYXKQJ LJKNWE,WEJUCV'}
     - name: lblEmployees
-      properties: {align: left, background: '', foreground: '#ffffff'}
+      properties: {align: left, background: '', foreground: ''}
       type: Label
       layout_properties: {grid_position: 'VETNAJ,YYXKQJ WVPMWJ,HJOXXB'}
   - name: lpData
@@ -85,8 +85,8 @@ components:
     - name: ddTableInfoShown
       properties:
         items: [Payout, Time Worked, Pay Rate, User ID]
-        background: '#333333'
-        foreground: '#ffffff'
+        background: ''
+        foreground: ''
       type: DropDown
       layout_properties: {}
       event_bindings: {change: refreshEmployeeInfoTable}
@@ -104,12 +104,12 @@ components:
         type: RepeatingPanel
       layout_properties: {}
     - name: btnDownloadRecords
-      properties: {text: Download Work Records, bold: true, align: full, background: '#333333', foreground: '#ffffff'}
+      properties: {text: Download Work Records, bold: true, align: full, background: '', foreground: ''}
       type: Button
       layout_properties: {}
       event_bindings: {click: downloadWorkRecords}
     - name: btnDownloadUserDetails
-      properties: {text: Download User Details, align: full, bold: true, background: '#333333', foreground: '#ffffff'}
+      properties: {text: Download User Details, align: full, bold: true, background: '', foreground: ''}
       type: Button
       event_bindings: {click: downloadUserDetails}
       layout_properties: {}

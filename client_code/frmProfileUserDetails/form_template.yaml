@@ -1,19 +1,19 @@
 container:
   type: HtmlTemplate
-  properties: {html: <div anvil-slot="default"></div>, background: '#131313', border: ''}
+  properties: {html: <div anvil-slot="default"></div>, background: '', border: ''}
 components:
 - name: gpButtons
-  properties: {background: '#131313'}
+  properties: {background: ''}
   type: GridPanel
   layout_properties: {slot: default}
   components:
   - name: btnEditProfile
-    properties: {text: Edit Profile, spacing_above: small, background: '#333333', foreground: '#ffffff'}
+    properties: {text: Edit Profile, spacing_above: small, background: '', foreground: ''}
     type: Button
     layout_properties: {row: NCBWPW, width_xs: 3, col_xs: 0}
     event_bindings: {click: editProfile}
   - name: lblFullNAME
-    properties: {align: center, bold: true, font_size: 20, spacing_above: small, foreground: '#ffffff'}
+    properties: {align: center, bold: true, font_size: 20, spacing_above: small, foreground: ''}
     type: Label
     layout_properties: {row: NCBWPW, width_xs: 2, col_xs: 5}
   - name: btnUserDetails
@@ -21,12 +21,12 @@ components:
     type: Button
     layout_properties: {row: NCBWPW, width_xs: 2, col_xs: 7}
   - name: btnTimesheets
-    properties: {text: User Timesheets, bold: false, background: '#333333', foreground: '#ffffff'}
+    properties: {text: User Timesheets, bold: false, background: '', foreground: ''}
     type: Button
     layout_properties: {row: NCBWPW, width_xs: 2, col_xs: 9}
     event_bindings: {click: openTimesheets}
 - name: cpUserDetails
-  properties: {col_widths: '{"HYCQWC":20,"AFJZNC":20,"JBLRQZ":20}', background: '#131313'}
+  properties: {col_widths: '{"HYCQWC":20,"AFJZNC":20,"JBLRQZ":20}', background: ''}
   type: ColumnPanel
   layout_properties: {slot: default}
   components:
@@ -35,99 +35,99 @@ components:
     type: Image
     layout_properties: {grid_position: 'UUKBEA,HYCQWC', full_width_row: false}
   - name: lblIDLabel
-    properties: {text: 'ID:', align: left, bold: true, spacing_above: small, spacing_below: small, foreground: '#ffffff'}
+    properties: {text: 'ID:', align: left, bold: true, spacing_above: small, spacing_below: small, foreground: ''}
     type: Label
     layout_properties: {grid_position: 'UUKBEA,AFJZNC CMETTH,TUGDSR'}
   - name: lblUserID
-    properties: {align: left, spacing_above: small, spacing_below: small, foreground: '#ffffff'}
+    properties: {align: left, spacing_above: small, spacing_below: small, foreground: ''}
     type: Label
     layout_properties: {grid_position: 'UUKBEA,AFJZNC CMETTH,YZUERE'}
   - name: lblWorkTypeLabel
-    properties: {text: 'Employment Type:', align: left, bold: true, spacing_below: small, spacing_above: small, foreground: '#ffffff'}
+    properties: {text: 'Employment Type:', align: left, bold: true, spacing_below: small, spacing_above: small, foreground: ''}
     type: Label
     layout_properties: {grid_position: 'UUKBEA,AFJZNC SQXHZI,HPRXFL'}
   - name: lblWorkType
-    properties: {align: left, spacing_below: small, spacing_above: small, foreground: '#ffffff'}
+    properties: {align: left, spacing_below: small, spacing_above: small, foreground: ''}
     type: Label
     layout_properties: {grid_position: 'UUKBEA,AFJZNC SQXHZI,CPZXFF'}
   - name: lblEmailLabel
-    properties: {align: left, bold: true, text: 'Email:', foreground: '#ffffff'}
+    properties: {align: left, bold: true, text: 'Email:', foreground: ''}
     type: Label
     layout_properties: {grid_position: 'UUKBEA,AFJZNC NMDNGI,ARYCOE'}
   - name: lblEmail
-    properties: {foreground: '#ffffff'}
+    properties: {foreground: ''}
     type: Label
     layout_properties: {grid_position: 'UUKBEA,AFJZNC NMDNGI,KHTRNU'}
   - name: lblPhoneNumberLabel
-    properties: {text: 'Phone Number:', align: left, bold: true, foreground: '#ffffff'}
+    properties: {text: 'Phone Number:', align: left, bold: true, foreground: ''}
     type: Label
     layout_properties: {grid_position: 'UUKBEA,AFJZNC YXKTXF,HWKROU'}
   - name: lblPhoneNumber
-    properties: {foreground: '#ffffff'}
+    properties: {foreground: ''}
     type: Label
     layout_properties: {grid_position: 'UUKBEA,AFJZNC YXKTXF,FAOMJZ'}
   - name: lblDoBlabel
-    properties: {text: 'Date of Birth:', align: left, bold: true, foreground: '#ffffff'}
+    properties: {text: 'Date of Birth:', align: left, bold: true, foreground: ''}
     type: Label
     layout_properties: {grid_position: 'UUKBEA,AFJZNC WTPLIC,PMUSQK'}
   - name: lblDoB
-    properties: {foreground: '#ffffff'}
+    properties: {foreground: ''}
     type: Label
     layout_properties: {grid_position: 'UUKBEA,AFJZNC WTPLIC,QWRFKW'}
   - name: lblGenderLabel
-    properties: {text: 'Gender:', align: left, bold: true, foreground: '#ffffff'}
+    properties: {text: 'Gender:', align: left, bold: true, foreground: ''}
     type: Label
     layout_properties: {grid_position: 'UUKBEA,AFJZNC OBKPLE,WSWGIF'}
   - name: lblGender
-    properties: {foreground: '#ffffff'}
+    properties: {foreground: ''}
     type: Label
     layout_properties: {grid_position: 'UUKBEA,AFJZNC OBKPLE,OFAECK'}
   - name: lblJobTitleLabel
-    properties: {text: 'Job Title:', align: left, bold: true, spacing_below: small, foreground: '#ffffff'}
+    properties: {text: 'Job Title:', align: left, bold: true, spacing_below: small, foreground: ''}
     type: Label
     layout_properties: {grid_position: 'UUKBEA,JBLRQZ WQLPOE,KEIBBG'}
   - name: lblJobTitle
-    properties: {align: left, spacing_below: small, foreground: '#ffffff'}
+    properties: {align: left, spacing_below: small, foreground: ''}
     type: Label
     layout_properties: {grid_position: 'UUKBEA,JBLRQZ WQLPOE,FBKDSZ'}
   - name: lblGroupLabel
-    properties: {text: 'Group:', align: left, bold: true, spacing_above: small, foreground: '#ffffff'}
+    properties: {text: 'Group:', align: left, bold: true, spacing_above: small, foreground: ''}
     type: Label
     layout_properties: {grid_position: 'UUKBEA,JBLRQZ PZCDNQ,SJBHOB'}
   - name: lblGroup
-    properties: {spacing_above: small, foreground: '#ffffff'}
+    properties: {spacing_above: small, foreground: ''}
     type: Label
     layout_properties: {grid_position: 'UUKBEA,JBLRQZ PZCDNQ,QYZDSO'}
   - name: lblbaseRateLabel
-    properties: {text: 'Base Rate:', bold: true, align: left, foreground: '#ffffff'}
+    properties: {text: 'Base Rate:', bold: true, align: left, foreground: ''}
     type: Label
     layout_properties: {grid_position: 'UUKBEA,JBLRQZ CBLKNK,CRTFFN'}
   - name: lblBaseRate
-    properties: {foreground: '#ffffff'}
+    properties: {foreground: ''}
     type: Label
     layout_properties: {grid_position: 'UUKBEA,JBLRQZ CBLKNK,GKYBTT'}
   - name: lblExtendedRateLabel
-    properties: {text: 'Extended Rate:', bold: true, align: left, foreground: '#ffffff'}
+    properties: {text: 'Extended Rate:', bold: true, align: left, foreground: ''}
     type: Label
     layout_properties: {grid_position: 'UUKBEA,JBLRQZ ZDTDVR,BWIQLX'}
   - name: lblExtendedRate
-    properties: {background: '', border: '', foreground: '#ffffff'}
+    properties: {background: '', border: '', foreground: ''}
     type: Label
     layout_properties: {grid_position: 'UUKBEA,JBLRQZ ZDTDVR,KDCUOE'}
   - name: lblPubHolRateLb
-    properties: {text: 'Pub. Holiday Rate:', align: left, bold: true, foreground: '#ffffff'}
+    properties: {text: 'Pub. Holiday Rate:', align: left, bold: true, foreground: ''}
     type: Label
     layout_properties: {grid_position: 'UUKBEA,JBLRQZ LFKJMT,AZGECZ'}
   - name: lblPublicHolidayRate
-    properties: {align: left, border: '', foreground: '#ffffff'}
+    properties: {align: left, border: '', foreground: ''}
     type: Label
     layout_properties: {grid_position: 'UUKBEA,JBLRQZ LFKJMT,JEYZYE'}
   - name: lblTFNlabel
-    properties: {text: 'TFN:', align: left, bold: true, foreground: '#ffffff'}
+    properties: {text: 'TFN:', align: left, bold: true, foreground: ''}
     type: Label
     layout_properties: {grid_position: 'UUKBEA,JBLRQZ VAINVY,HVMVBE'}
   - name: lblTFN
-    properties: {border: '', foreground: '#ffffff'}
+    properties: {border: '', foreground: ''}
     type: Label
     layout_properties: {grid_position: 'UUKBEA,JBLRQZ VAINVY,CWAQCH'}
 is_package: true

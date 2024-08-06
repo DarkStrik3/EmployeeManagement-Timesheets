@@ -1,20 +1,20 @@
 container:
   type: HtmlTemplate
-  properties: {html: <div anvil-slot="default"></div>, background: '#131313', foreground: '', border: ''}
+  properties: {html: <div anvil-slot="default"></div>, background: '', foreground: '', border: ''}
   data_bindings: []
 components:
 - name: gpProfile
-  properties: {background: '#131313'}
+  properties: {background: ''}
   type: GridPanel
   layout_properties: {slot: default}
   components:
   - name: btnEditProfile
-    properties: {text: Edit Profile, spacing_above: small, background: '#333333', foreground: '#ffffff'}
+    properties: {text: Edit Profile, spacing_above: small, background: '', foreground: ''}
     type: Button
     layout_properties: {row: YDUVHX, width_xs: 3, col_xs: 0}
     event_bindings: {click: editProfile}
   - name: lblFullNAME
-    properties: {align: center, bold: true, font_size: 20, foreground: '#ffffff'}
+    properties: {align: center, bold: true, font_size: 20, foreground: ''}
     type: Label
     layout_properties: {row: YDUVHX, width_xs: 2, col_xs: 5}
   - name: dgUserWork
@@ -31,7 +31,7 @@ components:
       - {id: TOCTNQ, data_key: Paid, title: Paid, width: 112, expand: false}
       show_page_controls: true
       auto_header: true
-      foreground: theme:Dark Theme - Foreground
+      foreground: ''
       role: null
       wrap_on: mobile
     type: DataGrid
@@ -41,7 +41,7 @@ components:
       type: RepeatingPanel
     layout_properties: {row: MHFVCP, width_xs: 12, col_xs: 0}
   - name: btnUserDetails
-    properties: {text: User Details, background: '#333333', foreground: '#ffffff'}
+    properties: {text: User Details, background: '', foreground: ''}
     type: Button
     layout_properties: {row: YDUVHX, width_xs: 2, col_xs: 7}
     event_bindings: {click: openUserDetails}

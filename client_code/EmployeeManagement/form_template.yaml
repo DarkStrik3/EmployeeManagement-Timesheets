@@ -1,18 +1,18 @@
 container:
   type: ColumnPanel
-  properties: {col_widths: '{}', background: '#131313', border: solid, foreground: ''}
+  properties: {col_widths: '{}', background: '', border: '', foreground: ''}
 components:
 - name: cpEmployeeManagement
-  properties: {col_widths: '{"ZZXRSP":45,"CNJGEP":15}', background: '#131313'}
+  properties: {col_widths: '{"ZZXRSP":45,"CNJGEP":15}', background: ''}
   type: ColumnPanel
   layout_properties: {grid_position: 'KRQCTA,CJSVYD', full_width_row: true}
   components:
   - name: rpEmployees
-    properties: {item_template: EmployeeManagement.IndividualProfile, background: '#131313'}
+    properties: {item_template: EmployeeManagement.IndividualProfile, background: ''}
     type: RepeatingPanel
     layout_properties: {grid_position: 'RJRQGI,ZZXRSP', full_width_row: true}
   - name: btnAddUser
-    properties: {text: Add New User, align: full, spacing_above: none, spacing_below: medium, background: '#333333', foreground: '#ffffff'}
+    properties: {text: Add New User, align: full, spacing_above: none, spacing_below: medium, background: '', foreground: ''}
     type: Button
     layout_properties: {grid_position: 'RJRQGI,CNJGEP YJRPTG,QWAVJK', full_width_row: true}
     event_bindings: {click: addUser}
@@ -23,8 +23,8 @@ components:
   - name: ddSort
     properties:
       items: [ID, Name, Group, Employment Type]
-      background: '#333333'
-      foreground: '#ffffff'
+      background: ''
+      foreground: ''
     type: DropDown
     layout_properties: {grid_position: 'RJRQGI,CNJGEP YISBCX,HCDKIX', full_width_row: true}
     event_bindings: {change: sortFilteredEmployees}
@@ -33,7 +33,7 @@ components:
     type: Label
     layout_properties: {grid_position: 'RJRQGI,CNJGEP JASEOU,ENBLFW'}
   - name: lblFilterEnabledStatus
-    properties: {text: 'Filters Enabled:', align: left, foreground: '#ffffff'}
+    properties: {text: 'Filters Enabled:', align: left, foreground: ''}
     type: Label
     layout_properties: {grid_position: 'RJRQGI,CNJGEP JGSDHB,YBDLLC'}
   - name: cbFiltersEnabled
@@ -44,24 +44,24 @@ components:
   - name: ddGender
     properties:
       items: [All, Male, Female, Other]
-      background: '#333333'
-      foreground: '#ffffff'
+      background: ''
+      foreground: ''
     type: DropDown
     layout_properties: {grid_position: 'RJRQGI,CNJGEP STMGNS,UVDCBG', full_width_row: true}
     event_bindings: {change: filterEmployeesDropdown}
   - name: ddGroup
     properties:
       items: [All, Warehouse, Manager, Accountant, Admin]
-      background: '#333333'
-      foreground: '#ffffff'
+      background: ''
+      foreground: ''
     type: DropDown
     layout_properties: {grid_position: 'RJRQGI,CNJGEP QWTJBZ,GXNHYH', full_width_row: true}
     event_bindings: {change: filterEmployeesDropdown}
   - name: ddEmploymentType
     properties:
       items: [All, Full Time, Part Time, Contractor]
-      background: '#333333'
-      foreground: '#ffffff'
+      background: ''
+      foreground: ''
     type: DropDown
     layout_properties: {grid_position: 'RJRQGI,CNJGEP UZPDVB,XAZQQR', full_width_row: true}
     event_bindings: {change: filterEmployeesDropdown}
