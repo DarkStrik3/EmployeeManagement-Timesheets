@@ -20,7 +20,7 @@ body.darkMode {
 }
 
 .darkMode .header {
-    background: linear-gradient(to right, #333333, #222222);
+    background: linear-gradient(to right, #333333, #131313);
     color: white;
     padding: 10px;
 }
@@ -57,7 +57,7 @@ body.darkMode {
 }
 
 .darkMode .modal-content {
-    background: linear-gradient(to right, #2b2b2b, #1b1b1b);
+    background: linear-gradient(to right, #2b2b2b, #131313);
     color: #ccc;
 }
 

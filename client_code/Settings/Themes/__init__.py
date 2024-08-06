@@ -12,17 +12,17 @@ class Themes(ThemesTemplate):
     self.init_components(**properties)
 
 
-    def btnColourThemePlainish_click(self, **event_args):
-        anvil.server.call('set_user_theme', 'plainish-theme')
-        get_open_form().apply_theme('cyanMode')
-
-    def btnColourThemeDefault_click(self, **event_args):
-        anvil.server.call('set_user_theme', 'default-theme')
+    def btnColourThemeLightMode(self, **event_args):
+        anvil.server.call('changeSettings', 'lightMode')
         get_open_form().apply_theme('lightMode')
 
-    def btnColourThemeDark_click(self, **event_args):
-        anvil.server.call('set_user_theme', 'dark-theme')
+    def btnColourThemeDarkMode(self, **event_args):
+        anvil.server.call('changeSettings', 'darkMode')
         get_open_form().apply_theme('darkMode')
+
+    def btnColourThemeCyanMode(self, **event_args):
+        anvil.server.call('changeSettings', 'cyanMode')
+        get_open_form().apply_theme('cyanMode')
       
     def saveTheme(self, **event_args):
       """This method is called when the button is clicked"""

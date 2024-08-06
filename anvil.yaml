@@ -87,12 +87,12 @@ db_schema:
     client: none
     server: full
     columns:
-    - name: DarkMode
-      admin_ui: {width: 200, order: 1}
-      type: bool
     - name: UserID
       admin_ui: {width: 200, order: 0}
       type: number
+    - name: Theme
+      admin_ui: {width: 200, order: 1}
+      type: string
     title: tblSettings
   users:
     client: none

@@ -287,7 +287,7 @@ def changeSettings(userID, checkedStatus):
     Output: None
     """
     userSettings = app_tables.tblsettings.get(UserID=userID)
-    userSettings.update(DarkMode=checkedStatus)
+    userSettings.update(Theme=checkedStatus)
 
 @anvil.server.callable
 def setClock(ID):
