@@ -1,120 +1,120 @@
-container:
-  type: ColumnPanel
-  properties: {background: '#131313', border: solid}
 components:
-- name: gpAnalyticsReporting
-  properties: {background: '#131313', border: solid}
-  type: GridPanel
-  layout_properties: {grid_position: 'OQBTGP,XHTDFU', full_width_row: true}
-  components:
-  - name: lpSelections
+- components:
+  - components:
+    - layout_properties: {}
+      name: lblSelections
+      properties: {align: center, bold: true, font_size: 20, foreground: '#ffffff', text: Selections}
+      type: Label
+    - event_bindings: {change: refreshGraphs}
+      layout_properties: {}
+      name: ddDates
+      properties:
+        background: '#333333'
+        foreground: '#ffffff'
+        items: [Today, Yesterday, Last 7 days, Last Fortnight, Last Month, All Time]
+      type: DropDown
+    - event_bindings: {change: refreshGraphs}
+      layout_properties: {}
+      name: ddGroup
+      properties:
+        background: '#333333'
+        foreground: '#ffffff'
+        items: [Groups, Employment Type, Employees]
+      type: DropDown
+    - event_bindings: {change: refreshGraphs}
+      layout_properties: {}
+      name: ddInfoShown
+      properties:
+        background: '#333333'
+        foreground: '#ffffff'
+        items: [Payout, Time Worked]
+      type: DropDown
+    layout_properties: {col_xs: 0, row: UDCADG, width_xs: 3}
+    name: lpSelections
     properties: {}
     type: LinearPanel
-    layout_properties: {row: UDCADG, width_xs: 3, col_xs: 0}
-    components:
-    - name: lblSelections
-      properties: {text: Selections, bold: true, font_size: 20, align: center, foreground: '#ffffff'}
-      type: Label
-      layout_properties: {}
-    - name: ddDates
-      properties:
-        items: [Today, Yesterday, Last 7 days, Last Fortnight, Last Month, All Time]
-        background: '#333333'
-        foreground: '#ffffff'
-      type: DropDown
-      event_bindings: {change: refreshGraphs}
-      layout_properties: {}
-    - name: ddGroup
-      properties:
-        items: [Groups, Employment Type, Employees]
-        background: '#333333'
-        foreground: '#ffffff'
-      type: DropDown
-      layout_properties: {}
-      event_bindings: {change: refreshGraphs}
-    - name: ddInfoShown
-      properties:
-        items: [Payout, Time Worked]
-        background: '#333333'
-        foreground: '#ffffff'
-      type: DropDown
-      layout_properties: {}
-      event_bindings: {change: refreshGraphs}
-  - name: plotGroupStats
+  - layout_properties: {col_xs: 3, row: UDCADG, width_xs: 4}
+    name: plotGroupStats
     properties: {height: '260'}
     type: Plot
-    layout_properties: {row: UDCADG, width_xs: 4, col_xs: 3}
-  - name: plotPieDistribution
+  - layout_properties: {col_xs: 7, row: UDCADG, width_xs: 5}
+    name: plotPieDistribution
     properties: {height: '260'}
     type: Plot
-    layout_properties: {row: UDCADG, width_xs: 5, col_xs: 7}
-  - name: cpTotals
-    properties: {col_widths: '{}'}
-    type: ColumnPanel
-    layout_properties: {row: MWLBON, width_xs: 3, col_xs: 0}
-    components:
-    - name: lblTotalPayout
-      properties: {text: 'Total Payout:', bold: true, align: left, foreground: '#ffffff'}
+  - components:
+    - layout_properties: {grid_position: 'OGWRAI,FIGEFG'}
+      name: lblTotalPayout
+      properties: {align: left, bold: true, foreground: '#ffffff', text: 'Total Payout:'}
       type: Label
-      layout_properties: {grid_position: 'OGWRAI,FIGEFG'}
-    - name: lblPayout
+    - layout_properties: {grid_position: 'OGWRAI,YHBJVV'}
+      name: lblPayout
       properties: {align: left, foreground: '#ffffff'}
       type: Label
-      layout_properties: {grid_position: 'OGWRAI,YHBJVV'}
-    - name: lblTotalTime
-      properties: {text: 'Total Time:', align: left, bold: true, foreground: '#ffffff'}
+    - layout_properties: {grid_position: 'VETNAJ,OUTKHX RGIPIV,QESWGP'}
+      name: lblTotalTime
+      properties: {align: left, bold: true, foreground: '#ffffff', text: 'Total Time:'}
       type: Label
-      layout_properties: {grid_position: 'VETNAJ,OUTKHX RGIPIV,QESWGP'}
-    - name: lblTotalEmployees
-      properties: {text: 'Total Employees:', bold: true, align: left, foreground: '#ffffff'}
+    - layout_properties: {grid_position: 'VETNAJ,OUTKHX GCOADL,RMHFWJ'}
+      name: lblTotalEmployees
+      properties: {align: left, bold: true, foreground: '#ffffff', text: 'Total Employees:'}
       type: Label
-      layout_properties: {grid_position: 'VETNAJ,OUTKHX GCOADL,RMHFWJ'}
-    - name: lblTime
+    - layout_properties: {grid_position: 'VETNAJ,YYXKQJ LJKNWE,WEJUCV'}
+      name: lblTime
       properties: {align: left, foreground: '#ffffff'}
       type: Label
-      layout_properties: {grid_position: 'VETNAJ,YYXKQJ LJKNWE,WEJUCV'}
-    - name: lblEmployees
+    - layout_properties: {grid_position: 'VETNAJ,YYXKQJ WVPMWJ,HJOXXB'}
+      name: lblEmployees
       properties: {align: left, background: '', foreground: '#ffffff'}
       type: Label
-      layout_properties: {grid_position: 'VETNAJ,YYXKQJ WVPMWJ,HJOXXB'}
-  - name: lpData
-    properties: {}
-    type: LinearPanel
-    layout_properties: {row: ARUBVA, width_xs: 3, col_xs: 0}
-    components:
-    - name: ddTableInfoShown
+    layout_properties: {col_xs: 0, row: MWLBON, width_xs: 3}
+    name: cpTotals
+    properties: {col_widths: '{}'}
+    type: ColumnPanel
+  - components:
+    - event_bindings: {change: refreshEmployeeInfoTable}
+      layout_properties: {}
+      name: ddTableInfoShown
       properties:
-        items: [Payout, Time Worked, Pay Rate, User ID]
         background: '#333333'
         foreground: '#ffffff'
+        items: [Payout, Time Worked, Pay Rate, User ID]
       type: DropDown
-      layout_properties: {}
-      event_bindings: {change: refreshEmployeeInfoTable}
-    - name: dgEmployeeInfoTable
-      properties:
-        columns:
-        - {id: JKSDUP, title: Name, data_key: name}
-        - {id: OJLQEN, title: Info, data_key: payout}
-        show_page_controls: false
-        foreground: '#ffffff'
-      type: DataGrid
-      components:
+    - components:
       - name: rpTable
         properties: {item_template: AnalyticsReporting.RowTemplate2}
         type: RepeatingPanel
       layout_properties: {}
-    - name: btnDownloadRecords
-      properties: {text: Download Work Records, bold: true, align: full, background: '#333333', foreground: '#ffffff'}
-      type: Button
+      name: dgEmployeeInfoTable
+      properties:
+        columns:
+        - {data_key: name, id: JKSDUP, title: Name}
+        - {data_key: payout, id: OJLQEN, title: Info}
+        foreground: '#ffffff'
+        show_page_controls: false
+      type: DataGrid
+    - event_bindings: {click: downloadWorkRecords}
       layout_properties: {}
-      event_bindings: {click: downloadWorkRecords}
-    - name: btnDownloadUserDetails
-      properties: {text: Download User Details, align: full, bold: true, background: '#333333', foreground: '#ffffff'}
+      name: btnDownloadRecords
+      properties: {align: full, background: '#333333', bold: true, foreground: '#ffffff', text: Download Work Records}
       type: Button
-      event_bindings: {click: downloadUserDetails}
+    - event_bindings: {click: downloadUserDetails}
       layout_properties: {}
-  - name: plotDateDistribution
+      name: btnDownloadUserDetails
+      properties: {align: full, background: '#333333', bold: true, foreground: '#ffffff', text: Download User Details}
+      type: Button
+    layout_properties: {col_xs: 0, row: ARUBVA, width_xs: 3}
+    name: lpData
+    properties: {}
+    type: LinearPanel
+  - layout_properties: {col_xs: 3, row: ARUBVA, width_xs: 9}
+    name: plotDateDistribution
     properties: {height: 562.5}
     type: Plot
-    layout_properties: {row: ARUBVA, width_xs: 9, col_xs: 3}
+  layout_properties: {full_width_row: true, grid_position: 'OQBTGP,XHTDFU'}
+  name: gpAnalyticsReporting
+  properties: {background: '#131313', border: solid}
+  type: GridPanel
+container:
+  properties: {background: '#131313', border: solid}
+  type: ColumnPanel
 is_package: true

@@ -1,31 +1,31 @@
-container:
-  type: HtmlTemplate
-  properties: {html: <div anvil-slot="default"></div>, background: '#121212', foreground: '#121212', border: solid}
 components:
-- name: gpLogin
-  properties: {background: '#121212', role: null}
-  type: GridPanel
-  layout_properties: {slot: default}
-  components:
-  - name: imgHeader
-    properties: {height: 157, source: _/theme/transparent.png, display_mode: shrink_to_fit}
+- components:
+  - layout_properties: {col_xs: 3, row: SHSWYP, width_xs: 6}
+    name: imgHeader
+    properties: {display_mode: shrink_to_fit, height: 157, source: _/theme/transparent.png}
     type: Image
-    layout_properties: {row: SHSWYP, width_xs: 6, col_xs: 3}
-  - name: spacerLogin
+  - layout_properties: {col_xs: 5, row: ZHVFTN, width_xs: 2}
+    name: spacerLogin
     properties: {height: 153}
     type: Spacer
-    layout_properties: {row: ZHVFTN, width_xs: 2, col_xs: 5}
-  - name: btnLogin
-    properties: {text: LOGIN, align: full, bold: true, font_size: 30, background: '#333333', foreground: '#ffffff'}
+  - event_bindings: {click: login}
+    layout_properties: {col_xs: 5, row: LVWDWI, width_xs: 2}
+    name: btnLogin
+    properties: {align: full, background: '#333333', bold: true, font_size: 30, foreground: '#ffffff', text: LOGIN}
     type: Button
-    layout_properties: {row: LVWDWI, width_xs: 2, col_xs: 5}
-    event_bindings: {click: login}
-  - name: spacerLogin2
+  - layout_properties: {col_xs: 5, row: VDJQNY, width_xs: 2}
+    name: spacerLogin2
     properties: {height: 383}
     type: Spacer
-    layout_properties: {row: VDJQNY, width_xs: 2, col_xs: 5}
-- name: lblDeets
-  properties: {align: right, text: 'Ver: 0.1', foreground: 'theme:Dark Theme - Foreground'}
-  type: Label
   layout_properties: {slot: default}
+  name: gpLogin
+  properties: {background: '#121212', role: null}
+  type: GridPanel
+- layout_properties: {slot: default}
+  name: lblDeets
+  properties: {align: right, foreground: 'theme:Dark Theme - Foreground', text: 'Ver: 0.1'}
+  type: Label
+container:
+  properties: {background: '#121212', border: solid, foreground: '#121212', html: <div anvil-slot="default"></div>}
+  type: HtmlTemplate
 is_package: true

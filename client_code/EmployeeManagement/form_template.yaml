@@ -1,68 +1,68 @@
-container:
-  type: ColumnPanel
-  properties: {col_widths: '{}', background: '#131313', border: solid, foreground: ''}
 components:
-- name: cpEmployeeManagement
-  properties: {col_widths: '{"ZZXRSP":45,"CNJGEP":15}', background: '#131313'}
-  type: ColumnPanel
-  layout_properties: {grid_position: 'KRQCTA,CJSVYD', full_width_row: true}
-  components:
-  - name: rpEmployees
-    properties: {item_template: EmployeeManagement.IndividualProfile, background: '#131313'}
+- components:
+  - layout_properties: {full_width_row: true, grid_position: 'RJRQGI,ZZXRSP'}
+    name: rpEmployees
+    properties: {background: '#131313', item_template: EmployeeManagement.IndividualProfile}
     type: RepeatingPanel
-    layout_properties: {grid_position: 'RJRQGI,ZZXRSP', full_width_row: true}
-  - name: btnAddUser
-    properties: {text: Add New User, align: full, spacing_above: none, spacing_below: medium, background: '#333333', foreground: '#ffffff'}
+  - event_bindings: {click: addUser}
+    layout_properties: {full_width_row: true, grid_position: 'RJRQGI,CNJGEP YJRPTG,QWAVJK'}
+    name: btnAddUser
+    properties: {align: full, background: '#333333', foreground: '#ffffff', spacing_above: none, spacing_below: medium, text: Add New User}
     type: Button
-    layout_properties: {grid_position: 'RJRQGI,CNJGEP YJRPTG,QWAVJK', full_width_row: true}
-    event_bindings: {click: addUser}
-  - name: lblSort
-    properties: {text: Sort By, align: center, bold: true, font_size: 20, foreground: '#ffffff'}
+  - layout_properties: {full_width_row: true, grid_position: 'RJRQGI,CNJGEP TLFNLB,TYRTGV'}
+    name: lblSort
+    properties: {align: center, bold: true, font_size: 20, foreground: '#ffffff', text: Sort By}
     type: Label
-    layout_properties: {grid_position: 'RJRQGI,CNJGEP TLFNLB,TYRTGV', full_width_row: true}
-  - name: ddSort
+  - event_bindings: {change: sortFilteredEmployees}
+    layout_properties: {full_width_row: true, grid_position: 'RJRQGI,CNJGEP YISBCX,HCDKIX'}
+    name: ddSort
     properties:
+      background: '#333333'
+      foreground: '#ffffff'
       items: [ID, Name, Group, Employment Type]
-      background: '#333333'
-      foreground: '#ffffff'
     type: DropDown
-    layout_properties: {grid_position: 'RJRQGI,CNJGEP YISBCX,HCDKIX', full_width_row: true}
-    event_bindings: {change: sortFilteredEmployees}
-  - name: lblFilters
-    properties: {text: Filters, bold: true, align: center, font_size: 20, spacing_above: medium, spacing_below: none, foreground: '#ffffff'}
+  - layout_properties: {grid_position: 'RJRQGI,CNJGEP JASEOU,ENBLFW'}
+    name: lblFilters
+    properties: {align: center, bold: true, font_size: 20, foreground: '#ffffff', spacing_above: medium, spacing_below: none, text: Filters}
     type: Label
-    layout_properties: {grid_position: 'RJRQGI,CNJGEP JASEOU,ENBLFW'}
-  - name: lblFilterEnabledStatus
-    properties: {text: 'Filters Enabled:', align: left, foreground: '#ffffff'}
+  - layout_properties: {grid_position: 'RJRQGI,CNJGEP JGSDHB,YBDLLC'}
+    name: lblFilterEnabledStatus
+    properties: {align: left, foreground: '#ffffff', text: 'Filters Enabled:'}
     type: Label
-    layout_properties: {grid_position: 'RJRQGI,CNJGEP JGSDHB,YBDLLC'}
-  - name: cbFiltersEnabled
-    properties: {text: '', align: right, spacing_above: none, spacing_below: none}
+  - event_bindings: {change: filterEmployees}
+    layout_properties: {full_width_row: false, grid_position: 'RJRQGI,CNJGEP JGSDHB,MEAUGG'}
+    name: cbFiltersEnabled
+    properties: {align: right, spacing_above: none, spacing_below: none, text: ''}
     type: CheckBox
-    layout_properties: {grid_position: 'RJRQGI,CNJGEP JGSDHB,MEAUGG', full_width_row: false}
-    event_bindings: {change: filterEmployees}
-  - name: ddGender
+  - event_bindings: {change: filterEmployeesDropdown}
+    layout_properties: {full_width_row: true, grid_position: 'RJRQGI,CNJGEP STMGNS,UVDCBG'}
+    name: ddGender
     properties:
+      background: '#333333'
+      foreground: '#ffffff'
       items: [All, Male, Female, Other]
+    type: DropDown
+  - event_bindings: {change: filterEmployeesDropdown}
+    layout_properties: {full_width_row: true, grid_position: 'RJRQGI,CNJGEP QWTJBZ,GXNHYH'}
+    name: ddGroup
+    properties:
       background: '#333333'
       foreground: '#ffffff'
-    type: DropDown
-    layout_properties: {grid_position: 'RJRQGI,CNJGEP STMGNS,UVDCBG', full_width_row: true}
-    event_bindings: {change: filterEmployeesDropdown}
-  - name: ddGroup
-    properties:
       items: [All, Warehouse, Manager, Accountant, Admin]
-      background: '#333333'
-      foreground: '#ffffff'
     type: DropDown
-    layout_properties: {grid_position: 'RJRQGI,CNJGEP QWTJBZ,GXNHYH', full_width_row: true}
-    event_bindings: {change: filterEmployeesDropdown}
-  - name: ddEmploymentType
+  - event_bindings: {change: filterEmployeesDropdown}
+    layout_properties: {full_width_row: true, grid_position: 'RJRQGI,CNJGEP UZPDVB,XAZQQR'}
+    name: ddEmploymentType
     properties:
-      items: [All, Full Time, Part Time, Contractor]
       background: '#333333'
       foreground: '#ffffff'
+      items: [All, Full Time, Part Time, Contractor]
     type: DropDown
-    layout_properties: {grid_position: 'RJRQGI,CNJGEP UZPDVB,XAZQQR', full_width_row: true}
-    event_bindings: {change: filterEmployeesDropdown}
+  layout_properties: {full_width_row: true, grid_position: 'KRQCTA,CJSVYD'}
+  name: cpEmployeeManagement
+  properties: {background: '#131313', col_widths: '{"ZZXRSP":45,"CNJGEP":15}'}
+  type: ColumnPanel
+container:
+  properties: {background: '#131313', border: solid, col_widths: '{}', foreground: ''}
+  type: ColumnPanel
 is_package: true

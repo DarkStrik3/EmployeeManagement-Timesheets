@@ -1,142 +1,142 @@
 allow_embedding: false
-package_name: KimikimOrganicsManagement
 db_schema:
+  tblsettings:
+    client: none
+    columns:
+    - admin_ui: {order: 1, width: 200}
+      name: DarkMode
+      type: bool
+    - admin_ui: {order: 0, width: 200}
+      name: UserID
+      type: number
+    server: full
+    title: tblSettings
   tbluserdetails:
     client: none
-    server: full
     columns:
-    - name: UserID
-      admin_ui: {width: 200, order: 0}
+    - admin_ui: {order: 0, width: 200}
+      name: UserID
       type: number
-    - name: FullName
-      admin_ui: {order: 2, width: 200}
+    - admin_ui: {order: 2, width: 200}
+      name: FullName
       type: string
-    - name: Email
-      admin_ui: {width: 200, order: 3}
+    - admin_ui: {order: 3, width: 200}
+      name: Email
       type: string
-    - name: BasicRate
-      admin_ui: {width: 200, order: 5}
+    - admin_ui: {order: 5, width: 200}
+      name: BasicRate
       type: number
-    - name: ExtendedRate
-      admin_ui: {width: 200, order: 6}
+    - admin_ui: {order: 6, width: 200}
+      name: ExtendedRate
       type: number
-    - name: PublHolRate
-      admin_ui: {width: 200, order: 7}
+    - admin_ui: {order: 7, width: 200}
+      name: PublHolRate
       type: number
-    - name: Title
-      admin_ui: {width: 200, order: 8}
+    - admin_ui: {order: 8, width: 200}
+      name: Title
       type: string
-    - name: Group
-      admin_ui: {width: 200, order: 9}
+    - admin_ui: {order: 9, width: 200}
+      name: Group
       type: string
-    - name: DoB
-      admin_ui: {width: 200, order: 10}
+    - admin_ui: {order: 10, width: 200}
+      name: DoB
       type: date
-    - name: TFN
-      admin_ui: {width: 200, order: 11}
+    - admin_ui: {order: 11, width: 200}
+      name: TFN
       type: string
-    - name: Profile
-      admin_ui: {width: 200, order: 12}
+    - admin_ui: {order: 12, width: 200}
+      name: Profile
       type: media
-    - name: Gender
-      admin_ui: {width: 200, order: 13}
+    - admin_ui: {order: 13, width: 200}
+      name: Gender
       type: string
-    - name: PhoneNumber
-      admin_ui: {width: 200, order: 4}
+    - admin_ui: {order: 4, width: 200}
+      name: PhoneNumber
       type: string
-    - name: Employment
-      admin_ui: {width: 200, order: 14}
+    - admin_ui: {order: 14, width: 200}
+      name: Employment
       type: string
+    server: full
     title: tblUserDetails
   tblworkrecords:
     client: none
-    server: full
     columns:
-    - name: WorkID
-      admin_ui: {order: 0, width: 52}
+    - admin_ui: {order: 0, width: 52}
+      name: WorkID
       type: number
-    - name: HoursWorked
-      admin_ui: {width: 200, order: 2}
+    - admin_ui: {order: 2, width: 200}
+      name: HoursWorked
       type: number
-    - name: PayRate
-      admin_ui: {order: 3, width: 89}
+    - admin_ui: {order: 3, width: 89}
+      name: PayRate
       type: number
-    - name: ClockIn
-      admin_ui: {order: 1.5, width: 200}
+    - admin_ui: {order: 1.5, width: 200}
+      name: ClockIn
       type: datetime
-    - name: ClockOut
-      admin_ui: {order: 1.75, width: 200}
+    - admin_ui: {order: 1.75, width: 200}
+      name: ClockOut
       type: datetime
-    - name: Payout
-      admin_ui: {order: 4, width: 80}
+    - admin_ui: {order: 4, width: 80}
+      name: Payout
       type: number
-    - name: Approval
-      admin_ui: {order: 5, width: 73}
+    - admin_ui: {order: 5, width: 73}
+      name: Approval
       type: bool
-    - name: Date
-      admin_ui: {order: 1.25, width: 84}
+    - admin_ui: {order: 1.25, width: 84}
+      name: Date
       type: date
-    - name: UserID
-      admin_ui: {order: 0.625, width: 61}
+    - admin_ui: {order: 0.625, width: 61}
+      name: UserID
       type: number
-    - name: Paid
-      admin_ui: {width: 200, order: 6}
+    - admin_ui: {order: 6, width: 200}
+      name: Paid
       type: bool
-    title: tblWorkRecords
-  tblsettings:
-    client: none
     server: full
-    columns:
-    - name: DarkMode
-      admin_ui: {width: 200, order: 1}
-      type: bool
-    - name: UserID
-      admin_ui: {width: 200, order: 0}
-      type: number
-    title: tblSettings
+    title: tblWorkRecords
   users:
     client: none
-    server: full
     columns:
-    - name: email
-      admin_ui: {order: 0, width: 200}
+    - admin_ui: {order: 0, width: 200}
+      name: email
       type: string
-    - name: enabled
-      admin_ui: {order: 1, width: 200}
+    - admin_ui: {order: 1, width: 200}
+      name: enabled
       type: bool
-    - name: last_login
-      admin_ui: {order: 2, width: 200}
+    - admin_ui: {order: 2, width: 200}
+      name: last_login
       type: datetime
-    - name: password_hash
-      admin_ui: {order: 0.5, width: 200}
+    - admin_ui: {order: 0.5, width: 200}
+      name: password_hash
       type: string
-    - name: n_password_failures
-      admin_ui: {order: 4, width: 200}
+    - admin_ui: {order: 4, width: 200}
+      name: n_password_failures
       type: number
-    - name: confirmed_email
-      admin_ui: {order: 5, width: 200}
+    - admin_ui: {order: 5, width: 200}
+      name: confirmed_email
       type: bool
-    - name: remembered_logins
-      admin_ui: {order: 6, width: 200}
+    - admin_ui: {order: 6, width: 200}
+      name: remembered_logins
       type: simpleObject
-    - name: UserID
-      admin_ui: {width: 200}
+    - admin_ui: {width: 200}
+      name: UserID
       type: number
-    - name: Group
-      admin_ui: {width: 200}
+    - admin_ui: {width: 200}
+      name: Group
       type: string
-    - name: signed_up
-      admin_ui: {width: 200}
+    - admin_ui: {width: 200}
+      name: signed_up
       type: datetime
+    server: full
     title: Users
-startup: {type: form, module: frmLogin}
 name: KimikimOrganicsManagement
-startup_form: null
-runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
+package_name: KimikimOrganicsManagement
+runtime_options: {client_version: '3', server_spec: null, server_version: python3-full, version: 2}
 services:
-- source: /runtime/services/tables.yml
-  client_config: {}
+- client_config: {}
   server_config: {}
-- source: /runtime/services/anvil/users.yml
-  client_config: {allow_signup: false, enable_automatically: true, use_email: true, confirm_email: false, allow_remember_me: true, remember_me_days: 30}
+  source: /runtime/services/tables.yml
+- client_config: {allow_remember_me: true, allow_signup: false, confirm_email: false, enable_automatically: true, remember_me_days: 30, use_email: true}
   server_config: {user_table: users}
+  source: /runtime/services/anvil/users.yml
+startup: {module: frmLogin, type: form}
+startup_form: null

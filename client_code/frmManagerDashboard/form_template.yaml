@@ -1,66 +1,66 @@
-is_package: true
-container:
-  type: HtmlTemplate
-  properties: {html: <div anvil-slot="default"></div>, background: '#131313', border: solid, foreground: '#131313'}
 components:
-- properties: {background: '#131313', border: solid, foreground: '#131313'}
-  type: GridPanel
-  layout_properties: {slot: default}
-  name: gpProfile
-  components:
-  - properties: {text: Sign Out, icon: 'fa:caret-left', spacing_above: medium, background: '#333333', foreground: '#ffffff', border: ''}
-    type: Button
-    layout_properties: {row: GIPNDZ, width_xs: 1, col_xs: 0}
-    event_bindings: {click: signOut}
+- components:
+  - event_bindings: {click: signOut}
+    layout_properties: {col_xs: 0, row: GIPNDZ, width_xs: 1}
     name: btnBack
-  - properties: {height: 95, source: _/theme/transparent.png}
-    type: Image
-    layout_properties: {row: GIPNDZ, width_xs: 6, col_xs: 3}
+    properties: {background: '#333333', border: '', foreground: '#ffffff', icon: 'fa:caret-left', spacing_above: medium, text: Sign Out}
+    type: Button
+  - event_bindings: {mouse_down: selectEmployeeManagement}
+    layout_properties: {col_xs: 3, row: GIPNDZ, width_xs: 6}
     name: imgHeader
-    event_bindings: {mouse_down: selectEmployeeManagement}
-  - properties: {spacing_above: large, align: right, foreground: 'theme:Dark Theme - Foreground'}
-    type: Label
-    layout_properties: {row: GIPNDZ, width_xs: 1, col_xs: 10}
-    name: lblProfileName
-  - properties: {height: '85', spacing_above: medium}
+    properties: {height: 95, source: _/theme/transparent.png}
     type: Image
-    layout_properties: {row: GIPNDZ, width_xs: 1, col_xs: 11}
+  - layout_properties: {col_xs: 10, row: GIPNDZ, width_xs: 1}
+    name: lblProfileName
+    properties: {align: right, foreground: 'theme:Dark Theme - Foreground', spacing_above: large}
+    type: Label
+  - event_bindings: {mouse_down: openOwnProfileUserDetails}
+    layout_properties: {col_xs: 11, row: GIPNDZ, width_xs: 1}
     name: imgProfile
-    event_bindings: {mouse_down: openOwnProfileUserDetails}
-  - properties: {col_spacing: none}
-    type: ColumnPanel
-    layout_properties: {row: IWFCJG, width_xs: 10, col_xs: 0}
+    properties: {height: '85', spacing_above: medium}
+    type: Image
+  - layout_properties: {col_xs: 0, row: IWFCJG, width_xs: 10}
     name: cpDashboards
-  - name: lpButtons
+    properties: {col_spacing: none}
+    type: ColumnPanel
+  - components:
+    - event_bindings: {click: selectEmployeeManagement}
+      layout_properties: {}
+      name: btnEmplManage
+      properties: {align: full, background: '#333333', bold: true, foreground: '#ffffff', spacing_above: small, spacing_below: medium, text: Employee Management}
+      type: Button
+    - event_bindings: {click: selectTimesheets}
+      layout_properties: {}
+      name: btnTimesheets
+      properties: {align: full, background: '#333333', bold: true, foreground: '#ffffff', spacing_above: medium, spacing_below: medium, text: Timesheets}
+      type: Button
+    - event_bindings: {click: selectAnalyticsReport}
+      layout_properties: {}
+      name: btnAnalyticReport
+      properties: {align: full, background: '#333333', bold: true, foreground: '#ffffff', spacing_above: medium, spacing_below: medium, text: Analytics and Reporting}
+      type: Button
+    - event_bindings: {click: selectSettings}
+      layout_properties: {}
+      name: btnSettings
+      properties: {align: full, background: '#333333', bold: true, foreground: '#ffffff', spacing_above: medium, spacing_below: medium, text: Settings}
+      type: Button
+    layout_properties: {col_xs: 10, row: IWFCJG, width_xs: 2}
+    name: lpButtons
     properties: {}
     type: LinearPanel
-    layout_properties: {row: IWFCJG, width_xs: 2, col_xs: 10}
-    components:
-    - properties: {text: Employee Management, align: full, bold: true, spacing_below: medium, spacing_above: small, background: '#333333', foreground: '#ffffff'}
-      type: Button
-      layout_properties: {}
-      event_bindings: {click: selectEmployeeManagement}
-      name: btnEmplManage
-    - properties: {text: Timesheets, align: full, bold: true, spacing_above: medium, spacing_below: medium, background: '#333333', foreground: '#ffffff'}
-      type: Button
-      layout_properties: {}
-      event_bindings: {click: selectTimesheets}
-      name: btnTimesheets
-    - properties: {text: Analytics and Reporting, spacing_above: medium, spacing_below: medium, bold: true, align: full, background: '#333333', foreground: '#ffffff'}
-      type: Button
-      layout_properties: {}
-      event_bindings: {click: selectAnalyticsReport}
-      name: btnAnalyticReport
-    - properties: {text: Settings, align: full, bold: true, spacing_below: medium, spacing_above: medium, background: '#333333', foreground: '#ffffff'}
-      type: Button
-      layout_properties: {}
-      event_bindings: {click: selectSettings}
-      name: btnSettings
-- name: spacermanagerHome
+  layout_properties: {slot: default}
+  name: gpProfile
+  properties: {background: '#131313', border: solid, foreground: '#131313'}
+  type: GridPanel
+- layout_properties: {slot: default}
+  name: spacermanagerHome
   properties: {height: 32}
   type: Spacer
-  layout_properties: {slot: default}
-- name: lblDeets
-  properties: {text: 'Ver: 0.1', align: right, foreground: 'theme:Dark Theme - Foreground'}
+- layout_properties: {slot: default}
+  name: lblDeets
+  properties: {align: right, foreground: 'theme:Dark Theme - Foreground', text: 'Ver: 0.1'}
   type: Label
-  layout_properties: {slot: default}
+container:
+  properties: {background: '#131313', border: solid, foreground: '#131313', html: <div anvil-slot="default"></div>}
+  type: HtmlTemplate
+is_package: true

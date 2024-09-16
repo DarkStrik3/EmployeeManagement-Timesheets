@@ -1,48 +1,48 @@
-is_package: true
-container:
-  type: ColumnPanel
-  properties: {col_widths: '{"XJKGSP":15,"WJYECR":45}', border: thin solid, foreground: 'theme:Dark Theme - Selected Button background'}
 components:
-- name: imgProfileImage
+- layout_properties: {full_width_row: false, grid_position: 'RIREOW,XJKGSP'}
+  name: imgProfileImage
   properties: {display_mode: zoom_to_fill}
   type: Image
-  layout_properties: {grid_position: 'RIREOW,XJKGSP', full_width_row: false}
-- name: lblName
-  properties: {text: 'Name:', bold: true, foreground: 'theme:Dark Theme - Foreground'}
+- layout_properties: {grid_position: 'RIREOW,WJYECR JCLKRO,CKIFUB'}
+  name: lblName
+  properties: {bold: true, foreground: 'theme:Dark Theme - Foreground', text: 'Name:'}
   type: Label
-  layout_properties: {grid_position: 'RIREOW,WJYECR JCLKRO,CKIFUB'}
-- name: lblEmplName
+- layout_properties: {grid_position: 'RIREOW,WJYECR JCLKRO,NBCIJM'}
+  name: lblEmplName
   properties: {foreground: 'theme:Dark Theme - Foreground'}
   type: Label
-  layout_properties: {grid_position: 'RIREOW,WJYECR JCLKRO,NBCIJM'}
-- name: lblEmploymentStat
-  properties: {text: 'Employment Status:', bold: true, foreground: 'theme:Dark Theme - Foreground'}
+- layout_properties: {grid_position: 'RIREOW,WJYECR RABWMP,QFGMWA'}
+  name: lblEmploymentStat
+  properties: {bold: true, foreground: 'theme:Dark Theme - Foreground', text: 'Employment Status:'}
   type: Label
-  layout_properties: {grid_position: 'RIREOW,WJYECR RABWMP,QFGMWA'}
-- name: lblEmplEmployment
-  properties: {foreground: 'theme:Dark Theme - Foreground', border: ''}
+- layout_properties: {grid_position: 'RIREOW,WJYECR RABWMP,UKMKRA'}
+  name: lblEmplEmployment
+  properties: {border: '', foreground: 'theme:Dark Theme - Foreground'}
   type: Label
-  layout_properties: {grid_position: 'RIREOW,WJYECR RABWMP,UKMKRA'}
-- name: lblEmployeeIdentification
-  properties: {text: 'Employee ID:', bold: true, foreground: 'theme:Dark Theme - Foreground'}
+- layout_properties: {grid_position: 'RIREOW,WJYECR LZQMEO,TSWXSB'}
+  name: lblEmployeeIdentification
+  properties: {bold: true, foreground: 'theme:Dark Theme - Foreground', text: 'Employee ID:'}
   type: Label
-  layout_properties: {grid_position: 'RIREOW,WJYECR LZQMEO,TSWXSB'}
-- name: lblEmplID
+- layout_properties: {grid_position: 'RIREOW,WJYECR LZQMEO,SREUYW'}
+  name: lblEmplID
   properties: {foreground: 'theme:Dark Theme - Foreground'}
   type: Label
-  layout_properties: {grid_position: 'RIREOW,WJYECR LZQMEO,SREUYW'}
-- name: btnOpen
-  properties: {text: Open, spacing_above: medium, align: full, bold: true, background: '#333333', foreground: '#ffffff'}
-  type: Button
+- event_bindings: {click: openUser}
   layout_properties: {grid_position: 'RIREOW,WJYECR XMHKPW,VYVEGN'}
-  event_bindings: {click: openUser}
-- name: btnEditProfile
-  properties: {text: Edit, spacing_above: medium, align: full, bold: true, background: '#333333', foreground: '#ffffff'}
+  name: btnOpen
+  properties: {align: full, background: '#333333', bold: true, foreground: '#ffffff', spacing_above: medium, text: Open}
   type: Button
+- event_bindings: {click: editUser}
   layout_properties: {grid_position: 'RIREOW,WJYECR XMHKPW,YBROUC'}
-  event_bindings: {click: editUser}
-- name: btnArchiveProfile
-  properties: {text: Archive, spacing_above: medium, align: full, bold: true, background: '#333333', foreground: '#ffffff'}
+  name: btnEditProfile
+  properties: {align: full, background: '#333333', bold: true, foreground: '#ffffff', spacing_above: medium, text: Edit}
   type: Button
+- event_bindings: {click: archiveUser}
   layout_properties: {grid_position: 'RIREOW,WJYECR XMHKPW,ZMBSOJ'}
-  event_bindings: {click: archiveUser}
+  name: btnArchiveProfile
+  properties: {align: full, background: '#333333', bold: true, foreground: '#ffffff', spacing_above: medium, text: Archive}
+  type: Button
+container:
+  properties: {border: thin solid, col_widths: '{"XJKGSP":15,"WJYECR":45}', foreground: 'theme:Dark Theme - Selected Button background'}
+  type: ColumnPanel
+is_package: true

@@ -1,52 +1,52 @@
-container:
-  type: HtmlTemplate
-  properties: {html: <div anvil-slot="default"></div>, background: '#131313', foreground: '', border: ''}
-  data_bindings: []
 components:
-- name: gpProfile
-  properties: {background: '#131313'}
-  type: GridPanel
-  layout_properties: {slot: default}
-  components:
-  - name: btnEditProfile
-    properties: {text: Edit Profile, spacing_above: small, background: '#333333', foreground: '#ffffff'}
+- components:
+  - event_bindings: {click: editProfile}
+    layout_properties: {col_xs: 0, row: YDUVHX, width_xs: 3}
+    name: btnEditProfile
+    properties: {background: '#333333', foreground: '#ffffff', spacing_above: small, text: Edit Profile}
     type: Button
-    layout_properties: {row: YDUVHX, width_xs: 3, col_xs: 0}
-    event_bindings: {click: editProfile}
-  - name: lblFullNAME
+  - layout_properties: {col_xs: 5, row: YDUVHX, width_xs: 2}
+    name: lblFullNAME
     properties: {align: center, bold: true, font_size: 20, foreground: '#ffffff'}
     type: Label
-    layout_properties: {row: YDUVHX, width_xs: 2, col_xs: 5}
-  - name: dgUserWork
-    properties:
-      columns:
-      - {id: JBHATU, data_key: WorkID, title: WorkID, width: 192, expand: false}
-      - {id: JKSDUP, title: Date, data_key: Date, width: 180, expand: false}
-      - {id: RGSYUC, data_key: ClockIn, title: Clock In, width: 285, expand: false}
-      - {id: PZUJKU, data_key: ClockOut, title: Clock Out, width: 260, expand: false}
-      - {id: VJQQOR, title: Hours Worked, data_key: HoursWorked, width: 252, expand: false}
-      - {id: OJLQEN, title: Pay Rate, data_key: PayRate, width: 171, expand: false}
-      - {id: GRQBIK, data_key: Payout, title: Payout, expand: false, width: 115}
-      - {id: TVIIBG, data_key: approval, title: Approval, width: 107, expand: false}
-      - {id: TOCTNQ, data_key: Paid, title: Paid, width: 112, expand: false}
-      show_page_controls: true
-      auto_header: true
-      foreground: theme:Dark Theme - Foreground
-      role: null
-      wrap_on: mobile
-    type: DataGrid
-    components:
+  - components:
     - name: rpPastWork
       properties: {item_template: frmProfileTimesheets.RowTemplate1}
       type: RepeatingPanel
-    layout_properties: {row: MHFVCP, width_xs: 12, col_xs: 0}
-  - name: btnUserDetails
-    properties: {text: User Details, background: '#333333', foreground: '#ffffff'}
+    layout_properties: {col_xs: 0, row: MHFVCP, width_xs: 12}
+    name: dgUserWork
+    properties:
+      auto_header: true
+      columns:
+      - {data_key: WorkID, expand: false, id: JBHATU, title: WorkID, width: 192}
+      - {data_key: Date, expand: false, id: JKSDUP, title: Date, width: 180}
+      - {data_key: ClockIn, expand: false, id: RGSYUC, title: Clock In, width: 285}
+      - {data_key: ClockOut, expand: false, id: PZUJKU, title: Clock Out, width: 260}
+      - {data_key: HoursWorked, expand: false, id: VJQQOR, title: Hours Worked, width: 252}
+      - {data_key: PayRate, expand: false, id: OJLQEN, title: Pay Rate, width: 171}
+      - {data_key: Payout, expand: false, id: GRQBIK, title: Payout, width: 115}
+      - {data_key: approval, expand: false, id: TVIIBG, title: Approval, width: 107}
+      - {data_key: Paid, expand: false, id: TOCTNQ, title: Paid, width: 112}
+      foreground: theme:Dark Theme - Foreground
+      role: null
+      show_page_controls: true
+      wrap_on: mobile
+    type: DataGrid
+  - event_bindings: {click: openUserDetails}
+    layout_properties: {col_xs: 7, row: YDUVHX, width_xs: 2}
+    name: btnUserDetails
+    properties: {background: '#333333', foreground: '#ffffff', text: User Details}
     type: Button
-    layout_properties: {row: YDUVHX, width_xs: 2, col_xs: 7}
-    event_bindings: {click: openUserDetails}
-  - name: btnTimesheets
-    properties: {text: User Timesheets, bold: true, background: '#8f8f8f', foreground: '#ffffff'}
+  - layout_properties: {col_xs: 9, row: YDUVHX, width_xs: 2}
+    name: btnTimesheets
+    properties: {background: '#8f8f8f', bold: true, foreground: '#ffffff', text: User Timesheets}
     type: Button
-    layout_properties: {row: YDUVHX, width_xs: 2, col_xs: 9}
+  layout_properties: {slot: default}
+  name: gpProfile
+  properties: {background: '#131313'}
+  type: GridPanel
+container:
+  data_bindings: []
+  properties: {background: '#131313', border: '', foreground: '', html: <div anvil-slot="default"></div>}
+  type: HtmlTemplate
 is_package: true

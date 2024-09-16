@@ -1,26 +1,26 @@
-container:
-  type: ColumnPanel
-  properties: {background: '#131313', border: ''}
 components:
-- name: fpSettings
-  properties: {foreground: '#ffffff', align: center}
-  type: FlowPanel
-  layout_properties: {grid_position: 'YIWAOI,XUZQIQ'}
-  components:
+- components:
   - name: lblDarkMode
-    properties: {text: 'Dark Mode:', align: right, bold: true}
+    properties: {align: right, bold: true, text: 'Dark Mode:'}
     type: Label
   - name: cbDark
     properties: {text: ''}
     type: CheckBox
-- name: btnChangePassword
-  properties: {text: Change Password, bold: true, foreground: '#ffffff', background: '#333333'}
-  type: Button
+  layout_properties: {grid_position: 'YIWAOI,XUZQIQ'}
+  name: fpSettings
+  properties: {align: center, foreground: '#ffffff'}
+  type: FlowPanel
+- event_bindings: {click: changePassword}
   layout_properties: {grid_position: 'YIWAOI,EOCEEF'}
-  event_bindings: {click: changePassword}
-- name: btnSave
-  properties: {text: Save Changes, bold: true, background: '#333333', foreground: '#ffffff'}
+  name: btnChangePassword
+  properties: {background: '#333333', bold: true, foreground: '#ffffff', text: Change Password}
   type: Button
-  layout_properties: {grid_position: 'LXSRMK,IHVWBO', full_width_row: true}
-  event_bindings: {click: saveChanges}
+- event_bindings: {click: saveChanges}
+  layout_properties: {full_width_row: true, grid_position: 'LXSRMK,IHVWBO'}
+  name: btnSave
+  properties: {background: '#333333', bold: true, foreground: '#ffffff', text: Save Changes}
+  type: Button
+container:
+  properties: {background: '#131313', border: ''}
+  type: ColumnPanel
 is_package: true

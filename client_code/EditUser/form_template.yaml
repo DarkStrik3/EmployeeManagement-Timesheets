@@ -1,136 +1,136 @@
-container:
-  type: HtmlTemplate
-  properties: {html: <div anvil-slot="default"></div>, background: '#131313', border: ''}
 components:
-- name: cpAddUser
-  properties: {background: '#131313'}
-  type: ColumnPanel
-  layout_properties: {slot: default}
-  components:
-  - name: lblUserEditingForm
-    properties: {text: User Editing Form, align: center, bold: true, font_size: 40, foreground: '#ffffff'}
+- components:
+  - layout_properties: {grid_position: 'NDTYXL,ZCRNFC'}
+    name: lblUserEditingForm
+    properties: {align: center, bold: true, font_size: 40, foreground: '#ffffff', text: User Editing Form}
     type: Label
-    layout_properties: {grid_position: 'NDTYXL,ZCRNFC'}
-  - name: imgUpload
+  - layout_properties: {grid_position: 'OTHRAW,SYRGTI UZZKTL,UKBMPV'}
+    name: imgUpload
     properties: {display_mode: zoom_to_fill}
     type: Image
-    layout_properties: {grid_position: 'OTHRAW,SYRGTI UZZKTL,UKBMPV'}
-  - name: flUpload
+  - event_bindings: {change: uploadProfile}
+    layout_properties: {grid_position: 'OTHRAW,SYRGTI YSKXXB,RIGBHN'}
+    name: flUpload
     properties: {text: Upload Profile Image, tooltip: 'Please upload an image of the employee for use as a profile picture. Ensure it is formated in PNG, JPG, JPEG or WEBP format.'}
     type: FileLoader
-    layout_properties: {grid_position: 'OTHRAW,SYRGTI YSKXXB,RIGBHN'}
-    event_bindings: {change: uploadProfile}
-  - name: lblFullName
-    properties: {text: 'Full Name:', bold: true, tooltip: Please enter a full name. This cannot be blank or just spaces., foreground: '#ffffff'}
+  - layout_properties: {grid_position: 'OTHRAW,OJHGGK AEWGME,HVSFJV'}
+    name: lblFullName
+    properties: {bold: true, foreground: '#ffffff', text: 'Full Name:', tooltip: Please enter a full name. This cannot be blank or just spaces.}
     type: Label
-    layout_properties: {grid_position: 'OTHRAW,OJHGGK AEWGME,HVSFJV'}
-  - name: txtFullName
+  - layout_properties: {grid_position: 'OTHRAW,OJHGGK AEWGME,ARGVHK'}
+    name: txtFullName
     properties: {background: '#8f8f8f', foreground: 'theme:Dark Theme - Background'}
     type: TextBox
-    layout_properties: {grid_position: 'OTHRAW,OJHGGK AEWGME,ARGVHK'}
-  - name: lblEmail
-    properties: {text: 'Email:', bold: true, tooltip: 'Please enter an email with at least 3 digits, one of which is a ''@'' symbol', foreground: '#ffffff'}
+  - layout_properties: {grid_position: 'OTHRAW,OJHGGK XRBPSO,JCMDCQ'}
+    name: lblEmail
+    properties: {bold: true, foreground: '#ffffff', text: 'Email:', tooltip: 'Please enter an email with at least 3 digits, one of which is a ''@'' symbol'}
     type: Label
-    layout_properties: {grid_position: 'OTHRAW,OJHGGK XRBPSO,JCMDCQ'}
-  - name: txtEmail
+  - layout_properties: {grid_position: 'OTHRAW,OJHGGK XRBPSO,FSSYVD'}
+    name: txtEmail
     properties: {background: '#8f8f8f', foreground: 'theme:Dark Theme - Background'}
     type: TextBox
-    layout_properties: {grid_position: 'OTHRAW,OJHGGK XRBPSO,FSSYVD'}
-  - name: lblPhoneNumber
-    properties: {text: Phone Number, bold: true, tooltip: PLease enter a phone number in either internation or local format., foreground: '#ffffff'}
+  - layout_properties: {grid_position: 'OTHRAW,OJHGGK GYWCOH,JXUTSR'}
+    name: lblPhoneNumber
+    properties: {bold: true, foreground: '#ffffff', text: Phone Number, tooltip: PLease enter a phone number in either internation or local format.}
     type: Label
-    layout_properties: {grid_position: 'OTHRAW,OJHGGK GYWCOH,JXUTSR'}
-  - name: txtPhoneNumber
+  - layout_properties: {grid_position: 'OTHRAW,OJHGGK GYWCOH,AEERMS'}
+    name: txtPhoneNumber
     properties: {background: '#8f8f8f', foreground: 'theme:Dark Theme - Background'}
     type: TextBox
-    layout_properties: {grid_position: 'OTHRAW,OJHGGK GYWCOH,AEERMS'}
-  - name: lblDateOfBirth
-    properties: {text: 'Date of Birth:', bold: true, tooltip: Please enter DoB in dd/mm/yyyy format., foreground: '#ffffff'}
+  - layout_properties: {grid_position: 'OTHRAW,OJHGGK CWYYIW,YZQZFP RXPWEU,OQJQAP'}
+    name: lblDateOfBirth
+    properties: {bold: true, foreground: '#ffffff', text: 'Date of Birth:', tooltip: Please enter DoB in dd/mm/yyyy format.}
     type: Label
-    layout_properties: {grid_position: 'OTHRAW,OJHGGK CWYYIW,YZQZFP RXPWEU,OQJQAP'}
-  - name: lblTitle
-    properties: {text: 'Title:', bold: true, tooltip: PLease enter the employees job ittle, foreground: '#ffffff'}
+  - layout_properties: {grid_position: 'OTHRAW,OJHGGK CWYYIW,YZQZFP XVGTHZ,KWGVLW'}
+    name: lblTitle
+    properties: {bold: true, foreground: '#ffffff', text: 'Title:', tooltip: PLease enter the employees job ittle}
     type: Label
-    layout_properties: {grid_position: 'OTHRAW,OJHGGK CWYYIW,YZQZFP XVGTHZ,KWGVLW'}
-  - name: lblTFN
-    properties: {text: 'TFN:', bold: true, tooltip: Please enter the employees TFN number that is 8 or 9 digits., foreground: '#ffffff'}
+  - layout_properties: {grid_position: 'OTHRAW,OJHGGK CWYYIW,YZQZFP CDNZIB,SAZQWP'}
+    name: lblTFN
+    properties: {bold: true, foreground: '#ffffff', text: 'TFN:', tooltip: Please enter the employees TFN number that is 8 or 9 digits.}
     type: Label
-    layout_properties: {grid_position: 'OTHRAW,OJHGGK CWYYIW,YZQZFP CDNZIB,SAZQWP'}
-  - name: dpDoB
-    properties: {pick_time: false, enabled: true, background: '#8f8f8f', foreground: 'theme:Dark Theme - Background'}
+  - layout_properties: {grid_position: 'OTHRAW,OJHGGK CWYYIW,NZNPXN XVYWTH,HKGKTJ'}
+    name: dpDoB
+    properties: {background: '#8f8f8f', enabled: true, foreground: 'theme:Dark Theme - Background', pick_time: false}
     type: DatePicker
-    layout_properties: {grid_position: 'OTHRAW,OJHGGK CWYYIW,NZNPXN XVYWTH,HKGKTJ'}
-  - name: txtTitle
+  - layout_properties: {grid_position: 'OTHRAW,OJHGGK CWYYIW,NZNPXN NTCVEG,RWNVDY'}
+    name: txtTitle
     properties: {background: '#8f8f8f', foreground: 'theme:Dark Theme - Background'}
     type: TextBox
-    layout_properties: {grid_position: 'OTHRAW,OJHGGK CWYYIW,NZNPXN NTCVEG,RWNVDY'}
-  - name: txtTFN
+  - layout_properties: {grid_position: 'OTHRAW,OJHGGK CWYYIW,NZNPXN VPIDIT,JDMJTU'}
+    name: txtTFN
     properties: {background: '#8f8f8f', foreground: 'theme:Dark Theme - Background'}
     type: TextBox
-    layout_properties: {grid_position: 'OTHRAW,OJHGGK CWYYIW,NZNPXN VPIDIT,JDMJTU'}
-  - name: lblGender
-    properties: {text: 'Gender:', bold: true, tooltip: Please choose one of the options below., foreground: '#ffffff'}
+  - layout_properties: {grid_position: 'OTHRAW,IEJKDQ ZLRNHL,OUAWLF QBWXVQ,LQUSAN'}
+    name: lblGender
+    properties: {bold: true, foreground: '#ffffff', text: 'Gender:', tooltip: Please choose one of the options below.}
     type: Label
-    layout_properties: {grid_position: 'OTHRAW,IEJKDQ ZLRNHL,OUAWLF QBWXVQ,LQUSAN'}
-  - name: lblEmploymentType
-    properties: {text: 'Employment Type:', bold: true, tooltip: Please choose one of the options below., foreground: '#ffffff'}
+  - layout_properties: {grid_position: 'OTHRAW,IEJKDQ ZLRNHL,OUAWLF MGAGCK,FYFWZV'}
+    name: lblEmploymentType
+    properties: {bold: true, foreground: '#ffffff', text: 'Employment Type:', tooltip: Please choose one of the options below.}
     type: Label
-    layout_properties: {grid_position: 'OTHRAW,IEJKDQ ZLRNHL,OUAWLF MGAGCK,FYFWZV'}
-  - name: ddGender
+  - layout_properties: {grid_position: 'OTHRAW,IEJKDQ ZLRNHL,IWNFZS WRGXIN,GOCCEX'}
+    name: ddGender
     properties:
+      background: '#8f8f8f'
+      foreground: theme:Dark Theme - Background
+      include_placeholder: true
       items: [Male, Female, Other]
-      include_placeholder: true
+    type: DropDown
+  - layout_properties: {grid_position: 'OTHRAW,IEJKDQ ZLRNHL,IWNFZS EVKQAW,BJKCDW'}
+    name: ddEmplType
+    properties:
       background: '#8f8f8f'
       foreground: theme:Dark Theme - Background
-    type: DropDown
-    layout_properties: {grid_position: 'OTHRAW,IEJKDQ ZLRNHL,IWNFZS WRGXIN,GOCCEX'}
-  - name: ddEmplType
-    properties:
+      include_placeholder: true
       items: [Full Time, Part Time, Contractor, Not in Employment]
-      include_placeholder: true
-      background: '#8f8f8f'
-      foreground: theme:Dark Theme - Background
     type: DropDown
-    layout_properties: {grid_position: 'OTHRAW,IEJKDQ ZLRNHL,IWNFZS EVKQAW,BJKCDW'}
-  - name: lblGroup
-    properties: {text: 'Group:', bold: true, tooltip: Please choose one of the options below., foreground: '#ffffff'}
+  - layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,ADVDDY PKEMQE,OKXFKV'}
+    name: lblGroup
+    properties: {bold: true, foreground: '#ffffff', text: 'Group:', tooltip: Please choose one of the options below.}
     type: Label
-    layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,ADVDDY PKEMQE,OKXFKV'}
-  - name: lblBaseRate
-    properties: {text: 'Base Rate:', bold: true, tooltip: Please state the base rate without a $ symbol., foreground: '#ffffff'}
+  - layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,ADVDDY QYRXIC,EBSVSX'}
+    name: lblBaseRate
+    properties: {bold: true, foreground: '#ffffff', text: 'Base Rate:', tooltip: Please state the base rate without a $ symbol.}
     type: Label
-    layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,ADVDDY QYRXIC,EBSVSX'}
-  - name: lblExtendedRate
-    properties: {text: 'Extended Rate:', bold: true, tooltip: Please enter an extended rate higher than base rate without the $ symbol., foreground: '#ffffff'}
+  - layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,ADVDDY MUHOWU,EOIPWO'}
+    name: lblExtendedRate
+    properties: {bold: true, foreground: '#ffffff', text: 'Extended Rate:', tooltip: Please enter an extended rate higher than base rate without the $ symbol.}
     type: Label
-    layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,ADVDDY MUHOWU,EOIPWO'}
-  - name: lblPubHolRate
-    properties: {text: 'Public Holiday Rate:', bold: true, tooltip: Please enter a public holdiay rate higher than the base rate without the $ sign., foreground: '#ffffff'}
+  - layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,ADVDDY LSGCZS,EZMCWQ'}
+    name: lblPubHolRate
+    properties: {bold: true, foreground: '#ffffff', text: 'Public Holiday Rate:', tooltip: Please enter a public holdiay rate higher than the base rate without the $ sign.}
     type: Label
-    layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,ADVDDY LSGCZS,EZMCWQ'}
-  - name: ddGroup
+  - layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,FESFBN UFHLWS,VRVGXS'}
+    name: ddGroup
     properties:
-      items: [Warehouse, Manager, Admin, Accountant]
-      include_placeholder: true
       background: '#8f8f8f'
       foreground: theme:Dark Theme - Background
+      include_placeholder: true
+      items: [Warehouse, Manager, Admin, Accountant]
     type: DropDown
-    layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,FESFBN UFHLWS,VRVGXS'}
-  - name: txtBaseRate
+  - layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,FESFBN HHHMHT,DSZLEU'}
+    name: txtBaseRate
     properties: {background: '#8f8f8f', foreground: 'theme:Dark Theme - Background'}
     type: TextBox
-    layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,FESFBN HHHMHT,DSZLEU'}
-  - name: txtExtendedRate
+  - layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,FESFBN ERVSFM,UBDAOX'}
+    name: txtExtendedRate
     properties: {background: '#8f8f8f', foreground: 'theme:Dark Theme - Background'}
     type: TextBox
-    layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,FESFBN ERVSFM,UBDAOX'}
-  - name: txtPubHolRate
+  - layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,FESFBN FWXENN,ULDVID'}
+    name: txtPubHolRate
     properties: {background: '#8f8f8f', foreground: 'theme:Dark Theme - Background'}
     type: TextBox
-    layout_properties: {grid_position: 'OTHRAW,IEJKDQ XBWWBX,FESFBN FWXENN,ULDVID'}
-  - name: btnEditUser
-    properties: {text: Save Edit, align: full, bold: true, background: '#333333', foreground: '#ffffff'}
-    type: Button
+  - event_bindings: {click: editUser}
     layout_properties: {grid_position: 'OTHRAW,IEJKDQ VWUZKU,KILKGZ'}
-    event_bindings: {click: editUser}
+    name: btnEditUser
+    properties: {align: full, background: '#333333', bold: true, foreground: '#ffffff', text: Save Edit}
+    type: Button
+  layout_properties: {slot: default}
+  name: cpAddUser
+  properties: {background: '#131313'}
+  type: ColumnPanel
+container:
+  properties: {background: '#131313', border: '', html: <div anvil-slot="default"></div>}
+  type: HtmlTemplate
 is_package: true

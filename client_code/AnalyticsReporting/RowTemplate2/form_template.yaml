@@ -1,13 +1,13 @@
-is_package: true
-container:
-  type: DataRowPanel
-  properties: {italic: false}
 components:
-- name: lblName
+- layout_properties: {column: JKSDUP}
+  name: lblName
   properties: {}
   type: Label
-  layout_properties: {column: JKSDUP}
-- name: lblInfo
+- layout_properties: {column: OJLQEN}
+  name: lblInfo
   properties: {}
   type: Label
-  layout_properties: {column: OJLQEN}
+container:
+  properties: {italic: false}
+  type: DataRowPanel
+is_package: true

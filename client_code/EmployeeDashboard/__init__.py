@@ -77,6 +77,7 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
         Process: Toggles clock in/out status and updates the server.
         Output: None
         """
+        self.btnClockinout.enabled = False
         if self.btnClockinout.tag == 0:
             self.btnClockinout.text = "Clock Out"
             self.btnClockinout.background = "#aa6041"
@@ -84,6 +85,7 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
             anvil.server.call("setClock", self.userID)
             self.lblTimer.tag = 0
             self.workTimer.interval = 1
+            self.btnClockinout.enabled = True
         else:
             self.btnClockinout.text = "Clock In"
             self.btnClockinout.background = "#3e8a38"
@@ -93,6 +95,7 @@ class EmployeeDashboard(EmployeeDashboardTemplate):
             alert("Final Work time " + self.lblTimer.text + ". \n\n*Note: This was calculated locally. The final work time will not be exactly the same.")
             self.lblTimer.text = "00:00:00"
             self.lblTimer.tag = 0
+            self.btnClockinout.enabled = True
 
         # Refresh the panel after clocking in/out
         self.refresh()

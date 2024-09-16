@@ -1,39 +1,39 @@
-is_package: true
-container: {type: DataRowPanel}
 components:
-- name: cbApproval
-  properties: {text: Approval, enabled: false, foreground: '#ffffff'}
+- layout_properties: {column: TVIIBG}
+  name: cbApproval
+  properties: {enabled: false, foreground: '#ffffff', text: Approval}
   type: CheckBox
-  layout_properties: {column: TVIIBG}
-- name: lblDate
+- layout_properties: {column: JKSDUP}
+  name: lblDate
   properties: {foreground: '#ffffff'}
   type: Label
-  layout_properties: {column: JKSDUP}
-- name: lblHoursWorked
+- layout_properties: {column: VJQQOR}
+  name: lblHoursWorked
   properties: {foreground: '#ffffff'}
   type: Label
-  layout_properties: {column: VJQQOR}
-- name: lblPayRate
+- layout_properties: {column: OJLQEN}
+  name: lblPayRate
   properties: {foreground: '#ffffff'}
   type: Label
-  layout_properties: {column: OJLQEN}
-- name: lblPayout
+- layout_properties: {column: GRQBIK}
+  name: lblPayout
   properties: {foreground: '#ffffff'}
   type: Label
-  layout_properties: {column: GRQBIK}
-- name: lblWorkID
+- layout_properties: {column: JBHATU}
+  name: lblWorkID
   properties: {foreground: '#ffffff'}
   type: Label
-  layout_properties: {column: JBHATU}
-- name: lblClockIn
+- layout_properties: {column: RGSYUC}
+  name: lblClockIn
   properties: {foreground: '#ffffff'}
   type: Label
-  layout_properties: {column: RGSYUC}
-- name: lblClockOut
+- layout_properties: {column: PZUJKU}
+  name: lblClockOut
   properties: {foreground: '#ffffff'}
   type: Label
-  layout_properties: {column: PZUJKU}
-- name: cbPaid
-  properties: {text: Paid, enabled: false}
+- layout_properties: {column: TOCTNQ}
+  name: cbPaid
+  properties: {enabled: false, text: Paid}
   type: CheckBox
-  layout_properties: {column: TOCTNQ}
+container: {type: DataRowPanel}
+is_package: true

@@ -1,8 +1,8 @@
-roles: []
 color_scheme:
   colors:
-  - {name: Dark Theme - Background, color: '#131313'}
-  - {name: Dark Theme - Button background, color: '#333333'}
-  - {name: Dark Theme - Foreground, color: '#ffffff'}
-  - {name: Dark Theme - Selected Button background, color: '#8f8f8f'}
+  - {color: '#131313', name: Dark Theme - Background}
+  - {color: '#333333', name: Dark Theme - Button background}
+  - {color: '#ffffff', name: Dark Theme - Foreground}
+  - {color: '#8f8f8f', name: Dark Theme - Selected Button background}
   preset_groups: []
+roles: []

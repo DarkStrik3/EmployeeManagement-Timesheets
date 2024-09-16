@@ -1,47 +1,47 @@
-container:
-  type: HtmlTemplate
-  properties: {html: <div anvil-slot="default"></div>, background: '#131313', border: solid, foreground: '#333333'}
 components:
-- name: gpEmployee
-  properties: {background: '#121212'}
-  type: GridPanel
-  layout_properties: {slot: default}
-  components:
-  - name: btnMenu
-    properties: {text: '', icon: 'fa:bars', font_size: null, spacing_above: medium, background: '#333333', foreground: '#ffffff'}
+- components:
+  - event_bindings: {click: menu}
+    layout_properties: {col_xs: 0, row: YXXFRA, width_xs: 1}
+    name: btnMenu
+    properties: {background: '#333333', font_size: null, foreground: '#ffffff', icon: 'fa:bars', spacing_above: medium, text: ''}
     type: Button
-    layout_properties: {row: YXXFRA, width_xs: 1, col_xs: 0}
-    event_bindings: {click: menu}
-  - name: btnSignOut
-    properties: {text: Sign Out, icon: 'fa:caret-left', spacing_above: medium, background: '#333333', foreground: '#ffffff'}
+  - event_bindings: {click: signOut}
+    layout_properties: {col_xs: 1, row: YXXFRA, width_xs: 2}
+    name: btnSignOut
+    properties: {background: '#333333', foreground: '#ffffff', icon: 'fa:caret-left', spacing_above: medium, text: Sign Out}
     type: Button
-    layout_properties: {row: YXXFRA, width_xs: 2, col_xs: 1}
-    event_bindings: {click: signOut}
-  - name: imgHeader
+  - event_bindings: {mouse_down: openEmployeeDashboard}
+    layout_properties: {col_xs: 3, row: YXXFRA, width_xs: 6}
+    name: imgHeader
     properties: {height: 94, source: _/theme/transparent.png}
     type: Image
-    layout_properties: {row: YXXFRA, width_xs: 6, col_xs: 3}
-    event_bindings: {mouse_down: openEmployeeDashboard}
-  - name: lblProfileName
-    properties: {align: right, spacing_above: large, foreground: 'theme:Dark Theme - Foreground'}
+  - layout_properties: {col_xs: 10, row: YXXFRA, width_xs: 1}
+    name: lblProfileName
+    properties: {align: right, foreground: 'theme:Dark Theme - Foreground', spacing_above: large}
     type: Label
-    layout_properties: {row: YXXFRA, width_xs: 1, col_xs: 10}
-  - name: imgProfile
-    properties: {height: '85', spacing_above: medium, display_mode: zoom_to_fill}
+  - event_bindings: {mouse_down: openProfileUserDetailsClick}
+    layout_properties: {col_xs: 11, row: YXXFRA, width_xs: 1}
+    name: imgProfile
+    properties: {display_mode: zoom_to_fill, height: '85', spacing_above: medium}
     type: Image
-    layout_properties: {row: YXXFRA, width_xs: 1, col_xs: 11}
-    event_bindings: {mouse_down: openProfileUserDetailsClick}
-  - name: cpEmployeeDashboard
+  - layout_properties: {col_xs: 0, row: FSFDTX, width_xs: 12}
+    name: cpEmployeeDashboard
     properties: {background: '#121212', col_spacing: none}
     type: ColumnPanel
-    layout_properties: {row: FSFDTX, width_xs: 12, col_xs: 0}
-- name: spacerEmplHome
+  layout_properties: {slot: default}
+  name: gpEmployee
+  properties: {background: '#121212'}
+  type: GridPanel
+- data_bindings: []
+  layout_properties: {slot: default}
+  name: spacerEmplHome
   properties: {height: ''}
   type: Spacer
-  layout_properties: {slot: default}
-  data_bindings: []
-- name: lblDeets
-  properties: {align: right, text: 'Ver: 0.1', foreground: 'theme:Dark Theme - Foreground'}
+- layout_properties: {slot: default}
+  name: lblDeets
+  properties: {align: right, foreground: 'theme:Dark Theme - Foreground', text: 'Ver: 0.1'}
   type: Label
-  layout_properties: {slot: default}
+container:
+  properties: {background: '#131313', border: solid, foreground: '#333333', html: <div anvil-slot="default"></div>}
+  type: HtmlTemplate
 is_package: true
