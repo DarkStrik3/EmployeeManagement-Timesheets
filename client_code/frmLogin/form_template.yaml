@@ -23,7 +23,7 @@ components:
   type: GridPanel
 - layout_properties: {slot: default}
   name: lblDeets
-  properties: {align: right, foreground: 'theme:Dark Theme - Foreground', text: 'Ver: 0.1'}
+  properties: {align: right, foreground: 'theme:Dark Theme - Foreground', text: 'Ver: 1.0'}
   type: Label
 container:
   properties: {background: '#121212', border: solid, foreground: '#121212', html: <div anvil-slot="default"></div>}
