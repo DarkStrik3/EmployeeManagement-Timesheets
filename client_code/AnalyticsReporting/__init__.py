@@ -155,9 +155,12 @@ class AnalyticsReporting(AnalyticsReportingTemplate):
 
         for user in self.allUsers:
             name = user['FullName']  # Get employee's full name
-            if infoChoice == "Payout":
-                totalPayout = sum(record['Payout'] for record in self.allRecords if record['UserID'] == user['UserID'])
-                employeeData.append({'name': name, 'info': f"${totalPayout:.2f}"})  # Append total payout
+            if infoChoice == " Total Balance":
+                balance = anvil.server.call('getTotalBalance', userID)
+                employeeData.append({'name': name, 'info': f"${balance:.2f}"})  # Append total balance
+            elif infoChoice == " Approved Balance":
+                balance = anvil.server.call('getTotalApprovedBalance', userID)
+                employeeData.append({'name': name, 'info': f"${balance:.2f}"})  # Append total approved balance
             elif infoChoice == "Time Worked":
                 totalTime = sum(record['HoursWorked'] for record in self.allRecords if record['UserID'] == user['UserID'])
                 employeeData.append({'name': name, 'info': f"{totalTime:.2f}h"})  # Append total time worked

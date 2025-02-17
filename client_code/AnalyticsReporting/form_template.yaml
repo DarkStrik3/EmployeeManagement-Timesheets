@@ -77,7 +77,7 @@ components:
       properties:
         background: '#333333'
         foreground: '#ffffff'
-        items: [Payout, Time Worked, Pay Rate, User ID]
+        items: [Total Balance, Approved Balance, Time Worked, Pay Rate, User ID]
       type: DropDown
     - components:
       - name: rpTable
