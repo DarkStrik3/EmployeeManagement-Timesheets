@@ -130,7 +130,7 @@ db_schema:
     title: Users
 name: KimikimOrganicsManagement
 package_name: KimikimOrganicsManagement
-runtime_options: {client_version: '3', server_spec: null, server_version: python3-full, version: 2}
+runtime_options: {client_version: '3', server_spec: null, server_version: python3-sandbox, version: 2}
 services:
 - client_config: {}
   server_config: {}

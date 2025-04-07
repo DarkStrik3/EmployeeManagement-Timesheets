@@ -18,15 +18,14 @@ class frmLogin(frmLoginTemplate):
         Perform login using the built-in Anvil form and redirect based on user group.
         """
         try:
-          user = anvil.users.login_with_form(show_signup_option=False, allow_remembered=False, remember_by_default=False, allow_cancel=True)
-          ID = user['UserID']  # Retrieve user ID
-          userGroup = user['Group']  # Retrieve user group
-          if user:
-              # Open the appropriate dashboard based on the user's group
-              if str(userGroup) == "Warehouse":
-                  open_form("frmEmployeeDashboard", userID=ID) # Open employee Dashboard
-              else:
-                  open_form('frmManagerDashboard', userID=ID) # Open the dashboard thats shown to every other group (Managers, etc)
-        except:
-          pass
+            user = anvil.users.login_with_form(show_signup_option=False, allow_remembered=False, remember_by_default=False, allow_cancel=True)
+            if user:
+                ID = user['UserID']
+                userGroup = user['Group']
+                if str(userGroup) == "Warehouse":
+                    open_form('frmEmployeeDashboard', userID=ID)
+                else:
+                    open_form('frmManagerDashboard', userID=ID)
+        except Exception as e:
+            print("form open error:", e)
 
