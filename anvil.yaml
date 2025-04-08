@@ -128,6 +128,7 @@ db_schema:
       type: datetime
     server: full
     title: Users
+metadata: {logo_img: 'asset:transparent-logo.png'}
 name: KimikimOrganicsManagement
 package_name: KimikimOrganicsManagement
 runtime_options: {client_version: '3', server_spec: null, server_version: python3-sandbox, version: 2}
